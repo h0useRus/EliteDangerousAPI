@@ -1,4 +1,4 @@
-﻿using System.Collections.Generic;
+using System.Collections.Generic;
 using NSW.EliteDangerous.Events.Entities;
 using NSW.EliteDangerous.Internals;
 using Newtonsoft.Json;
@@ -8,7 +8,7 @@ namespace NSW.EliteDangerous.Events
     public class StatisticsEvent : JournalEvent
     {
         [JsonProperty("Bank_Account")]
-        public Dictionary<string, long> BankAccount { get; internal set; }
+        public BankStatistics BankAccount { get; internal set; }
 
         [JsonProperty("Combat")]
         public CombatStatistics Combat { get; internal set; }
@@ -41,10 +41,10 @@ namespace NSW.EliteDangerous.Events
         public CraftingStatistics Crafting { get; internal set; }
 
         [JsonProperty("Crew")]
-        public CrewStatistics Crew { get; internal set; }
+        public NpcCrewStatistics NpcCrew { get; internal set; }
 
         [JsonProperty("Multicrew")]
-        public MulticrewStatistics Multicrew { get; internal set; }
+        public MultiCrewStatistics MultiCrew { get; internal set; }
 
         [JsonProperty("Material_Trader_Stats")]
         public MaterialTraderStatistics MaterialTraderStats { get; internal set; }

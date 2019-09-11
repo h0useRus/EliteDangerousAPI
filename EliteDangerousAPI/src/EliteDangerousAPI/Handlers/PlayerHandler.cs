@@ -9,6 +9,11 @@ namespace NSW.EliteDangerous.Handlers
 
         internal PlayerHandler(EliteDangerousAPI api) { _api = api; }
         /// <summary>
+        /// Get missions on startup
+        /// </summary>
+        public event EventHandler<MissionsEvent> Missions;
+        internal MissionsEvent InvokeEvent(MissionsEvent arg) { Missions?.Invoke(_api, arg); return arg; }
+        /// <summary>
         /// Creating a new commander
         /// </summary>
         public event EventHandler<CommanderEvent> Commander;

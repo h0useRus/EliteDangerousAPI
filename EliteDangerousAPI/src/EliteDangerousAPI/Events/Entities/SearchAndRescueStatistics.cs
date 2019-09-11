@@ -1,16 +1,16 @@
-﻿using Newtonsoft.Json;
+using Newtonsoft.Json;
 
 namespace NSW.EliteDangerous.Events.Entities
 {
     public class SearchAndRescueStatistics
     {
         [JsonProperty("SearchRescue_Traded")]
-        public long SearchRescueTraded { get; set; }
+        public long Traded { get; internal set; }
 
         [JsonProperty("SearchRescue_Profit")]
-        public long SearchRescueProfit { get; set; }
+        public long Profit { get; internal set; }
 
         [JsonProperty("SearchRescue_Count")]
-        public long SearchRescueCount { get; set; }
+        public long Count { get; internal set; }
     }
 }

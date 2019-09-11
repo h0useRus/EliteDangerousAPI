@@ -1,25 +1,25 @@
-﻿using Newtonsoft.Json;
+using Newtonsoft.Json;
 
 namespace NSW.EliteDangerous.Events.Entities
 {
     public class PassengersStatistics
     {
         [JsonProperty("Passengers_Missions_Accepted")]
-        public long? PassengersMissionsAccepted { get; set; }
+        public long MissionsAccepted { get; internal set; }
 
         [JsonProperty("Passengers_Missions_Disgruntled")]
-        public long? PassengersMissionsDisgruntled { get; set; }
+        public long MissionsDisgruntled { get; internal set; }
 
         [JsonProperty("Passengers_Missions_Bulk")]
-        public long? PassengersMissionsBulk { get; set; }
+        public long MissionsBulk { get; internal set; }
 
         [JsonProperty("Passengers_Missions_VIP")]
-        public long? PassengersMissionsVip { get; set; }
+        public long MissionsVip { get; internal set; }
 
         [JsonProperty("Passengers_Missions_Delivered")]
-        public long? PassengersMissionsDelivered { get; set; }
+        public long MissionsDelivered { get; internal set; }
 
         [JsonProperty("Passengers_Missions_Ejected")]
-        public long? PassengersMissionsEjected { get; set; }
+        public long MissionsEjected { get; internal set; }
     }
 }

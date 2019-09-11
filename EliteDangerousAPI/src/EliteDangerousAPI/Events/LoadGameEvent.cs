@@ -1,5 +1,6 @@
 ﻿using NSW.EliteDangerous.Internals;
 using Newtonsoft.Json;
+using NSW.EliteDangerous.Events.Entities;
 
 namespace NSW.EliteDangerous.Events
 {
@@ -27,13 +28,13 @@ namespace NSW.EliteDangerous.Events
         public string ShipIdent { get; internal set; }
 
         [JsonProperty("FuelLevel")]
-        public double? FuelLevel { get; internal set; }
+        public double FuelLevel { get; internal set; }
 
         [JsonProperty("FuelCapacity")]
-        public double? FuelCapacity { get; internal set; }
+        public double FuelCapacity { get; internal set; }
 
         [JsonProperty("GameMode")]
-        public string GameMode { get; internal set; }
+        public GameMode GameMode { get; internal set; }
 
         [JsonProperty("Credits")]
         public long Credits { get; internal set; }

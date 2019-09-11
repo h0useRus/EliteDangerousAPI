@@ -1,4 +1,4 @@
-﻿using NSW.EliteDangerous.Handlers;
+using NSW.EliteDangerous.Handlers;
 using System;
 using System.IO;
 using NSW.EliteDangerous.Internals;
@@ -53,7 +53,7 @@ namespace NSW.EliteDangerous
             Station = new StationHandler();
             Trade = new TradeHandler(this);
             Travel = new TravelHandler();
-            Powerplay = new PowerplayHandler();
+            Powerplay = new PowerplayHandler(this);
             Wing = new WingHandler();
             Squadron = new SquadronHandler();
             Crew = new CrewHandler();

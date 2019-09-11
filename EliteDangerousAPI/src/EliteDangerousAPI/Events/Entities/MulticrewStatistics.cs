@@ -1,22 +1,22 @@
-﻿using Newtonsoft.Json;
+using Newtonsoft.Json;
 
 namespace NSW.EliteDangerous.Events.Entities
 {
-    public class MulticrewStatistics
+    public class MultiCrewStatistics
     {
         [JsonProperty("Multicrew_Time_Total")]
-        public long MulticrewTimeTotal { get; set; }
+        public long TimeTotal { get; set; }
 
         [JsonProperty("Multicrew_Gunner_Time_Total")]
-        public long MulticrewGunnerTimeTotal { get; set; }
+        public long GunnerTimeTotal { get; set; }
 
         [JsonProperty("Multicrew_Fighter_Time_Total")]
-        public long MulticrewFighterTimeTotal { get; set; }
+        public long FighterTimeTotal { get; set; }
 
         [JsonProperty("Multicrew_Credits_Total")]
-        public long MulticrewCreditsTotal { get; set; }
+        public long CreditsTotal { get; set; }
 
         [JsonProperty("Multicrew_Fines_Total")]
-        public long MulticrewFinesTotal { get; set; }
+        public long FinesTotal { get; set; }
     }
 }
