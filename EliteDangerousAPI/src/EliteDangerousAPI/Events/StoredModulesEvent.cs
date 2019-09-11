@@ -1,0 +1,23 @@
+﻿using NSW.EliteDangerous.Events.Entities;
+using NSW.EliteDangerous.Internals;
+using Newtonsoft.Json;
+
+namespace NSW.EliteDangerous.Events
+{
+    public class StoredModulesEvent : JournalEvent
+    {
+        [JsonProperty("MarketID")]
+        public long MarketId { get; set; }
+
+        [JsonProperty("StationName")]
+        public string StationName { get; set; }
+
+        [JsonProperty("StarSystem")]
+        public string StarSystem { get; set; }
+
+        [JsonProperty("Items")]
+        public StoredItem[] Items { get; set; }
+
+        internal static StoredModulesEvent Execute(string json, EliteDangerousAPI api) => api.Station.InvokeEvent(JsonHelper.FromJson<StoredModulesEvent>(json));
+    }
+}

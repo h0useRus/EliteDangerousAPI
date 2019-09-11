@@ -1,0 +1,24 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <VersionPrefix>1.0.25</VersionPrefix>
+    <Description>Multi-platform Elite : Dangerous API Library</Description>
+    <Copyright>Copyright В© 2019-2020 NewSoftWorld</Copyright>
+    <AssemblyTitle>Multi-platform Elite : Dangerous API Library</AssemblyTitle>
+    <Authors>Denis Ibragimov</Authors>
+    <TargetFramework>netstandard2.0</TargetFramework>
+    <TreatWarningsAsErrors>true</TreatWarningsAsErrors>
+    <AssemblyName>EliteDangerousAPI</AssemblyName>
+    <RootNamespace>NSW.EliteDangerous</RootNamespace>
+    <PackageId>NSW.EliteDangerousAPI</PackageId>
+    <PackageTags>EliteDangerous;Elite;API</PackageTags>
+    <PackageProjectUrl>https://github.com/h0useRus/EliteDangerousAPI</PackageProjectUrl>
+    <LangVersion>Latest</LangVersion>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.Extensions.Logging" Version="2.2.0" />
+    <PackageReference Include="Newtonsoft.Json" Version="12.0.2" />
+  </ItemGroup>
+
+</Project>
