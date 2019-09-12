@@ -2,7 +2,7 @@ using Newtonsoft.Json;
 
 namespace NSW.EliteDangerous.Events.Entities
 {
-    public class FactionInfo : Faction
+    public class FactionDetails : Faction
     {
         [JsonProperty("Government")]
         public string Government { get; internal set; }

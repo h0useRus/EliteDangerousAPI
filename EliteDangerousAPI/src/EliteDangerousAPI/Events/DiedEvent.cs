@@ -1,4 +1,4 @@
-﻿using NSW.EliteDangerous.Events.Entities;
+using NSW.EliteDangerous.Events.Entities;
 using NSW.EliteDangerous.Internals;
 using Newtonsoft.Json;
 
@@ -16,7 +16,7 @@ namespace NSW.EliteDangerous.Events
         public string KillerShip { get; internal set; }
 
         [JsonProperty("KillerRank")]
-        public string KillerRank { get; internal set; }
+        public CombatRank KillerRank { get; internal set; }
 
         [JsonProperty("Killers")]
         public Killer[] Killers { get; internal set; }

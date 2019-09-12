@@ -55,7 +55,7 @@ namespace NSW.EliteDangerous.Events
         public BodyType BodyType { get; internal set; }
        
         [JsonProperty("SystemFaction")]
-        public SystemFaction SystemFaction { get; internal set; }
+        public Faction SystemFaction { get; internal set; }
 
         [JsonProperty("Powers")]
         public string[] Powers { get; internal set; }
@@ -76,7 +76,7 @@ namespace NSW.EliteDangerous.Events
         public double FuelLevel { get; internal set; }
 
         [JsonProperty("Factions")]
-        public FactionInfo[] Factions { get; internal set; }
+        public FactionDetails[] Factions { get; internal set; }
 
         [JsonProperty("Conflicts")]
         public Conflict[] Conflicts { get; internal set; }

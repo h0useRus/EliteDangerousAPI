@@ -1,10 +1,16 @@
-﻿using NSW.EliteDangerous.Internals;
+using NSW.EliteDangerous.Internals;
 using Newtonsoft.Json;
 
 namespace NSW.EliteDangerous.Events
 {
     public class LeaveBodyEvent : JournalEvent
     {
+        [JsonProperty("StarSystem")]
+        public string StarSystem { get; internal set; }
+
+        [JsonProperty("SystemAddress")]
+        public long SystemAddress { get; internal set; }
+
         [JsonProperty("Body")]
         public string Body { get; internal set; }
 

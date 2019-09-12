@@ -1,4 +1,4 @@
-﻿using NSW.EliteDangerous.Events.Entities;
+using NSW.EliteDangerous.Events.Entities;
 using NSW.EliteDangerous.Internals;
 using Newtonsoft.Json;
 

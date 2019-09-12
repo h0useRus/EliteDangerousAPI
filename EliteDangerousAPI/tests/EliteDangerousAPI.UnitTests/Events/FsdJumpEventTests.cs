@@ -58,7 +58,7 @@ namespace NSW.EliteDangerous.Events
 
             Assert.Equal(8, @event.Factions.Length);
             Assert.Equal("Nanabozho Transport Holdings", @event.Factions[0].Name);
-            Assert.Equal("CivilWar", @event.Factions[0].FactionState);
+            Assert.Equal("CivilWar", @event.Factions[0].State);
             Assert.Equal("Corporate", @event.Factions[0].Government);
             Assert.Equal(0.105578, @event.Factions[0].Influence, 6);
             Assert.Equal("Federation", @event.Factions[0].Allegiance);

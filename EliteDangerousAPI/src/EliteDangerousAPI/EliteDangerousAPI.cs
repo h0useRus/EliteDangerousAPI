@@ -7,6 +7,8 @@ namespace NSW.EliteDangerous
 {
     public partial class EliteDangerousAPI
     {
+        private readonly DirectoryInfo _journalDirectory;
+
         private ApiStatus _apiStatus;
         public ApiStatus ApiStatus
         {
@@ -20,7 +22,8 @@ namespace NSW.EliteDangerous
                 }
             }
         }
-        private readonly DirectoryInfo _journalDirectory;
+
+        public int DocumentationVersion { get ;} = 25;
 
         public GameHandler Game { get; }
         public PlayerHandler Player { get; }
@@ -48,7 +51,7 @@ namespace NSW.EliteDangerous
             Game = new GameHandler(this);
             Player = new PlayerHandler(this);
             Ship = new ShipHandler(this);
-            Combat = new CombatHandler();
+            Combat = new CombatHandler(this);
             Exploration = new ExplorationHandler();
             Station = new StationHandler();
             Trade = new TradeHandler(this);

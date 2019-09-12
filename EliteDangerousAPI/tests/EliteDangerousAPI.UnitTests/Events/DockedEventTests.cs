@@ -35,7 +35,7 @@ namespace NSW.EliteDangerous.Events
             Assert.Equal(5372466973488, @event.SystemAddress);
             Assert.Equal(3223662592, @event.MarketId);
             Assert.Equal("Eurybia Blue Mafia", @event.StationFaction.Name);
-            Assert.Equal("Expansion", @event.StationFaction.FactionState);
+            Assert.Equal("Expansion", @event.StationFaction.State);
             Assert.Equal("$government_Anarchy;", @event.StationGovernment);
             Assert.Equal("Анархия", @event.StationGovernmentLocalised);
             Assert.Equal(17, @event.StationServices.Length);

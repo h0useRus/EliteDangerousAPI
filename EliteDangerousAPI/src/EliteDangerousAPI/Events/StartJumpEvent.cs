@@ -1,12 +1,13 @@
-﻿using NSW.EliteDangerous.Internals;
+using NSW.EliteDangerous.Internals;
 using Newtonsoft.Json;
+using NSW.EliteDangerous.Events.Entities;
 
 namespace NSW.EliteDangerous.Events
 {
     public class StartJumpEvent : JournalEvent
     {
         [JsonProperty("JumpType")]
-        public string JumpType { get; internal set; }
+        public JumpType JumpType { get; internal set; }
 
         [JsonProperty("StarSystem")]
         public string StarSystem { get; internal set; }

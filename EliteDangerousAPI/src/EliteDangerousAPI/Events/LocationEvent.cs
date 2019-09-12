@@ -22,7 +22,7 @@ namespace NSW.EliteDangerous.Events
         public string StarSystem { get; internal set; }
 
         [JsonProperty("SystemAddress")]
-        public ulong? SystemAddress { get; internal set; }
+        public long SystemAddress { get; internal set; }
 
         [JsonProperty("StarPos")]
         public double[] StarPos { get; internal set; }
@@ -57,8 +57,23 @@ namespace NSW.EliteDangerous.Events
         [JsonProperty("StationGovernment")]
         public string StationGovernment { get; internal set; }
 
+        [JsonProperty("StationGovernment_Localised")]
+        public string StationGovernmentLocalised { get; internal set; }
+
         [JsonProperty("StationAllegiance")]
         public string StationAllegiance { get; internal set; }
+
+        [JsonProperty("StationServices")]
+        public string[] StationServices { get; internal set; }
+
+        [JsonProperty("StationEconomy")]
+        public string StationEconomy { get; internal set; }
+
+        [JsonProperty("StationEconomy_Localised")]
+        public string StationEconomyLocalised { get; internal set; }
+
+        [JsonProperty("StationEconomies")]
+        public StationEconomy[] StationEconomies { get; internal set; }
 
         [JsonProperty("Population")]
         public long Population { get; internal set; }
@@ -79,7 +94,7 @@ namespace NSW.EliteDangerous.Events
         public string PowerplayState { get; internal set; }
 
         [JsonProperty("Factions")]
-        public FactionInfo[] Factions { get; internal set; }
+        public FactionDetails[] Factions { get; internal set; }
 
         [JsonProperty("Latitude")]
         public double? Latitude { get; internal set; }
@@ -88,13 +103,13 @@ namespace NSW.EliteDangerous.Events
         public double? Longitude { get; internal set; }
 
         [JsonProperty("DistFromStarLS")]
-        public double? DistFromStarLs { get; internal set; }
+        public double DistFromStarLs { get; internal set; }
 
         [JsonProperty("SystemFaction")]
-        public SystemFaction SystemFaction { get; internal set; }
+        public Faction SystemFaction { get; internal set; }
 
         [JsonProperty("StationFaction")]
-        public SystemFaction StationFaction { get; internal set; }
+        public Faction StationFaction { get; internal set; }
 
         [JsonProperty("Conflicts")]
         public Conflict[] Conflicts { get; internal set; }

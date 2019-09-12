@@ -1,10 +1,10 @@
-﻿using NSW.EliteDangerous.Events.Entities;
+using NSW.EliteDangerous.Events.Entities;
 using NSW.EliteDangerous.Internals;
 using Newtonsoft.Json;
 
 namespace NSW.EliteDangerous.Events
 {
-    public class BountyEvent
+    public class BountyEvent : JournalEvent
     {
         [JsonProperty("Rewards")]
         public Reward[] Rewards { get; internal set; }

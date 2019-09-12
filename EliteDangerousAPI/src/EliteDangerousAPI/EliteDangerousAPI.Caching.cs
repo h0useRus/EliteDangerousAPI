@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Reflection;
@@ -48,11 +48,11 @@ namespace NSW.EliteDangerous
             return _cache.Value.TryGetValue(eventName, out _);
         }
 
-        internal object ExecuteEvent(string eventName, string json)
+        internal JournalEvent ExecuteEvent(string eventName, string json)
         {
             if (_cache.Value.TryGetValue(eventName, out var eventCacheItem))
             {
-                return eventCacheItem.Execute.Invoke(null, new object[] { json, this });
+                return (JournalEvent)eventCacheItem.Execute.Invoke(null, new object[] { json, this });
             }
 
             return null;

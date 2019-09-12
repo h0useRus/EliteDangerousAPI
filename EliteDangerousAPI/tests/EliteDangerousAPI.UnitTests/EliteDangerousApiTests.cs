@@ -7,7 +7,9 @@ namespace NSW.EliteDangerous
         [Fact]
         public void Initialization()
         {
-            Assert.NotNull(new EliteDangerousAPI());
+            var api = new EliteDangerousAPI();
+            Assert.Equal(25, api.DocumentationVersion);
+            Assert.Equal(ApiStatus.Stopped, api.ApiStatus);
         }
     }
 }

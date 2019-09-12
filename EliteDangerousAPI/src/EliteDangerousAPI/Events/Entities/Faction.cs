@@ -8,6 +8,6 @@ namespace NSW.EliteDangerous.Events.Entities
         public string Name { get; internal set; }
 
         [JsonProperty("FactionState")]
-        public string FactionState { get; internal set; }
+        public string State { get; internal set; }
     }
 }
