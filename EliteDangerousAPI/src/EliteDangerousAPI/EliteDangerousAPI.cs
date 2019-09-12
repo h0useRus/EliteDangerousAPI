@@ -25,20 +25,6 @@ namespace NSW.EliteDangerous
 
         public int DocumentationVersion { get ;} = 25;
 
-        public GameHandler Game { get; }
-        public PlayerHandler Player { get; }
-        public ShipHandler Ship { get; }
-        public CombatHandler Combat { get; }
-        public ExplorationHandler Exploration { get; }
-        public StationHandler Station { get; }
-        public TradeHandler Trade { get; }
-        public TravelHandler Travel { get; }
-        public PowerplayHandler Powerplay { get; }
-        public WingHandler Wing { get; }
-        public SquadronHandler Squadron { get; }
-        public CrewHandler Crew { get; }
-        public StatusHandler Status { get; }
-
         public EliteDangerousAPI() : this(FileHelpers.GetJournalDirectory())
         {
             
@@ -48,19 +34,7 @@ namespace NSW.EliteDangerous
         {
             _journalDirectory = new DirectoryInfo(journalDirectory);
 
-            Game = new GameHandler(this);
-            Player = new PlayerHandler(this);
-            Ship = new ShipHandler(this);
-            Combat = new CombatHandler(this);
-            Exploration = new ExplorationHandler();
-            Station = new StationHandler();
-            Trade = new TradeHandler(this);
-            Travel = new TravelHandler(this);
-            Powerplay = new PowerplayHandler(this);
-            Wing = new WingHandler();
-            Squadron = new SquadronHandler();
-            Crew = new CrewHandler();
-            Status = new StatusHandler(_journalDirectory);
+            InitHandlers();
         }
 
         public ApiStatus Start()

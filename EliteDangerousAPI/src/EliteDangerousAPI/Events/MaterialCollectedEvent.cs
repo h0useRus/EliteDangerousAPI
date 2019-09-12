@@ -1,12 +1,13 @@
-﻿using NSW.EliteDangerous.Internals;
+using NSW.EliteDangerous.Internals;
 using Newtonsoft.Json;
+using NSW.EliteDangerous.Events.Entities;
 
 namespace NSW.EliteDangerous.Events
 {
     public class MaterialCollectedEvent : JournalEvent
     {
         [JsonProperty("Category")]
-        public string Category { get; internal set; }
+        public MaterialCategory Category { get; internal set; }
 
         [JsonProperty("Name")]
         public string Name { get; internal set; }

@@ -1,22 +1,22 @@
-﻿using Newtonsoft.Json;
+using Newtonsoft.Json;
 
 namespace NSW.EliteDangerous.Events.Entities
 {
     public class Ring
     {
         [JsonProperty("Name")]
-        public string Name { get; set; }
+        public string Name { get; internal set; }
 
         [JsonProperty("RingClass")]
-        public string RingClass { get; set; }
+        public string RingClass { get; internal set; }
 
         [JsonProperty("MassMT")]
-        public long MassMt { get; set; }
+        public double MassMt { get; internal set; }
 
         [JsonProperty("InnerRad")]
-        public long InnerRad { get; set; }
+        public double InnerRad { get; internal set; }
 
         [JsonProperty("OuterRad")]
-        public long OuterRad { get; set; }
+        public double OuterRad { get; internal set; }
     }
 }

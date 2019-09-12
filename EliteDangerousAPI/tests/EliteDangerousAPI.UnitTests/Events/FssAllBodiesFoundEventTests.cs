@@ -4,9 +4,9 @@ using Xunit;
 
 namespace NSW.EliteDangerous.Events
 {
-    public class SrvDestroyedEventHandler
+    public class FssAllBodiesFoundEventTests
     {
-        private const string EventName = "SRVDestroyed";
+        private const string EventName = "FSSAllBodiesFound";
 
         [Theory]
         [MemberData(nameof(Data))]
@@ -14,7 +14,7 @@ namespace NSW.EliteDangerous.Events
         {
             var api = new EliteDangerousAPI();
             var eventFired = false;
-            api.Combat.SrvDestroyed += (sender, @event) =>
+            api.Exploration.FssAllBodiesFound += (sender, @event) =>
             {
                 Assert.IsType<EliteDangerousAPI>(sender);
                 AssertEvent(@event);
@@ -22,21 +22,24 @@ namespace NSW.EliteDangerous.Events
             };
 
             Assert.True(api.HasEvent(eventName));
-            AssertEvent(api.ExecuteEvent(eventName, json) as SrvDestroyedEvent);
+            AssertEvent(api.ExecuteEvent(eventName, json) as FssAllBodiesFoundEvent);
             Assert.True(eventFired);
         }
 
-        private void AssertEvent(SrvDestroyedEvent @event)
+        private void AssertEvent(FssAllBodiesFoundEvent @event)
         {
             Assert.NotNull(@event);
-            Assert.Equal(DateTime.Parse("2019-09-03T13:38:51Z"), @event.Timestamp);
+            Assert.Equal(DateTime.Parse("2019-09-11T11:08:04Z"), @event.Timestamp);
             Assert.Equal(EventName, @event.Event);
+            Assert.Equal("Hyades Sector IM-L b8-5", @event.SystemName);
+            Assert.Equal(11667412755841, @event.SystemAddress);
+            Assert.Equal(8, @event.Count);
         }
 
         public static IEnumerable<object[]> Data =>
             new List<object[]>
             {
-                new object[] { EventName,  "{ \"timestamp\":\"2019-09-03T13:38:51Z\", \"event\":\"SRVDestroyed\" }" },
+                new object[] { EventName,  "{ \"timestamp\":\"2019-09-11T11:08:04Z\", \"event\":\"FSSAllBodiesFound\", \"SystemName\":\"Hyades Sector IM-L b8-5\", \"SystemAddress\":11667412755841, \"Count\":8 }" },
             };
     }
 }

@@ -1,9 +1,9 @@
-﻿using NSW.EliteDangerous.Internals;
+using NSW.EliteDangerous.Internals;
 using Newtonsoft.Json;
 
 namespace NSW.EliteDangerous.Events
 {
-    public class CodexEntryEvent
+    public class CodexEntryEvent : JournalEvent
     {
         [JsonProperty("EntryID")]
         public long EntryId { get; internal set; }

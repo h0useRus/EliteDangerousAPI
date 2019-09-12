@@ -1,12 +1,9 @@
-﻿using Newtonsoft.Json;
+using Newtonsoft.Json;
 
 namespace NSW.EliteDangerous.Events.Entities
 {
-    public class Composition
+    public class Composition : Item
     {
-        [JsonProperty("Name")]
-        public string Name { get; set; }
-
         [JsonProperty("Percent")]
         public double Percent { get; set; }
     }

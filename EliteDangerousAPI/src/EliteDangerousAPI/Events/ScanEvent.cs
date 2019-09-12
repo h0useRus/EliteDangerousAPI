@@ -1,4 +1,6 @@
-﻿using NSW.EliteDangerous.Events.Entities;
+using System;
+using System.Collections.Generic;
+using NSW.EliteDangerous.Events.Entities;
 using NSW.EliteDangerous.Internals;
 using Newtonsoft.Json;
 
@@ -10,7 +12,11 @@ namespace NSW.EliteDangerous.Events
         public string BodyName { get; internal set; }
 
         [JsonProperty("BodyID")]
-        public long? BodyID { get; set; }
+        public long? BodyId { get; internal set; }
+
+        // TODO: Add parents
+        //[JsonProperty("Parents")]
+        //public KeyValuePair<string, long>[] Parents { get; internal set; }
 
         [JsonProperty("DistanceFromArrivalLS")]
         public double DistanceFromArrivalLs { get; internal set; }
@@ -40,46 +46,46 @@ namespace NSW.EliteDangerous.Events
         public string Volcanism { get; internal set; }
 
         [JsonProperty("MassEM")]
-        public double? MassEm { get; internal set; }
+        public double MassEm { get; internal set; }
 
         [JsonProperty("Radius")]
-        public double? Radius { get; internal set; }
+        public double Radius { get; internal set; }
 
         [JsonProperty("SurfaceGravity")]
-        public double? SurfaceGravity { get; internal set; }
+        public double SurfaceGravity { get; internal set; }
 
         [JsonProperty("SurfaceTemperature")]
-        public double? SurfaceTemperature { get; internal set; }
+        public double SurfaceTemperature { get; internal set; }
 
         [JsonProperty("SurfacePressure")]
-        public double? SurfacePressure { get; internal set; }
+        public double SurfacePressure { get; internal set; }
 
         [JsonProperty("Landable")]
-        public bool? Landable { get; internal set; }
+        public bool Landable { get; internal set; }
 
         [JsonProperty("SemiMajorAxis")]
-        public double? SemiMajorAxis { get; internal set; }
+        public double SemiMajorAxis { get; internal set; }
 
         [JsonProperty("Eccentricity")]
-        public double? Eccentricity { get; internal set; }
+        public double Eccentricity { get; internal set; }
 
         [JsonProperty("OrbitalInclination")]
-        public double? OrbitalInclination { get; internal set; }
+        public double OrbitalInclination { get; internal set; }
 
         [JsonProperty("Periapsis")]
-        public double? Periapsis { get; internal set; }
+        public double Periapsis { get; internal set; }
 
         [JsonProperty("OrbitalPeriod")]
-        public double? OrbitalPeriod { get; internal set; }
+        public double OrbitalPeriod { get; internal set; }
 
         [JsonProperty("RotationPeriod")]
-        public double? RotationPeriod { get; internal set; }
+        public double RotationPeriod { get; internal set; }
 
         [JsonProperty("AxialTilt")]
-        public double? AxialTilt { get; internal set; }
+        public double AxialTilt { get; internal set; }
 
         [JsonProperty("ScanType")]
-        public string ScanType { get; internal set; }
+        public DiscoveryScanType ScanType { get; internal set; }
 
         [JsonProperty("StarType")]
         public string StarType { get; internal set; }
@@ -88,10 +94,10 @@ namespace NSW.EliteDangerous.Events
         public long? AgeMegaYears { get; internal set; }
 
         [JsonProperty("StellarMass")]
-        public double? StellarMass { get; internal set; }
+        public double StellarMass { get; internal set; }
 
         [JsonProperty("AbsoluteMagnitude")]
-        public double? AbsoluteMagnitude { get; internal set; }
+        public double AbsoluteMagnitude { get; internal set; }
 
         [JsonProperty("Luminosity")]
         public string Luminosity { get; internal set; }

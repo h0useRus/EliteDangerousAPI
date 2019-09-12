@@ -1,6 +1,6 @@
-﻿namespace NSW.EliteDangerous.Events.Entities
+namespace NSW.EliteDangerous.Events.Entities
 {
-    public enum ScanType
+    public enum ShipScanType
     {
         Unknown,
         Cargo,
