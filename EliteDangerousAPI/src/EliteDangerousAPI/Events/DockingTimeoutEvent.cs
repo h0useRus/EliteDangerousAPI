@@ -1,19 +1,9 @@
-﻿using NSW.EliteDangerous.Internals;
-using Newtonsoft.Json;
+using NSW.EliteDangerous.Internals;
 
 namespace NSW.EliteDangerous.Events
 {
-    public class DockingTimeoutEvent : JournalEvent
+    public class DockingTimeoutEvent : DockEvent
     {
-        [JsonProperty("MarketID")]
-        public long MarketId { get; internal set; }
-
-        [JsonProperty("StationName")]
-        public string StationName { get; internal set; }
-
-        [JsonProperty("StationType")]
-        public string StationType { get; internal set; }
-
         internal static DockingTimeoutEvent Execute(string json, EliteDangerousAPI api) => api.Travel.InvokeEvent(JsonHelper.FromJson<DockingTimeoutEvent>(json));
     }
 }

@@ -1,4 +1,4 @@
-﻿using NSW.EliteDangerous.Events.Entities;
+using NSW.EliteDangerous.Events.Entities;
 using NSW.EliteDangerous.Internals;
 using Newtonsoft.Json;
 
@@ -79,7 +79,7 @@ namespace NSW.EliteDangerous.Events
         public string PowerplayState { get; internal set; }
 
         [JsonProperty("Factions")]
-        public Faction[] Factions { get; internal set; }
+        public FactionInfo[] Factions { get; internal set; }
 
         [JsonProperty("Latitude")]
         public double? Latitude { get; internal set; }

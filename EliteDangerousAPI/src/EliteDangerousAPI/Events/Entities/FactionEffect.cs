@@ -1,22 +1,22 @@
-﻿using Newtonsoft.Json;
+using Newtonsoft.Json;
 
 namespace NSW.EliteDangerous.Events.Entities
 {
     public class FactionEffect
     {
         [JsonProperty("Faction")]
-        public string Faction { get; set; }
+        public string Faction { get; internal set; }
 
         [JsonProperty("Effects")]
-        public FactionInfluenceEffect[] Effects { get; set; }
+        public FactionInfluenceEffect[] Effects { get; internal set; }
 
         [JsonProperty("Influence")]
-        public Influence[] Influence { get; set; }
+        public Influence[] Influence { get; internal set; }
 
         [JsonProperty("Reputation")]
-        public string Reputation { get; set; }
+        public string Reputation { get; internal set; }
 
         [JsonProperty("ReputationTrend")]
-        public string ReputationTrend { get; set; }
+        public string ReputationTrend { get; internal set; }
     }
 }

@@ -52,7 +52,7 @@ namespace NSW.EliteDangerous
             Exploration = new ExplorationHandler();
             Station = new StationHandler();
             Trade = new TradeHandler(this);
-            Travel = new TravelHandler();
+            Travel = new TravelHandler(this);
             Powerplay = new PowerplayHandler(this);
             Wing = new WingHandler();
             Squadron = new SquadronHandler();

@@ -1,16 +1,16 @@
-﻿using Newtonsoft.Json;
+using Newtonsoft.Json;
 
 namespace NSW.EliteDangerous.Events.Entities
 {
     public class FactionInfluenceEffect
     {
         [JsonProperty("Effect")]
-        public string EffectEffect { get; set; }
+        public string EffectEffect { get; internal set; }
 
         [JsonProperty("Effect_Localised")]
-        public string EffectLocalised { get; set; }
+        public string EffectLocalised { get; internal set; }
 
         [JsonProperty("Trend")]
-        public string Trend { get; set; }
+        public string Trend { get; internal set; }
     }
 }

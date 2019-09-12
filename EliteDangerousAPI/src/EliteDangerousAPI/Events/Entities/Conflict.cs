@@ -1,4 +1,4 @@
-﻿using Newtonsoft.Json;
+using Newtonsoft.Json;
 
 namespace NSW.EliteDangerous.Events.Entities
 {
@@ -6,6 +6,9 @@ namespace NSW.EliteDangerous.Events.Entities
     {
         [JsonProperty("WarType")]
         public string WarType { get; internal set; }
+
+        [JsonProperty("Status")]
+        public string Status { get; internal set; }
 
         [JsonProperty("Faction1")]
         public ConflictFaction Faction1 { get; internal set; }

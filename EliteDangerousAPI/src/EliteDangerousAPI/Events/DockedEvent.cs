@@ -1,25 +1,16 @@
-﻿using NSW.EliteDangerous.Events.Entities;
+using NSW.EliteDangerous.Events.Entities;
 using NSW.EliteDangerous.Internals;
 using Newtonsoft.Json;
 
 namespace NSW.EliteDangerous.Events
 {
-    public class DockedEvent : JournalEvent
+    public class DockedEvent : DockEvent
     {
-        [JsonProperty("StationName")]
-        public string StationName { get; internal set; }
-
-        [JsonProperty("StationType")]
-        public string StationType { get; internal set; }
-
         [JsonProperty("StarSystem")]
         public string StarSystem { get; internal set; }
 
         [JsonProperty("SystemAddress")]
-        public ulong? SystemAddress { get; internal set; }
-
-        [JsonProperty("MarketID")]
-        public long MarketId { get; internal set; }
+        public long SystemAddress { get; internal set; }
 
         [JsonProperty("StationGovernment")]
         public string StationGovernment { get; internal set; }
@@ -44,6 +35,18 @@ namespace NSW.EliteDangerous.Events
 
         [JsonProperty("DistFromStarLS")]
         public double DistFromStarLs { get; internal set; }
+
+        [JsonProperty("StationFaction")]
+        public Faction StationFaction { get; internal set; }
+
+        [JsonProperty("CockpitBreach")]
+        public bool CockpitBreach { get; internal set; }
+
+        [JsonProperty("Wanted")]
+        public bool Wanted { get; internal set; }
+
+        [JsonProperty("ActiveFine")]
+        public bool ActiveFine { get; internal set; }
 
         internal static DockedEvent Execute(string json, EliteDangerousAPI api) => api.Travel.InvokeEvent(JsonHelper.FromJson<DockedEvent>(json));
     }
