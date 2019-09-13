@@ -1,6 +1,7 @@
 using NSW.EliteDangerous.Handlers;
 using System;
 using System.IO;
+using NSW.EliteDangerous.Events;
 using NSW.EliteDangerous.Internals;
 
 namespace NSW.EliteDangerous
@@ -64,5 +65,6 @@ namespace NSW.EliteDangerous
         }
 
         public event EventHandler<ApiStatus> StatusChanged;
+        public event EventHandler<GlobalEvent> AllEvents;
     }
 }

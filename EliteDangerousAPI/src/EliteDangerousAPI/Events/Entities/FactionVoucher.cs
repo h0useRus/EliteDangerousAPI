@@ -1,8 +1,8 @@
-﻿using Newtonsoft.Json;
+using Newtonsoft.Json;
 
 namespace NSW.EliteDangerous.Events.Entities
 {
-    public class FsdFaction
+    public class FactionVoucher
     {
         [JsonProperty("Faction")]
         public string Faction { get; internal set; }

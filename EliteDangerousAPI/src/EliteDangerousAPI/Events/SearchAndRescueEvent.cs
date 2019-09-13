@@ -1,4 +1,4 @@
-﻿using NSW.EliteDangerous.Internals;
+using NSW.EliteDangerous.Internals;
 using Newtonsoft.Json;
 
 namespace NSW.EliteDangerous.Events
@@ -8,8 +8,14 @@ namespace NSW.EliteDangerous.Events
         [JsonProperty("Name")]
         public string Name { get; internal set; }
 
+        [JsonProperty("Name_Localised")]
+        public string NameLocalised { get; internal set; }
+
+        [JsonProperty("MarketID")]
+        public long MarketId { get; internal set; }
+
         [JsonProperty("Count")]
-        public long Count { get; internal set; }
+        public int Count { get; internal set; }
 
         [JsonProperty("Reward")]
         public long Reward { get; internal set; }

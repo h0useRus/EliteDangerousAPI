@@ -4,9 +4,9 @@ using Xunit;
 
 namespace NSW.EliteDangerous.Events
 {
-    public class OutfittingEventTests
+    public class PayFinesEventTests
     {
-        private const string EventName = "Outfitting";
+        private const string EventName = "PayFines";
 
         [Theory]
         [MemberData(nameof(Data))]
@@ -18,12 +18,12 @@ namespace NSW.EliteDangerous.Events
             api.AllEvents += (s, e) =>
             {
                 Assert.IsType<EliteDangerousAPI>(s);
-                Assert.Equal("outfitting", e.EventName);
-                Assert.Equal(typeof(OutfittingEvent), e.EventType);
-                Assert.IsType<OutfittingEvent>(e.Event);
+                Assert.Equal(EventName.ToLower(), e.EventName);
+                Assert.Equal(typeof(PayFinesEvent), e.EventType);
+                Assert.IsType<PayFinesEvent>(e.Event);
             };
 
-            api.Station.Outfitting += (sender, @event) =>
+            api.Station.PayFines += (sender, @event) =>
             {
                 Assert.IsType<EliteDangerousAPI>(sender);
                 AssertEvent(@event);
@@ -31,24 +31,24 @@ namespace NSW.EliteDangerous.Events
             };
 
             Assert.True(api.HasEvent(eventName));
-            AssertEvent(api.ExecuteEvent(eventName, json) as OutfittingEvent);
+            AssertEvent(api.ExecuteEvent(eventName, json) as PayFinesEvent);
             Assert.True(eventFired, $"Event {EventName} is not thrown");
         }
 
-        private static void AssertEvent(OutfittingEvent @event)
+        private static void AssertEvent(PayFinesEvent @event)
         {
             Assert.NotNull(@event);
-            Assert.Equal(DateTime.Parse("2019-09-09T12:04:57Z"), @event.Timestamp);
+            Assert.Equal(DateTime.Parse("2018-03-19T10:24:21Z"), @event.Timestamp);
             Assert.Equal(EventName, @event.Event);
-            Assert.Equal(128675975, @event.MarketId);
-            Assert.Equal("Demolition Unlimited", @event.StationName);
-            Assert.Equal("Eurybia", @event.StarSystem);
+            Assert.Equal(250, @event.Amount);
+            Assert.Equal("Batz Transport Commodities", @event.Faction);
+            Assert.False(@event.AllFines);
         }
 
         public static IEnumerable<object[]> Data =>
             new List<object[]>
             {
-                new object[] { EventName,  "{ \"timestamp\":\"2019-09-09T12:04:57Z\", \"event\":\"Outfitting\", \"MarketID\":128675975, \"StationName\":\"Demolition Unlimited\", \"StarSystem\":\"Eurybia\" }" },
+                new object[] { EventName,  "{ \"timestamp\":\"2018-03-19T10:24:21Z\", \"event\":\"PayFines\", \"Amount\":250, \"AllFines\":false,\"Faction\":\"Batz Transport Commodities\", \"ShipID\":9 }" },
             };
     }
 }

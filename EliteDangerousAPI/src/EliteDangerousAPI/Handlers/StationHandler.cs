@@ -149,11 +149,6 @@ namespace NSW.EliteDangerous.Handlers
         public event EventHandler<PayFinesEvent> PayFines;
         internal PayFinesEvent InvokeEvent(PayFinesEvent arg) { PayFines?.Invoke(_api, arg); return arg; }
         /// <summary>
-        /// when paying legacy fines 
-        /// </summary>
-        public event EventHandler<PayLegacyFinesEvent> PayLegacyFines;
-        internal PayLegacyFinesEvent InvokeEvent(PayLegacyFinesEvent arg) { PayLegacyFines?.Invoke(_api, arg); return arg; }
-        /// <summary>
         /// when claiming payment for combat bounties and bonds
         /// </summary>
         public event EventHandler<RedeemVoucherEvent> RedeemVoucher;

@@ -1,4 +1,4 @@
-﻿using Newtonsoft.Json;
+using Newtonsoft.Json;
 
 namespace NSW.EliteDangerous.Events.Entities
 {
@@ -35,9 +35,9 @@ namespace NSW.EliteDangerous.Events.Entities
         public string EngineerModifications { get; set; }
 
         [JsonProperty("Level")]
-        public short? Level { get; set; }
+        public short Level { get; set; }
 
         [JsonProperty("Quality")]
-        public double? Quality { get; set; }
+        public double Quality { get; set; }
     }
 }

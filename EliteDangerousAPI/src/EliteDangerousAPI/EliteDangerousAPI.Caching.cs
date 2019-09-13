@@ -52,7 +52,14 @@ namespace NSW.EliteDangerous
         {
             if (_cache.Value.TryGetValue(eventName, out var eventCacheItem))
             {
-                return (JournalEvent)eventCacheItem.Execute.Invoke(null, new object[] { json, this });
+                var @event = (JournalEvent)eventCacheItem.Execute.Invoke(null, new object[] { json, this });
+                AllEvents?.Invoke(this, new GlobalEvent
+                {
+                    EventName = eventCacheItem.Name,
+                    EventType = eventCacheItem.Type,
+                    Event = @event
+                });
+                return @event;
             }
 
             return null;
