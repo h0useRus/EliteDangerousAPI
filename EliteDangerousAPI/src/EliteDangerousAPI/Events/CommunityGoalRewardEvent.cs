@@ -1,16 +1,10 @@
-﻿using NSW.EliteDangerous.Internals;
+using NSW.EliteDangerous.Internals;
 using Newtonsoft.Json;
 
 namespace NSW.EliteDangerous.Events
 {
-    public class CommunityGoalRewardEvent : JournalEvent
+    public class CommunityGoalRewardEvent : CommunityGoalBaseEvent
     {
-        [JsonProperty("Name")]
-        public string Name { get; internal set; }
-
-        [JsonProperty("System")]
-        public string System { get; internal set; }
-
         [JsonProperty("Reward")]
         public long Reward { get; internal set; }
 

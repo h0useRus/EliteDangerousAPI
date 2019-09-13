@@ -1,5 +1,6 @@
-﻿using NSW.EliteDangerous.Internals;
+using NSW.EliteDangerous.Internals;
 using Newtonsoft.Json;
+using NSW.EliteDangerous.Events.Entities;
 
 namespace NSW.EliteDangerous.Events
 {
@@ -9,7 +10,7 @@ namespace NSW.EliteDangerous.Events
         public long MissionId { get; internal set; }
 
         [JsonProperty("UpdateType")]
-        public string UpdateType { get; internal set; }
+        public CargoUpdateType UpdateType { get; internal set; }
 
         [JsonProperty("CargoType")]
         public string CargoType { get; internal set; }
@@ -18,7 +19,7 @@ namespace NSW.EliteDangerous.Events
         public string CargoTypeLocalised { get; internal set; }
 
         [JsonProperty("Count")]
-        public long Count { get; internal set; }
+        public int Count { get; internal set; }
 
         [JsonProperty("StartMarketID")]
         public long StartMarketId { get; internal set; }
@@ -27,13 +28,13 @@ namespace NSW.EliteDangerous.Events
         public long EndMarketId { get; internal set; }
 
         [JsonProperty("ItemsCollected")]
-        public long ItemsCollected { get; internal set; }
+        public int ItemsCollected { get; internal set; }
 
         [JsonProperty("ItemsDelivered")]
-        public long ItemsDelivered { get; internal set; }
+        public int ItemsDelivered { get; internal set; }
 
         [JsonProperty("TotalItemsToDeliver")]
-        public long TotalItemsToDeliver { get; internal set; }
+        public int TotalItemsToDeliver { get; internal set; }
 
         [JsonProperty("Progress")]
         public double Progress { get; internal set; }

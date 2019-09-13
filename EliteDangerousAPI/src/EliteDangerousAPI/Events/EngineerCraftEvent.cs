@@ -1,4 +1,4 @@
-﻿using NSW.EliteDangerous.Events.Entities;
+using NSW.EliteDangerous.Events.Entities;
 using NSW.EliteDangerous.Internals;
 using Newtonsoft.Json;
 
@@ -22,7 +22,7 @@ namespace NSW.EliteDangerous.Events
         public string Engineer { get; internal set; }
 
         [JsonProperty("EngineerID")]
-        public long EngineerId { get; internal set; }
+        public int EngineerId { get; internal set; }
 
         [JsonProperty("BlueprintID")]
         public long BlueprintId { get; internal set; }

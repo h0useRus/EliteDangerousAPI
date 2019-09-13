@@ -1,17 +1,11 @@
-﻿using NSW.EliteDangerous.Events.Entities;
+using NSW.EliteDangerous.Events.Entities;
 using NSW.EliteDangerous.Internals;
 using Newtonsoft.Json;
 
 namespace NSW.EliteDangerous.Events
 {
-    public class CrewHireEvent : JournalEvent
+    public class CrewHireEvent : CrewBaseEvent
     {
-        [JsonProperty("Name")]
-        public string Name { get; internal set; }
-
-        [JsonProperty("CrewID")]
-        public long CrewId { get; internal set; }
-
         [JsonProperty("Faction")]
         public string Faction { get; internal set; }
 

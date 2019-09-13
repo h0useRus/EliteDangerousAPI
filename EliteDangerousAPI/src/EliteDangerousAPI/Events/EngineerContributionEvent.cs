@@ -1,5 +1,6 @@
-﻿using NSW.EliteDangerous.Internals;
+using NSW.EliteDangerous.Internals;
 using Newtonsoft.Json;
+using NSW.EliteDangerous.Events.Entities;
 
 namespace NSW.EliteDangerous.Events
 {
@@ -9,16 +10,22 @@ namespace NSW.EliteDangerous.Events
         public string Engineer { get; internal set; }
 
         [JsonProperty("EngineerID")]
-        public long EngineerID { get; internal set; }
+        public long EngineerId { get; internal set; }
 
         [JsonProperty("Type")]
-        public string Type { get; internal set; }
+        public ContributionType Type { get; internal set; }
 
         [JsonProperty("Commodity")]
         public string Commodity { get; internal set; }
 
+        [JsonProperty("Commodity_Localised")]
+        public string CommodityLocalised { get; internal set; }
+
         [JsonProperty("Material")]
         public string Material { get; internal set; }
+
+        [JsonProperty("Material_Localised")]
+        public string MaterialLocalised { get; internal set; }
 
         [JsonProperty("Faction")]
         public string Faction { get; internal set; }
@@ -29,6 +36,6 @@ namespace NSW.EliteDangerous.Events
         [JsonProperty("TotalQuantity")]
         public long TotalQuantity { get; internal set; }
 
-        internal static CommunityGoalEvent Execute(string json, EliteDangerousAPI api) => api.Station.InvokeEvent(JsonHelper.FromJson<CommunityGoalEvent>(json));
+        internal static EngineerContributionEvent Execute(string json, EliteDangerousAPI api) => api.Station.InvokeEvent(JsonHelper.FromJson<EngineerContributionEvent>(json));
     }
 }

@@ -1,19 +1,16 @@
-﻿using System;
+using System;
 using NSW.EliteDangerous.Internals;
 using Newtonsoft.Json;
 
 namespace NSW.EliteDangerous.Events
 {
-    public class MissionAcceptedEvent : JournalEvent
+    public class MissionAcceptedEvent : MissionBaseEvent
     {
+        [JsonProperty("LocalisedName")]
+        public string NameLocalised { get; internal set; }
+
         [JsonProperty("Faction")]
         public string Faction { get; internal set; }
-
-        [JsonProperty("Name")]
-        public string Name { get; internal set; }
-
-        [JsonProperty("LocalisedName")]
-        public string LocalisedName { get; internal set; }
 
         [JsonProperty("TargetType")]
         public string TargetType { get; internal set; }
@@ -51,9 +48,6 @@ namespace NSW.EliteDangerous.Events
         [JsonProperty("Donation")]
         public string Donation { get; internal set; }
 
-        [JsonProperty("MissionID")]
-        public long MissionId { get; internal set; }
-
         [JsonProperty("Commodity")]
         public string Commodity { get; internal set; }
 
@@ -61,10 +55,10 @@ namespace NSW.EliteDangerous.Events
         public string CommodityLocalised { get; internal set; }
 
         [JsonProperty("Count")]
-        public long? Count { get; internal set; }
+        public int? Count { get; internal set; }
 
         [JsonProperty("KillCount")]
-        public long? KillCount { get; internal set; }
+        public int? KillCount { get; internal set; }
 
         [JsonProperty("PassengerType")]
         public string PassengerType { get; internal set; }

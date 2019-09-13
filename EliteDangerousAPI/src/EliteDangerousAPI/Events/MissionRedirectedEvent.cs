@@ -1,16 +1,10 @@
-﻿using NSW.EliteDangerous.Internals;
+using NSW.EliteDangerous.Internals;
 using Newtonsoft.Json;
 
 namespace NSW.EliteDangerous.Events
 {
-    public class MissionRedirectedEvent : JournalEvent
+    public class MissionRedirectedEvent : MissionBaseEvent
     {
-        [JsonProperty("MissionID")]
-        public long MissionId { get; internal set; }
-
-        [JsonProperty("Name")]
-        public string Name { get; internal set; }
-
         [JsonProperty("NewDestinationStation")]
         public string NewDestinationStation { get; internal set; }
 

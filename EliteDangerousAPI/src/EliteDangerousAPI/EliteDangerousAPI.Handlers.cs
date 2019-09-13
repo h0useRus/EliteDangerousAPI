@@ -25,13 +25,13 @@ namespace NSW.EliteDangerous
             Ship = new ShipHandler(this);
             Combat = new CombatHandler(this);
             Exploration = new ExplorationHandler(this);
-            Station = new StationHandler();
+            Station = new StationHandler(this);
             Trade = new TradeHandler(this);
             Travel = new TravelHandler(this);
             Powerplay = new PowerplayHandler(this);
             Wing = new WingHandler();
             Squadron = new SquadronHandler();
-            Crew = new CrewHandler();
+            Crew = new CrewHandler(this);
             Status = new StatusHandler(_journalDirectory);
         }
     }

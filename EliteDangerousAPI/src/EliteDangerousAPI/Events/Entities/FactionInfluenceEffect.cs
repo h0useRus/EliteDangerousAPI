@@ -5,7 +5,7 @@ namespace NSW.EliteDangerous.Events.Entities
     public class FactionInfluenceEffect
     {
         [JsonProperty("Effect")]
-        public string EffectEffect { get; internal set; }
+        public string Effect { get; internal set; }
 
         [JsonProperty("Effect_Localised")]
         public string EffectLocalised { get; internal set; }

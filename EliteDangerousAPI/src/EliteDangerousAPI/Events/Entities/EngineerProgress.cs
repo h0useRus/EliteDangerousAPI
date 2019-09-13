@@ -1,27 +1,22 @@
-﻿using Newtonsoft.Json;
+using Newtonsoft.Json;
 
 namespace NSW.EliteDangerous.Events.Entities
 {
     public class EngineerProgress
     {
-        public enum ProgressState
-        {
-            Invited, Known, Unlocked
-        }
-
         [JsonProperty("Engineer")]
-        public string EngineerName { get; set; }
+        public string EngineerName { get; internal set; }
 
         [JsonProperty("EngineerID")]
-        public long? EngineerId { get; set; }
+        public int EngineerId { get; internal set; }
 
         [JsonProperty("Progress")]
-        public ProgressState Progress { get; set; }
+        public EngineerProgressState Progress { get; internal set; }
 
         [JsonProperty("RankProgress", NullValueHandling = NullValueHandling.Ignore)]
-        public long? RankProgress { get; set; }
+        public int? RankProgress { get; internal set; }
 
         [JsonProperty("Rank", NullValueHandling = NullValueHandling.Ignore)]
-        public long? Rank { get; set; }
+        public int? Rank { get; internal set; }
     }
 }

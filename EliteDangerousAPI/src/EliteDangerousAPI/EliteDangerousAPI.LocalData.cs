@@ -1,10 +1,10 @@
-﻿using System.Collections.Generic;
+using System.Collections.Generic;
 
 namespace NSW.EliteDangerous
 {
     public partial class EliteDangerousAPI
     {
-        public static IReadOnlyDictionary<long, string> Engineers = new Dictionary<long, string>
+        public static IReadOnlyDictionary<int, string> Engineers = new Dictionary<int, string>
         {
             {300000, "Didi Vatermann"},
             {300010, "Bill Turner"},
