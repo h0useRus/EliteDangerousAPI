@@ -1,4 +1,4 @@
-﻿using NSW.EliteDangerous.Internals;
+using NSW.EliteDangerous.Internals;
 using Newtonsoft.Json;
 
 namespace NSW.EliteDangerous.Events
@@ -12,10 +12,10 @@ namespace NSW.EliteDangerous.Events
         public long BodyId { get; internal set; }
 
         [JsonProperty("ProbesUsed")]
-        public long ProbesUsed { get; internal set; }
+        public int ProbesUsed { get; internal set; }
 
         [JsonProperty("EfficiencyTarget")]
-        public long EfficiencyTarget { get; internal set; }
+        public int EfficiencyTarget { get; internal set; }
 
         internal static SaaScanCompleteEvent Execute(string json, EliteDangerousAPI api) => api.Exploration.InvokeEvent(JsonHelper.FromJson<SaaScanCompleteEvent>(json));
     }

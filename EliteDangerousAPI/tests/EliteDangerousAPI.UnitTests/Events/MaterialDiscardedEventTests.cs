@@ -5,9 +5,9 @@ using Xunit;
 
 namespace NSW.EliteDangerous.Events
 {
-    public class MaterialCollectedEventTests
+    public class MaterialDiscardedEventTests
     {
-        private const string EventName = "MaterialCollected";
+        private const string EventName = "MaterialDiscarded";
 
         [Theory]
         [MemberData(nameof(Data))]
@@ -15,7 +15,7 @@ namespace NSW.EliteDangerous.Events
         {
             var api = new EliteDangerousAPI();
             var eventFired = false;
-            api.Exploration.MaterialCollected += (sender, @event) =>
+            api.Exploration.MaterialDiscarded += (sender, @event) =>
             {
                 Assert.IsType<EliteDangerousAPI>(sender);
                 AssertEvent(@event);
@@ -23,25 +23,25 @@ namespace NSW.EliteDangerous.Events
             };
 
             Assert.True(api.HasEvent(eventName));
-            AssertEvent(api.ExecuteEvent(eventName, json) as MaterialCollectedEvent);
-            Assert.True(eventFired);
+            AssertEvent(api.ExecuteEvent(eventName, json) as MaterialDiscardedEvent);
+            Assert.True(eventFired, "Event is not thrown");
         }
 
-        private void AssertEvent(MaterialCollectedEvent @event)
+        private void AssertEvent(MaterialDiscardedEvent @event)
         {
             Assert.NotNull(@event);
             Assert.Equal(DateTime.Parse("2019-09-11T11:30:48Z"), @event.Timestamp);
             Assert.Equal(EventName, @event.Event);
-            Assert.Equal(MaterialCategory.Manufactured, @event.Category);
-            Assert.Equal("fedcorecomposites", @event.Name);
-            Assert.Equal("Композиты Core Dynamics", @event.NameLocalised);
+            Assert.Equal(MaterialCategory.Raw, @event.Category);
+            Assert.Equal("sulphur", @event.Name);
+            Assert.Equal("Сера", @event.NameLocalised);
             Assert.Equal(3, @event.Count);
         }
 
         public static IEnumerable<object[]> Data =>
             new List<object[]>
             {
-                new object[] { EventName,  "{ \"timestamp\":\"2019-09-11T11:30:48Z\", \"event\":\"MaterialCollected\", \"Category\":\"Manufactured\", \"Name\":\"fedcorecomposites\", \"Name_Localised\":\"Композиты Core Dynamics\", \"Count\":3 }" },
+                new object[] { EventName,  "{ \"timestamp\":\"2019-09-11T11:30:48Z\", \"event\":\"MaterialDiscarded\", \"Category\":\"Raw\", \"Name\":\"sulphur\", \"Name_Localised\":\"Сера\", \"Count\":3 }" },
             };
     }
 }

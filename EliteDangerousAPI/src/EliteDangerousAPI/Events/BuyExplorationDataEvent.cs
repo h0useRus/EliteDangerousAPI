@@ -1,9 +1,9 @@
-﻿using NSW.EliteDangerous.Internals;
+using NSW.EliteDangerous.Internals;
 using Newtonsoft.Json;
 
 namespace NSW.EliteDangerous.Events
 {
-    public class BuyExplorationDataEvent
+    public class BuyExplorationDataEvent : JournalEvent
     {
         [JsonProperty("System")]
         public string System { get; internal set; }
