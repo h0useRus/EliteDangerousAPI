@@ -1,4 +1,4 @@
-﻿using NSW.EliteDangerous.Internals;
+using NSW.EliteDangerous.Internals;
 using Newtonsoft.Json;
 
 namespace NSW.EliteDangerous.Events
@@ -31,6 +31,9 @@ namespace NSW.EliteDangerous.Events
 
         [JsonProperty("BlackMarket")]
         public bool BlackMarket { get; internal set; }
+
+        [JsonProperty("IllegalGoods")]
+        public bool IllegalGoods { get; internal set; }
 
         internal static MarketSellEvent Execute(string json, EliteDangerousAPI api) => api.Trade.InvokeEvent(JsonHelper.FromJson<MarketSellEvent>(json));
     }
