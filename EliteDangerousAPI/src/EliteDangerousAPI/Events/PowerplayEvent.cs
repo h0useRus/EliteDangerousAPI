@@ -1,13 +1,10 @@
-﻿using NSW.EliteDangerous.Internals;
+using NSW.EliteDangerous.Internals;
 using Newtonsoft.Json;
 
 namespace NSW.EliteDangerous.Events
 {
-    public class PowerplayEvent : JournalEvent
+    public class PowerplayEvent : PowerplayEventBaseEvent
     {
-        [JsonProperty]
-        public string Power { get; internal set; }
-
         [JsonProperty]
         public int Rank { get; internal set; }
 

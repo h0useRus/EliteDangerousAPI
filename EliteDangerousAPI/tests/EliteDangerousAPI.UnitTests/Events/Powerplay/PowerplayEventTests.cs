@@ -6,12 +6,26 @@ namespace NSW.EliteDangerous.Events
 {
     public class PowerplayEventTests
     {
+        private const string EventName = "Powerplay";
+
         [Theory]
         [MemberData(nameof(Data))]
         public void ShouldExecuteEvent(string eventName, string json)
         {
             var api = new EliteDangerousAPI();
+            var globalFired = false;
             var eventFired = false;
+
+            api.AllEvents += (s, e) =>
+            {
+                Assert.IsType<EliteDangerousAPI>(s);
+                Assert.Equal(EventName.ToLower(), e.EventName);
+                Assert.Equal(typeof(PowerplayEvent), e.EventType);
+                Assert.IsType<PowerplayEvent>(e.Event);
+                AssertEvent((PowerplayEvent)e.Event);
+                globalFired = true;
+            };
+
             api.Powerplay.Powerplay += (sender, @event) =>
             {
                 Assert.IsType<EliteDangerousAPI>(sender);
@@ -21,14 +35,15 @@ namespace NSW.EliteDangerous.Events
 
             Assert.True(api.HasEvent(eventName));
             AssertEvent(api.ExecuteEvent(eventName, json) as PowerplayEvent);
-            Assert.True(eventFired);
+            Assert.True(eventFired, $"Event {EventName} is not thrown");
+            Assert.True(globalFired, "Global event is not thrown");
         }
 
         private void AssertEvent(PowerplayEvent @event)
         {
             Assert.NotNull(@event);
             Assert.Equal(DateTime.Parse("2018-01-31T10:53:04Z"), @event.Timestamp);
-            Assert.Equal("Powerplay", @event.Event);
+            Assert.Equal(EventName, @event.Event);
             Assert.Equal("Edmund Mahon", @event.Power);
             Assert.Equal(1, @event.Rank);
             Assert.Equal(10, @event.Merits);
@@ -39,7 +54,7 @@ namespace NSW.EliteDangerous.Events
         public static IEnumerable<object[]> Data =>
             new List<object[]>
             {
-                new object[] { "Powerplay",  "{ \"timestamp\":\"2018-01-31T10:53:04Z\", \"event\":\"Powerplay\", \"Power\":\"Edmund Mahon\", \"Rank\":1,\r\n\"Merits\":10, \"Votes\":5, \"TimePledged\":433024 }" },
+                new object[] { EventName,  "{ \"timestamp\":\"2018-01-31T10:53:04Z\", \"event\":\"Powerplay\", \"Power\":\"Edmund Mahon\", \"Rank\":1,\r\n\"Merits\":10, \"Votes\":5, \"TimePledged\":433024 }" },
             };
     }
 }

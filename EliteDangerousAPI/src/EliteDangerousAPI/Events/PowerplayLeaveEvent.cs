@@ -1,13 +1,10 @@
-﻿using NSW.EliteDangerous.Internals;
+using NSW.EliteDangerous.Internals;
 using Newtonsoft.Json;
 
 namespace NSW.EliteDangerous.Events
 {
-    public class PowerplayLeaveEvent : JournalEvent
+    public class PowerplayLeaveEvent : PowerplayEventBaseEvent
     {
-        [JsonProperty]
-        public string Power { get; internal set; }
-
         internal static PowerplayLeaveEvent Execute(string json, EliteDangerousAPI api) => api.Powerplay.InvokeEvent(JsonHelper.FromJson<PowerplayLeaveEvent>(json));
     }
 }
