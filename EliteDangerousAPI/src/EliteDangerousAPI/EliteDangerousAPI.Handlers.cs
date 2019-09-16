@@ -29,7 +29,7 @@ namespace NSW.EliteDangerous
             Trade = new TradeHandler(this);
             Travel = new TravelHandler(this);
             Powerplay = new PowerplayHandler(this);
-            Wing = new WingHandler();
+            Wing = new WingHandler(this);
             Squadron = new SquadronHandler(this);
             Crew = new CrewHandler(this);
             Status = new StatusHandler(_journalDirectory);

@@ -1,9 +1,8 @@
 using System;
 using System.Collections.Generic;
-using NSW.EliteDangerous.Events.Entities;
 using Xunit;
 
-namespace NSW.EliteDangerous.Events.Player
+namespace NSW.EliteDangerous.Events
 {
     public class ResurrectEventTests
     {

@@ -1,13 +1,12 @@
 using System;
 using System.Collections.Generic;
-using NSW.EliteDangerous.Events.Entities;
 using Xunit;
 
 namespace NSW.EliteDangerous.Events
 {
-    public class PromotionEventTests
+    public class WingAddEventTests
     {
-        private const string EventName = "Promotion";
+        private const string EventName = "WingAdd";
 
         [Theory]
         [MemberData(nameof(Data))]
@@ -21,13 +20,13 @@ namespace NSW.EliteDangerous.Events
             {
                 Assert.IsType<EliteDangerousAPI>(s);
                 Assert.Equal(EventName.ToLower(), e.EventName);
-                Assert.Equal(typeof(PromotionEvent), e.EventType);
-                Assert.IsType<PromotionEvent>(e.Event);
-                AssertEvent((PromotionEvent)e.Event);
+                Assert.Equal(typeof(WingAddEvent), e.EventType);
+                Assert.IsType<WingAddEvent>(e.Event);
+                AssertEvent((WingAddEvent)e.Event);
                 globalFired = true;
             };
 
-            api.Player.Promotion += (sender, @event) =>
+            api.Wing.WingAdd += (sender, @event) =>
             {
                 Assert.IsType<EliteDangerousAPI>(sender);
                 AssertEvent(@event);
@@ -35,28 +34,23 @@ namespace NSW.EliteDangerous.Events
             };
 
             Assert.True(api.HasEvent(eventName));
-            AssertEvent(api.ExecuteEvent(eventName, json) as PromotionEvent);
+            AssertEvent(api.ExecuteEvent(eventName, json) as WingAddEvent);
             Assert.True(eventFired, $"Event {EventName} is not thrown");
             Assert.True(globalFired, "Global event is not thrown");
         }
 
-        private void AssertEvent(PromotionEvent @event)
+        private void AssertEvent(WingAddEvent @event)
         {
             Assert.NotNull(@event);
             Assert.Equal(DateTime.Parse("2016-06-10T14:32:03Z"), @event.Timestamp);
             Assert.Equal(EventName, @event.Event);
-            Assert.Equal(ExplorationRank.Scout, @event.Explore);
-            Assert.Null(@event.Combat);
-            Assert.Null(@event.Trade);
-            Assert.Null(@event.Cqc);
-            Assert.Null(@event.Empire);
-            Assert.Null(@event.Federation);
+            Assert.Equal("HRC-2", @event.Name);
         }
 
         public static IEnumerable<object[]> Data =>
             new List<object[]>
             {
-                new object[] { EventName,  "{ \"timestamp\":\"2016-06-10T14:32:03Z\", \"event\":\"Promotion\", \"Explore\":2 }" },
+                new object[] { EventName,  "{ \"timestamp\":\"2016-06-10T14:32:03Z\", \"event\":\"WingAdd\", \"Name\":\"HRC-2\" }" },
             };
     }
 }

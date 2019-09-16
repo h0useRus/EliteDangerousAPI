@@ -5,9 +5,9 @@ using Xunit;
 
 namespace NSW.EliteDangerous.Events
 {
-    public class ReceiveTextEventTests
+    public class ScannedEventTests
     {
-        private const string EventName = "ReceiveText";
+        private const string EventName = "Scanned";
 
         [Theory]
         [MemberData(nameof(Data))]
@@ -21,13 +21,13 @@ namespace NSW.EliteDangerous.Events
             {
                 Assert.IsType<EliteDangerousAPI>(s);
                 Assert.Equal(EventName.ToLower(), e.EventName);
-                Assert.Equal(typeof(ReceiveTextEvent), e.EventType);
-                Assert.IsType<ReceiveTextEvent>(e.Event);
-                AssertEvent((ReceiveTextEvent)e.Event);
+                Assert.Equal(typeof(ScannedEvent), e.EventType);
+                Assert.IsType<ScannedEvent>(e.Event);
+                AssertEvent((ScannedEvent)e.Event);
                 globalFired = true;
             };
 
-            api.Player.ReceiveText += (sender, @event) =>
+            api.Ship.Scanned += (sender, @event) =>
             {
                 Assert.IsType<EliteDangerousAPI>(sender);
                 AssertEvent(@event);
@@ -35,26 +35,23 @@ namespace NSW.EliteDangerous.Events
             };
 
             Assert.True(api.HasEvent(eventName));
-            AssertEvent(api.ExecuteEvent(eventName, json) as ReceiveTextEvent);
+            AssertEvent(api.ExecuteEvent(eventName, json) as ScannedEvent);
             Assert.True(eventFired, $"Event {EventName} is not thrown");
             Assert.True(globalFired, "Global event is not thrown");
         }
 
-        private void AssertEvent(ReceiveTextEvent @event)
+        private void AssertEvent(ScannedEvent @event)
         {
             Assert.NotNull(@event);
-            Assert.Equal(DateTime.Parse("2019-08-29T11:36:51Z"), @event.Timestamp);
+            Assert.Equal(DateTime.Parse("2019-08-29T13:34:47Z"), @event.Timestamp);
             Assert.Equal(EventName, @event.Event);
-            Assert.Equal("Mawson Dock", @event.From);
-            Assert.Equal(MessageChannel.Npc, @event.Channel);
-            Assert.Equal("$STATION_NoFireZone_exited;", @event.Message);
-            Assert.Equal("Вы вышли из зоны запрета огня", @event.MessageLocalised);
+            Assert.Equal(ShipScanType.Cargo, @event.ScanType);
         }
 
         public static IEnumerable<object[]> Data =>
             new List<object[]>
             {
-                new object[] { EventName,  "{ \"timestamp\":\"2019-08-29T11:36:51Z\", \"event\":\"ReceiveText\", \"From\":\"Mawson Dock\", \"Message\":\"$STATION_NoFireZone_exited;\", \"Message_Localised\":\"Вы вышли из зоны запрета огня\", \"Channel\":\"npc\" }" },
+                new object[] { EventName,  "{ \"timestamp\":\"2019-08-29T13:34:47Z\", \"event\":\"Scanned\", \"ScanType\":\"Cargo\" }" },
             };
     }
 }

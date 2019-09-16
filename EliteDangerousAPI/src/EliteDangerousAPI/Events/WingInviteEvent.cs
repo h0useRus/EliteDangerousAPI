@@ -1,4 +1,4 @@
-﻿using NSW.EliteDangerous.Internals;
+using NSW.EliteDangerous.Internals;
 using Newtonsoft.Json;
 
 namespace NSW.EliteDangerous.Events
@@ -8,6 +8,6 @@ namespace NSW.EliteDangerous.Events
         [JsonProperty("Name")]
         public string Name { get; internal set; }
 
-        internal static WingAddEvent Execute(string json, EliteDangerousAPI api) => api.Wing.InvokeEvent(JsonHelper.FromJson<WingAddEvent>(json));
+        internal static WingInviteEvent Execute(string json, EliteDangerousAPI api) => api.Wing.InvokeEvent(JsonHelper.FromJson<WingInviteEvent>(json));
     }
 }
