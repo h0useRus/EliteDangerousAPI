@@ -1,4 +1,3 @@
-using NSW.EliteDangerous.Internals;
 using Newtonsoft.Json;
 using NSW.EliteDangerous.Events.Entities;
 
@@ -51,6 +50,6 @@ namespace NSW.EliteDangerous.Events
         [JsonProperty("SubsystemHealth")]
         public double SubsystemHealth { get; internal set; }
 
-        internal static ShipTargetedEvent Execute(string json, EliteDangerousAPI api) => api.Combat.InvokeEvent(JsonHelper.FromJson<ShipTargetedEvent>(json));
+        internal static ShipTargetedEvent Execute(string json, EliteDangerousAPI api) => api.Combat.InvokeEvent(api.FromJson<ShipTargetedEvent>(json));
     }
 }

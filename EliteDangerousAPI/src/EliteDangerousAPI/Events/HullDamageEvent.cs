@@ -1,5 +1,4 @@
-﻿using NSW.EliteDangerous.Internals;
-using Newtonsoft.Json;
+﻿using Newtonsoft.Json;
 
 namespace NSW.EliteDangerous.Events
 {
@@ -14,6 +13,6 @@ namespace NSW.EliteDangerous.Events
         [JsonProperty("Fighter")]
         public bool Fighter { get; internal set; }
 
-        internal static HullDamageEvent Execute(string json, EliteDangerousAPI api) => api.Combat.InvokeEvent(JsonHelper.FromJson<HullDamageEvent>(json));
+        internal static HullDamageEvent Execute(string json, EliteDangerousAPI api) => api.Combat.InvokeEvent(api.FromJson<HullDamageEvent>(json));
     }
 }

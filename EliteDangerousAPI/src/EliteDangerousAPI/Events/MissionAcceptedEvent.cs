@@ -1,5 +1,4 @@
 using System;
-using NSW.EliteDangerous.Internals;
 using Newtonsoft.Json;
 
 namespace NSW.EliteDangerous.Events
@@ -72,6 +71,6 @@ namespace NSW.EliteDangerous.Events
         [JsonProperty("PassengerVIPs")]
         public bool? PassengerVIPs { get; internal set; }
 
-        internal static MissionAcceptedEvent Execute(string json, EliteDangerousAPI api) => api.Station.InvokeEvent(JsonHelper.FromJson<MissionAcceptedEvent>(json));
+        internal static MissionAcceptedEvent Execute(string json, EliteDangerousAPI api) => api.Station.InvokeEvent(api.FromJson<MissionAcceptedEvent>(json));
     }
 }

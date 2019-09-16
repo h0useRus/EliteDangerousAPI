@@ -1,6 +1,5 @@
 using System.Collections.Generic;
 using NSW.EliteDangerous.Events.Entities;
-using NSW.EliteDangerous.Internals;
 using Newtonsoft.Json;
 
 namespace NSW.EliteDangerous.Events
@@ -52,6 +51,6 @@ namespace NSW.EliteDangerous.Events
         [JsonProperty("CQC")]
         public Dictionary<string, double> Cqc { get; internal set; }
 
-        internal static StatisticsEvent Execute(string json, EliteDangerousAPI api) => api.Player.InvokeEvent(JsonHelper.FromJson<StatisticsEvent>(json));
+        internal static StatisticsEvent Execute(string json, EliteDangerousAPI api) => api.Player.InvokeEvent(api.FromJson<StatisticsEvent>(json));
     }
 }

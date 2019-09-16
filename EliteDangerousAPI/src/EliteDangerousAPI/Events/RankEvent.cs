@@ -1,5 +1,4 @@
 ﻿using NSW.EliteDangerous.Events.Entities;
-using NSW.EliteDangerous.Internals;
 using Newtonsoft.Json;
 
 namespace NSW.EliteDangerous.Events
@@ -24,6 +23,6 @@ namespace NSW.EliteDangerous.Events
         [JsonProperty("CQC")]
         public CqcRank? Cqc { get; internal set; }
 
-        internal static RankEvent Execute(string json, EliteDangerousAPI api) => api.Player.InvokeEvent(JsonHelper.FromJson<RankEvent>(json));
+        internal static RankEvent Execute(string json, EliteDangerousAPI api) => api.Player.InvokeEvent(api.FromJson<RankEvent>(json));
     }
 }

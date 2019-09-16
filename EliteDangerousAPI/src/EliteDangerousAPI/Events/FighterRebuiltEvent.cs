@@ -1,4 +1,3 @@
-using NSW.EliteDangerous.Internals;
 using Newtonsoft.Json;
 
 namespace NSW.EliteDangerous.Events
@@ -11,6 +10,6 @@ namespace NSW.EliteDangerous.Events
         [JsonProperty("Loadout")]
         public string Loadout { get; internal set; }
 
-        internal static FighterRebuiltEvent Execute(string json, EliteDangerousAPI api) => api.Ship.InvokeEvent(JsonHelper.FromJson<FighterRebuiltEvent>(json));
+        internal static FighterRebuiltEvent Execute(string json, EliteDangerousAPI api) => api.Ship.InvokeEvent(api.FromJson<FighterRebuiltEvent>(json));
     }
 }

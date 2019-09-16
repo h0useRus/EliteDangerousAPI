@@ -1,5 +1,4 @@
-﻿using NSW.EliteDangerous.Internals;
-using Newtonsoft.Json;
+﻿using Newtonsoft.Json;
 
 namespace NSW.EliteDangerous.Events
 {
@@ -20,6 +19,6 @@ namespace NSW.EliteDangerous.Events
         [JsonProperty("VictimFaction_Localised")]
         public string VictimFactionLocalised { get; internal set; }
 
-        internal static FactionKillBondEvent Execute(string json, EliteDangerousAPI api) => api.Combat.InvokeEvent(JsonHelper.FromJson<FactionKillBondEvent>(json));
+        internal static FactionKillBondEvent Execute(string json, EliteDangerousAPI api) => api.Combat.InvokeEvent(api.FromJson<FactionKillBondEvent>(json));
     }
 }

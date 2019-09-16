@@ -1,4 +1,3 @@
-using NSW.EliteDangerous.Internals;
 using Newtonsoft.Json;
 
 namespace NSW.EliteDangerous.Events
@@ -11,6 +10,6 @@ namespace NSW.EliteDangerous.Events
         [JsonProperty("ID")]
         public int Id { get; internal set; }
 
-        internal static LaunchSrvEvent Execute(string json, EliteDangerousAPI api) => api.Ship.InvokeEvent(JsonHelper.FromJson<LaunchSrvEvent>(json));
+        internal static LaunchSrvEvent Execute(string json, EliteDangerousAPI api) => api.Ship.InvokeEvent(api.FromJson<LaunchSrvEvent>(json));
     }
 }

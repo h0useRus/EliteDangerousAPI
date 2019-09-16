@@ -1,5 +1,4 @@
 using NSW.EliteDangerous.Events.Entities;
-using NSW.EliteDangerous.Internals;
 using Newtonsoft.Json;
 
 namespace NSW.EliteDangerous.Events
@@ -114,6 +113,6 @@ namespace NSW.EliteDangerous.Events
         [JsonProperty("Conflicts")]
         public Conflict[] Conflicts { get; internal set; }
 
-        internal static LocationEvent Execute(string json, EliteDangerousAPI api) => api.Travel.InvokeEvent(JsonHelper.FromJson<LocationEvent>(json));
+        internal static LocationEvent Execute(string json, EliteDangerousAPI api) => api.Travel.InvokeEvent(api.FromJson<LocationEvent>(json));
     }
 }

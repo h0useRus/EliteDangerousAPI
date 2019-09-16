@@ -1,13 +1,13 @@
 using System;
 using System.IO;
+using System.Linq;
 using NSW.EliteDangerous.Events;
-using NSW.EliteDangerous.Internals;
 
 namespace NSW.EliteDangerous
 {
     public partial class EliteDangerousAPI
     {
-        private readonly DirectoryInfo _journalDirectory;
+        public DirectoryInfo JournalDirectory { get; }
 
         private ApiStatus _apiStatus;
         public ApiStatus ApiStatus
@@ -25,14 +25,14 @@ namespace NSW.EliteDangerous
 
         public int DocumentationVersion { get ;} = 25;
 
-        public EliteDangerousAPI() : this(FileHelpers.GetJournalDirectory())
+        public EliteDangerousAPI() : this(DefaultJournalDirectory)
         {
             
         }
 
         public EliteDangerousAPI(string journalDirectory)
         {
-            _journalDirectory = new DirectoryInfo(journalDirectory);
+            JournalDirectory = new DirectoryInfo(journalDirectory);
 
             InitHandlers();
         }
@@ -42,13 +42,22 @@ namespace NSW.EliteDangerous
             if (ApiStatus != ApiStatus.Stopped)
                 return ApiStatus;
 
-            if (!_journalDirectory.Exists)
+            if (!JournalDirectory.Exists)
             {
                 ApiStatus = ApiStatus.GameNotFound;
                 return ApiStatus;
             }
 
+            var journalFile = JournalDirectory.GetFiles("Journal.*").OrderByDescending(x => x.LastWriteTime).FirstOrDefault();
+
+            if (journalFile != null)
+            {
+
+            }
+
             Status.Start();
+
+            ApiStatus = ApiStatus.Running;
 
             return ApiStatus;
         }

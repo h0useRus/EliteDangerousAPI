@@ -1,5 +1,4 @@
-﻿using NSW.EliteDangerous.Internals;
-using Newtonsoft.Json;
+﻿using Newtonsoft.Json;
 
 namespace NSW.EliteDangerous.Events
 {
@@ -14,6 +13,6 @@ namespace NSW.EliteDangerous.Events
         [JsonProperty("NewShipID")]
         public long NewShipId { get; internal set; }
 
-        internal static ShipyardNewEvent Execute(string json, EliteDangerousAPI api) => api.Station.InvokeEvent(JsonHelper.FromJson<ShipyardNewEvent>(json));
+        internal static ShipyardNewEvent Execute(string json, EliteDangerousAPI api) => api.Station.InvokeEvent(api.FromJson<ShipyardNewEvent>(json));
     }
 }

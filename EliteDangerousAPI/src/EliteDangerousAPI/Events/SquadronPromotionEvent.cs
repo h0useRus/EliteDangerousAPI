@@ -1,5 +1,4 @@
-﻿using NSW.EliteDangerous.Internals;
-using Newtonsoft.Json;
+﻿using Newtonsoft.Json;
 
 namespace NSW.EliteDangerous.Events
 {
@@ -11,6 +10,6 @@ namespace NSW.EliteDangerous.Events
         [JsonProperty("NewRank")]
         public int NewRank { get; internal set; }
 
-        internal static SquadronPromotionEvent Execute(string json, EliteDangerousAPI api) => api.Squadron.InvokeEvent(JsonHelper.FromJson<SquadronPromotionEvent>(json));
+        internal static SquadronPromotionEvent Execute(string json, EliteDangerousAPI api) => api.Squadron.InvokeEvent(api.FromJson<SquadronPromotionEvent>(json));
     }
 }

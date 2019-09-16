@@ -1,5 +1,4 @@
 ﻿using NSW.EliteDangerous.Events.Entities;
-using NSW.EliteDangerous.Internals;
 using Newtonsoft.Json;
 
 namespace NSW.EliteDangerous.Events
@@ -15,6 +14,6 @@ namespace NSW.EliteDangerous.Events
         [JsonProperty("Bounty")]
         public long Bounty { get; internal set; }
 
-        internal static CrimeVictimEvent Execute(string json, EliteDangerousAPI api) => api.Combat.InvokeEvent(JsonHelper.FromJson<CrimeVictimEvent>(json));
+        internal static CrimeVictimEvent Execute(string json, EliteDangerousAPI api) => api.Combat.InvokeEvent(api.FromJson<CrimeVictimEvent>(json));
     }
 }

@@ -1,5 +1,4 @@
-﻿using NSW.EliteDangerous.Internals;
-using Newtonsoft.Json;
+﻿using Newtonsoft.Json;
 
 namespace NSW.EliteDangerous.Events
 {
@@ -14,6 +13,6 @@ namespace NSW.EliteDangerous.Events
         [JsonProperty("NonBodyCount")]
         public long NonBodyCount { get; internal set; }
 
-        internal static FssDiscoveryScanEvent Execute(string json, EliteDangerousAPI api) => api.Exploration.InvokeEvent(JsonHelper.FromJson<FssDiscoveryScanEvent>(json));
+        internal static FssDiscoveryScanEvent Execute(string json, EliteDangerousAPI api) => api.Exploration.InvokeEvent(api.FromJson<FssDiscoveryScanEvent>(json));
     }
 }

@@ -1,5 +1,4 @@
-﻿using NSW.EliteDangerous.Internals;
-using Newtonsoft.Json;
+﻿using Newtonsoft.Json;
 
 namespace NSW.EliteDangerous.Events
 {
@@ -14,6 +13,6 @@ namespace NSW.EliteDangerous.Events
         [JsonProperty("IsPlayer")]
         public bool IsPlayer { get; internal set; }
 
-        internal static EscapeInterdictionEvent Execute(string json, EliteDangerousAPI api) => api.Combat.InvokeEvent(JsonHelper.FromJson<EscapeInterdictionEvent>(json));
+        internal static EscapeInterdictionEvent Execute(string json, EliteDangerousAPI api) => api.Combat.InvokeEvent(api.FromJson<EscapeInterdictionEvent>(json));
     }
 }

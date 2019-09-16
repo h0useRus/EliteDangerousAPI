@@ -1,5 +1,4 @@
-﻿using NSW.EliteDangerous.Internals;
-using Newtonsoft.Json;
+﻿using Newtonsoft.Json;
 
 namespace NSW.EliteDangerous.Events
 {
@@ -11,6 +10,6 @@ namespace NSW.EliteDangerous.Events
         [JsonProperty("NumBodies")]
         public long NumBodies { get; internal set; }
 
-        internal static NavBeaconScanEvent Execute(string json, EliteDangerousAPI api) => api.Exploration.InvokeEvent(JsonHelper.FromJson<NavBeaconScanEvent>(json));
+        internal static NavBeaconScanEvent Execute(string json, EliteDangerousAPI api) => api.Exploration.InvokeEvent(api.FromJson<NavBeaconScanEvent>(json));
     }
 }

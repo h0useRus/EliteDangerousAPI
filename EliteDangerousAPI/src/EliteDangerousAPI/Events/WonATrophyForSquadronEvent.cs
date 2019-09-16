@@ -1,9 +1,7 @@
-﻿using NSW.EliteDangerous.Internals;
-
-namespace NSW.EliteDangerous.Events
+﻿namespace NSW.EliteDangerous.Events
 {
     public class WonATrophyForSquadronEvent : SquadronEvent
     {
-        internal static WonATrophyForSquadronEvent Execute(string json, EliteDangerousAPI api) => api.Squadron.InvokeEvent(JsonHelper.FromJson<WonATrophyForSquadronEvent>(json));
+        internal static WonATrophyForSquadronEvent Execute(string json, EliteDangerousAPI api) => api.Squadron.InvokeEvent(api.FromJson<WonATrophyForSquadronEvent>(json));
     }
 }

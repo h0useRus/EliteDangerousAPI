@@ -1,5 +1,4 @@
 ﻿using NSW.EliteDangerous.Events.Entities;
-using NSW.EliteDangerous.Internals;
 using Newtonsoft.Json;
 
 namespace NSW.EliteDangerous.Events
@@ -9,6 +8,6 @@ namespace NSW.EliteDangerous.Events
         [JsonProperty("CurrentGoals")]
         public CommunityGoal[] CurrentGoals { get; internal set; }
 
-        internal static CommunityGoalEvent Execute(string json, EliteDangerousAPI api) => api.Station.InvokeEvent(JsonHelper.FromJson<CommunityGoalEvent>(json));
+        internal static CommunityGoalEvent Execute(string json, EliteDangerousAPI api) => api.Station.InvokeEvent(api.FromJson<CommunityGoalEvent>(json));
     }
 }

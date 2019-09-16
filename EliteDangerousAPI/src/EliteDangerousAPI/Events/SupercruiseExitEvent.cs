@@ -1,5 +1,4 @@
 ﻿using NSW.EliteDangerous.Events.Entities;
-using NSW.EliteDangerous.Internals;
 using Newtonsoft.Json;
 
 namespace NSW.EliteDangerous.Events
@@ -21,6 +20,6 @@ namespace NSW.EliteDangerous.Events
         [JsonProperty("BodyType")]
         public BodyType? BodyType { get; internal set; }
 
-        internal static SupercruiseExitEvent Execute(string json, EliteDangerousAPI api) => api.Travel.InvokeEvent(JsonHelper.FromJson<SupercruiseExitEvent>(json));
+        internal static SupercruiseExitEvent Execute(string json, EliteDangerousAPI api) => api.Travel.InvokeEvent(api.FromJson<SupercruiseExitEvent>(json));
     }
 }

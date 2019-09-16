@@ -1,5 +1,4 @@
 ﻿using Newtonsoft.Json;
-using NSW.EliteDangerous.Internals;
 
 namespace NSW.EliteDangerous.Events
 {
@@ -11,6 +10,6 @@ namespace NSW.EliteDangerous.Events
         [JsonProperty("FID")]
         public string FrontierId { get; internal set; }
 
-        internal static CommanderEvent Execute(string json, EliteDangerousAPI api) => api.Player.InvokeEvent(JsonHelper.FromJson<CommanderEvent>(json));
+        internal static CommanderEvent Execute(string json, EliteDangerousAPI api) => api.Player.InvokeEvent(api.FromJson<CommanderEvent>(json));
     }
 }

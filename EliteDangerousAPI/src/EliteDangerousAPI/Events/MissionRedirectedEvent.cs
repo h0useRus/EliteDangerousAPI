@@ -1,4 +1,3 @@
-using NSW.EliteDangerous.Internals;
 using Newtonsoft.Json;
 
 namespace NSW.EliteDangerous.Events
@@ -17,6 +16,6 @@ namespace NSW.EliteDangerous.Events
         [JsonProperty("OldDestinationSystem")]
         public string OldDestinationSystem { get; internal set; }
 
-        internal static MissionRedirectedEvent Execute(string json, EliteDangerousAPI api) => api.Station.InvokeEvent(JsonHelper.FromJson<MissionRedirectedEvent>(json));
+        internal static MissionRedirectedEvent Execute(string json, EliteDangerousAPI api) => api.Station.InvokeEvent(api.FromJson<MissionRedirectedEvent>(json));
     }
 }

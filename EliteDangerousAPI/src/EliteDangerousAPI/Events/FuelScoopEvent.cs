@@ -1,5 +1,4 @@
-﻿using NSW.EliteDangerous.Internals;
-using Newtonsoft.Json;
+﻿using Newtonsoft.Json;
 
 namespace NSW.EliteDangerous.Events
 {
@@ -11,6 +10,6 @@ namespace NSW.EliteDangerous.Events
         [JsonProperty("Total")]
         public double Total { get; internal set; }
 
-        internal static FuelScoopEvent Execute(string json, EliteDangerousAPI api) => api.Ship.InvokeEvent(JsonHelper.FromJson<FuelScoopEvent>(json));
+        internal static FuelScoopEvent Execute(string json, EliteDangerousAPI api) => api.Ship.InvokeEvent(api.FromJson<FuelScoopEvent>(json));
     }
 }

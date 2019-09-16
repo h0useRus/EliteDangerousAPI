@@ -1,5 +1,4 @@
-﻿using NSW.EliteDangerous.Internals;
-using Newtonsoft.Json;
+﻿using Newtonsoft.Json;
 
 namespace NSW.EliteDangerous.Events
 {
@@ -11,6 +10,6 @@ namespace NSW.EliteDangerous.Events
         [JsonProperty("Module_Localised")]
         public string ModuleLocalised { get; internal set; }
 
-        internal static JetConeDamageEvent Execute(string json, EliteDangerousAPI api) => api.Ship.InvokeEvent(JsonHelper.FromJson<JetConeDamageEvent>(json));
+        internal static JetConeDamageEvent Execute(string json, EliteDangerousAPI api) => api.Ship.InvokeEvent(api.FromJson<JetConeDamageEvent>(json));
     }
 }

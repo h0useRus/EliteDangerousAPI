@@ -1,5 +1,4 @@
-﻿using NSW.EliteDangerous.Internals;
-using Newtonsoft.Json;
+﻿using Newtonsoft.Json;
 
 namespace NSW.EliteDangerous.Events
 {
@@ -11,6 +10,6 @@ namespace NSW.EliteDangerous.Events
         [JsonProperty("SystemAddress")]
         public long? SystemAddress { get; internal set; }
 
-        internal static SupercruiseEntryEvent Execute(string json, EliteDangerousAPI api) => api.Travel.InvokeEvent(JsonHelper.FromJson<SupercruiseEntryEvent>(json));
+        internal static SupercruiseEntryEvent Execute(string json, EliteDangerousAPI api) => api.Travel.InvokeEvent(api.FromJson<SupercruiseEntryEvent>(json));
     }
 }

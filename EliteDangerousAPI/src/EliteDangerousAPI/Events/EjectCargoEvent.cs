@@ -1,5 +1,4 @@
-﻿using NSW.EliteDangerous.Internals;
-using Newtonsoft.Json;
+﻿using Newtonsoft.Json;
 
 namespace NSW.EliteDangerous.Events
 {
@@ -17,6 +16,6 @@ namespace NSW.EliteDangerous.Events
         [JsonProperty("Abandoned")]
         public bool Abandoned { get; internal set; }
 
-        internal static EjectCargoEvent Execute(string json, EliteDangerousAPI api) => api.Trade.InvokeEvent(JsonHelper.FromJson<EjectCargoEvent>(json));
+        internal static EjectCargoEvent Execute(string json, EliteDangerousAPI api) => api.Trade.InvokeEvent(api.FromJson<EjectCargoEvent>(json));
     }
 }

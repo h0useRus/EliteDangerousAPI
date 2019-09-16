@@ -1,5 +1,4 @@
 using NSW.EliteDangerous.Events.Entities;
-using NSW.EliteDangerous.Internals;
 using Newtonsoft.Json;
 
 namespace NSW.EliteDangerous.Events
@@ -48,6 +47,6 @@ namespace NSW.EliteDangerous.Events
         [JsonProperty("ActiveFine")]
         public bool ActiveFine { get; internal set; }
 
-        internal static DockedEvent Execute(string json, EliteDangerousAPI api) => api.Travel.InvokeEvent(JsonHelper.FromJson<DockedEvent>(json));
+        internal static DockedEvent Execute(string json, EliteDangerousAPI api) => api.Travel.InvokeEvent(api.FromJson<DockedEvent>(json));
     }
 }

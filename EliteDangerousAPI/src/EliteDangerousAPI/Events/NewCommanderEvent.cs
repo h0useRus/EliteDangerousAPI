@@ -1,5 +1,4 @@
-﻿using NSW.EliteDangerous.Internals;
-using Newtonsoft.Json;
+﻿using Newtonsoft.Json;
 
 namespace NSW.EliteDangerous.Events
 {
@@ -8,6 +7,6 @@ namespace NSW.EliteDangerous.Events
         [JsonProperty("Package")]
         public string Package { get; internal set; }
 
-        internal new static NewCommanderEvent Execute(string json, EliteDangerousAPI api) => api.Player.InvokeEvent(JsonHelper.FromJson<NewCommanderEvent>(json));
+        internal new static NewCommanderEvent Execute(string json, EliteDangerousAPI api) => api.Player.InvokeEvent(api.FromJson<NewCommanderEvent>(json));
     }
 }

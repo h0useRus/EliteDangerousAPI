@@ -1,5 +1,4 @@
-﻿using NSW.EliteDangerous.Internals;
-using Newtonsoft.Json;
+﻿using Newtonsoft.Json;
 
 namespace NSW.EliteDangerous.Events
 {
@@ -23,6 +22,6 @@ namespace NSW.EliteDangerous.Events
         [JsonProperty("CQC")]
         public int Cqc { get; internal set; }
 
-        internal static ProgressEvent Execute(string json, EliteDangerousAPI api) => api.Player.InvokeEvent(JsonHelper.FromJson<ProgressEvent>(json));
+        internal static ProgressEvent Execute(string json, EliteDangerousAPI api) => api.Player.InvokeEvent(api.FromJson<ProgressEvent>(json));
     }
 }

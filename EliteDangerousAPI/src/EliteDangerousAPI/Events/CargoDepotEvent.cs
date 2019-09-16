@@ -1,4 +1,3 @@
-using NSW.EliteDangerous.Internals;
 using Newtonsoft.Json;
 using NSW.EliteDangerous.Events.Entities;
 
@@ -39,6 +38,6 @@ namespace NSW.EliteDangerous.Events
         [JsonProperty("Progress")]
         public double Progress { get; internal set; }
 
-        internal static CargoDepotEvent Execute(string json, EliteDangerousAPI api) => api.Station.InvokeEvent(JsonHelper.FromJson<CargoDepotEvent>(json));
+        internal static CargoDepotEvent Execute(string json, EliteDangerousAPI api) => api.Station.InvokeEvent(api.FromJson<CargoDepotEvent>(json));
     }
 }

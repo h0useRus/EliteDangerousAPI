@@ -1,5 +1,4 @@
-﻿using NSW.EliteDangerous.Internals;
-using Newtonsoft.Json;
+﻿using Newtonsoft.Json;
 
 namespace NSW.EliteDangerous.Events
 {
@@ -14,6 +13,6 @@ namespace NSW.EliteDangerous.Events
         [JsonProperty("Stolen")]
         public bool Stolen { get; internal set; }
 
-        internal static CollectCargoEvent Execute(string json, EliteDangerousAPI api) => api.Trade.InvokeEvent(JsonHelper.FromJson<CollectCargoEvent>(json));
+        internal static CollectCargoEvent Execute(string json, EliteDangerousAPI api) => api.Trade.InvokeEvent(api.FromJson<CollectCargoEvent>(json));
     }
 }

@@ -32,7 +32,7 @@ namespace NSW.EliteDangerous
             Wing = new WingHandler(this);
             Squadron = new SquadronHandler(this);
             Crew = new CrewHandler(this);
-            Status = new StatusHandler(_journalDirectory);
+            Status = new StatusHandler(this);
         }
     }
 }

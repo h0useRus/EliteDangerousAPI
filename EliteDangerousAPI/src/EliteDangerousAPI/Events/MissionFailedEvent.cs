@@ -1,4 +1,3 @@
-using NSW.EliteDangerous.Internals;
 using Newtonsoft.Json;
 
 namespace NSW.EliteDangerous.Events
@@ -8,6 +7,6 @@ namespace NSW.EliteDangerous.Events
         [JsonProperty("Fine")]
         public int Fine { get; internal set; }
 
-        internal static MissionFailedEvent Execute(string json, EliteDangerousAPI api) => api.Station.InvokeEvent(JsonHelper.FromJson<MissionFailedEvent>(json));
+        internal static MissionFailedEvent Execute(string json, EliteDangerousAPI api) => api.Station.InvokeEvent(api.FromJson<MissionFailedEvent>(json));
     }
 }

@@ -1,5 +1,4 @@
-﻿using NSW.EliteDangerous.Internals;
-using Newtonsoft.Json;
+﻿using Newtonsoft.Json;
 
 namespace NSW.EliteDangerous.Events
 {
@@ -17,6 +16,6 @@ namespace NSW.EliteDangerous.Events
         [JsonProperty("Count")]
         public long Count { get; internal set; }
 
-        internal static RestockVehicleEvent Execute(string json, EliteDangerousAPI api) => api.Station.InvokeEvent(JsonHelper.FromJson<RestockVehicleEvent>(json));
+        internal static RestockVehicleEvent Execute(string json, EliteDangerousAPI api) => api.Station.InvokeEvent(api.FromJson<RestockVehicleEvent>(json));
     }
 }

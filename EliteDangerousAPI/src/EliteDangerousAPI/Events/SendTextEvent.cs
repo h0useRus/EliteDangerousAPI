@@ -1,5 +1,4 @@
 using System;
-using NSW.EliteDangerous.Internals;
 using Newtonsoft.Json;
 using NSW.EliteDangerous.Events.Entities;
 
@@ -19,6 +18,6 @@ namespace NSW.EliteDangerous.Events
         [JsonIgnore]
         public MessageChannel Channel => Enum.TryParse(To, true, out MessageChannel channel) ? channel : MessageChannel.Player;
 
-        internal static SendTextEvent Execute(string json, EliteDangerousAPI api) => api.Player.InvokeEvent(JsonHelper.FromJson<SendTextEvent>(json));
+        internal static SendTextEvent Execute(string json, EliteDangerousAPI api) => api.Player.InvokeEvent(api.FromJson<SendTextEvent>(json));
     }
 }

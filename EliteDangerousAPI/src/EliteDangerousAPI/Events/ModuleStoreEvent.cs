@@ -1,5 +1,4 @@
-﻿using NSW.EliteDangerous.Internals;
-using Newtonsoft.Json;
+﻿using Newtonsoft.Json;
 
 namespace NSW.EliteDangerous.Events
 {
@@ -35,6 +34,6 @@ namespace NSW.EliteDangerous.Events
         [JsonProperty("Quality")]
         public double Quality { get; internal set; }
 
-        internal static ModuleStoreEvent Execute(string json, EliteDangerousAPI api) => api.Station.InvokeEvent(JsonHelper.FromJson<ModuleStoreEvent>(json));
+        internal static ModuleStoreEvent Execute(string json, EliteDangerousAPI api) => api.Station.InvokeEvent(api.FromJson<ModuleStoreEvent>(json));
     }
 }

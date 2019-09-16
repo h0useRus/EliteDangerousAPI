@@ -1,4 +1,3 @@
-﻿using NSW.EliteDangerous.Internals;
 using Newtonsoft.Json;
 
 namespace NSW.EliteDangerous.Events
@@ -17,6 +16,6 @@ namespace NSW.EliteDangerous.Events
         [JsonProperty("BodyID")]
         public long BodyId { get; internal set; }
 
-        internal static ApproachBodyEvent Execute(string json, EliteDangerousAPI api) => api.Travel.InvokeEvent(JsonHelper.FromJson<ApproachBodyEvent>(json));
+        internal static ApproachBodyEvent Execute(string json, EliteDangerousAPI api) => api.Travel.InvokeEvent(api.FromJson<ApproachBodyEvent>(json));
     }
 }

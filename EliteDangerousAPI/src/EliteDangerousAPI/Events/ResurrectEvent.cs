@@ -1,5 +1,4 @@
-﻿using NSW.EliteDangerous.Internals;
-using Newtonsoft.Json;
+﻿using Newtonsoft.Json;
 
 namespace NSW.EliteDangerous.Events
 {
@@ -14,6 +13,6 @@ namespace NSW.EliteDangerous.Events
         [JsonProperty("Bankrupt")]
         public bool Bankrupt { get; internal set; }
 
-        internal static ResurrectEvent Execute(string json, EliteDangerousAPI api) => api.Player.InvokeEvent(JsonHelper.FromJson<ResurrectEvent>(json));
+        internal static ResurrectEvent Execute(string json, EliteDangerousAPI api) => api.Player.InvokeEvent(api.FromJson<ResurrectEvent>(json));
     }
 }

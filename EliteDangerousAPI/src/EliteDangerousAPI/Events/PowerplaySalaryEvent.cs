@@ -1,4 +1,3 @@
-using NSW.EliteDangerous.Internals;
 using Newtonsoft.Json;
 
 namespace NSW.EliteDangerous.Events
@@ -8,6 +7,6 @@ namespace NSW.EliteDangerous.Events
         [JsonProperty("Amount")]
         public long Amount { get; internal set; }
 
-        internal static PowerplaySalaryEvent Execute(string json, EliteDangerousAPI api) => api.Powerplay.InvokeEvent(JsonHelper.FromJson<PowerplaySalaryEvent>(json));
+        internal static PowerplaySalaryEvent Execute(string json, EliteDangerousAPI api) => api.Powerplay.InvokeEvent(api.FromJson<PowerplaySalaryEvent>(json));
     }
 }

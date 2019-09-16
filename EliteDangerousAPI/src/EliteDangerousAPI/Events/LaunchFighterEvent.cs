@@ -1,4 +1,3 @@
-using NSW.EliteDangerous.Internals;
 using Newtonsoft.Json;
 
 namespace NSW.EliteDangerous.Events
@@ -14,6 +13,6 @@ namespace NSW.EliteDangerous.Events
         [JsonProperty("PlayerControlled")]
         public bool PlayerControlled { get; internal set; }
 
-        internal static LaunchFighterEvent Execute(string json, EliteDangerousAPI api) => api.Ship.InvokeEvent(JsonHelper.FromJson<LaunchFighterEvent>(json));
+        internal static LaunchFighterEvent Execute(string json, EliteDangerousAPI api) => api.Ship.InvokeEvent(api.FromJson<LaunchFighterEvent>(json));
     }
 }

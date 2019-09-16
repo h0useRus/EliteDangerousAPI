@@ -1,5 +1,4 @@
 using NSW.EliteDangerous.Events.Entities;
-using NSW.EliteDangerous.Internals;
 using Newtonsoft.Json;
 
 namespace NSW.EliteDangerous.Events
@@ -115,6 +114,6 @@ namespace NSW.EliteDangerous.Events
         [JsonProperty("WasMapped")]
         public bool WasMapped { get; internal set; }
 
-        internal static ScanEvent Execute(string json, EliteDangerousAPI api) => api.Exploration.InvokeEvent(JsonHelper.FromJson<ScanEvent>(json));
+        internal static ScanEvent Execute(string json, EliteDangerousAPI api) => api.Exploration.InvokeEvent(api.FromJson<ScanEvent>(json));
     }
 }

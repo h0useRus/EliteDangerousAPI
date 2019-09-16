@@ -1,5 +1,4 @@
-﻿using NSW.EliteDangerous.Internals;
-using Newtonsoft.Json;
+﻿using Newtonsoft.Json;
 using NSW.EliteDangerous.Events.Entities;
 
 namespace NSW.EliteDangerous.Events
@@ -51,6 +50,6 @@ namespace NSW.EliteDangerous.Events
         [JsonProperty]
         public bool? StartLanded { get; internal set; }
 
-        internal static LoadGameEvent Execute(string json, EliteDangerousAPI api) => api.Game.InvokeEvent(JsonHelper.FromJson<LoadGameEvent>(json));
+        internal static LoadGameEvent Execute(string json, EliteDangerousAPI api) => api.Game.InvokeEvent(api.FromJson<LoadGameEvent>(json));
     }
 }

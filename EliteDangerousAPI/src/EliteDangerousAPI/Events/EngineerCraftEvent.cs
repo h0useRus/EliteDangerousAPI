@@ -1,5 +1,4 @@
 using NSW.EliteDangerous.Events.Entities;
-using NSW.EliteDangerous.Internals;
 using Newtonsoft.Json;
 
 namespace NSW.EliteDangerous.Events
@@ -45,6 +44,6 @@ namespace NSW.EliteDangerous.Events
         [JsonProperty("Modifiers")]
         public Modifier[] Modifiers { get; internal set; }
 
-        internal static EngineerCraftEvent Execute(string json, EliteDangerousAPI api) => api.Station.InvokeEvent(JsonHelper.FromJson<EngineerCraftEvent>(json));
+        internal static EngineerCraftEvent Execute(string json, EliteDangerousAPI api) => api.Station.InvokeEvent(api.FromJson<EngineerCraftEvent>(json));
     }
 }

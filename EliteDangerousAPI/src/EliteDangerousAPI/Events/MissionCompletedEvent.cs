@@ -1,5 +1,4 @@
 using NSW.EliteDangerous.Events.Entities;
-using NSW.EliteDangerous.Internals;
 using Newtonsoft.Json;
 
 namespace NSW.EliteDangerous.Events
@@ -60,6 +59,6 @@ namespace NSW.EliteDangerous.Events
         [JsonProperty("Target")]
         public string Target { get; internal set; }
 
-        internal static MissionCompletedEvent Execute(string json, EliteDangerousAPI api) => api.Station.InvokeEvent(JsonHelper.FromJson<MissionCompletedEvent>(json));
+        internal static MissionCompletedEvent Execute(string json, EliteDangerousAPI api) => api.Station.InvokeEvent(api.FromJson<MissionCompletedEvent>(json));
     }
 }

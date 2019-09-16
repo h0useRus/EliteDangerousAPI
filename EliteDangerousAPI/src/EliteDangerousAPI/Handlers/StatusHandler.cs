@@ -1,7 +1,6 @@
-﻿using NSW.EliteDangerous.Events;
+using NSW.EliteDangerous.Events;
 using System;
 using System.IO;
-using NSW.EliteDangerous.Internals;
 
 namespace NSW.EliteDangerous.Handlers
 {
@@ -14,7 +13,7 @@ namespace NSW.EliteDangerous.Handlers
         private const string ShipyardFile = "Shipyard.json";
         private const string GameStatusFile = "Status.json";
 
-        private readonly DirectoryInfo _journalDirectory;
+        private readonly EliteDangerousAPI _api;
         private readonly bool _enabled;
         // file watchers
         private readonly FileSystemWatcher _cargoFileWatcher;
@@ -25,33 +24,33 @@ namespace NSW.EliteDangerous.Handlers
         private readonly FileSystemWatcher _gameStatusFileWatcher;
 
 
-        internal StatusHandler(DirectoryInfo journalDirectory)
+        internal StatusHandler(EliteDangerousAPI api)
         {
-            _journalDirectory = journalDirectory;
+            _api = api;
 
-            if (journalDirectory.Exists)
+            if (api.JournalDirectory.Exists)
             {
-                _cargoFileWatcher = new FileSystemWatcher(_journalDirectory.FullName, CargoFile)
+                _cargoFileWatcher = new FileSystemWatcher(_api.JournalDirectory.FullName, CargoFile)
                     {EnableRaisingEvents = true};
                 _cargoFileWatcher.Changed += (sender, e) => CargoFileChanged(e);
 
-                _marketFileWatcher = new FileSystemWatcher(_journalDirectory.FullName, MarketFile)
+                _marketFileWatcher = new FileSystemWatcher(_api.JournalDirectory.FullName, MarketFile)
                     {EnableRaisingEvents = true};
                 _marketFileWatcher.Changed += (sender, e) => MarketFileChanged(e);
 
-                _modulesInfoFileWatcher = new FileSystemWatcher(_journalDirectory.FullName, ModulesInfoFile)
+                _modulesInfoFileWatcher = new FileSystemWatcher(_api.JournalDirectory.FullName, ModulesInfoFile)
                     {EnableRaisingEvents = true};
                 _modulesInfoFileWatcher.Changed += (sender, e) => ModulesInfoFileChanged(e);
 
-                _outfittingFileWatcher = new FileSystemWatcher(_journalDirectory.FullName, OutfittingFile)
+                _outfittingFileWatcher = new FileSystemWatcher(_api.JournalDirectory.FullName, OutfittingFile)
                     {EnableRaisingEvents = true};
                 _outfittingFileWatcher.Changed += (sender, e) => OutfittingFileChanged(e);
 
-                _shipyardFileWatcher = new FileSystemWatcher(_journalDirectory.FullName, ShipyardFile)
+                _shipyardFileWatcher = new FileSystemWatcher(_api.JournalDirectory.FullName, ShipyardFile)
                     {EnableRaisingEvents = true};
                 _shipyardFileWatcher.Changed += (sender, e) => ShipyardFileChanged(e);
 
-                _gameStatusFileWatcher = new FileSystemWatcher(_journalDirectory.FullName, GameStatusFile)
+                _gameStatusFileWatcher = new FileSystemWatcher(_api.JournalDirectory.FullName, GameStatusFile)
                     {EnableRaisingEvents = true};
                 _gameStatusFileWatcher.Changed += (sender, e) => GameStatusFileChanged(e);
                 _enabled = true;
@@ -62,12 +61,12 @@ namespace NSW.EliteDangerous.Handlers
         {
             if(!_enabled) return;
 
-            CargoFileChanged(new FileSystemEventArgs(WatcherChangeTypes.All, _journalDirectory.FullName, CargoFile));
-            MarketFileChanged(new FileSystemEventArgs(WatcherChangeTypes.All, _journalDirectory.FullName, MarketFile));
-            ModulesInfoFileChanged(new FileSystemEventArgs(WatcherChangeTypes.All, _journalDirectory.FullName, ModulesInfoFile));
-            OutfittingFileChanged(new FileSystemEventArgs(WatcherChangeTypes.All, _journalDirectory.FullName, OutfittingFile));
-            ShipyardFileChanged(new FileSystemEventArgs(WatcherChangeTypes.All, _journalDirectory.FullName, ShipyardFile));
-            GameStatusFileChanged(new FileSystemEventArgs(WatcherChangeTypes.All, _journalDirectory.FullName, GameStatusFile));
+            CargoFileChanged(new FileSystemEventArgs(WatcherChangeTypes.All, _api.JournalDirectory.FullName, CargoFile));
+            MarketFileChanged(new FileSystemEventArgs(WatcherChangeTypes.All, _api.JournalDirectory.FullName, MarketFile));
+            ModulesInfoFileChanged(new FileSystemEventArgs(WatcherChangeTypes.All, _api.JournalDirectory.FullName, ModulesInfoFile));
+            OutfittingFileChanged(new FileSystemEventArgs(WatcherChangeTypes.All, _api.JournalDirectory.FullName, OutfittingFile));
+            ShipyardFileChanged(new FileSystemEventArgs(WatcherChangeTypes.All, _api.JournalDirectory.FullName, ShipyardFile));
+            GameStatusFileChanged(new FileSystemEventArgs(WatcherChangeTypes.All, _api.JournalDirectory.FullName, GameStatusFile));
 
             _cargoFileWatcher.EnableRaisingEvents = 
                 _marketFileWatcher.EnableRaisingEvents =
@@ -101,7 +100,7 @@ namespace NSW.EliteDangerous.Handlers
             if ((fileArgs.ChangeType & WatcherChangeTypes.Created) != 0 ||
                 (fileArgs.ChangeType & WatcherChangeTypes.Changed) != 0)
             {
-                var @event = FileHelpers.ReadJsonFile<CargoEvent>(fileArgs.FullPath);
+                var @event = _api.FromJsonFile<CargoEvent>(fileArgs.FullPath);
                 if (@event != null)
                     InvokeCargoEvent(@event);
             }
@@ -118,7 +117,7 @@ namespace NSW.EliteDangerous.Handlers
             if ((fileArgs.ChangeType & WatcherChangeTypes.Created) != 0 ||
                 (fileArgs.ChangeType & WatcherChangeTypes.Changed) != 0)
             {
-                var @event = FileHelpers.ReadJsonFile<MarketEvent>(fileArgs.FullPath);
+                var @event = _api.FromJsonFile<MarketEvent>(fileArgs.FullPath);
                 if (@event != null)
                     InvokeMarketEvent(@event);
             }
@@ -135,7 +134,7 @@ namespace NSW.EliteDangerous.Handlers
             if ((fileArgs.ChangeType & WatcherChangeTypes.Created) != 0 ||
                 (fileArgs.ChangeType & WatcherChangeTypes.Changed) != 0)
             {
-                var @event = FileHelpers.ReadJsonFile<ModuleInfoEvent>(fileArgs.FullPath);
+                var @event = _api.FromJsonFile<ModuleInfoEvent>(fileArgs.FullPath);
                 if (@event != null)
                     InvokeModuleInfoEvent(@event);
             }
@@ -152,7 +151,7 @@ namespace NSW.EliteDangerous.Handlers
             if ((fileArgs.ChangeType & WatcherChangeTypes.Created) != 0 ||
                 (fileArgs.ChangeType & WatcherChangeTypes.Changed) != 0)
             {
-                var @event = FileHelpers.ReadJsonFile<OutfittingEvent>(fileArgs.FullPath);
+                var @event = _api.FromJsonFile<OutfittingEvent>(fileArgs.FullPath);
                 if (@event != null)
                     InvokeOutfittingEvent(@event);
             }
@@ -169,7 +168,7 @@ namespace NSW.EliteDangerous.Handlers
             if ((fileArgs.ChangeType & WatcherChangeTypes.Created) != 0 ||
                 (fileArgs.ChangeType & WatcherChangeTypes.Changed) != 0)
             {
-                var @event = FileHelpers.ReadJsonFile<ShipyardEvent>(fileArgs.FullPath);
+                var @event = _api.FromJsonFile<ShipyardEvent>(fileArgs.FullPath);
                 if (@event != null)
                     InvokeShipyardEvent(@event);
             }
@@ -186,7 +185,7 @@ namespace NSW.EliteDangerous.Handlers
             if ((fileArgs.ChangeType & WatcherChangeTypes.Created) != 0 ||
                 (fileArgs.ChangeType & WatcherChangeTypes.Changed) != 0)
             {
-                var @event = FileHelpers.ReadJsonFile<GameStatusEvent>(fileArgs.FullPath);
+                var @event = _api.FromJsonFile<GameStatusEvent>(fileArgs.FullPath);
                 if (@event != null)
                     InvokeGameStatusEvent(@event);
             }

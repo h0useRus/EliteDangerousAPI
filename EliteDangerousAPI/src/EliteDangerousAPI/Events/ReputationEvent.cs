@@ -1,4 +1,3 @@
-using NSW.EliteDangerous.Internals;
 using Newtonsoft.Json;
 
 namespace NSW.EliteDangerous.Events
@@ -17,6 +16,6 @@ namespace NSW.EliteDangerous.Events
         [JsonProperty("Independent")]
         public double Independent { get; internal set; }
 
-        internal static ReputationEvent Execute(string json, EliteDangerousAPI api) => api.Player.InvokeEvent(JsonHelper.FromJson<ReputationEvent>(json));
+        internal static ReputationEvent Execute(string json, EliteDangerousAPI api) => api.Player.InvokeEvent(api.FromJson<ReputationEvent>(json));
     }
 }

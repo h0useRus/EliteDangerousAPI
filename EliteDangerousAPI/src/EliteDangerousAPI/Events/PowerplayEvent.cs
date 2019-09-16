@@ -1,4 +1,3 @@
-using NSW.EliteDangerous.Internals;
 using Newtonsoft.Json;
 
 namespace NSW.EliteDangerous.Events
@@ -17,6 +16,6 @@ namespace NSW.EliteDangerous.Events
         [JsonProperty]
         public int? TimePledged { get; internal set; }
 
-        internal static PowerplayEvent Execute(string json, EliteDangerousAPI api) => api.Powerplay.InvokeEvent(JsonHelper.FromJson<PowerplayEvent>(json));
+        internal static PowerplayEvent Execute(string json, EliteDangerousAPI api) => api.Powerplay.InvokeEvent(api.FromJson<PowerplayEvent>(json));
     }
 }

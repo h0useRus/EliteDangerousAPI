@@ -1,4 +1,3 @@
-using NSW.EliteDangerous.Internals;
 using Newtonsoft.Json;
 
 namespace NSW.EliteDangerous.Events
@@ -8,6 +7,6 @@ namespace NSW.EliteDangerous.Events
         [JsonProperty("LandingPad")]
         public int LandingPad { get; internal set; }
 
-        internal static DockingGrantedEvent Execute(string json, EliteDangerousAPI api) => api.Travel.InvokeEvent(JsonHelper.FromJson<DockingGrantedEvent>(json));
+        internal static DockingGrantedEvent Execute(string json, EliteDangerousAPI api) => api.Travel.InvokeEvent(api.FromJson<DockingGrantedEvent>(json));
     }
 }

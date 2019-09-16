@@ -1,4 +1,3 @@
-using NSW.EliteDangerous.Internals;
 using Newtonsoft.Json;
 
 namespace NSW.EliteDangerous.Events
@@ -9,6 +8,6 @@ namespace NSW.EliteDangerous.Events
         [JsonProperty("Role")]
         public string Role { get; internal set; }
 
-        internal static CrewAssignEvent Execute(string json, EliteDangerousAPI api) => api.Crew.InvokeEvent(JsonHelper.FromJson<CrewAssignEvent>(json));
+        internal static CrewAssignEvent Execute(string json, EliteDangerousAPI api) => api.Crew.InvokeEvent(api.FromJson<CrewAssignEvent>(json));
     }
 }

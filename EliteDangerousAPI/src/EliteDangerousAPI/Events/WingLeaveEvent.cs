@@ -1,9 +1,7 @@
-﻿using NSW.EliteDangerous.Internals;
-
-namespace NSW.EliteDangerous.Events
+﻿namespace NSW.EliteDangerous.Events
 {
     public class WingLeaveEvent : JournalEvent
     {
-        internal static WingLeaveEvent Execute(string json, EliteDangerousAPI api) => api.Wing.InvokeEvent(JsonHelper.FromJson<WingLeaveEvent>(json));
+        internal static WingLeaveEvent Execute(string json, EliteDangerousAPI api) => api.Wing.InvokeEvent(api.FromJson<WingLeaveEvent>(json));
     }
 }

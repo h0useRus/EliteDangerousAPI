@@ -1,5 +1,4 @@
-﻿using NSW.EliteDangerous.Internals;
-using Newtonsoft.Json;
+﻿using Newtonsoft.Json;
 
 namespace NSW.EliteDangerous.Events
 {
@@ -11,6 +10,6 @@ namespace NSW.EliteDangerous.Events
         [JsonProperty("Amount")]
         public double Amount { get; internal set; }
 
-        internal static RefuelAllEvent Execute(string json, EliteDangerousAPI api) => api.Station.InvokeEvent(JsonHelper.FromJson<RefuelAllEvent>(json));
+        internal static RefuelAllEvent Execute(string json, EliteDangerousAPI api) => api.Station.InvokeEvent(api.FromJson<RefuelAllEvent>(json));
     }
 }

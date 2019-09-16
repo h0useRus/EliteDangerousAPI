@@ -1,5 +1,4 @@
-﻿using NSW.EliteDangerous.Internals;
-using Newtonsoft.Json;
+﻿using Newtonsoft.Json;
 
 namespace NSW.EliteDangerous.Events
 {
@@ -32,6 +31,6 @@ namespace NSW.EliteDangerous.Events
         [JsonProperty("Altitude")]
         public double Altitude { get; internal set; }
 
-        internal static ScreenshotEvent Execute(string json, EliteDangerousAPI api) => api.Exploration.InvokeEvent(JsonHelper.FromJson<ScreenshotEvent>(json));
+        internal static ScreenshotEvent Execute(string json, EliteDangerousAPI api) => api.Exploration.InvokeEvent(api.FromJson<ScreenshotEvent>(json));
     }
 }

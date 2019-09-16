@@ -1,5 +1,4 @@
 ﻿using NSW.EliteDangerous.Events.Entities;
-using NSW.EliteDangerous.Internals;
 using Newtonsoft.Json;
 
 namespace NSW.EliteDangerous.Events
@@ -24,6 +23,6 @@ namespace NSW.EliteDangerous.Events
         [JsonProperty("Power")]
         public string Power { get; internal set; }
 
-        private static InterdictionEvent Execute(string json, EliteDangerousAPI api) => api.Combat.InvokeEvent(JsonHelper.FromJson<InterdictionEvent>(json));
+        private static InterdictionEvent Execute(string json, EliteDangerousAPI api) => api.Combat.InvokeEvent(api.FromJson<InterdictionEvent>(json));
     }
 }

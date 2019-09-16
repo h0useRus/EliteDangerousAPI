@@ -1,6 +1,5 @@
 using Newtonsoft.Json;
 using NSW.EliteDangerous.Events.Entities;
-using NSW.EliteDangerous.Internals;
 
 namespace NSW.EliteDangerous.Events
 {
@@ -8,6 +7,6 @@ namespace NSW.EliteDangerous.Events
     {
         [JsonProperty("Type")]
         public DroneMission Type { get; internal set; }
-        internal static LaunchDroneEvent Execute(string json, EliteDangerousAPI api) => api.Ship.InvokeEvent(JsonHelper.FromJson<LaunchDroneEvent>(json));
+        internal static LaunchDroneEvent Execute(string json, EliteDangerousAPI api) => api.Ship.InvokeEvent(api.FromJson<LaunchDroneEvent>(json));
     }
 }

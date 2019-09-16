@@ -1,5 +1,4 @@
-﻿using NSW.EliteDangerous.Internals;
-using Newtonsoft.Json;
+﻿using Newtonsoft.Json;
 
 namespace NSW.EliteDangerous.Events
 {
@@ -14,6 +13,6 @@ namespace NSW.EliteDangerous.Events
         [JsonProperty("Amount")]
         public long Amount { get; internal set; }
 
-        internal static NpcCrewPaidWageEvent Execute(string json, EliteDangerousAPI api) => api.Crew.InvokeEvent(JsonHelper.FromJson<NpcCrewPaidWageEvent>(json));
+        internal static NpcCrewPaidWageEvent Execute(string json, EliteDangerousAPI api) => api.Crew.InvokeEvent(api.FromJson<NpcCrewPaidWageEvent>(json));
     }
 }

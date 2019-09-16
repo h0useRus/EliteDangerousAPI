@@ -1,5 +1,4 @@
-﻿using NSW.EliteDangerous.Internals;
-using Newtonsoft.Json;
+﻿using Newtonsoft.Json;
 
 namespace NSW.EliteDangerous.Events
 {
@@ -35,6 +34,6 @@ namespace NSW.EliteDangerous.Events
         [JsonProperty("TimeRemaining")]
         public double TimeRemaining { get; internal set; }
 
-        internal static FssSignalDiscoveredEvent Execute(string json, EliteDangerousAPI api) => api.Exploration.InvokeEvent(JsonHelper.FromJson<FssSignalDiscoveredEvent>(json));
+        internal static FssSignalDiscoveredEvent Execute(string json, EliteDangerousAPI api) => api.Exploration.InvokeEvent(api.FromJson<FssSignalDiscoveredEvent>(json));
     }
 }

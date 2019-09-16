@@ -1,6 +1,5 @@
 ﻿using NSW.EliteDangerous.Events.Entities;
 using Newtonsoft.Json;
-using NSW.EliteDangerous.Internals;
 
 namespace NSW.EliteDangerous.Events
 {
@@ -15,6 +14,6 @@ namespace NSW.EliteDangerous.Events
         [JsonProperty("Encoded")]
         public Material[] Encoded { get; set; }
 
-        internal static MaterialsEvent Execute(string json, EliteDangerousAPI api) => api.Trade.InvokeEvent(JsonHelper.FromJson<MaterialsEvent>(json));
+        internal static MaterialsEvent Execute(string json, EliteDangerousAPI api) => api.Trade.InvokeEvent(api.FromJson<MaterialsEvent>(json));
     }
 }

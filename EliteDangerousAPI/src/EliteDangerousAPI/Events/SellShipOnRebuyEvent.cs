@@ -1,5 +1,4 @@
-﻿using NSW.EliteDangerous.Internals;
-using Newtonsoft.Json;
+﻿using Newtonsoft.Json;
 
 namespace NSW.EliteDangerous.Events
 {
@@ -17,6 +16,6 @@ namespace NSW.EliteDangerous.Events
         [JsonProperty("ShipPrice")]
         public long ShipPrice { get; internal set; }
 
-        internal static SellShipOnRebuyEvent Execute(string json, EliteDangerousAPI api) => api.Station.InvokeEvent(JsonHelper.FromJson<SellShipOnRebuyEvent>(json));
+        internal static SellShipOnRebuyEvent Execute(string json, EliteDangerousAPI api) => api.Station.InvokeEvent(api.FromJson<SellShipOnRebuyEvent>(json));
     }
 }

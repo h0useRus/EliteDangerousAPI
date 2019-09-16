@@ -1,4 +1,3 @@
-using NSW.EliteDangerous.Internals;
 using Newtonsoft.Json;
 using NSW.EliteDangerous.Events.Entities;
 
@@ -36,6 +35,6 @@ namespace NSW.EliteDangerous.Events
         [JsonProperty("TotalQuantity")]
         public long TotalQuantity { get; internal set; }
 
-        internal static EngineerContributionEvent Execute(string json, EliteDangerousAPI api) => api.Station.InvokeEvent(JsonHelper.FromJson<EngineerContributionEvent>(json));
+        internal static EngineerContributionEvent Execute(string json, EliteDangerousAPI api) => api.Station.InvokeEvent(api.FromJson<EngineerContributionEvent>(json));
     }
 }

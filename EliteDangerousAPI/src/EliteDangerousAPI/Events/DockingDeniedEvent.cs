@@ -1,4 +1,3 @@
-using NSW.EliteDangerous.Internals;
 using Newtonsoft.Json;
 
 namespace NSW.EliteDangerous.Events
@@ -8,6 +7,6 @@ namespace NSW.EliteDangerous.Events
         [JsonProperty("Reason")]
         public string Reason { get; internal set; }
 
-        internal static DockingDeniedEvent Execute(string json, EliteDangerousAPI api) => api.Travel.InvokeEvent(JsonHelper.FromJson<DockingDeniedEvent>(json));
+        internal static DockingDeniedEvent Execute(string json, EliteDangerousAPI api) => api.Travel.InvokeEvent(api.FromJson<DockingDeniedEvent>(json));
     }
 }

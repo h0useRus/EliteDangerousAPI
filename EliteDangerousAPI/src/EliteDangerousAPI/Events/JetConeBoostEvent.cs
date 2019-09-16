@@ -1,5 +1,4 @@
-﻿using NSW.EliteDangerous.Internals;
-using Newtonsoft.Json;
+﻿using Newtonsoft.Json;
 
 namespace NSW.EliteDangerous.Events
 {
@@ -8,6 +7,6 @@ namespace NSW.EliteDangerous.Events
         [JsonProperty("BoostValue")]
         public double BoostValue { get; internal set; }
 
-        internal static JetConeBoostEvent Execute(string json, EliteDangerousAPI api) => api.Ship.InvokeEvent(JsonHelper.FromJson<JetConeBoostEvent>(json));
+        internal static JetConeBoostEvent Execute(string json, EliteDangerousAPI api) => api.Ship.InvokeEvent(api.FromJson<JetConeBoostEvent>(json));
     }
 }

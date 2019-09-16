@@ -1,5 +1,4 @@
-﻿using NSW.EliteDangerous.Internals;
-using Newtonsoft.Json;
+﻿using Newtonsoft.Json;
 
 namespace NSW.EliteDangerous.Events
 {
@@ -8,6 +7,6 @@ namespace NSW.EliteDangerous.Events
         [JsonProperty("Part")]
         public string Part { get; internal set; }
 
-        internal static ContinuedEvent Execute(string json, EliteDangerousAPI api) => api.Game.InvokeEvent(JsonHelper.FromJson<ContinuedEvent>(json));
+        internal static ContinuedEvent Execute(string json, EliteDangerousAPI api) => api.Game.InvokeEvent(api.FromJson<ContinuedEvent>(json));
     }
 }

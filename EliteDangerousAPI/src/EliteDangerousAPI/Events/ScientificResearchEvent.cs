@@ -1,5 +1,4 @@
-﻿using NSW.EliteDangerous.Internals;
-using Newtonsoft.Json;
+﻿using Newtonsoft.Json;
 
 namespace NSW.EliteDangerous.Events
 {
@@ -14,6 +13,6 @@ namespace NSW.EliteDangerous.Events
         [JsonProperty("Count")]
         public long Count { get; internal set; }
 
-        internal static ScientificResearchEvent Execute(string json, EliteDangerousAPI api) => api.Station.InvokeEvent(JsonHelper.FromJson<ScientificResearchEvent>(json));
+        internal static ScientificResearchEvent Execute(string json, EliteDangerousAPI api) => api.Station.InvokeEvent(api.FromJson<ScientificResearchEvent>(json));
     }
 }

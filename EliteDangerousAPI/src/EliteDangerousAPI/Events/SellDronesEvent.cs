@@ -1,4 +1,3 @@
-using NSW.EliteDangerous.Internals;
 using Newtonsoft.Json;
 
 namespace NSW.EliteDangerous.Events
@@ -17,6 +16,6 @@ namespace NSW.EliteDangerous.Events
         [JsonProperty("TotalSale")]
         public long TotalSale { get; internal set; }
 
-        internal static SellDronesEvent Execute(string json, EliteDangerousAPI api) => api.Station.InvokeEvent(JsonHelper.FromJson<SellDronesEvent>(json));
+        internal static SellDronesEvent Execute(string json, EliteDangerousAPI api) => api.Station.InvokeEvent(api.FromJson<SellDronesEvent>(json));
     }
 }

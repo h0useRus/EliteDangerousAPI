@@ -1,5 +1,4 @@
 using NSW.EliteDangerous.Events.Entities;
-using NSW.EliteDangerous.Internals;
 using Newtonsoft.Json;
 
 namespace NSW.EliteDangerous.Events
@@ -15,6 +14,6 @@ namespace NSW.EliteDangerous.Events
         [JsonProperty("CombatRank")]
         public CombatRank CombatRank { get; internal set; }
 
-        internal static CrewHireEvent Execute(string json, EliteDangerousAPI api) => api.Crew.InvokeEvent(JsonHelper.FromJson<CrewHireEvent>(json));
+        internal static CrewHireEvent Execute(string json, EliteDangerousAPI api) => api.Crew.InvokeEvent(api.FromJson<CrewHireEvent>(json));
     }
 }

@@ -1,4 +1,3 @@
-using NSW.EliteDangerous.Internals;
 using Newtonsoft.Json;
 
 namespace NSW.EliteDangerous.Events
@@ -29,6 +28,6 @@ namespace NSW.EliteDangerous.Events
         [JsonProperty("Longitude")]
         public double Longitude { get; internal set; }
 
-        internal static ApproachSettlementEvent Execute(string json, EliteDangerousAPI api) => api.Travel.InvokeEvent(JsonHelper.FromJson<ApproachSettlementEvent>(json));
+        internal static ApproachSettlementEvent Execute(string json, EliteDangerousAPI api) => api.Travel.InvokeEvent(api.FromJson<ApproachSettlementEvent>(json));
     }
 }

@@ -1,5 +1,4 @@
 ﻿using NSW.EliteDangerous.Events.Entities;
-using NSW.EliteDangerous.Internals;
 using Newtonsoft.Json;
 
 namespace NSW.EliteDangerous.Events
@@ -21,6 +20,6 @@ namespace NSW.EliteDangerous.Events
         [JsonProperty("ShipsRemote")]
         public ShipStoredRemote[] ShipsRemote { get; set; }
 
-        internal static StoredShipsEvent Execute(string json, EliteDangerousAPI api) => api.Station.InvokeEvent(JsonHelper.FromJson<StoredShipsEvent>(json));
+        internal static StoredShipsEvent Execute(string json, EliteDangerousAPI api) => api.Station.InvokeEvent(api.FromJson<StoredShipsEvent>(json));
     }
 }

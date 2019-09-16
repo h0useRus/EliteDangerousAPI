@@ -1,5 +1,4 @@
 ﻿using NSW.EliteDangerous.Events.Entities;
-using NSW.EliteDangerous.Internals;
 using Newtonsoft.Json;
 
 namespace NSW.EliteDangerous.Events
@@ -48,6 +47,6 @@ namespace NSW.EliteDangerous.Events
         [JsonProperty("Modules")]
         public Module[] Modules { get; internal set; }
 
-        internal static LoadoutEvent Execute(string json, EliteDangerousAPI api) => api.Ship.InvokeEvent(JsonHelper.FromJson<LoadoutEvent>(json));
+        internal static LoadoutEvent Execute(string json, EliteDangerousAPI api) => api.Ship.InvokeEvent(api.FromJson<LoadoutEvent>(json));
     }
 }

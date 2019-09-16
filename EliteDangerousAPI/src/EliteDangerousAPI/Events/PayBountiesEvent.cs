@@ -1,5 +1,4 @@
-﻿using NSW.EliteDangerous.Internals;
-using Newtonsoft.Json;
+﻿using Newtonsoft.Json;
 
 namespace NSW.EliteDangerous.Events
 {
@@ -20,6 +19,6 @@ namespace NSW.EliteDangerous.Events
         [JsonProperty("BrokerPercentage")]
         public double BrokerPercentage { get; internal set; }
 
-        internal static PayBountiesEvent Execute(string json, EliteDangerousAPI api) => api.Station.InvokeEvent(JsonHelper.FromJson<PayBountiesEvent>(json));
+        internal static PayBountiesEvent Execute(string json, EliteDangerousAPI api) => api.Station.InvokeEvent(api.FromJson<PayBountiesEvent>(json));
     }
 }

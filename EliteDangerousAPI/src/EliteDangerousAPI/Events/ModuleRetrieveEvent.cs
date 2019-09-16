@@ -1,5 +1,4 @@
-﻿using NSW.EliteDangerous.Internals;
-using Newtonsoft.Json;
+﻿using Newtonsoft.Json;
 
 namespace NSW.EliteDangerous.Events
 {
@@ -41,6 +40,6 @@ namespace NSW.EliteDangerous.Events
         [JsonProperty("SwapOutItem_Localised")]
         public string SwapOutItemLocalised { get; internal set; }
 
-        internal static ModuleRetrieveEvent Execute(string json, EliteDangerousAPI api) => api.Station.InvokeEvent(JsonHelper.FromJson<ModuleRetrieveEvent>(json));
+        internal static ModuleRetrieveEvent Execute(string json, EliteDangerousAPI api) => api.Station.InvokeEvent(api.FromJson<ModuleRetrieveEvent>(json));
     }
 }

@@ -1,5 +1,4 @@
-﻿using NSW.EliteDangerous.Internals;
-using Newtonsoft.Json;
+﻿using Newtonsoft.Json;
 
 namespace NSW.EliteDangerous.Events
 {
@@ -8,6 +7,6 @@ namespace NSW.EliteDangerous.Events
         [JsonProperty("Modules")]
         public string[] Modules { get; internal set; }
 
-        internal static RebootRepairEvent Execute(string json, EliteDangerousAPI api) => api.Ship.InvokeEvent(JsonHelper.FromJson<RebootRepairEvent>(json));
+        internal static RebootRepairEvent Execute(string json, EliteDangerousAPI api) => api.Ship.InvokeEvent(api.FromJson<RebootRepairEvent>(json));
     }
 }

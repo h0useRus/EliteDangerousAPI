@@ -1,5 +1,4 @@
-﻿using NSW.EliteDangerous.Internals;
-using Newtonsoft.Json;
+﻿using Newtonsoft.Json;
 
 namespace NSW.EliteDangerous.Events
 {
@@ -14,6 +13,6 @@ namespace NSW.EliteDangerous.Events
         [JsonProperty("CorrosionRepaired")]
         public double CorrosionRepaired { get; internal set; }
 
-        internal static RepairDroneEvent Execute(string json, EliteDangerousAPI api) => api.Ship.InvokeEvent(JsonHelper.FromJson<RepairDroneEvent>(json));
+        internal static RepairDroneEvent Execute(string json, EliteDangerousAPI api) => api.Ship.InvokeEvent(api.FromJson<RepairDroneEvent>(json));
     }
 }

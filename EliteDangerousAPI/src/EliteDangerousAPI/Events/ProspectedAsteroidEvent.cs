@@ -1,5 +1,4 @@
 using NSW.EliteDangerous.Events.Entities;
-using NSW.EliteDangerous.Internals;
 using Newtonsoft.Json;
 
 namespace NSW.EliteDangerous.Events
@@ -24,6 +23,6 @@ namespace NSW.EliteDangerous.Events
         [JsonProperty("Remaining")]
         public long Remaining { get; internal set; }
 
-        internal static ProspectedAsteroidEvent Execute(string json, EliteDangerousAPI api) => api.Exploration.InvokeEvent(JsonHelper.FromJson<ProspectedAsteroidEvent>(json));
+        internal static ProspectedAsteroidEvent Execute(string json, EliteDangerousAPI api) => api.Exploration.InvokeEvent(api.FromJson<ProspectedAsteroidEvent>(json));
     }
 }
