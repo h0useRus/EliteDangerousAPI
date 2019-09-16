@@ -1,0 +1,17 @@
+{ "timestamp":"2019-09-01T13:03:07Z", "event":"Shipyard", "MarketID":3223388416, "StationName":"Wrangell Dock", "StarSystem":"Ross 584", "Horizons":true, "AllowCobraMkIV":false, "PriceList":[ 
+{ "id":128049249, "ShipType":"sidewinder", "ShipPrice":27200 }, 
+{ "id":128049255, "ShipType":"eagle", "ShipPrice":38080 }, 
+{ "id":128049261, "ShipType":"hauler", "ShipPrice":44812 }, 
+{ "id":128049267, "ShipType":"adder", "ShipPrice":74637 }, 
+{ "id":128049273, "ShipType":"viper", "ShipType_Localised":"Viper Mk III", "ShipPrice":121492 }, 
+{ "id":128049279, "ShipType":"cobramkiii", "ShipType_Localised":"Cobra Mk III", "ShipPrice":297261 }, 
+{ "id":128049285, "ShipType":"type6", "ShipType_Localised":"Type-6 Transporter", "ShipPrice":889054 }, 
+{ "id":128672269, "ShipType":"independant_trader", "ShipType_Localised":"Keelback", "ShipPrice":2657231 }, 
+{ "id":128049309, "ShipType":"vulture", "ShipPrice":4186773 }, 
+{ "id":128049303, "ShipType":"asp", "ShipType_Localised":"Asp Explorer", "ShipPrice":5661981 }, 
+{ "id":128049321, "ShipType":"federation_dropship", "ShipType_Localised":"Federal Dropship", "ShipPrice":12167075 }, 
+{ "id":128049297, "ShipType":"type7", "ShipType_Localised":"Type-7 Transporter", "ShipPrice":14851415 }, 
+{ "id":128672145, "ShipType":"federation_dropship_mkii", "ShipType_Localised":"Federal Assault Ship", "ShipPrice":16842075 }, 
+{ "id":128672152, "ShipType":"federation_gunship", "ShipType_Localised":"Federal Gunship", "ShipPrice":30442075 }, 
+{ "id":128049333, "ShipType":"type9", "ShipType_Localised":"Type-9 Heavy", "ShipPrice":65072466 }
+ ] }
