@@ -103,5 +103,10 @@ namespace NSW.EliteDangerous.Handlers
         /// </summary>
         public event EventHandler<UssDropEvent> UssDrop;
         internal UssDropEvent InvokeEvent(UssDropEvent arg) { UssDrop?.Invoke(_api, arg); return arg; }
+        /// <summary>
+        /// When using a prospecting drone 
+        /// </summary>
+        public event EventHandler<ProspectedAsteroidEvent> ProspectedAsteroid;
+        internal ProspectedAsteroidEvent InvokeEvent(ProspectedAsteroidEvent arg) { ProspectedAsteroid?.Invoke(_api, arg); return arg; }
     }
 }

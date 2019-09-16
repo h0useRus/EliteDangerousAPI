@@ -52,6 +52,5 @@ namespace NSW.EliteDangerous.Events
             {
                 new object[] { EventName,  "{ \"timestamp\":\"2016-06-10T14:32:03Z\", \"event\":\"Continued\", \"Part\":\"2\" }" },
             };
-    
     }
 }

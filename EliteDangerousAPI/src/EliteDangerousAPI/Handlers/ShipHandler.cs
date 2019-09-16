@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using NSW.EliteDangerous.Events;
 
 namespace NSW.EliteDangerous.Handlers
@@ -54,6 +54,11 @@ namespace NSW.EliteDangerous.Handlers
         public event EventHandler<LaunchSrvEvent> LaunchSrv;
         internal LaunchSrvEvent InvokeEvent(LaunchSrvEvent arg) { LaunchSrv?.Invoke(_api, arg); return arg; }
         /// <summary>
+        ///  when using any type of drone/limpet 
+        /// </summary>
+        public event EventHandler<LaunchDroneEvent> LaunchDrone;
+        internal LaunchDroneEvent InvokeEvent(LaunchDroneEvent arg) { LaunchDrone?.Invoke(_api, arg); return arg; }
+        /// <summary>
         /// when the 'reboot repair' function is used
         /// </summary>
         public event EventHandler<RebootRepairEvent> RebootRepair;
@@ -93,11 +98,6 @@ namespace NSW.EliteDangerous.Handlers
         /// </summary>
         public event EventHandler<ModuleInfoEvent> ModuleInfo;
         internal ModuleInfoEvent InvokeEvent(ModuleInfoEvent arg) { ModuleInfo?.Invoke(_api, arg); return arg; }
-        /// <summary>
-        /// When using a prospecting drone 
-        /// </summary>
-        public event EventHandler<ProspectedAsteroidEvent> ProspectedAsteroid;
-        internal ProspectedAsteroidEvent InvokeEvent(ProspectedAsteroidEvent arg) { ProspectedAsteroid?.Invoke(_api, arg); return arg; }
         /// <summary>
         /// when the player's ship has been repaired by a repair drone 
         /// </summary>

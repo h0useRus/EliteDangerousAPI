@@ -1,12 +1,13 @@
-﻿using NSW.EliteDangerous.Internals;
+using NSW.EliteDangerous.Internals;
 using Newtonsoft.Json;
+using NSW.EliteDangerous.Events.Entities;
 
 namespace NSW.EliteDangerous.Events
 {
     public class FriendsEvent : JournalEvent
     {
         [JsonProperty]
-        public string Status { get; set; }
+        public FriendStatus Status { get; set; }
 
         [JsonProperty]
         public string Name { get; set; }

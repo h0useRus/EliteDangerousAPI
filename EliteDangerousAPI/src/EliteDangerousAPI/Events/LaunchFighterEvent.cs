@@ -1,10 +1,13 @@
-﻿using NSW.EliteDangerous.Internals;
+using NSW.EliteDangerous.Internals;
 using Newtonsoft.Json;
 
 namespace NSW.EliteDangerous.Events
 {
     public class LaunchFighterEvent : JournalEvent
     {
+        [JsonProperty("ID")]
+        public int Id { get; internal set; }
+
         [JsonProperty("Loadout")]
         public string Loadout { get; internal set; }
 

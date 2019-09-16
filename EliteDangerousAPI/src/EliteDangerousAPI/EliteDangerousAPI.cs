@@ -1,4 +1,3 @@
-using NSW.EliteDangerous.Handlers;
 using System;
 using System.IO;
 using NSW.EliteDangerous.Events;
