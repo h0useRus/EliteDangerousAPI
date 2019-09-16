@@ -1,14 +1,16 @@
 using System;
 using System.IO;
 using System.Linq;
+using System.Reflection;
+using Microsoft.Extensions.Logging;
+using Microsoft.Extensions.Logging.Abstractions;
 using NSW.EliteDangerous.Events;
 
 namespace NSW.EliteDangerous
 {
     public partial class EliteDangerousAPI
     {
-        public DirectoryInfo JournalDirectory { get; }
-
+        private readonly ILogger _log;
         private ApiStatus _apiStatus;
         public ApiStatus ApiStatus
         {
@@ -23,17 +25,23 @@ namespace NSW.EliteDangerous
             }
         }
 
+        public DirectoryInfo JournalDirectory { get; }
+        public FileInfo CurrentJournalFile { get; internal set; }
+
         public int DocumentationVersion { get ;} = 25;
 
-        public EliteDangerousAPI() : this(DefaultJournalDirectory)
-        {
-            
-        }
+        public string Version => Assembly.GetAssembly(typeof(EliteDangerousAPI)).GetCustomAttribute<AssemblyFileVersionAttribute>().Version;
 
-        public EliteDangerousAPI(string journalDirectory)
+        public EliteDangerousAPI() : this(DefaultJournalDirectory) { }
+
+        public EliteDangerousAPI(ILoggerFactory loggerFactory) : this(DefaultJournalDirectory, loggerFactory) { }
+
+        public EliteDangerousAPI(string journalDirectory) : this(journalDirectory, new NullLoggerFactory()) { }
+
+        public EliteDangerousAPI(string journalDirectory, ILoggerFactory loggerFactory)
         {
+            _log = loggerFactory.CreateLogger<EliteDangerousAPI>();
             JournalDirectory = new DirectoryInfo(journalDirectory);
-
             InitHandlers();
         }
 
@@ -48,16 +56,11 @@ namespace NSW.EliteDangerous
                 return ApiStatus;
             }
 
-            var journalFile = JournalDirectory.GetFiles("Journal.*").OrderByDescending(x => x.LastWriteTime).FirstOrDefault();
-
-            if (journalFile != null)
-            {
-
-            }
+            CurrentJournalFile = JournalDirectory.GetFiles("Journal.*").OrderByDescending(x => x.LastWriteTime).FirstOrDefault();
 
             Status.Start();
 
-            ApiStatus = ApiStatus.Running;
+            ApiStatus = CurrentJournalFile != null ? ApiStatus.Running : ApiStatus.Pending;
 
             return ApiStatus;
         }
