@@ -1,12 +1,13 @@
-﻿using NSW.EliteDangerous.Internals;
+using NSW.EliteDangerous.Internals;
 using Newtonsoft.Json;
+using NSW.EliteDangerous.Events.Entities;
 
 namespace NSW.EliteDangerous.Events
 {
     public class CommitCrimeEvent : JournalEvent
     {
         [JsonProperty("CrimeType")]
-        public string CrimeType { get; internal set; }
+        public CrimeType CrimeType { get; internal set; }
 
         [JsonProperty("Faction")]
         public string Faction { get; internal set; }

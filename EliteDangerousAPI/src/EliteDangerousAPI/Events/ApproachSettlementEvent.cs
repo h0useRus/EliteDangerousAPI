@@ -1,4 +1,4 @@
-﻿using NSW.EliteDangerous.Internals;
+using NSW.EliteDangerous.Internals;
 using Newtonsoft.Json;
 
 namespace NSW.EliteDangerous.Events
@@ -12,10 +12,10 @@ namespace NSW.EliteDangerous.Events
         public string NameLocalised { get; internal set; }
 
         [JsonProperty("SystemAddress")]
-        public long? SystemAddress { get; internal set; }
+        public long SystemAddress { get; internal set; }
 
         [JsonProperty("BodyID")]
-        public long BodyID { get; set; }
+        public long BodyId { get; set; }
 
         [JsonProperty("BodyName")]
         public string BodyName { get; set; }

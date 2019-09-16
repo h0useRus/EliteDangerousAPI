@@ -9,7 +9,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "tests", "tests", "{3BD227CF
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "EliteDangerousAPI", "src\EliteDangerousAPI\EliteDangerousAPI.csproj", "{57D4002E-B6AE-4FE0-9B93-78CD594C71CA}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EliteDangerousAPI.UnitTests", "tests\EliteDangerousAPI.UnitTests\EliteDangerousAPI.UnitTests.csproj", "{3F60A432-4AF9-42D8-A49A-303173BD8122}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "EliteDangerousAPI.UnitTests", "tests\EliteDangerousAPI.UnitTests\EliteDangerousAPI.UnitTests.csproj", "{3F60A432-4AF9-42D8-A49A-303173BD8122}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
