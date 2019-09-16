@@ -30,7 +30,7 @@ namespace NSW.EliteDangerous
             Travel = new TravelHandler(this);
             Powerplay = new PowerplayHandler(this);
             Wing = new WingHandler();
-            Squadron = new SquadronHandler();
+            Squadron = new SquadronHandler(this);
             Crew = new CrewHandler(this);
             Status = new StatusHandler(_journalDirectory);
         }
