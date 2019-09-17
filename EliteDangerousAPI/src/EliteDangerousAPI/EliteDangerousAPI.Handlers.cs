@@ -16,7 +16,6 @@ namespace NSW.EliteDangerous
         public WingHandler Wing { get; private set; }
         public SquadronHandler Squadron { get; private set; }
         public CrewHandler Crew { get; private set; }
-        public StatusHandler Status { get; private set; }
 
         private void InitHandlers()
         {
@@ -32,7 +31,6 @@ namespace NSW.EliteDangerous
             Wing = new WingHandler(this);
             Squadron = new SquadronHandler(this);
             Crew = new CrewHandler(this);
-            Status = new StatusHandler(this);
         }
     }
 }

@@ -1,32 +1,54 @@
 using System;
+using System.Diagnostics;
 using System.IO;
-using System.Linq;
 using System.Reflection;
+using System.Runtime.InteropServices;
 using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.Logging.Abstractions;
-using NSW.EliteDangerous.Events;
+
 
 namespace NSW.EliteDangerous
 {
-    public partial class EliteDangerousAPI
+    public partial class EliteDangerousAPI : IDisposable
     {
-        private readonly ILogger _log;
-        private ApiStatus _apiStatus;
-        public ApiStatus ApiStatus
+        #region DefaultJournalDirectory
+
+        [DllImport("Shell32.dll")]
+        private static extern int SHGetKnownFolderPath([MarshalAs(UnmanagedType.LPStruct)]Guid rfid, uint dwFlags, IntPtr hToken, out IntPtr ppszPath);
+
+        private static string DefaultJournalDirectory
         {
-            get => _apiStatus;
-            internal set
+            get
             {
-                if(_apiStatus != value)
+                if (SHGetKnownFolderPath(new Guid("4C5C32FF-BB9D-43B0-B5B4-2D72E54EAAA4"), 0, new IntPtr(0), out var path) >= 0)
                 {
-                    _apiStatus = value;
-                    StatusChanged?.Invoke(this, _apiStatus);
+                    try { return Path.Combine(Marshal.PtrToStringUni(path), @"Frontier Developments\Elite Dangerous"); }
+                    catch { }
+                }
+
+                return Environment.CurrentDirectory;
+            }
+        }
+        #endregion
+        
+        private readonly ILogger _log;
+        private ApiStatus _status;
+        public ApiStatus Status
+        {
+            get => _status;
+            private set
+            {
+                if(_status != value)
+                {
+                    _status = value;
+                    StatusChanged?.Invoke(this, _status);
                 }
             }
         }
 
+        public bool GameRunning => Process.GetProcessesByName("EliteDangerous64").Length > 0;
+
         public DirectoryInfo JournalDirectory { get; }
-        public FileInfo CurrentJournalFile { get; internal set; }
 
         public int DocumentationVersion { get ;} = 25;
 
@@ -44,38 +66,44 @@ namespace NSW.EliteDangerous
             JournalDirectory = new DirectoryInfo(journalDirectory);
             InitHandlers();
         }
-
-        public ApiStatus Start()
+        public void Start()
         {
-            if (ApiStatus != ApiStatus.Stopped)
-                return ApiStatus;
+            if (Status != ApiStatus.Stopped)
+                return;
 
-            if (!JournalDirectory.Exists)
-            {
-                ApiStatus = ApiStatus.GameNotFound;
-                return ApiStatus;
-            }
+            StartJournalProcessing();
 
-            CurrentJournalFile = JournalDirectory.GetFiles("Journal.*").OrderByDescending(x => x.LastWriteTime).FirstOrDefault();
-
-            Status.Start();
-
-            ApiStatus = CurrentJournalFile != null ? ApiStatus.Running : ApiStatus.Pending;
-
-            return ApiStatus;
+            _log.LogInformation($"Elite Dangerous API v. {Version} {Status}");
         }
 
-        public ApiStatus Stop()
+        public void Stop()
         {
-            if (ApiStatus == ApiStatus.Stopped)
-                return ApiStatus;
+            if (Status == ApiStatus.Stopped)
+                return;
 
-            Status.Stop();
+            StopJournalProcessing();
 
-            return ApiStatus.GameNotFound;
+            Status = ApiStatus.Stopped;
+
+            _log.LogInformation($"API {Status}");
         }
 
         public event EventHandler<ApiStatus> StatusChanged;
-        public event EventHandler<GlobalEvent> AllEvents;
+
+        #region IDisposable
+
+        private bool _disposed;
+        /// <inheritdoc />
+        public void Dispose()
+        {
+            if (!_disposed)
+            {
+                Stop();
+            }
+
+            _disposed = true;
+        }
+
+        #endregion
     }
 }

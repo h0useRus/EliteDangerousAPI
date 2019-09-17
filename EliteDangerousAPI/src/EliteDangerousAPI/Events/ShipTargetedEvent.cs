@@ -1,4 +1,5 @@
 using Newtonsoft.Json;
+using NSW.EliteDangerous.Events.Converters;
 using NSW.EliteDangerous.Events.Entities;
 
 namespace NSW.EliteDangerous.Events
@@ -24,6 +25,7 @@ namespace NSW.EliteDangerous.Events
         public string PilotNameLocalised { get; internal set; }
 
         [JsonProperty("PilotRank")]
+        [JsonConverter(typeof(CombatRankConverter))]
         public CombatRank? PilotRank { get; internal set; }
 
         [JsonProperty("ShieldHealth")]

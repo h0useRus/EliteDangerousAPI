@@ -3,7 +3,9 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Reflection;
 using System.Runtime.CompilerServices;
+using Microsoft.Extensions.Logging;
 using NSW.EliteDangerous.Events;
+using NSW.EliteDangerous.Exceptions;
 
 [assembly: InternalsVisibleTo("EliteDangerousAPI.UnitTests")]
 
@@ -18,7 +20,6 @@ namespace NSW.EliteDangerous
             public string Name => Type.Name.Replace("Event", string.Empty).ToLower();
             public Type Type { get; set; }
             public MethodInfo Execute { get; set; }
-            public bool Executable => Execute != null;
         }
 
         private static Dictionary<string, EventCacheItem> BuildCache()
@@ -43,10 +44,7 @@ namespace NSW.EliteDangerous
             return cache;
         }
 
-        internal bool HasEvent(string eventName)
-        {
-            return _cache.Value.TryGetValue(eventName, out _);
-        }
+        internal bool HasEvent(string eventName) => _cache.Value.TryGetValue(eventName, out _);
 
         internal JournalEvent ExecuteEvent(string eventName, string json)
         {
@@ -61,8 +59,10 @@ namespace NSW.EliteDangerous
                 });
                 return @event;
             }
-
+            LogJournalWarning(new JournalEventNotFoundException(eventName, json));
             return null;
         }
+
+        public event EventHandler<GlobalEvent> AllEvents;
     }
 }

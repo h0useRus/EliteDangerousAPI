@@ -37,7 +37,7 @@ namespace NSW.EliteDangerous.Events
             Assert.Equal("F63 Condor", @event.ShipLocalised);
             Assert.Equal("$ShipName_Police_Federation;", @event.PilotName);
             Assert.Equal("Федеральная служба безопасности", @event.PilotNameLocalised);
-            Assert.Equal(CombatRank.Expert, @event.PilotRank);
+            Assert.Equal(CombatRank.MostlyHarmless, @event.PilotRank);
             Assert.Equal("Independent HIP 29241 Green Party", @event.Faction);
             Assert.Equal("Clean", @event.LegalStatus);
             Assert.Equal(100.000000, @event.ShieldHealth, 6);
@@ -48,7 +48,7 @@ namespace NSW.EliteDangerous.Events
         public static IEnumerable<object[]> Data =>
             new List<object[]>
             {
-                new object[] { EventName,  "{ \"timestamp\":\"2019-09-11T11:05:29Z\", \"event\":\"ShipTargeted\", \"TargetLocked\":true, \"Ship\":\"federation_fighter\", \"Ship_Localised\":\"F63 Condor\", \"ScanStage\":3, \"PilotName\":\"$ShipName_Police_Federation;\", \"PilotName_Localised\":\"Федеральная служба безопасности\", \"PilotRank\":\"Expert\", \"ShieldHealth\":100.000000, \"HullHealth\":100.000000, \"Faction\":\"Independent HIP 29241 Green Party\", \"LegalStatus\":\"Clean\" }" },
+                new object[] { EventName,  "{ \"timestamp\":\"2019-09-11T11:05:29Z\", \"event\":\"ShipTargeted\", \"TargetLocked\":true, \"Ship\":\"federation_fighter\", \"Ship_Localised\":\"F63 Condor\", \"ScanStage\":3, \"PilotName\":\"$ShipName_Police_Federation;\", \"PilotName_Localised\":\"Федеральная служба безопасности\", \"PilotRank\":\"Mostly Harmless\", \"ShieldHealth\":100.000000, \"HullHealth\":100.000000, \"Faction\":\"Independent HIP 29241 Green Party\", \"LegalStatus\":\"Clean\" }" },
             };
     }
 }

@@ -1,8 +1,10 @@
 using System;
 using System.Globalization;
 using System.IO;
+using Microsoft.Extensions.Logging;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Converters;
+using NSW.EliteDangerous.Exceptions;
 
 namespace NSW.EliteDangerous
 {
@@ -24,9 +26,9 @@ namespace NSW.EliteDangerous
 
         internal T FromJson<T>(TextReader textReader, JsonSerializerSettings settings = null)
         {
-            var serializer = settings == null ? _serializer.Value : JsonSerializer.Create(settings);
-            using (var jsonTextReader = new JsonTextReader(textReader))
-                return serializer.Deserialize<T>(jsonTextReader);
+                var serializer = settings == null ? _serializer.Value : JsonSerializer.Create(settings);
+                using (var jsonTextReader = new JsonTextReader(textReader) { SupportMultipleContent = true, CloseInput = false })
+                    return serializer.Deserialize<T>(jsonTextReader);
         }
 
         internal T FromJson<T>(Stream jsonStream, JsonSerializerSettings settings = null)
@@ -37,9 +39,20 @@ namespace NSW.EliteDangerous
 
         internal T FromJson<T>(string jsonString, JsonSerializerSettings settings = null)
         {
-            if (string.IsNullOrWhiteSpace(jsonString)) return default(T);
-            using (var streamReader = new StringReader(jsonString))
-                return FromJson<T>(streamReader, settings);
+            if (string.IsNullOrWhiteSpace(jsonString)) return default;
+
+            try
+            {
+                _log.LogDebug($"Parsing: {jsonString}");
+                using (var streamReader = new StringReader(jsonString))
+                    return FromJson<T>(streamReader, settings);
+            }
+            catch (Exception exception)
+            {
+                LogJournalException(new JournalRecordException(jsonString, exception));
+            }
+
+            return default;
         }
 
         internal T FromJsonFile<T>(string filePath)
@@ -53,9 +66,9 @@ namespace NSW.EliteDangerous
                         return FromJson<T>(reader);
                     }
                 }
-                catch
+                catch(Exception exception)
                 {
-
+                    LogJournalException(new JournalFileException(filePath, exception));
                 }
             }
 

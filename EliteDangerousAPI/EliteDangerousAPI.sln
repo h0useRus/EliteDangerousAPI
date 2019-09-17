@@ -11,6 +11,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "EliteDangerousAPI", "src\El
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "EliteDangerousAPI.UnitTests", "tests\EliteDangerousAPI.UnitTests\EliteDangerousAPI.UnitTests.csproj", "{3F60A432-4AF9-42D8-A49A-303173BD8122}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TestConsole", "tests\TestConsole\TestConsole.csproj", "{FCBB7E7B-81B5-4145-A735-47E4E93D39D9}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -25,6 +27,10 @@ Global
 		{3F60A432-4AF9-42D8-A49A-303173BD8122}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{3F60A432-4AF9-42D8-A49A-303173BD8122}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{3F60A432-4AF9-42D8-A49A-303173BD8122}.Release|Any CPU.Build.0 = Release|Any CPU
+		{FCBB7E7B-81B5-4145-A735-47E4E93D39D9}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{FCBB7E7B-81B5-4145-A735-47E4E93D39D9}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{FCBB7E7B-81B5-4145-A735-47E4E93D39D9}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{FCBB7E7B-81B5-4145-A735-47E4E93D39D9}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -32,6 +38,7 @@ Global
 	GlobalSection(NestedProjects) = preSolution
 		{57D4002E-B6AE-4FE0-9B93-78CD594C71CA} = {FB07BFAB-305F-433B-98EF-B88693403538}
 		{3F60A432-4AF9-42D8-A49A-303173BD8122} = {3BD227CF-458D-48D7-A82F-0989408F49B4}
+		{FCBB7E7B-81B5-4145-A735-47E4E93D39D9} = {3BD227CF-458D-48D7-A82F-0989408F49B4}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {9A29EFD8-96E9-42E4-9241-A2C39C7E77B1}
