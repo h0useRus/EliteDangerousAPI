@@ -1,3 +1,6 @@
+using System.IO;
+using System.Threading.Tasks;
+using NSW.EliteDangerous.Events;
 using Xunit;
 
 namespace NSW.EliteDangerous
@@ -13,26 +16,24 @@ namespace NSW.EliteDangerous
             Assert.Equal(ApiStatus.Stopped, api.Status);
         }
 
-        //[Fact]
-        //public void InitializationWithCustomFolder()
-        //{
-            
-        //    var api = new EliteDangerousAPI(Path.Combine(Directory.GetCurrentDirectory(), "files"));
-        //    Assert.Equal(ApiStatus.Running, api.Start());
-        //}
+        [Fact]
+        public void ShouldRunning()
+        {
+            using (var api = TestHelpers.FilesApi)
+            {
+                api.Start();
+                Assert.Equal(ApiStatus.Running, api.Status);
+            }
+        }
 
-        //[Fact]
-        //public void ShouldPending()
-        //{
-        //    var api = new EliteDangerousAPI(Directory.GetCurrentDirectory());
-        //    Assert.Equal(ApiStatus.Pending, api.Start());
-        //}
-
-        //[Fact]
-        //public void ShouldGameNotFound()
-        //{
-        //    var api = new EliteDangerousAPI(Path.GetRandomFileName());
-        //    Assert.Equal(ApiStatus.GameNotFound, api.Start());
-        //}
+        [Fact]
+        public void ShouldPending()
+        {
+            using (var api = TestHelpers.TestApi)
+            {
+                api.Start();
+                Assert.Equal(ApiStatus.Pending, api.Status);
+            }
+        }
     }
 }
