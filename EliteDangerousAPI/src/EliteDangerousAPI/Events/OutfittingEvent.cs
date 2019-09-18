@@ -1,6 +1,7 @@
 using System.IO;
 using NSW.EliteDangerous.Events.Entities;
 using Newtonsoft.Json;
+using NSW.EliteDangerous.Exceptions;
 
 namespace NSW.EliteDangerous.Events
 {
@@ -22,7 +23,17 @@ namespace NSW.EliteDangerous.Events
         public OutfittingItem[] Items { get; set; }
 
         internal static OutfittingEvent Execute(string json, EliteDangerousAPI api)
-            => api.Station.InvokeEvent(api.FromJsonFile<OutfittingEvent>(Path.Combine(api.JournalDirectory.FullName, "Outfitting.json"))
-                                       ?? api.FromJson<OutfittingEvent>(json));
+        {
+            var jsonEvent = api.FromJson<OutfittingEvent>(json);
+            var fileEvent = api.FromJsonFile<OutfittingEvent>(Path.Combine(api.JournalDirectory.FullName, "Outfitting.json"));
+
+            if (jsonEvent != null && fileEvent != null && fileEvent.MarketId != jsonEvent.MarketId)
+            {
+                api.LogJournalWarning(new JournalEventConsistencyException<OutfittingEvent>(jsonEvent, fileEvent));
+            }
+
+            return api.Station.InvokeEvent(fileEvent ?? jsonEvent);
+        }
+            
     }
 }

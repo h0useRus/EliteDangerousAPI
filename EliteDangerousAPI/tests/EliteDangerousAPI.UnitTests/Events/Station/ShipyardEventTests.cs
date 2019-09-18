@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using NSW.EliteDangerous.Exceptions;
 using Xunit;
 
 namespace NSW.EliteDangerous.Events
@@ -62,6 +63,15 @@ namespace NSW.EliteDangerous.Events
                 Assert.IsType<EliteDangerousAPI>(sender);
                 AssertFileEvent(@event);
                 eventFired = true;
+            };
+
+            api.Warnings += (sender, exception) =>
+            {
+                Assert.IsType<EliteDangerousAPI>(sender);
+                Assert.IsType<JournalEventConsistencyException<ShipyardEvent>>(exception);
+
+                AssertEvent(((JournalEventConsistencyException<ShipyardEvent>)exception).FromJournal);
+                AssertFileEvent(((JournalEventConsistencyException<ShipyardEvent>)exception).FromFile);
             };
 
             Assert.True(api.HasEvent(eventName));

@@ -1,1 +1,2 @@
-{ "timestamp":"2019-09-08T10:53:28Z", "event":"Status", "Flags":0 }
+{ "timestamp":"2017-12-07T12:03:14Z", "event":"Status", "Flags":18874376, "Pips":[4,8,0], "FireGroup":0, "Fuel":{ "FuelMain":15.146626, "FuelReservoir":0.382796 }, "GuiFocus":0, "Latitude":-28.584963, "Longitude":6.826313, "Heading":109, "Altitude": 404 }
+

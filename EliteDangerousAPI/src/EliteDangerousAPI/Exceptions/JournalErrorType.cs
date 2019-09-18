@@ -5,6 +5,7 @@ namespace NSW.EliteDangerous.Exceptions
         OnReadingFile,
         OnReadingRecord,
         JournalNotFound,
-        EventNotFound
+        EventNotFound,
+        EventConsistency
     }
 }

@@ -1,6 +1,7 @@
 using System;
 using System.IO;
 using System.Linq;
+using System.Runtime.InteropServices;
 using System.Threading.Tasks;
 using System.Timers;
 using Microsoft.Extensions.Logging;
@@ -11,14 +12,35 @@ namespace NSW.EliteDangerous
 {
     public partial class EliteDangerousAPI
     {
+        #region DefaultJournalDirectory
+
+        [DllImport("Shell32.dll")]
+        private static extern int SHGetKnownFolderPath([MarshalAs(UnmanagedType.LPStruct)]Guid rfid, uint dwFlags, IntPtr hToken, out IntPtr ppszPath);
+
+        private static string DefaultJournalDirectory
+        {
+            get
+            {
+                if (SHGetKnownFolderPath(new Guid("4C5C32FF-BB9D-43B0-B5B4-2D72E54EAAA4"), 0, new IntPtr(0), out var path) >= 0)
+                {
+                    try { return Path.Combine(Marshal.PtrToStringUni(path), @"Frontier Developments\Elite Dangerous"); }
+                    catch { }
+                }
+
+                return Environment.CurrentDirectory;
+            }
+        }
+        #endregion
+
         private readonly object @lock = new object();
+        private readonly TimeSpan _checkInterval = TimeSpan.FromMilliseconds(10000);
 
         private long _filePosition;
         private FileInfo _currentJournalFile;
         private FileSystemWatcher _journalDirectoryWatcher;
         private Timer _journalFileMonitor;
-        private readonly TimeSpan _checkInterval = TimeSpan.FromMilliseconds(10000);
-
+        private StatusEvent _currentGameStatus;
+        
         private void StartJournalProcessing()
         {
             JournalDirectory.Create();
@@ -42,6 +64,7 @@ namespace NSW.EliteDangerous
             _currentJournalFile = GetLatestJournalFile();
             _filePosition = _currentJournalFile?.Length ?? 0;
             SendEventsFromJournal(false);
+            SendEventFromStatus(Path.Combine(JournalDirectory.FullName, "Status.json"));
 
             _journalDirectoryWatcher.EnableRaisingEvents = true;
             _log.LogInformation($"Listening {JournalDirectory.FullName}");
@@ -133,19 +156,44 @@ namespace NSW.EliteDangerous
         {
             if (Path.GetExtension(e.FullPath) == ".log")
                 SendEventsFromJournal(new FileInfo(e.FullPath) != _currentJournalFile);
+
+            if(string.Equals(Path.GetFileName(e.FullPath), "Status.json"))
+                SendEventFromStatus(e.FullPath);
+        }
+
+        private void SendEventFromStatus(string statusFilePath)
+        {
+            lock (@lock)
+            {
+                var @event = FromJsonFile<StatusEvent>(statusFilePath);
+                if (@event != null)
+                {
+                    if (_currentGameStatus != @event)
+                    {
+                        _currentGameStatus = @event;
+                        Game.InvokeEvent(@event);
+                        AllEvents?.Invoke(this, new GlobalEvent
+                        {
+                            EventName = @event.Event.ToLower(),
+                            EventType = typeof(StatusEvent),
+                            Event = @event
+                        });
+                    }
+                }
+            }
         }
 
         private FileInfo GetLatestJournalFile() => JournalDirectory.GetFiles("Journal.*.log", SearchOption.TopDirectoryOnly)
                                                                    .OrderByDescending(f => f.Name)
                                                                    .FirstOrDefault();
 
-        private void LogJournalException(JournalException exception)
+        internal void LogJournalException(JournalException exception)
         {
             _log.LogError(exception, exception.Type.ToString());
             Errors?.Invoke(this, exception);
         }
 
-        private void LogJournalWarning(JournalException exception)
+        internal void LogJournalWarning(JournalException exception)
         {
             _log.LogWarning(exception, exception.Type.ToString());
             Warnings?.Invoke(this, exception);

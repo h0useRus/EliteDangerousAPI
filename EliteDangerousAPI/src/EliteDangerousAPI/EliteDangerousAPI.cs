@@ -11,40 +11,7 @@ namespace NSW.EliteDangerous
 {
     public partial class EliteDangerousAPI : IDisposable
     {
-        #region DefaultJournalDirectory
-
-        [DllImport("Shell32.dll")]
-        private static extern int SHGetKnownFolderPath([MarshalAs(UnmanagedType.LPStruct)]Guid rfid, uint dwFlags, IntPtr hToken, out IntPtr ppszPath);
-
-        private static string DefaultJournalDirectory
-        {
-            get
-            {
-                if (SHGetKnownFolderPath(new Guid("4C5C32FF-BB9D-43B0-B5B4-2D72E54EAAA4"), 0, new IntPtr(0), out var path) >= 0)
-                {
-                    try { return Path.Combine(Marshal.PtrToStringUni(path), @"Frontier Developments\Elite Dangerous"); }
-                    catch { }
-                }
-
-                return Environment.CurrentDirectory;
-            }
-        }
-        #endregion
-        
         private readonly ILogger _log;
-        private ApiStatus _status;
-        public ApiStatus Status
-        {
-            get => _status;
-            private set
-            {
-                if(_status != value)
-                {
-                    _status = value;
-                    StatusChanged?.Invoke(this, _status);
-                }
-            }
-        }
 
         public bool GameRunning => Process.GetProcessesByName("EliteDangerous64").Length > 0;
 
@@ -71,9 +38,11 @@ namespace NSW.EliteDangerous
             if (Status != ApiStatus.Stopped)
                 return;
 
+            _log.LogInformation($"Elite Dangerous API v.{Version}");
+
             StartJournalProcessing();
 
-            _log.LogInformation($"Elite Dangerous API v. {Version} {Status}");
+            _log.LogInformation($"API {Status}");            
         }
 
         public void Stop()
@@ -87,8 +56,6 @@ namespace NSW.EliteDangerous
 
             _log.LogInformation($"API {Status}");
         }
-
-        public event EventHandler<ApiStatus> StatusChanged;
 
         #region IDisposable
 

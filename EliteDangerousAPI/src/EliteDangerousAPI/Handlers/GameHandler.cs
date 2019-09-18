@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using NSW.EliteDangerous.Events;
 
 namespace NSW.EliteDangerous.Handlers
@@ -7,6 +7,11 @@ namespace NSW.EliteDangerous.Handlers
     {
         private readonly EliteDangerousAPI _api;
         internal GameHandler(EliteDangerousAPI api) { _api = api; }
+        /// <summary>
+        /// When loading from main menu into game
+        /// </summary>
+        public event EventHandler<StatusEvent> Status;
+        internal StatusEvent InvokeEvent(StatusEvent arg) { Status?.Invoke(_api, arg); return arg; }
         /// <summary>
         /// When loading from main menu into game
         /// </summary>
@@ -37,6 +42,5 @@ namespace NSW.EliteDangerous.Handlers
         /// </summary>
         public event EventHandler<ShutdownEvent> Shutdown;
         internal ShutdownEvent InvokeEvent(ShutdownEvent arg) { Shutdown?.Invoke(_api, arg); return arg; }
-
     }
 }
