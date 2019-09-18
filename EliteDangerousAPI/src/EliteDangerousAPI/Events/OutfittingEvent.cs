@@ -1,4 +1,5 @@
-﻿using NSW.EliteDangerous.Events.Entities;
+using System.IO;
+using NSW.EliteDangerous.Events.Entities;
 using Newtonsoft.Json;
 
 namespace NSW.EliteDangerous.Events
@@ -20,6 +21,8 @@ namespace NSW.EliteDangerous.Events
         [JsonProperty("Items")]
         public OutfittingItem[] Items { get; set; }
 
-        internal static OutfittingEvent Execute(string json, EliteDangerousAPI api) => api.Station.InvokeEvent(api.FromJson<OutfittingEvent>(json));
+        internal static OutfittingEvent Execute(string json, EliteDangerousAPI api)
+            => api.Station.InvokeEvent(api.FromJsonFile<OutfittingEvent>(Path.Combine(api.JournalDirectory.FullName, "Outfitting.json"))
+                                       ?? api.FromJson<OutfittingEvent>(json));
     }
 }

@@ -13,6 +13,7 @@ namespace NSW.EliteDangerous.Events
         public void ShouldExecuteEvent(string eventName, string json)
         {
             var api = new EliteDangerousAPI();
+            var globalFired = false;
             var eventFired = false;
 
             api.AllEvents += (s, e) =>
@@ -21,6 +22,8 @@ namespace NSW.EliteDangerous.Events
                 Assert.Equal("outfitting", e.EventName);
                 Assert.Equal(typeof(OutfittingEvent), e.EventType);
                 Assert.IsType<OutfittingEvent>(e.Event);
+                AssertEvent((OutfittingEvent)e.Event);
+                globalFired = true;
             };
 
             api.Station.Outfitting += (sender, @event) =>
@@ -33,6 +36,38 @@ namespace NSW.EliteDangerous.Events
             Assert.True(api.HasEvent(eventName));
             AssertEvent(api.ExecuteEvent(eventName, json) as OutfittingEvent);
             Assert.True(eventFired, $"Event {EventName} is not thrown");
+            Assert.True(globalFired, "Global event is not thrown");
+        }
+
+        [Theory]
+        [MemberData(nameof(Data))]
+        public void ShouldReadFileEvent(string eventName, string json)
+        {
+            var api = new EliteDangerousAPI(TestHelpers.TestFolder);
+            var globalFired = false;
+            var eventFired = false;
+
+            api.AllEvents += (s, e) =>
+            {
+                Assert.IsType<EliteDangerousAPI>(s);
+                Assert.Equal("outfitting", e.EventName);
+                Assert.Equal(typeof(OutfittingEvent), e.EventType);
+                Assert.IsType<OutfittingEvent>(e.Event);
+                AssertFileEvent((OutfittingEvent)e.Event);
+                globalFired = true;
+            };
+
+            api.Station.Outfitting += (sender, @event) =>
+            {
+                Assert.IsType<EliteDangerousAPI>(sender);
+                AssertFileEvent(@event);
+                eventFired = true;
+            };
+
+            Assert.True(api.HasEvent(eventName));
+            AssertFileEvent(api.ExecuteEvent(eventName, json) as OutfittingEvent);
+            Assert.True(eventFired, $"Event {EventName} is not thrown");
+            Assert.True(globalFired, "Global event is not thrown");
         }
 
         private static void AssertEvent(OutfittingEvent @event)
@@ -43,6 +78,26 @@ namespace NSW.EliteDangerous.Events
             Assert.Equal(128675975, @event.MarketId);
             Assert.Equal("Demolition Unlimited", @event.StationName);
             Assert.Equal("Eurybia", @event.StarSystem);
+        }
+
+        private static void AssertFileEvent(OutfittingEvent @event)
+        {
+            Assert.NotNull(@event);
+            Assert.Equal(DateTime.Parse("2019-09-08T10:23:48Z"), @event.Timestamp);
+            Assert.Equal(EventName, @event.Event);
+            Assert.Equal(3223641856, @event.MarketId);
+            Assert.Equal("Nagel City", @event.StationName);
+            Assert.Equal("Scylla", @event.StarSystem);
+            Assert.True(@event.Horizons);
+            Assert.Equal(259, @event.Items.Length);
+
+            Assert.Equal(128049445, @event.Items[0].Id);
+            Assert.Equal("hpt_cannon_turret_small", @event.Items[0].Name);
+            Assert.Equal(506400, @event.Items[0].BuyPrice);
+
+            Assert.Equal(128064085, @event.Items[258].Id);
+            Assert.Equal("int_engine_size5_class3", @event.Items[258].Name);
+            Assert.Equal(567106, @event.Items[258].BuyPrice);
         }
 
         public static IEnumerable<object[]> Data =>

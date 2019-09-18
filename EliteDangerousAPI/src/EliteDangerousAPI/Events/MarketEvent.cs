@@ -18,10 +18,8 @@ namespace NSW.EliteDangerous.Events
         [JsonProperty("Items")]
         public MarketItem[] Items { get; set; }
 
-        private const string FileName = "Market.json";
-
         internal static MarketEvent Execute(string json, EliteDangerousAPI api)
-            => api.Station.InvokeEvent(api.FromJsonFile<MarketEvent>(Path.Combine(api.JournalDirectory.FullName, FileName))
+            => api.Station.InvokeEvent(api.FromJsonFile<MarketEvent>(Path.Combine(api.JournalDirectory.FullName, "Market.json"))
                                        ?? api.FromJson<MarketEvent>(json));
     }
 }

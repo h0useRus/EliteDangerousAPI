@@ -1,4 +1,5 @@
-﻿using NSW.EliteDangerous.Events.Entities;
+using System.IO;
+using NSW.EliteDangerous.Events.Entities;
 using Newtonsoft.Json;
 
 namespace NSW.EliteDangerous.Events
@@ -18,11 +19,13 @@ namespace NSW.EliteDangerous.Events
         public bool? Horizons { get; set; }
 
         [JsonProperty("AllowCobraMkIV")]
-        public bool? AllowCobraMkIv { get; set; }
+        public bool? AllowCobraMkIV { get; set; }
 
         [JsonProperty("PriceList")]
         public ShipyardPrice[] Prices { get; set; }
 
-        internal static ShipyardEvent Execute(string json, EliteDangerousAPI api) => api.Station.InvokeEvent(api.FromJson<ShipyardEvent>(json));
+        internal static ShipyardEvent Execute(string json, EliteDangerousAPI api)
+            => api.Station.InvokeEvent(api.FromJsonFile<ShipyardEvent>(Path.Combine(api.JournalDirectory.FullName, "Shipyard.json"))
+                                       ?? api.FromJson<ShipyardEvent>(json));
     }
 }
