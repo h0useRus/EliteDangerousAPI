@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using Xunit;
 
@@ -10,7 +10,7 @@ namespace NSW.EliteDangerous.Events
         [MemberData(nameof(Data))]
         public void ShouldExecuteEvent(string eventName, string json)
         {
-            var api = new EliteDangerousAPI();
+            var api = (EliteDangerousAPI)TestHelpers.TestApi;
             var eventFired = false;
             api.Game.ClearSavedGame += (sender, @event) =>
             {

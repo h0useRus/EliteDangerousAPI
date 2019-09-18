@@ -8,7 +8,7 @@ namespace NSW.EliteDangerous.Events
         [Fact]
         public void ShouldRunOnStartEvent()
         {
-            var api = new EliteDangerousAPI(TestHelpers.TestFolder);
+            var api = TestHelpers.FilesApi;
             var eventFired = false;
             api.Game.Status += (sender, @event) =>
             {
@@ -23,7 +23,7 @@ namespace NSW.EliteDangerous.Events
             api.Stop();
         }
 
-        private void AssertEvent(StatusEvent @event)
+        private static void AssertEvent(StatusEvent @event)
         {
             Assert.NotNull(@event);
             Assert.Equal(DateTime.Parse("2017-12-07T12:03:14Z"), @event.Timestamp);

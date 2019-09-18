@@ -1,5 +1,3 @@
-using System.IO;
-using System.Reflection;
 using Xunit;
 
 namespace NSW.EliteDangerous
@@ -9,7 +7,7 @@ namespace NSW.EliteDangerous
         [Fact]
         public void Initialization()
         {
-            var api = new EliteDangerousAPI();
+            var api = TestHelpers.TestApi;
             Assert.Equal(25, api.DocumentationVersion);
             Assert.Equal("1.0.25.0", api.Version);
             Assert.Equal(ApiStatus.Stopped, api.Status);

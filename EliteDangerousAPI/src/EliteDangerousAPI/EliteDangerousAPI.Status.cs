@@ -1,9 +1,8 @@
 using System;
-using System.IO;
 
 namespace NSW.EliteDangerous
 {
-    public partial class EliteDangerousAPI
+    partial class EliteDangerousAPI
     {
         #region API Status
         private ApiStatus _status;

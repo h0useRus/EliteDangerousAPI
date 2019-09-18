@@ -11,7 +11,7 @@ using NSW.EliteDangerous.Exceptions;
 
 namespace NSW.EliteDangerous
 {
-    public partial class EliteDangerousAPI
+    partial class EliteDangerousAPI
     {
         private static readonly Lazy<Dictionary<string, EventCacheItem>> _cache = new Lazy<Dictionary<string, EventCacheItem>>(BuildCache);
 

@@ -1,7 +1,7 @@
-﻿<Project Sdk="Microsoft.NET.Sdk">
+<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
-    <VersionPrefix>1.0.25-preview1</VersionPrefix>
+    <VersionPrefix>1.0.25-preview2</VersionPrefix>
     <Description>Multi-platform Elite : Dangerous API Library</Description>
     <Copyright>Copyright В© 2019-2020 NewSoftWorld</Copyright>
     <AssemblyTitle>Multi-platform Elite : Dangerous API Library</AssemblyTitle>

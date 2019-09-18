@@ -13,7 +13,7 @@ namespace NSW.EliteDangerous.Events
         [MemberData(nameof(Data))]
         public void ShouldExecuteEvent(string eventName, string json)
         {
-            var api = new EliteDangerousAPI();
+            var api = (EliteDangerousAPI)TestHelpers.TestApi;
             var globalFired = false;
             var eventFired = false;
 
@@ -44,7 +44,7 @@ namespace NSW.EliteDangerous.Events
         [MemberData(nameof(Data))]
         public void ShouldReadFileEvent(string eventName, string json)
         {
-            var api = new EliteDangerousAPI(TestHelpers.TestFolder);
+            var api = (EliteDangerousAPI)TestHelpers.FilesApi;
             var globalFired = false;
             var eventFired = false;
 

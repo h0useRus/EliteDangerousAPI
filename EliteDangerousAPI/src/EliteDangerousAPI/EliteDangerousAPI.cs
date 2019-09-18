@@ -5,13 +5,15 @@ using System.Reflection;
 using System.Runtime.InteropServices;
 using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.Logging.Abstractions;
+using Microsoft.Extensions.Options;
 
 
 namespace NSW.EliteDangerous
 {
-    public partial class EliteDangerousAPI : IDisposable
+    internal partial class EliteDangerousAPI : IEliteDangerousAPI
     {
         private readonly ILogger _log;
+        private readonly ApiOptions _settings;
 
         public bool GameRunning => Process.GetProcessesByName("EliteDangerous64").Length > 0;
 
@@ -21,16 +23,11 @@ namespace NSW.EliteDangerous
 
         public string Version => Assembly.GetAssembly(typeof(EliteDangerousAPI)).GetCustomAttribute<AssemblyFileVersionAttribute>().Version;
 
-        public EliteDangerousAPI() : this(DefaultJournalDirectory) { }
-
-        public EliteDangerousAPI(ILoggerFactory loggerFactory) : this(DefaultJournalDirectory, loggerFactory) { }
-
-        public EliteDangerousAPI(string journalDirectory) : this(journalDirectory, new NullLoggerFactory()) { }
-
-        public EliteDangerousAPI(string journalDirectory, ILoggerFactory loggerFactory)
+        public EliteDangerousAPI(IOptions<ApiOptions> options, ILoggerFactory loggerFactory)
         {
+            _settings = options?.Value ?? ApiOptions.Default;
             _log = loggerFactory.CreateLogger<EliteDangerousAPI>();
-            JournalDirectory = new DirectoryInfo(journalDirectory);
+            JournalDirectory = new DirectoryInfo(_settings.JournalDirectory);
             InitHandlers();
         }
         public void Start()

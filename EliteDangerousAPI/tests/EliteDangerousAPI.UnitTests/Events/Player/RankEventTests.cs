@@ -11,7 +11,7 @@ namespace NSW.EliteDangerous.Events
         [MemberData(nameof(Data))]
         public void ShouldExecuteEvent(string eventName, string json)
         {
-            var api = new EliteDangerousAPI();
+            var api = (EliteDangerousAPI)TestHelpers.TestApi;
             var eventFired = false;
             api.Player.Rank += (sender, @event) =>
             {

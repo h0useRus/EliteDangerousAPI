@@ -2,7 +2,7 @@ using NSW.EliteDangerous.Handlers;
 
 namespace NSW.EliteDangerous
 {
-    public partial class EliteDangerousAPI
+    partial class EliteDangerousAPI
     {
         public GameHandler Game { get; private set; }
         public PlayerHandler Player { get; private set; }

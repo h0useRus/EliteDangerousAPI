@@ -10,30 +10,9 @@ using NSW.EliteDangerous.Exceptions;
 
 namespace NSW.EliteDangerous
 {
-    public partial class EliteDangerousAPI
+    partial class EliteDangerousAPI
     {
-        #region DefaultJournalDirectory
-
-        [DllImport("Shell32.dll")]
-        private static extern int SHGetKnownFolderPath([MarshalAs(UnmanagedType.LPStruct)]Guid rfid, uint dwFlags, IntPtr hToken, out IntPtr ppszPath);
-
-        private static string DefaultJournalDirectory
-        {
-            get
-            {
-                if (SHGetKnownFolderPath(new Guid("4C5C32FF-BB9D-43B0-B5B4-2D72E54EAAA4"), 0, new IntPtr(0), out var path) >= 0)
-                {
-                    try { return Path.Combine(Marshal.PtrToStringUni(path), @"Frontier Developments\Elite Dangerous"); }
-                    catch { }
-                }
-
-                return Environment.CurrentDirectory;
-            }
-        }
-        #endregion
-
         private readonly object @lock = new object();
-        private readonly TimeSpan _checkInterval = TimeSpan.FromMilliseconds(10000);
 
         private long _filePosition;
         private FileInfo _currentJournalFile;
@@ -55,7 +34,7 @@ namespace NSW.EliteDangerous
             _journalFileMonitor = new Timer
             {
                 AutoReset = true,
-                Interval = _checkInterval.TotalMilliseconds
+                Interval = _settings.CheckInterval.TotalMilliseconds
             };
 
             _journalFileMonitor.Elapsed += MonitorJournal;
@@ -147,9 +126,9 @@ namespace NSW.EliteDangerous
         {
             Task.Run(() => SendEventsFromJournal(false));
             if (GameRunning)
-                _journalFileMonitor.Interval = _checkInterval.TotalMilliseconds;
+                _journalFileMonitor.Interval = _settings.CheckInterval.TotalMilliseconds;
             else
-                _journalFileMonitor.Interval = _checkInterval.TotalMilliseconds * 6;
+                _journalFileMonitor.Interval = _settings.CheckInterval.TotalMilliseconds * 6;
         }
 
         private void ProcessJournal(object sender, FileSystemEventArgs e)
@@ -168,7 +147,7 @@ namespace NSW.EliteDangerous
                 var @event = FromJsonFile<StatusEvent>(statusFilePath);
                 if (@event != null)
                 {
-                    if (_currentGameStatus != @event)
+                    if (!@event.Equals(_currentGameStatus))
                     {
                         _currentGameStatus = @event;
                         Game.InvokeEvent(@event);

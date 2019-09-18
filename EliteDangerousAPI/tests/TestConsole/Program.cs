@@ -14,9 +14,10 @@ namespace TestConsole
             var serviceProvider = new ServiceCollection()
                 .AddLogging(cfg => cfg.AddConsole())
                 .Configure<LoggerFilterOptions>(cfg => cfg.MinLevel=LogLevel.Debug)
+                .AddEliteDangerousAPI(Path.Combine(Directory.GetCurrentDirectory(), "logs"))
                 .BuildServiceProvider();
 
-            var api = new EliteDangerousAPI(Path.Combine(Directory.GetCurrentDirectory(), "logs"), serviceProvider.GetService<ILoggerFactory>());
+            var api = serviceProvider.GetService<IEliteDangerousAPI>();
 
             api.StatusChanged += (sender, status) => Console.WriteLine($"API status {status}");
             api.Errors += (sender, exception) =>

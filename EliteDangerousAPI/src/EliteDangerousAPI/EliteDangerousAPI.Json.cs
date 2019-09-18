@@ -8,7 +8,7 @@ using NSW.EliteDangerous.Exceptions;
 
 namespace NSW.EliteDangerous
 {
-    public partial class EliteDangerousAPI
+    partial class EliteDangerousAPI
     {
         internal static readonly JsonSerializerSettings Settings = new JsonSerializerSettings
         {
