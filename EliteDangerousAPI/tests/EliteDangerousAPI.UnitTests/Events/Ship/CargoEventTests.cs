@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using NSW.EliteDangerous.Events.Entities;
 using Xunit;
 
 namespace NSW.EliteDangerous.Events
@@ -29,7 +30,7 @@ namespace NSW.EliteDangerous.Events
             Assert.NotNull(@event);
             Assert.Equal(DateTime.Parse("2018-06-26T08:21:17Z"), @event.Timestamp);
             Assert.Equal("Cargo", @event.Event);
-            Assert.Equal("Ship", @event.Vessel);
+            Assert.Equal(VehicleType.Ship, @event.Vessel);
             Assert.Equal(3, @event.Inventory.Length);
 
             Assert.Equal("gold", @event.Inventory[0].Name);

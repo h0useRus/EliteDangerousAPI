@@ -15,7 +15,7 @@ namespace NSW.EliteDangerous
         private readonly ILogger _log;
         private readonly ApiOptions _settings;
 
-        public bool GameRunning => Process.GetProcessesByName("EliteDangerous64").Length > 0;
+        internal static bool GameRunning => Process.GetProcessesByName("EliteDangerous64").Length > 0;
 
         public DirectoryInfo JournalDirectory { get; }
 
@@ -30,13 +30,16 @@ namespace NSW.EliteDangerous
             JournalDirectory = new DirectoryInfo(_settings.JournalDirectory);
             InitHandlers();
             InitPlugins();
+
+            if(_settings.AutoRun)
+                Start();
         }
         public void Start()
         {
             if (Status != ApiStatus.Stopped)
                 return;
 
-            _log.LogInformation($"Elite Dangerous API v.{Version}");
+            _log.LogInformation($"Elite Dangerous API v.{Version} ({DocumentationVersion})");
 
             StartJournalProcessing();
             StartPlugins();

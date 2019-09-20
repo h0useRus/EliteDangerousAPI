@@ -1,4 +1,5 @@
 using System;
+using System.Linq;
 using NSW.EliteDangerous.Events.Entities;
 using Newtonsoft.Json;
 
@@ -13,7 +14,7 @@ namespace NSW.EliteDangerous.Events
         public byte[] Pips { get; internal set; }
 
         [JsonProperty("FireGroup")]
-        public long FireGroup { get; internal set; }
+        public byte FireGroup { get; internal set; }
 
         [JsonProperty("GuiFocus")]
         public GuiFocus GuiFocus { get; internal set; }
@@ -45,101 +46,6 @@ namespace NSW.EliteDangerous.Events
         [JsonProperty("PlanetRadius")]
         public double PlanetRadius { get; internal set; }
 
-        [JsonIgnore]
-        public bool Docked => GetFlag(0);
-
-        [JsonIgnore]
-        public bool Landed => GetFlag(1);
-
-        [JsonIgnore]
-        public bool GearDown => GetFlag(2);
-
-        [JsonIgnore]
-        public bool ShieldsUp => GetFlag(3);
-
-        [JsonIgnore]
-        public bool InSupercruise => GetFlag(4);
-
-        [JsonIgnore]
-        public bool FlightAssistOff => !GetFlag(5);
-
-        [JsonIgnore]
-        public bool HardpointsDeployed => GetFlag(6);
-
-        [JsonIgnore]
-        public bool InWing => GetFlag(7);
-
-        [JsonIgnore]
-        public bool LightsOn => GetFlag(8);
-
-        [JsonIgnore]
-        public bool CargoScoopDeployed => GetFlag(9);
-
-        [JsonIgnore]
-        public bool SilentRunning => GetFlag(10);
-
-        [JsonIgnore]
-        public bool ScoopingFuel => GetFlag(11);
-
-        [JsonIgnore]
-        public bool SrvHandbreak => GetFlag(12);
-
-        [JsonIgnore]
-        public bool SrvTurrentInUse => GetFlag(13);
-
-        [JsonIgnore]
-        public bool SrvTurrentRetracted => GetFlag(14);
-
-        [JsonIgnore]
-        public bool SrvNearShip => GetFlag(14);
-
-        [JsonIgnore]
-        public bool SrvDriveAssist => GetFlag(15);
-
-        [JsonIgnore]
-        public bool FsdMassLocked => GetFlag(16);
-
-        [JsonIgnore]
-        public bool FsdCharging => GetFlag(17);
-
-        [JsonIgnore]
-        public bool FsdCooldown => GetFlag(18);
-
-        [JsonIgnore]
-        public bool LowFuel => GetFlag(19);
-
-        [JsonIgnore]
-        public bool Overheating => GetFlag(20);
-
-        [JsonIgnore]
-        public bool HasLatLong => GetFlag(21);
-
-        [JsonIgnore]
-        public bool InDanger => GetFlag(22);
-
-        [JsonIgnore]
-        public bool Interdicted => GetFlag(23);
-
-        [JsonIgnore]
-        public bool InMothership => GetFlag(24);
-
-        [JsonIgnore]
-        public bool InFighter => GetFlag(25);
-
-        [JsonIgnore]
-        public bool InSrv => GetFlag(26);
-
-        [JsonIgnore]
-        public bool AnalysisMode => GetFlag(27);
-
-        [JsonIgnore]
-        public bool NightVision => GetFlag(28);
-
-        [JsonIgnore]
-        public bool HighAltitudeMode => GetFlag(29);
-        
-        private bool GetFlag(int bit) => Flags.HasFlag((ShipStatusFlags)(1 << bit));
-
         #region Equality members
 
         /// <inheritdoc />
@@ -165,25 +71,15 @@ namespace NSW.EliteDangerous.Events
 
         private bool CheckPips(byte[] a, byte[] b)
         {
-            if (a == null && b == null)
-                return true;
+            if (a == null && b == null) return true;
 
-            if (a != null && b == null)
-                return false;
+            if (a != null && b == null) return false;
 
-            if (a == null && b != null)
-                return false;
+            if (a == null) return false;
 
-            if (a.Length != b.Length)
-                return false;
+            if (a.Length != b.Length) return false;
 
-            for (int i = 0; i < a.Length; i++)
-            {
-                if (a[i] != b[i])
-                    return false;
-            }
-
-            return true;
+            return !a.Where((t, i) => t != b[i]).Any();
         }
 
         /// <inheritdoc />
@@ -191,7 +87,7 @@ namespace NSW.EliteDangerous.Events
         {
             if (ReferenceEquals(null, obj)) return false;
             if (ReferenceEquals(this, obj)) return true;
-            if (obj.GetType() != this.GetType()) return false;
+            if (obj.GetType() != GetType()) return false;
 
             return Equals((StatusEvent) obj);
         }

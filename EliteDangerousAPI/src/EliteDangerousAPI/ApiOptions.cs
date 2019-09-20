@@ -30,6 +30,11 @@ namespace NSW.EliteDangerous
         #endregion
 
         /// <summary>
+        /// Automatically run API on creation.
+        /// </summary>
+        public bool AutoRun { get; set; }
+
+        /// <summary>
         /// Elite Dangerous journal location path 
         /// </summary>
         public string JournalDirectory { get; set; } = DefaultJournalDirectory;

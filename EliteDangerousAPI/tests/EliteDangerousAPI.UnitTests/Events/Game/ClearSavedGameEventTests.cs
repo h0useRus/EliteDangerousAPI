@@ -36,7 +36,7 @@ namespace NSW.EliteDangerous.Events
         public static IEnumerable<object[]> Data =>
             new List<object[]>
             {
-                new object[] { "ClearSavedGame",  "{ \"timestamp\":\"2016-06-10T14:32:03Z\", \"event\":\"ClearSavedGame\", \"Name\":\"HRC1\",\r\n\"FID\":\"F44396\" } " },
+                new object[] { "ClearSavedGame",  "{ \"timestamp\":\"2016-06-10T14:32:03Z\", \"event\":\"ClearSavedGame\", \"Name\":\"HRC1\",\"FID\":\"F44396\" }" },
             };
     }
 }

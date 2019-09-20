@@ -1,7 +1,6 @@
 using System;
 using System.IO;
 using System.Linq;
-using System.Runtime.InteropServices;
 using System.Threading.Tasks;
 using System.Timers;
 using Microsoft.Extensions.Logging;
@@ -51,6 +50,7 @@ namespace NSW.EliteDangerous
 
         private void StopJournalProcessing()
         {
+            _currentGameStatus = null;
             _journalDirectoryWatcher.EnableRaisingEvents = false;
             _journalDirectoryWatcher.Created -= ProcessJournal;
             _journalDirectoryWatcher.Changed -= ProcessJournal;
@@ -82,6 +82,7 @@ namespace NSW.EliteDangerous
 
                         Status = ApiStatus.Running;
                         _currentJournalFile = latestFile;
+                        JournalFound?.Invoke(this, _currentJournalFile.Name);
                         _log.LogInformation($"New Journal file {_currentJournalFile.FullName}");
                         _filePosition = ReadJournalFromPosition(_currentJournalFile, 0);
                     }
@@ -178,6 +179,7 @@ namespace NSW.EliteDangerous
             Warnings?.Invoke(this, exception);
         }
 
+        public event EventHandler<string> JournalFound;
         public event EventHandler<JournalException> Errors;
         public event EventHandler<JournalException> Warnings;
     }

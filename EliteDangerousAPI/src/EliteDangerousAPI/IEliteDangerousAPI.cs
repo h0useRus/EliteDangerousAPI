@@ -13,7 +13,6 @@ namespace NSW.EliteDangerous
         int DocumentationVersion { get ; }
         string Version { get; }
         ApiStatus Status { get; }
-        bool GameRunning { get; }
         IReadOnlyDictionary<Guid, IEliteDangerousPlugin> Plugins { get; }
 
         void Start();
@@ -33,6 +32,7 @@ namespace NSW.EliteDangerous
         CrewHandler Crew { get; }
 
         event EventHandler<ApiStatus> StatusChanged;
+        event EventHandler<string> JournalFound;
         event EventHandler<GlobalEvent> AllEvents;
         event EventHandler<JournalException> Errors;
         event EventHandler<JournalException> Warnings;

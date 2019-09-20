@@ -56,8 +56,14 @@ namespace NSW.EliteDangerous
 
         private void StartPlugins()
         {
-            foreach (var plugin in Plugins)
-                    plugin.Value.StartAsync();
+            try
+            {
+                Task.WaitAll(Plugins.Select(plugin => plugin.Value.StartAsync()).ToArray());
+            }
+            catch (Exception exception)
+            {
+                _log.LogError(exception, exception.Message);
+            }
         }
 
         private void StopPlugins()
