@@ -29,6 +29,7 @@ namespace NSW.EliteDangerous
             _log = loggerFactory.CreateLogger<EliteDangerousAPI>();
             JournalDirectory = new DirectoryInfo(_settings.JournalDirectory);
             InitHandlers();
+            InitPlugins();
         }
         public void Start()
         {
@@ -38,6 +39,7 @@ namespace NSW.EliteDangerous
             _log.LogInformation($"Elite Dangerous API v.{Version}");
 
             StartJournalProcessing();
+            StartPlugins();
 
             _log.LogInformation($"API {Status}");            
         }
@@ -47,6 +49,7 @@ namespace NSW.EliteDangerous
             if (Status == ApiStatus.Stopped)
                 return;
 
+            StopPlugins();
             StopJournalProcessing();
 
             Status = ApiStatus.Stopped;

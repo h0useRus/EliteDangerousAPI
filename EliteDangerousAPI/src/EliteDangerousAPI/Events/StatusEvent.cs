@@ -10,7 +10,7 @@ namespace NSW.EliteDangerous.Events
         public ShipStatusFlags Flags { get; internal set; }
 
         [JsonProperty("Pips")]
-        public long[] Pips { get; internal set; }
+        public byte[] Pips { get; internal set; }
 
         [JsonProperty("FireGroup")]
         public long FireGroup { get; internal set; }
@@ -149,7 +149,7 @@ namespace NSW.EliteDangerous.Events
             if (ReferenceEquals(this, other)) return true;
 
             return Flags == other.Flags
-                   && Equals(Pips, other.Pips)
+                   && CheckPips(Pips, other.Pips)
                    && FireGroup == other.FireGroup
                    && GuiFocus == other.GuiFocus
                    && Equals(Fuel, other.Fuel)
@@ -161,6 +161,29 @@ namespace NSW.EliteDangerous.Events
                    && Heading.Equals(other.Heading)
                    && BodyName == other.BodyName
                    && PlanetRadius.Equals(other.PlanetRadius);
+        }
+
+        private bool CheckPips(byte[] a, byte[] b)
+        {
+            if (a == null && b == null)
+                return true;
+
+            if (a != null && b == null)
+                return false;
+
+            if (a == null && b != null)
+                return false;
+
+            if (a.Length != b.Length)
+                return false;
+
+            for (int i = 0; i < a.Length; i++)
+            {
+                if (a[i] != b[i])
+                    return false;
+            }
+
+            return true;
         }
 
         /// <inheritdoc />

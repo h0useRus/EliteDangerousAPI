@@ -35,6 +35,11 @@ namespace NSW.EliteDangerous
         public string JournalDirectory { get; set; } = DefaultJournalDirectory;
 
         /// <summary>
+        /// Elite Dangerous API plugins location path 
+        /// </summary>
+        public string PluginsDirectory { get; set; } = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "plugins");
+
+        /// <summary>
         /// Journal check interval
         /// </summary>
         public TimeSpan CheckInterval { get; set; } = TimeSpan.FromMilliseconds(10000);

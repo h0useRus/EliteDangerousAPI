@@ -1,4 +1,5 @@
 using System;
+using System.Collections.Generic;
 using System.IO;
 using NSW.EliteDangerous.Events;
 using NSW.EliteDangerous.Exceptions;
@@ -13,6 +14,7 @@ namespace NSW.EliteDangerous
         string Version { get; }
         ApiStatus Status { get; }
         bool GameRunning { get; }
+        IReadOnlyDictionary<Guid, IEliteDangerousPlugin> Plugins { get; }
 
         void Start();
         void Stop();
