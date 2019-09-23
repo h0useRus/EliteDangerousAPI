@@ -1,9 +1,8 @@
 using System;
 using System.Linq;
 using Newtonsoft.Json;
-using NSW.EliteDangerous.API;
 
-namespace NSW.EliteDangerous.Events
+namespace NSW.EliteDangerous.API.Events
 {
     public class StatusEvent : JournalEvent, IEquatable<StatusEvent>
     {

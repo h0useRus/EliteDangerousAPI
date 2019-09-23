@@ -1,7 +1,4 @@
-using System.IO;
-using System.Threading.Tasks;
 using NSW.EliteDangerous.API;
-using NSW.EliteDangerous.Events;
 using Xunit;
 
 namespace NSW.EliteDangerous

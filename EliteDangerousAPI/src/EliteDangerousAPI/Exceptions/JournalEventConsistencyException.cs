@@ -1,5 +1,5 @@
 using System;
-using NSW.EliteDangerous.Events;
+using NSW.EliteDangerous.API.Events;
 
 namespace NSW.EliteDangerous.API.Exceptions
 {

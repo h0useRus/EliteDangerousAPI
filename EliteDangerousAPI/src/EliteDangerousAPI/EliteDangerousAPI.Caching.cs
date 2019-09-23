@@ -3,8 +3,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Reflection;
 using System.Runtime.CompilerServices;
+using NSW.EliteDangerous.API.Events;
 using NSW.EliteDangerous.API.Exceptions;
-using NSW.EliteDangerous.Events;
 
 [assembly: InternalsVisibleTo("EliteDangerousAPI.UnitTests")]
 

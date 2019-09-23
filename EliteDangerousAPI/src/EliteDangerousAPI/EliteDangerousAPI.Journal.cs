@@ -4,8 +4,8 @@ using System.Linq;
 using System.Threading.Tasks;
 using System.Timers;
 using Microsoft.Extensions.Logging;
+using NSW.EliteDangerous.API.Events;
 using NSW.EliteDangerous.API.Exceptions;
-using NSW.EliteDangerous.Events;
 
 namespace NSW.EliteDangerous.API
 {

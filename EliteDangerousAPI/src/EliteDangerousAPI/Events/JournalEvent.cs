@@ -1,7 +1,7 @@
 using System;
 using Newtonsoft.Json;
 
-namespace NSW.EliteDangerous.Events
+namespace NSW.EliteDangerous.API.Events
 {
     public class JournalEvent : IEquatable<JournalEvent>
     {

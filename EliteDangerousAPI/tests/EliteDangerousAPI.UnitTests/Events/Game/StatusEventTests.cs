@@ -1,4 +1,5 @@
 using System;
+using NSW.EliteDangerous.API.Events;
 using Xunit;
 
 namespace NSW.EliteDangerous.Events

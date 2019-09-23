@@ -1,6 +1,6 @@
 using System;
 
-namespace NSW.EliteDangerous.Events
+namespace NSW.EliteDangerous.API.Events
 {
     public class GlobalEvent
     {

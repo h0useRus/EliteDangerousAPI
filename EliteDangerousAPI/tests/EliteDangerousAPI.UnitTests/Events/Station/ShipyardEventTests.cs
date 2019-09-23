@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using NSW.EliteDangerous.API.Events;
 using NSW.EliteDangerous.API.Exceptions;
 using Xunit;
 

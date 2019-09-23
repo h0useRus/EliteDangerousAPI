@@ -1,9 +1,9 @@
 using System;
 using System.Collections.Generic;
 using System.IO;
+using NSW.EliteDangerous.API.Events;
 using NSW.EliteDangerous.API.Exceptions;
 using NSW.EliteDangerous.API.Handlers;
-using NSW.EliteDangerous.Events;
 
 namespace NSW.EliteDangerous.API
 {

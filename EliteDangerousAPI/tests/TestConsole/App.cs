@@ -1,5 +1,4 @@
 using System;
-using NSW.EliteDangerous;
 using NSW.EliteDangerous.API;
 using NSW.EliteDangerous.API.Exceptions;
 

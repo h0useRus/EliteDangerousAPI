@@ -1,11 +1,13 @@
+using System;
+
 namespace NSW.EliteDangerous.API.Statuses
 {
     public class ShipStatus
     {
         internal ShipStatusFlags Flags { get; private set; }
 
-        public long ShipID { get; private set; }
-        public string Ship { get; private set; }
+        public long ShipId { get; private set; }
+        public string ShipType { get; private set; }
         public string Name { get; private set; }
         public string Identifier { get; private set; }
         public Fuel Fuel { get; private set; } = new Fuel();
@@ -51,8 +53,8 @@ namespace NSW.EliteDangerous.API.Statuses
             {
                 if(e==null) return;
 
-                ShipID = e.ShipId;
-                Ship = e.ShipLocalised ?? e.Ship;
+                ShipId = e.ShipId;
+                ShipType = e.ShipLocalised ?? e.Ship;
                 Name = e.ShipName;
                 Identifier = e.ShipIdent;
                 Fuel.FuelMain = e.FuelLevel;
@@ -87,6 +89,30 @@ namespace NSW.EliteDangerous.API.Statuses
                     CurrentVehicle = e.To;
                     api.InvokeShipStatusChanged(this);
                 }
+            };
+
+            api.Station.SetUserShipName += (s, e) =>
+            {
+                Name = e.UserShipName;
+                Identifier = e.UserShipId;
+
+                api.InvokeShipStatusChanged(this);
+            };
+
+            api.Station.ShipyardNew += (s, e) =>
+            {
+                ShipId = e.NewShipId;
+                ShipType = e.ShipTypeLocalised ?? e.ShipType;
+                Name = ShipType;
+                Identifier = string.Empty;
+            };
+
+            api.Station.ShipyardSwap += (s, e) =>
+            {
+                ShipId = e.ShipId;
+                ShipType = e.ShipTypeLocalised ?? e.ShipType;
+                Name = ShipType;
+                Identifier = string.Empty;
             };
         }
 

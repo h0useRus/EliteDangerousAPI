@@ -1,7 +1,6 @@
 using System.IO;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
-using NSW.EliteDangerous;
 using NSW.EliteDangerous.API;
 
 namespace TestConsole

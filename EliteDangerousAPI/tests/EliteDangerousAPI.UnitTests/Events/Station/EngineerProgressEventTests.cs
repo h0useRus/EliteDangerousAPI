@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using NSW.EliteDangerous.API;
+using NSW.EliteDangerous.API.Events;
 using Xunit;
 
 namespace NSW.EliteDangerous.Events
