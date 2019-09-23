@@ -15,6 +15,7 @@ namespace NSW.EliteDangerous.Events
         {
             var api = (EliteDangerousAPI)TestHelpers.TestApi;
             var eventFired = false;
+            var locationFired = false;
             api.Travel.Location += (sender, @event) =>
             {
                 Assert.IsType<EliteDangerousAPI>(sender);
@@ -22,9 +23,36 @@ namespace NSW.EliteDangerous.Events
                 eventFired = true;
             };
 
+            api.LocationStatusChanged += (s, e) =>
+            {
+                Assert.IsType<EliteDangerousAPI>(s);
+
+                Assert.Equal("Njortamool", e.StarSystem.Name);
+                Assert.Equal("Анархия", e.StarSystem.Government);
+                Assert.Equal("Анархия", e.StarSystem.Security);
+                Assert.Equal("Переработка", e.StarSystem.Economy);
+                Assert.Equal("Нет", e.StarSystem.SecondEconomy);
+                Assert.Equal("Eurybia Blue Mafia", e.StarSystem.Faction.Name);
+                Assert.Equal("Expansion", e.StarSystem.Faction.State);
+                Assert.Equal(29911, e.StarSystem.Population);
+
+                Assert.Equal("Krikalev Hangar", e.Body.Name);
+                Assert.Equal(BodyType.Station, e.Body.Type);
+
+                Assert.Equal("Krikalev Hangar", e.Station.Name);
+                Assert.Equal("Outpost", e.Station.Type);
+                Assert.Equal("Переработка", e.Station.Economy);
+                Assert.Equal("Анархия", e.Station.Government);
+                Assert.Equal("Eurybia Blue Mafia", e.Station.Faction.Name);
+                Assert.Equal("Expansion", e.Station.Faction.State);
+                Assert.Equal(3223662592, e.Station.MarketId);
+
+                locationFired = true;
+            };
             Assert.True(api.HasEvent(eventName));
             AssertEvent(api.ExecuteEvent(eventName, json) as LocationEvent);
             Assert.True(eventFired);
+            Assert.True(locationFired);
         }
 
         private void AssertEvent(LocationEvent @event)

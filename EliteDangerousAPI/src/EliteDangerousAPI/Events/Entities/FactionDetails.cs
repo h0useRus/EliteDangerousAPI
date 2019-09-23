@@ -31,5 +31,13 @@ namespace NSW.EliteDangerous.Events.Entities
         [JsonProperty("MyReputation")]
         public double MyReputation { get; internal set; }
 
+        [JsonProperty("SquadronFaction")]
+        public bool SquadronFaction { get; internal set; }
+
+        [JsonProperty("HappiestSystem")]
+        public bool HappiestSystem { get; internal set; }
+
+        [JsonProperty("HomeSystem")]
+        public bool HomeSystem { get; internal set; }
     }
 }

@@ -29,6 +29,7 @@ namespace NSW.EliteDangerous
             _log = loggerFactory.CreateLogger<EliteDangerousAPI>();
             JournalDirectory = new DirectoryInfo(_settings.JournalDirectory);
             InitHandlers();
+            InitStatuses();
             InitPlugins();
 
             if(_settings.AutoRun)
