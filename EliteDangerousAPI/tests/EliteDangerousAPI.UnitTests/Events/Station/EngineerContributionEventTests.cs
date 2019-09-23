@@ -1,6 +1,6 @@
 using System;
 using System.Collections.Generic;
-using NSW.EliteDangerous.Events.Entities;
+using NSW.EliteDangerous.API;
 using Xunit;
 
 namespace NSW.EliteDangerous.Events

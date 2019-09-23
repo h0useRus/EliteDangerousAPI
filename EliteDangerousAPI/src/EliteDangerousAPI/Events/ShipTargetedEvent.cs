@@ -1,6 +1,6 @@
 using Newtonsoft.Json;
-using NSW.EliteDangerous.Events.Converters;
-using NSW.EliteDangerous.Events.Entities;
+using NSW.EliteDangerous.API;
+using NSW.EliteDangerous.API.Internals.Converters;
 
 namespace NSW.EliteDangerous.Events
 {

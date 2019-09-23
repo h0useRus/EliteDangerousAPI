@@ -1,5 +1,3 @@
-using NSW.EliteDangerous.Events.Entities;
-
 namespace NSW.EliteDangerous.API.Statuses
 {
     public class ShipStatus
@@ -75,7 +73,7 @@ namespace NSW.EliteDangerous.API.Statuses
 
                 if (GetFlag(25)) CurrentVehicle = VehicleType.Fighter;
                 else if (GetFlag(26)) CurrentVehicle = VehicleType.SRV;
-                else if(GetFlag(24)) CurrentVehicle = VehicleType.Mothership;
+                else CurrentVehicle = VehicleType.Ship;
 
                 api.InvokeShipStatusChanged(this);
             };

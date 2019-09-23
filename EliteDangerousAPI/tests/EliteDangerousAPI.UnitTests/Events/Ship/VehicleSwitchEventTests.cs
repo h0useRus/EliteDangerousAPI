@@ -1,6 +1,6 @@
 using System;
 using System.Collections.Generic;
-using NSW.EliteDangerous.Events.Entities;
+using NSW.EliteDangerous.API;
 using Xunit;
 
 namespace NSW.EliteDangerous.Events
@@ -45,7 +45,7 @@ namespace NSW.EliteDangerous.Events
             Assert.NotNull(@event);
             Assert.Equal(DateTime.Parse("2016-06-10T14:32:03Z"), @event.Timestamp);
             Assert.Equal(EventName, @event.Event);
-            Assert.Equal(VehicleType.Mothership, @event.To);
+            Assert.Equal(VehicleType.Ship, @event.To);
         }
 
         public static IEnumerable<object[]> Data =>

@@ -1,5 +1,5 @@
-﻿using Newtonsoft.Json;
-using NSW.EliteDangerous.Events.Entities;
+using Newtonsoft.Json;
+using NSW.EliteDangerous.API;
 
 namespace NSW.EliteDangerous.Events
 {

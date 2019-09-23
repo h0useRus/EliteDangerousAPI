@@ -1,7 +1,7 @@
 using System;
 using System.Linq;
-using NSW.EliteDangerous.Events.Entities;
 using Newtonsoft.Json;
+using NSW.EliteDangerous.API;
 
 namespace NSW.EliteDangerous.Events
 {

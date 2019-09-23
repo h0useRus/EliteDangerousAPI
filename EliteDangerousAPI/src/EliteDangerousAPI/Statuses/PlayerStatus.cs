@@ -1,5 +1,3 @@
-using NSW.EliteDangerous.Events.Entities;
-
 namespace NSW.EliteDangerous.API.Statuses
 {
     public class PlayerStatus

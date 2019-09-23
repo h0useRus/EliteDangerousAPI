@@ -1,5 +1,4 @@
 using System;
-using NSW.EliteDangerous.Events.Entities;
 
 namespace NSW.EliteDangerous.API.Statuses
 {

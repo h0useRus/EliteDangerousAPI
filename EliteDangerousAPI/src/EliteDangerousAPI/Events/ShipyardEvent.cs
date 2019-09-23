@@ -1,6 +1,6 @@
 using System.IO;
-using NSW.EliteDangerous.Events.Entities;
 using Newtonsoft.Json;
+using NSW.EliteDangerous.API;
 using NSW.EliteDangerous.API.Exceptions;
 
 namespace NSW.EliteDangerous.Events

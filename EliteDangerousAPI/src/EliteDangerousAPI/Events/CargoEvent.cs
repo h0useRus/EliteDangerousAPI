@@ -1,12 +1,14 @@
 using System.IO;
-using NSW.EliteDangerous.Events.Entities;
 using Newtonsoft.Json;
+using NSW.EliteDangerous.API;
+using NSW.EliteDangerous.API.Internals.Converters;
 
 namespace NSW.EliteDangerous.Events
 {
     public class CargoEvent : JournalEvent
     {
         [JsonProperty("Vessel")]
+        [JsonConverter(typeof(VehicleEnumConverter))]
         public VehicleType Vessel { get; internal set; }
 
         [JsonProperty("Count")]
