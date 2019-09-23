@@ -1,17 +1,17 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
-    <VersionPrefix>1.0.25-preview2</VersionPrefix>
+    <VersionPrefix>1.0.25-RC1</VersionPrefix>
     <Description>Multi-platform Elite : Dangerous API Library</Description>
-    <Copyright>Copyright В© 2019-2020 NewSoftWorld</Copyright>
-    <AssemblyTitle>Multi-platform Elite : Dangerous API Library</AssemblyTitle>
+    <Copyright>Copyright © 2019-2020 NewSoftWorld</Copyright>
+    <AssemblyTitle>Frontier Elite:Dangerous multi-platform API Library</AssemblyTitle>
     <Authors>Denis Ibragimov</Authors>
     <TargetFramework>netstandard2.0</TargetFramework>
     <TreatWarningsAsErrors>true</TreatWarningsAsErrors>
-    <AssemblyName>EliteDangerousAPI</AssemblyName>
+    <AssemblyName>NSW.EliteDangerous.API</AssemblyName>
     <RootNamespace>NSW.EliteDangerous.API</RootNamespace>
     <PackageId>NSW.EliteDangerous.API</PackageId>
-    <PackageTags>EliteDangerous;Elite API;</PackageTags>
+    <PackageTags>Elite Dangerous API;Elite API;</PackageTags>
     <PackageProjectUrl>https://github.com/h0useRus/EliteDangerousAPI</PackageProjectUrl>
     <LangVersion>Latest</LangVersion>
     <PackageLicenseExpression>MIT</PackageLicenseExpression>
