@@ -2,7 +2,7 @@ using System.Collections.Generic;
 
 namespace NSW.EliteDangerous.API
 {
-    partial class EliteDangerousAPI
+    public class EliteDangerousData
     {
         public static IReadOnlyDictionary<int, string> Engineers = new Dictionary<int, string>
         {
