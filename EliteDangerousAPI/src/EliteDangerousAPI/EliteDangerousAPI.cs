@@ -1,14 +1,10 @@
-using System;
 using System.Diagnostics;
 using System.IO;
 using System.Reflection;
-using System.Runtime.InteropServices;
 using Microsoft.Extensions.Logging;
-using Microsoft.Extensions.Logging.Abstractions;
 using Microsoft.Extensions.Options;
 
-
-namespace NSW.EliteDangerous
+namespace NSW.EliteDangerous.API
 {
     internal partial class EliteDangerousAPI : IEliteDangerousAPI
     {
@@ -21,12 +17,12 @@ namespace NSW.EliteDangerous
 
         public int DocumentationVersion { get ;} = 25;
 
-        public string Version => Assembly.GetAssembly(typeof(EliteDangerousAPI)).GetCustomAttribute<AssemblyFileVersionAttribute>().Version;
+        public string Version => Assembly.GetAssembly(typeof(API.EliteDangerousAPI)).GetCustomAttribute<AssemblyFileVersionAttribute>().Version;
 
         public EliteDangerousAPI(IOptions<ApiOptions> options, ILoggerFactory loggerFactory)
         {
             _settings = options?.Value ?? ApiOptions.Default;
-            _log = loggerFactory.CreateLogger<EliteDangerousAPI>();
+            _log = loggerFactory.CreateLogger<API.EliteDangerousAPI>();
             JournalDirectory = new DirectoryInfo(_settings.JournalDirectory);
             InitHandlers();
             InitStatuses();

@@ -1,6 +1,6 @@
 using System;
 
-namespace NSW.EliteDangerous.Exceptions
+namespace NSW.EliteDangerous.API.Exceptions
 {
     public class JournalFileNotFoundException : JournalException
     {

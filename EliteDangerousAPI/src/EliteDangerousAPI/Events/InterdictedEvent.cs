@@ -23,6 +23,6 @@ namespace NSW.EliteDangerous.Events
         [JsonProperty("CombatRank")]
         public CombatRank? CombatRank { get; internal set; }
 
-        internal static InterdictedEvent Execute(string json, EliteDangerousAPI api) => api.Combat.InvokeEvent(api.FromJson<InterdictedEvent>(json));
+        internal static InterdictedEvent Execute(string json, API.EliteDangerousAPI api) => api.Combat.InvokeEvent(api.FromJson<InterdictedEvent>(json));
     }
 }

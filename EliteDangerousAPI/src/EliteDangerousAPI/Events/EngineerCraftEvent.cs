@@ -44,6 +44,6 @@ namespace NSW.EliteDangerous.Events
         [JsonProperty("Modifiers")]
         public Modifier[] Modifiers { get; internal set; }
 
-        internal static EngineerCraftEvent Execute(string json, EliteDangerousAPI api) => api.Station.InvokeEvent(api.FromJson<EngineerCraftEvent>(json));
+        internal static EngineerCraftEvent Execute(string json, API.EliteDangerousAPI api) => api.Station.InvokeEvent(api.FromJson<EngineerCraftEvent>(json));
     }
 }

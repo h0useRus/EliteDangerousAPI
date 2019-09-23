@@ -1,13 +1,13 @@
 using System;
 using NSW.EliteDangerous.Events;
 
-namespace NSW.EliteDangerous.Handlers
+namespace NSW.EliteDangerous.API.Handlers
 {
     public class StationHandler
     {
-        private readonly EliteDangerousAPI _api;
+        private readonly API.EliteDangerousAPI _api;
 
-        internal StationHandler(EliteDangerousAPI api) { _api = api; }
+        internal StationHandler(API.EliteDangerousAPI api) { _api = api; }
         /// <summary>
         /// when purchasing ammunition
         /// </summary>

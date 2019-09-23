@@ -10,6 +10,6 @@ namespace NSW.EliteDangerous.Events
         [JsonProperty("Loadout")]
         public string Loadout { get; internal set; }
 
-        internal static FighterRebuiltEvent Execute(string json, EliteDangerousAPI api) => api.Ship.InvokeEvent(api.FromJson<FighterRebuiltEvent>(json));
+        internal static FighterRebuiltEvent Execute(string json, API.EliteDangerousAPI api) => api.Ship.InvokeEvent(api.FromJson<FighterRebuiltEvent>(json));
     }
 }

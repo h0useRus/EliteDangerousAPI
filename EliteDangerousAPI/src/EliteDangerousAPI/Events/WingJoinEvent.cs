@@ -7,6 +7,6 @@ namespace NSW.EliteDangerous.Events
         [JsonProperty("Others")]
         public string[] Others { get; internal set; }
 
-        internal static WingJoinEvent Execute(string json, EliteDangerousAPI api) => api.Wing.InvokeEvent(api.FromJson<WingJoinEvent>(json));
+        internal static WingJoinEvent Execute(string json, API.EliteDangerousAPI api) => api.Wing.InvokeEvent(api.FromJson<WingJoinEvent>(json));
     }
 }

@@ -1,7 +1,7 @@
 using System;
 using NSW.EliteDangerous.Events;
 
-namespace NSW.EliteDangerous.Exceptions
+namespace NSW.EliteDangerous.API.Exceptions
 {
     public class JournalEventConsistencyException<T> : JournalException where T: JournalEvent
     {

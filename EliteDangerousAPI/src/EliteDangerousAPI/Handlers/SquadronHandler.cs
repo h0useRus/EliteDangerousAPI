@@ -1,13 +1,13 @@
 using System;
 using NSW.EliteDangerous.Events;
 
-namespace NSW.EliteDangerous.Handlers
+namespace NSW.EliteDangerous.API.Handlers
 {
     public class SquadronHandler
     {
-        private readonly EliteDangerousAPI _api;
+        private readonly API.EliteDangerousAPI _api;
 
-        internal SquadronHandler(EliteDangerousAPI api) { _api = api; }
+        internal SquadronHandler(API.EliteDangerousAPI api) { _api = api; }
 
         /// <summary>
         /// The player applied to squadron

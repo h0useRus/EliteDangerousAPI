@@ -7,6 +7,6 @@ namespace NSW.EliteDangerous.Events
         [JsonProperty("Target")]
         public string Target { get; internal set; }
 
-        internal static UnderAttackEvent Execute(string json, EliteDangerousAPI api) => api.Combat.InvokeEvent(api.FromJson<UnderAttackEvent>(json));
+        internal static UnderAttackEvent Execute(string json, API.EliteDangerousAPI api) => api.Combat.InvokeEvent(api.FromJson<UnderAttackEvent>(json));
     }
 }

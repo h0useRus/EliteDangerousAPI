@@ -1,4 +1,4 @@
-﻿<Project Sdk="Microsoft.NET.Sdk">
+<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
     <VersionPrefix>1.0.25-preview2</VersionPrefix>
@@ -9,9 +9,9 @@
     <TargetFramework>netstandard2.0</TargetFramework>
     <TreatWarningsAsErrors>true</TreatWarningsAsErrors>
     <AssemblyName>EliteDangerousAPI</AssemblyName>
-    <RootNamespace>NSW.EliteDangerous</RootNamespace>
-    <PackageId>NSW.EliteDangerousAPI</PackageId>
-    <PackageTags>EliteDangerous;Elite;API</PackageTags>
+    <RootNamespace>NSW.EliteDangerous.API</RootNamespace>
+    <PackageId>NSW.EliteDangerous.API</PackageId>
+    <PackageTags>EliteDangerous;Elite API;</PackageTags>
     <PackageProjectUrl>https://github.com/h0useRus/EliteDangerousAPI</PackageProjectUrl>
     <LangVersion>Latest</LangVersion>
     <PackageLicenseExpression>MIT</PackageLicenseExpression>

@@ -25,6 +25,6 @@ namespace NSW.EliteDangerous.Events
         [JsonProperty("System")]
         public string System { get; set; }
 
-        internal static ShipyardSellEvent Execute(string json, EliteDangerousAPI api) => api.Station.InvokeEvent(api.FromJson<ShipyardSellEvent>(json));
+        internal static ShipyardSellEvent Execute(string json, API.EliteDangerousAPI api) => api.Station.InvokeEvent(api.FromJson<ShipyardSellEvent>(json));
     }
 }

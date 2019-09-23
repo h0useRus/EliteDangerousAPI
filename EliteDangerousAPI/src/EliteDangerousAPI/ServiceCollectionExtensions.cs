@@ -2,7 +2,7 @@ using System;
 using System.ComponentModel;
 using Microsoft.Extensions.DependencyInjection;
 
-namespace NSW.EliteDangerous
+namespace NSW.EliteDangerous.API
 {
     [EditorBrowsable(EditorBrowsableState.Never)]
     public static class ServiceCollectionExtensions
@@ -24,7 +24,7 @@ namespace NSW.EliteDangerous
         public static IServiceCollection AddEliteDangerousAPI(this IServiceCollection services, Action<ApiOptions> configure)
         {
             services.Configure(configure);
-            return services.AddSingleton<IEliteDangerousAPI, EliteDangerousAPI>();
+            return services.AddSingleton<IEliteDangerousAPI, API.EliteDangerousAPI>();
         }
     }
 }

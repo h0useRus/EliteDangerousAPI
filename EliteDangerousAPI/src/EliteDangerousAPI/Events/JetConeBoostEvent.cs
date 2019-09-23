@@ -7,6 +7,6 @@ namespace NSW.EliteDangerous.Events
         [JsonProperty("BoostValue")]
         public double BoostValue { get; internal set; }
 
-        internal static JetConeBoostEvent Execute(string json, EliteDangerousAPI api) => api.Ship.InvokeEvent(api.FromJson<JetConeBoostEvent>(json));
+        internal static JetConeBoostEvent Execute(string json, API.EliteDangerousAPI api) => api.Ship.InvokeEvent(api.FromJson<JetConeBoostEvent>(json));
     }
 }

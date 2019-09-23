@@ -20,6 +20,6 @@ namespace NSW.EliteDangerous.Events
         [JsonProperty("Materials")]
         public Commodity[] Materials { get; internal set; }
 
-        internal static TechnologyBrokerEvent Execute(string json, EliteDangerousAPI api) => api.Station.InvokeEvent(api.FromJson<TechnologyBrokerEvent>(json));
+        internal static TechnologyBrokerEvent Execute(string json, API.EliteDangerousAPI api) => api.Station.InvokeEvent(api.FromJson<TechnologyBrokerEvent>(json));
     }
 }

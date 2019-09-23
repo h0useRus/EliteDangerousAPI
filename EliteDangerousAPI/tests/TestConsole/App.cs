@@ -1,6 +1,7 @@
 using System;
 using NSW.EliteDangerous;
-using NSW.EliteDangerous.Exceptions;
+using NSW.EliteDangerous.API;
+using NSW.EliteDangerous.API.Exceptions;
 
 namespace TestConsole
 {

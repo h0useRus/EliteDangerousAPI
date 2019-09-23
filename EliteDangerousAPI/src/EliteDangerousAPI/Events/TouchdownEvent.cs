@@ -13,6 +13,6 @@ namespace NSW.EliteDangerous.Events
         [JsonProperty("Longitude")]
         public double Longitude { get; internal set; }
 
-        internal static TouchdownEvent Execute(string json, EliteDangerousAPI api) => api.Travel.InvokeEvent(api.FromJson<TouchdownEvent>(json));
+        internal static TouchdownEvent Execute(string json, API.EliteDangerousAPI api) => api.Travel.InvokeEvent(api.FromJson<TouchdownEvent>(json));
     }
 }

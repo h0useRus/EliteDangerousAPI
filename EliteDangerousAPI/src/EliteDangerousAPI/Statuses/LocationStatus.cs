@@ -1,7 +1,7 @@
 using System;
 using NSW.EliteDangerous.Events.Entities;
 
-namespace NSW.EliteDangerous.Statuses
+namespace NSW.EliteDangerous.API.Statuses
 {
     public class LocationStatus
     {
@@ -10,7 +10,7 @@ namespace NSW.EliteDangerous.Statuses
         public Station Station { get; private set; }
 
 
-        internal LocationStatus(EliteDangerousAPI api)
+        internal LocationStatus(API.EliteDangerousAPI api)
         {
             api.Travel.Location += (s, e) =>
             {

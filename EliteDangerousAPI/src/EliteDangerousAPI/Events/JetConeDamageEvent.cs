@@ -10,6 +10,6 @@ namespace NSW.EliteDangerous.Events
         [JsonProperty("Module_Localised")]
         public string ModuleLocalised { get; internal set; }
 
-        internal static JetConeDamageEvent Execute(string json, EliteDangerousAPI api) => api.Ship.InvokeEvent(api.FromJson<JetConeDamageEvent>(json));
+        internal static JetConeDamageEvent Execute(string json, API.EliteDangerousAPI api) => api.Ship.InvokeEvent(api.FromJson<JetConeDamageEvent>(json));
     }
 }

@@ -1,7 +1,7 @@
 using System;
 using System.Threading.Tasks;
 
-namespace NSW.EliteDangerous
+namespace NSW.EliteDangerous.API
 {
     public interface IEliteDangerousPlugin
     {

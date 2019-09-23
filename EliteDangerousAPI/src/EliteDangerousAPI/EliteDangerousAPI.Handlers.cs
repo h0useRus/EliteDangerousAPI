@@ -1,6 +1,6 @@
-using NSW.EliteDangerous.Handlers;
+using NSW.EliteDangerous.API.Handlers;
 
-namespace NSW.EliteDangerous
+namespace NSW.EliteDangerous.API
 {
     partial class EliteDangerousAPI
     {

@@ -7,6 +7,6 @@ namespace NSW.EliteDangerous.Events
         [JsonProperty("DiscoveryNumber")]
         public long DiscoveryNumber { get; internal set; }
 
-        internal static MaterialDiscoveredEvent Execute(string json, EliteDangerousAPI api) => api.Exploration.InvokeEvent(api.FromJson<MaterialDiscoveredEvent>(json));
+        internal static MaterialDiscoveredEvent Execute(string json, API.EliteDangerousAPI api) => api.Exploration.InvokeEvent(api.FromJson<MaterialDiscoveredEvent>(json));
     }
 }

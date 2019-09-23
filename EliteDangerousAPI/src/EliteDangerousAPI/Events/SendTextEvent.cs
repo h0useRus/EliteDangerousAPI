@@ -18,6 +18,6 @@ namespace NSW.EliteDangerous.Events
         [JsonIgnore]
         public MessageChannel Channel => Enum.TryParse(To, true, out MessageChannel channel) ? channel : MessageChannel.Player;
 
-        internal static SendTextEvent Execute(string json, EliteDangerousAPI api) => api.Player.InvokeEvent(api.FromJson<SendTextEvent>(json));
+        internal static SendTextEvent Execute(string json, API.EliteDangerousAPI api) => api.Player.InvokeEvent(api.FromJson<SendTextEvent>(json));
     }
 }

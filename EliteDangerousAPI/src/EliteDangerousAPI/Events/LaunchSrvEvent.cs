@@ -10,6 +10,6 @@ namespace NSW.EliteDangerous.Events
         [JsonProperty("ID")]
         public int Id { get; internal set; }
 
-        internal static LaunchSrvEvent Execute(string json, EliteDangerousAPI api) => api.Ship.InvokeEvent(api.FromJson<LaunchSrvEvent>(json));
+        internal static LaunchSrvEvent Execute(string json, API.EliteDangerousAPI api) => api.Ship.InvokeEvent(api.FromJson<LaunchSrvEvent>(json));
     }
 }

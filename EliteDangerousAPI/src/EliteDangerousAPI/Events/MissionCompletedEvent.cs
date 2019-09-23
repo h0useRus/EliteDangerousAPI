@@ -59,6 +59,6 @@ namespace NSW.EliteDangerous.Events
         [JsonProperty("Target")]
         public string Target { get; internal set; }
 
-        internal static MissionCompletedEvent Execute(string json, EliteDangerousAPI api) => api.Station.InvokeEvent(api.FromJson<MissionCompletedEvent>(json));
+        internal static MissionCompletedEvent Execute(string json, API.EliteDangerousAPI api) => api.Station.InvokeEvent(api.FromJson<MissionCompletedEvent>(json));
     }
 }

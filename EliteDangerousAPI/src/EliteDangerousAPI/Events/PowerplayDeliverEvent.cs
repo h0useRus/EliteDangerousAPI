@@ -13,6 +13,6 @@ namespace NSW.EliteDangerous.Events
         [JsonProperty("Count")]
         public long Count { get; internal set; }
 
-        internal static PowerplayDeliverEvent Execute(string json, EliteDangerousAPI api) => api.Powerplay.InvokeEvent(api.FromJson<PowerplayDeliverEvent>(json));
+        internal static PowerplayDeliverEvent Execute(string json, API.EliteDangerousAPI api) => api.Powerplay.InvokeEvent(api.FromJson<PowerplayDeliverEvent>(json));
     }
 }

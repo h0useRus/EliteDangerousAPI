@@ -7,6 +7,6 @@ namespace NSW.EliteDangerous.Events
         [JsonProperty("Reason")]
         public string Reason { get; internal set; }
 
-        internal static DockingDeniedEvent Execute(string json, EliteDangerousAPI api) => api.Travel.InvokeEvent(api.FromJson<DockingDeniedEvent>(json));
+        internal static DockingDeniedEvent Execute(string json, API.EliteDangerousAPI api) => api.Travel.InvokeEvent(api.FromJson<DockingDeniedEvent>(json));
     }
 }

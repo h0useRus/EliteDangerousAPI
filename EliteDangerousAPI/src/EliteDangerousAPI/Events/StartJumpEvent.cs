@@ -17,6 +17,6 @@ namespace NSW.EliteDangerous.Events
         [JsonProperty("StarClass")]
         public string StarClass { get; internal set; }
 
-        internal static StartJumpEvent Execute(string json, EliteDangerousAPI api) => api.Travel.InvokeEvent(api.FromJson<StartJumpEvent>(json));
+        internal static StartJumpEvent Execute(string json, API.EliteDangerousAPI api) => api.Travel.InvokeEvent(api.FromJson<StartJumpEvent>(json));
     }
 }

@@ -1,13 +1,13 @@
 using System;
 using NSW.EliteDangerous.Events;
 
-namespace NSW.EliteDangerous.Handlers
+namespace NSW.EliteDangerous.API.Handlers
 {
     public class ExplorationHandler
     {
-        private readonly EliteDangerousAPI _api;
+        private readonly API.EliteDangerousAPI _api;
 
-        internal ExplorationHandler(EliteDangerousAPI api) { _api = api; }
+        internal ExplorationHandler(API.EliteDangerousAPI api) { _api = api; }
         /// <summary>
         /// when a new discovery is added to the Codex 
         /// </summary>

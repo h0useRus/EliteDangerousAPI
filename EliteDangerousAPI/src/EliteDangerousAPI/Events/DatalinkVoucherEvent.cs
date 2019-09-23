@@ -13,6 +13,6 @@ namespace NSW.EliteDangerous.Events
         [JsonProperty("PayeeFaction")]
         public string PayeeFaction { get; internal set; }
 
-        internal static DatalinkVoucherEvent Execute(string json, EliteDangerousAPI api) => api.Exploration.InvokeEvent(api.FromJson<DatalinkVoucherEvent>(json));
+        internal static DatalinkVoucherEvent Execute(string json, API.EliteDangerousAPI api) => api.Exploration.InvokeEvent(api.FromJson<DatalinkVoucherEvent>(json));
     }
 }

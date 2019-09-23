@@ -1,13 +1,13 @@
-﻿using System;
+using System;
 using NSW.EliteDangerous.Events;
 
-namespace NSW.EliteDangerous.Handlers
+namespace NSW.EliteDangerous.API.Handlers
 {
     public class TradeHandler
     {
-        private readonly EliteDangerousAPI _api;
+        private readonly API.EliteDangerousAPI _api;
 
-        internal TradeHandler(EliteDangerousAPI api) { _api = api; }
+        internal TradeHandler(API.EliteDangerousAPI api) { _api = api; }
         /// <summary>
         /// when asteroid cracked
         /// </summary>

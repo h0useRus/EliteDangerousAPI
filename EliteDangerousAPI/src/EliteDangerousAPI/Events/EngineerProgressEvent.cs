@@ -8,6 +8,6 @@ namespace NSW.EliteDangerous.Events
         [JsonProperty("Engineers")]
         public EngineerProgress[] Engineers { get; internal set; }
 
-        internal static EngineerProgressEvent Execute(string json, EliteDangerousAPI api) => api.Station.InvokeEvent(api.FromJson<EngineerProgressEvent>(json));
+        internal static EngineerProgressEvent Execute(string json, API.EliteDangerousAPI api) => api.Station.InvokeEvent(api.FromJson<EngineerProgressEvent>(json));
     }
 }

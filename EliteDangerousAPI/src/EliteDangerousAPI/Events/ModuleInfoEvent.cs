@@ -8,6 +8,6 @@ namespace NSW.EliteDangerous.Events
         [JsonProperty("Modules")]
         public ModuleInfo[] Modules { get; internal set; }
 
-        internal static ModuleInfoEvent Execute(string json, EliteDangerousAPI api) => api.Ship.InvokeEvent(api.FromJson<ModuleInfoEvent>(json));
+        internal static ModuleInfoEvent Execute(string json, API.EliteDangerousAPI api) => api.Ship.InvokeEvent(api.FromJson<ModuleInfoEvent>(json));
     }
 }

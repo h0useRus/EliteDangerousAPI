@@ -1,12 +1,12 @@
 using System;
 using NSW.EliteDangerous.Events;
 
-namespace NSW.EliteDangerous.Handlers
+namespace NSW.EliteDangerous.API.Handlers
 {
     public class GameHandler
     {
-        private readonly EliteDangerousAPI _api;
-        internal GameHandler(EliteDangerousAPI api) { _api = api; }
+        private readonly API.EliteDangerousAPI _api;
+        internal GameHandler(API.EliteDangerousAPI api) { _api = api; }
         /// <summary>
         /// When loading from main menu into game
         /// </summary>

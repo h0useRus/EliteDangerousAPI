@@ -8,6 +8,6 @@ namespace NSW.EliteDangerous.Events
         [JsonProperty("Role")]
         public CrewRole Role { get; internal set; }
 
-        internal static ChangeCrewRoleEvent Execute(string json, EliteDangerousAPI api) => api.Crew.InvokeEvent(api.FromJson<ChangeCrewRoleEvent>(json));
+        internal static ChangeCrewRoleEvent Execute(string json, API.EliteDangerousAPI api) => api.Crew.InvokeEvent(api.FromJson<ChangeCrewRoleEvent>(json));
     }
 }

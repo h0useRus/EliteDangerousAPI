@@ -13,19 +13,19 @@ namespace NSW.EliteDangerous.Events
         [MemberData(nameof(Data))]
         public void ShouldExecuteEvent(string eventName, string json)
         {
-            var api = (EliteDangerousAPI)TestHelpers.TestApi;
+            var api = (API.EliteDangerousAPI)TestHelpers.TestApi;
             var eventFired = false;
             var locationFired = false;
             api.Travel.Location += (sender, @event) =>
             {
-                Assert.IsType<EliteDangerousAPI>(sender);
+                Assert.IsType<API.EliteDangerousAPI>(sender);
                 AssertEvent(@event);
                 eventFired = true;
             };
 
             api.LocationStatusChanged += (s, e) =>
             {
-                Assert.IsType<EliteDangerousAPI>(s);
+                Assert.IsType<API.EliteDangerousAPI>(s);
 
                 Assert.Equal("Njortamool", e.StarSystem.Name);
                 Assert.Equal("Анархия", e.StarSystem.Government);

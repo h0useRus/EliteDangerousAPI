@@ -14,11 +14,11 @@ namespace NSW.EliteDangerous.Events
         [MemberData(nameof(Data))]
         public void ShouldExecuteEvent(string eventName, string json)
         {
-            var api = (EliteDangerousAPI)TestHelpers.TestApi;
+            var api = (API.EliteDangerousAPI)TestHelpers.TestApi;
             var eventFired = false;
             api.Station.EngineerProgress += (sender, @event) =>
             {
-                Assert.IsType<EliteDangerousAPI>(sender);
+                Assert.IsType<API.EliteDangerousAPI>(sender);
                 AssertEvent(@event);
                 eventFired = true;
             };

@@ -2,6 +2,6 @@
 {
     public class LeftSquadronEvent : SquadronEvent
     {
-        internal static LeftSquadronEvent Execute(string json, EliteDangerousAPI api) => api.Squadron.InvokeEvent(api.FromJson<LeftSquadronEvent>(json));
+        internal static LeftSquadronEvent Execute(string json, API.EliteDangerousAPI api) => api.Squadron.InvokeEvent(api.FromJson<LeftSquadronEvent>(json));
     }
 }

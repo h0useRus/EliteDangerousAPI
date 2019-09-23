@@ -16,6 +16,6 @@ namespace NSW.EliteDangerous.Events
         [JsonProperty("UserShipId")]
         public string UserShipId { get; internal set; }
 
-        internal static SetUserShipNameEvent Execute(string json, EliteDangerousAPI api) => api.Station.InvokeEvent(api.FromJson<SetUserShipNameEvent>(json));
+        internal static SetUserShipNameEvent Execute(string json, API.EliteDangerousAPI api) => api.Station.InvokeEvent(api.FromJson<SetUserShipNameEvent>(json));
     }
 }

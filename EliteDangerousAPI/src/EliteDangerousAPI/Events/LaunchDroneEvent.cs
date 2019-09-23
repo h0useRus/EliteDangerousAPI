@@ -7,6 +7,6 @@ namespace NSW.EliteDangerous.Events
     {
         [JsonProperty("Type")]
         public DroneMission Type { get; internal set; }
-        internal static LaunchDroneEvent Execute(string json, EliteDangerousAPI api) => api.Ship.InvokeEvent(api.FromJson<LaunchDroneEvent>(json));
+        internal static LaunchDroneEvent Execute(string json, API.EliteDangerousAPI api) => api.Ship.InvokeEvent(api.FromJson<LaunchDroneEvent>(json));
     }
 }

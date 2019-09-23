@@ -1,12 +1,12 @@
 using System;
 using NSW.EliteDangerous.Events;
 
-namespace NSW.EliteDangerous.Handlers
+namespace NSW.EliteDangerous.API.Handlers
 {
     public class TravelHandler
     {
-        private readonly EliteDangerousAPI _api;
-        internal TravelHandler(EliteDangerousAPI api) { _api = api; }
+        private readonly API.EliteDangerousAPI _api;
+        internal TravelHandler(API.EliteDangerousAPI api) { _api = api; }
         /// <summary>
         /// when landing at landing pad in a space station, outpost, or surface settlement
         /// </summary>

@@ -23,6 +23,6 @@ namespace NSW.EliteDangerous.Events
         [JsonProperty("CQC")]
         public CqcRank? Cqc { get; internal set; }
 
-        internal static RankEvent Execute(string json, EliteDangerousAPI api) => api.Player.InvokeEvent(api.FromJson<RankEvent>(json));
+        internal static RankEvent Execute(string json, API.EliteDangerousAPI api) => api.Player.InvokeEvent(api.FromJson<RankEvent>(json));
     }
 }

@@ -47,6 +47,6 @@ namespace NSW.EliteDangerous.Events
         [JsonProperty("ActiveFine")]
         public bool ActiveFine { get; internal set; }
 
-        internal static DockedEvent Execute(string json, EliteDangerousAPI api) => api.Travel.InvokeEvent(api.FromJson<DockedEvent>(json));
+        internal static DockedEvent Execute(string json, API.EliteDangerousAPI api) => api.Travel.InvokeEvent(api.FromJson<DockedEvent>(json));
     }
 }

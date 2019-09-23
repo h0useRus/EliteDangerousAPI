@@ -12,12 +12,12 @@ namespace NSW.EliteDangerous.Events
         [MemberData(nameof(Data))]
         public void ShouldExecuteEvent(string eventName, string json)
         {
-            var api = (EliteDangerousAPI)TestHelpers.TestApi;
+            var api = (API.EliteDangerousAPI)TestHelpers.TestApi;
             var eventFired = false;
 
             api.AllEvents += (s, e) =>
             {
-                Assert.IsType<EliteDangerousAPI>(s);
+                Assert.IsType<API.EliteDangerousAPI>(s);
                 Assert.Equal("paybounties", e.EventName);
                 Assert.Equal(typeof(PayBountiesEvent), e.EventType);
                 Assert.IsType<PayBountiesEvent>(e.Event);
@@ -25,7 +25,7 @@ namespace NSW.EliteDangerous.Events
 
             api.Station.PayBounties += (sender, @event) =>
             {
-                Assert.IsType<EliteDangerousAPI>(sender);
+                Assert.IsType<API.EliteDangerousAPI>(sender);
                 AssertEvent(@event);
                 eventFired = true;
             };

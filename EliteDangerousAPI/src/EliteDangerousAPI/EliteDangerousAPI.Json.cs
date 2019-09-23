@@ -4,9 +4,9 @@ using System.IO;
 using Microsoft.Extensions.Logging;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Converters;
-using NSW.EliteDangerous.Exceptions;
+using NSW.EliteDangerous.API.Exceptions;
 
-namespace NSW.EliteDangerous
+namespace NSW.EliteDangerous.API
 {
     partial class EliteDangerousAPI
     {

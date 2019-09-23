@@ -12,7 +12,7 @@ namespace NSW.EliteDangerous.Events
             var eventFired = false;
             api.Game.Status += (sender, @event) =>
             {
-                Assert.IsType<EliteDangerousAPI>(sender);
+                Assert.IsType<API.EliteDangerousAPI>(sender);
                 AssertEvent(@event);
                 eventFired = true;
             };

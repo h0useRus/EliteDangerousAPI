@@ -20,6 +20,6 @@ namespace NSW.EliteDangerous.Events
         [JsonProperty("BodyType")]
         public BodyType? BodyType { get; internal set; }
 
-        internal static SupercruiseExitEvent Execute(string json, EliteDangerousAPI api) => api.Travel.InvokeEvent(api.FromJson<SupercruiseExitEvent>(json));
+        internal static SupercruiseExitEvent Execute(string json, API.EliteDangerousAPI api) => api.Travel.InvokeEvent(api.FromJson<SupercruiseExitEvent>(json));
     }
 }

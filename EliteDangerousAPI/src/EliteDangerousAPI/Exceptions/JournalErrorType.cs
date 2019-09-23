@@ -1,4 +1,4 @@
-namespace NSW.EliteDangerous.Exceptions
+namespace NSW.EliteDangerous.API.Exceptions
 {
     public enum JournalErrorType
     {

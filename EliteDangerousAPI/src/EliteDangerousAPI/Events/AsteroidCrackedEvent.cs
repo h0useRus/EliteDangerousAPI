@@ -7,6 +7,6 @@ namespace NSW.EliteDangerous.Events
         [JsonProperty("Body")]
         public string Body { get; internal set; }
 
-        internal static AsteroidCrackedEvent Execute(string json, EliteDangerousAPI api) => api.Trade.InvokeEvent(api.FromJson<AsteroidCrackedEvent>(json));
+        internal static AsteroidCrackedEvent Execute(string json, API.EliteDangerousAPI api) => api.Trade.InvokeEvent(api.FromJson<AsteroidCrackedEvent>(json));
     }
 }

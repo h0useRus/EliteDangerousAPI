@@ -1,6 +1,6 @@
 using System;
 using System.Collections.Generic;
-using NSW.EliteDangerous.Exceptions;
+using NSW.EliteDangerous.API.Exceptions;
 using Xunit;
 
 namespace NSW.EliteDangerous.Events
@@ -13,13 +13,13 @@ namespace NSW.EliteDangerous.Events
         [MemberData(nameof(Data))]
         public void ShouldExecuteEvent(string eventName, string json)
         {
-            var api = (EliteDangerousAPI)TestHelpers.TestApi;
+            var api = (API.EliteDangerousAPI)TestHelpers.TestApi;
             var globalFired = false;
             var eventFired = false;
 
             api.AllEvents += (s, e) =>
             {
-                Assert.IsType<EliteDangerousAPI>(s);
+                Assert.IsType<API.EliteDangerousAPI>(s);
                 Assert.Equal(EventName.ToLower(), e.EventName);
                 Assert.Equal(typeof(ShipyardEvent), e.EventType);
                 Assert.IsType<ShipyardEvent>(e.Event);
@@ -29,7 +29,7 @@ namespace NSW.EliteDangerous.Events
 
             api.Station.Shipyard += (sender, @event) =>
             {
-                Assert.IsType<EliteDangerousAPI>(sender);
+                Assert.IsType<API.EliteDangerousAPI>(sender);
                 AssertEvent(@event);
                 eventFired = true;
             };
@@ -44,13 +44,13 @@ namespace NSW.EliteDangerous.Events
         [MemberData(nameof(Data))]
         public void ShouldReadFileEvent(string eventName, string json)
         {
-            var api = (EliteDangerousAPI)TestHelpers.FilesApi;
+            var api = (API.EliteDangerousAPI)TestHelpers.FilesApi;
             var globalFired = false;
             var eventFired = false;
 
             api.AllEvents += (s, e) =>
             {
-                Assert.IsType<EliteDangerousAPI>(s);
+                Assert.IsType<API.EliteDangerousAPI>(s);
                 Assert.Equal(EventName.ToLower(), e.EventName);
                 Assert.Equal(typeof(ShipyardEvent), e.EventType);
                 Assert.IsType<ShipyardEvent>(e.Event);
@@ -60,14 +60,14 @@ namespace NSW.EliteDangerous.Events
 
             api.Station.Shipyard += (sender, @event) =>
             {
-                Assert.IsType<EliteDangerousAPI>(sender);
+                Assert.IsType<API.EliteDangerousAPI>(sender);
                 AssertFileEvent(@event);
                 eventFired = true;
             };
 
             api.Warnings += (sender, exception) =>
             {
-                Assert.IsType<EliteDangerousAPI>(sender);
+                Assert.IsType<API.EliteDangerousAPI>(sender);
                 Assert.IsType<JournalEventConsistencyException<ShipyardEvent>>(exception);
 
                 AssertEvent(((JournalEventConsistencyException<ShipyardEvent>)exception).FromJournal);

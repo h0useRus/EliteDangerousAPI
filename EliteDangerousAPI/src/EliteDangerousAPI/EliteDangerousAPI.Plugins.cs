@@ -6,7 +6,7 @@ using System.Reflection;
 using System.Threading.Tasks;
 using Microsoft.Extensions.Logging;
 
-namespace NSW.EliteDangerous
+namespace NSW.EliteDangerous.API
 {
     partial class EliteDangerousAPI
     {

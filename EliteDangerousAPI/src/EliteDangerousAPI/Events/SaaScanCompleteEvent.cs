@@ -16,6 +16,6 @@ namespace NSW.EliteDangerous.Events
         [JsonProperty("EfficiencyTarget")]
         public int EfficiencyTarget { get; internal set; }
 
-        internal static SaaScanCompleteEvent Execute(string json, EliteDangerousAPI api) => api.Exploration.InvokeEvent(api.FromJson<SaaScanCompleteEvent>(json));
+        internal static SaaScanCompleteEvent Execute(string json, API.EliteDangerousAPI api) => api.Exploration.InvokeEvent(api.FromJson<SaaScanCompleteEvent>(json));
     }
 }

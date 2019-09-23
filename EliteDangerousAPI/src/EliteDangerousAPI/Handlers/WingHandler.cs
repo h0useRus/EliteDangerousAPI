@@ -1,13 +1,13 @@
 using System;
 using NSW.EliteDangerous.Events;
 
-namespace NSW.EliteDangerous.Handlers
+namespace NSW.EliteDangerous.API.Handlers
 {
     public class WingHandler
     {
-        private readonly EliteDangerousAPI _api;
+        private readonly API.EliteDangerousAPI _api;
 
-        internal WingHandler(EliteDangerousAPI api) { _api = api; }
+        internal WingHandler(API.EliteDangerousAPI api) { _api = api; }
         /// <summary>
         /// When another player has joined the wing
         /// </summary>

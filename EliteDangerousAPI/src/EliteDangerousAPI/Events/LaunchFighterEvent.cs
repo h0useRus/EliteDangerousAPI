@@ -13,6 +13,6 @@ namespace NSW.EliteDangerous.Events
         [JsonProperty("PlayerControlled")]
         public bool PlayerControlled { get; internal set; }
 
-        internal static LaunchFighterEvent Execute(string json, EliteDangerousAPI api) => api.Ship.InvokeEvent(api.FromJson<LaunchFighterEvent>(json));
+        internal static LaunchFighterEvent Execute(string json, API.EliteDangerousAPI api) => api.Ship.InvokeEvent(api.FromJson<LaunchFighterEvent>(json));
     }
 }

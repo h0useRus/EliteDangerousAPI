@@ -1,4 +1,4 @@
-namespace NSW.EliteDangerous
+namespace NSW.EliteDangerous.API
 {
     public enum ApiStatus
     {

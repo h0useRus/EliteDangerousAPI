@@ -1,12 +1,12 @@
 using System;
 using NSW.EliteDangerous.Events;
 
-namespace NSW.EliteDangerous.Handlers
+namespace NSW.EliteDangerous.API.Handlers
 {
     public class PowerplayHandler
     {
-        private readonly EliteDangerousAPI _api;
-        internal PowerplayHandler(EliteDangerousAPI api) { _api = api; }
+        private readonly API.EliteDangerousAPI _api;
+        internal PowerplayHandler(API.EliteDangerousAPI api) { _api = api; }
         /// <summary>
         ///  if player has pledged to a power
         /// </summary>

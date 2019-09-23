@@ -14,6 +14,6 @@ namespace NSW.EliteDangerous.Events
         [JsonProperty("RankCombat")]
         public CombatRank Rank { get; internal set; }
 
-        internal static NpcCrewRankEvent Execute(string json, EliteDangerousAPI api) => api.Crew.InvokeEvent(api.FromJson<NpcCrewRankEvent>(json));
+        internal static NpcCrewRankEvent Execute(string json, API.EliteDangerousAPI api) => api.Crew.InvokeEvent(api.FromJson<NpcCrewRankEvent>(json));
     }
 }

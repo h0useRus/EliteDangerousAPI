@@ -10,6 +10,6 @@ namespace NSW.EliteDangerous.Events
         [JsonProperty("Amount")]
         public double Amount { get; internal set; }
 
-        internal static RefuelAllEvent Execute(string json, EliteDangerousAPI api) => api.Station.InvokeEvent(api.FromJson<RefuelAllEvent>(json));
+        internal static RefuelAllEvent Execute(string json, API.EliteDangerousAPI api) => api.Station.InvokeEvent(api.FromJson<RefuelAllEvent>(json));
     }
 }

@@ -16,6 +16,6 @@ namespace NSW.EliteDangerous.Events
         [JsonProperty("ShipPrice")]
         public long ShipPrice { get; internal set; }
 
-        internal static SellShipOnRebuyEvent Execute(string json, EliteDangerousAPI api) => api.Station.InvokeEvent(api.FromJson<SellShipOnRebuyEvent>(json));
+        internal static SellShipOnRebuyEvent Execute(string json, API.EliteDangerousAPI api) => api.Station.InvokeEvent(api.FromJson<SellShipOnRebuyEvent>(json));
     }
 }

@@ -13,6 +13,6 @@ namespace NSW.EliteDangerous.Events
         [JsonProperty("Count")]
         public long Count { get; internal set; }
 
-        internal static FssAllBodiesFoundEvent Execute(string json, EliteDangerousAPI api) => api.Exploration.InvokeEvent(api.FromJson<FssAllBodiesFoundEvent>(json));
+        internal static FssAllBodiesFoundEvent Execute(string json, API.EliteDangerousAPI api) => api.Exploration.InvokeEvent(api.FromJson<FssAllBodiesFoundEvent>(json));
     }
 }

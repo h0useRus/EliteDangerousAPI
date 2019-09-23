@@ -1,11 +1,11 @@
 using System;
 using System.Collections.Generic;
 using System.IO;
+using NSW.EliteDangerous.API.Exceptions;
+using NSW.EliteDangerous.API.Handlers;
 using NSW.EliteDangerous.Events;
-using NSW.EliteDangerous.Exceptions;
-using NSW.EliteDangerous.Handlers;
 
-namespace NSW.EliteDangerous
+namespace NSW.EliteDangerous.API
 {
     public interface IEliteDangerousAPI : IDisposable
     {

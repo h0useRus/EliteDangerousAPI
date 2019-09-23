@@ -1,13 +1,13 @@
 using System;
 using NSW.EliteDangerous.Events;
 
-namespace NSW.EliteDangerous.Handlers
+namespace NSW.EliteDangerous.API.Handlers
 {
     public class ShipHandler
     {
-        private readonly EliteDangerousAPI _api;
+        private readonly API.EliteDangerousAPI _api;
 
-        internal ShipHandler(EliteDangerousAPI api) { _api = api; }
+        internal ShipHandler(API.EliteDangerousAPI api) { _api = api; }
         /// <summary>
         /// at startup, when loading from main menu, or when switching ships, or after changing the ship in Outfitting, or when docking SRV back in mothership 
         /// </summary>

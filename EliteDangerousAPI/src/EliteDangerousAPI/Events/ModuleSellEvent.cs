@@ -25,6 +25,6 @@ namespace NSW.EliteDangerous.Events
         [JsonProperty("ShipID")]
         public long ShipId { get; internal set; }
 
-        internal static ModuleSellEvent Execute(string json, EliteDangerousAPI api) => api.Station.InvokeEvent(api.FromJson<ModuleSellEvent>(json));
+        internal static ModuleSellEvent Execute(string json, API.EliteDangerousAPI api) => api.Station.InvokeEvent(api.FromJson<ModuleSellEvent>(json));
     }
 }

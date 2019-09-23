@@ -10,6 +10,6 @@ namespace NSW.EliteDangerous.Events
         [JsonProperty("ServerId")]
         public long ServerId { get; internal set; }
 
-        internal new static ModuleSellRemoteEvent Execute(string json, EliteDangerousAPI api) => api.Station.InvokeEvent(api.FromJson<ModuleSellRemoteEvent>(json));
+        internal new static ModuleSellRemoteEvent Execute(string json, API.EliteDangerousAPI api) => api.Station.InvokeEvent(api.FromJson<ModuleSellRemoteEvent>(json));
     }
 }

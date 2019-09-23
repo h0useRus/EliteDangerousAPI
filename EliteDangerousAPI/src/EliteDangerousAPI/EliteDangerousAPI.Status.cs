@@ -1,7 +1,7 @@
 using System;
-using NSW.EliteDangerous.Statuses;
+using NSW.EliteDangerous.API.Statuses;
 
-namespace NSW.EliteDangerous
+namespace NSW.EliteDangerous.API
 {
     partial class EliteDangerousAPI
     {

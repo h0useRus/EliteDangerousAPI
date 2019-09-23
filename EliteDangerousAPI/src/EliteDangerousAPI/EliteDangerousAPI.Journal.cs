@@ -4,10 +4,10 @@ using System.Linq;
 using System.Threading.Tasks;
 using System.Timers;
 using Microsoft.Extensions.Logging;
+using NSW.EliteDangerous.API.Exceptions;
 using NSW.EliteDangerous.Events;
-using NSW.EliteDangerous.Exceptions;
 
-namespace NSW.EliteDangerous
+namespace NSW.EliteDangerous.API
 {
     partial class EliteDangerousAPI
     {

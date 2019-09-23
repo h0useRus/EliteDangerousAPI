@@ -7,6 +7,6 @@ namespace NSW.EliteDangerous.Events
         [JsonProperty("Modules")]
         public string[] Modules { get; internal set; }
 
-        internal static RebootRepairEvent Execute(string json, EliteDangerousAPI api) => api.Ship.InvokeEvent(api.FromJson<RebootRepairEvent>(json));
+        internal static RebootRepairEvent Execute(string json, API.EliteDangerousAPI api) => api.Ship.InvokeEvent(api.FromJson<RebootRepairEvent>(json));
     }
 }

@@ -13,6 +13,6 @@ namespace NSW.EliteDangerous.Events
         [JsonProperty("USSThreat")]
         public int UssThreat { get; set; }
 
-        internal static UssDropEvent Execute(string json, EliteDangerousAPI api) => api.Exploration.InvokeEvent(api.FromJson<UssDropEvent>(json));
+        internal static UssDropEvent Execute(string json, API.EliteDangerousAPI api) => api.Exploration.InvokeEvent(api.FromJson<UssDropEvent>(json));
     }
 }

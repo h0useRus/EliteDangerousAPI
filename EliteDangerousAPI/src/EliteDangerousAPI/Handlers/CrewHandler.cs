@@ -1,12 +1,12 @@
 using System;
 using NSW.EliteDangerous.Events;
 
-namespace NSW.EliteDangerous.Handlers
+namespace NSW.EliteDangerous.API.Handlers
 {
     public class CrewHandler
     {
-        private readonly EliteDangerousAPI _api;
-        internal CrewHandler(EliteDangerousAPI api) { _api = api; }
+        private readonly API.EliteDangerousAPI _api;
+        internal CrewHandler(API.EliteDangerousAPI api) { _api = api; }
         /// <summary>
         /// when changing the task assignment of a member of crew
         /// </summary>

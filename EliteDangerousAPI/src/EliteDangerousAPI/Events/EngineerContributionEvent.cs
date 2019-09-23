@@ -35,6 +35,6 @@ namespace NSW.EliteDangerous.Events
         [JsonProperty("TotalQuantity")]
         public long TotalQuantity { get; internal set; }
 
-        internal static EngineerContributionEvent Execute(string json, EliteDangerousAPI api) => api.Station.InvokeEvent(api.FromJson<EngineerContributionEvent>(json));
+        internal static EngineerContributionEvent Execute(string json, API.EliteDangerousAPI api) => api.Station.InvokeEvent(api.FromJson<EngineerContributionEvent>(json));
     }
 }

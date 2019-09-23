@@ -8,6 +8,6 @@ namespace NSW.EliteDangerous.Events
         [JsonProperty("ScanType")]
         public ShipScanType ScanType { get; internal set; }
 
-        internal static ScannedEvent Execute(string json, EliteDangerousAPI api) => api.Ship.InvokeEvent(api.FromJson<ScannedEvent>(json));
+        internal static ScannedEvent Execute(string json, API.EliteDangerousAPI api) => api.Ship.InvokeEvent(api.FromJson<ScannedEvent>(json));
     }
 }

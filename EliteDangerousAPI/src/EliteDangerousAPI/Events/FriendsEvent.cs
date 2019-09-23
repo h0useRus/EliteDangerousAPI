@@ -11,6 +11,6 @@ namespace NSW.EliteDangerous.Events
         [JsonProperty]
         public string Name { get; set; }
 
-        internal static FriendsEvent Execute(string json, EliteDangerousAPI api) => api.Player.InvokeEvent(api.FromJson<FriendsEvent>(json));
+        internal static FriendsEvent Execute(string json, API.EliteDangerousAPI api) => api.Player.InvokeEvent(api.FromJson<FriendsEvent>(json));
     }
 }

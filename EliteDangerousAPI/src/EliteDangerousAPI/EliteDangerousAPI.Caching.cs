@@ -3,13 +3,12 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Reflection;
 using System.Runtime.CompilerServices;
-using Microsoft.Extensions.Logging;
+using NSW.EliteDangerous.API.Exceptions;
 using NSW.EliteDangerous.Events;
-using NSW.EliteDangerous.Exceptions;
 
 [assembly: InternalsVisibleTo("EliteDangerousAPI.UnitTests")]
 
-namespace NSW.EliteDangerous
+namespace NSW.EliteDangerous.API
 {
     partial class EliteDangerousAPI
     {

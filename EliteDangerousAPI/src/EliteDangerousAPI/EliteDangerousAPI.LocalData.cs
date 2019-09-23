@@ -1,6 +1,6 @@
 using System.Collections.Generic;
 
-namespace NSW.EliteDangerous
+namespace NSW.EliteDangerous.API
 {
     partial class EliteDangerousAPI
     {

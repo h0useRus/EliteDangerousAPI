@@ -13,13 +13,13 @@ namespace NSW.EliteDangerous.Events
         [MemberData(nameof(Data))]
         public void ShouldExecuteEvent(string eventName, string json)
         {
-            var api = (EliteDangerousAPI)TestHelpers.TestApi;
+            var api = (API.EliteDangerousAPI)TestHelpers.TestApi;
             var globalFired = false;
             var eventFired = false;
 
             api.AllEvents += (s, e) =>
             {
-                Assert.IsType<EliteDangerousAPI>(s);
+                Assert.IsType<API.EliteDangerousAPI>(s);
                 Assert.Equal(EventName.ToLower(), e.EventName);
                 Assert.Equal(typeof(ScannedEvent), e.EventType);
                 Assert.IsType<ScannedEvent>(e.Event);
@@ -29,7 +29,7 @@ namespace NSW.EliteDangerous.Events
 
             api.Ship.Scanned += (sender, @event) =>
             {
-                Assert.IsType<EliteDangerousAPI>(sender);
+                Assert.IsType<API.EliteDangerousAPI>(sender);
                 AssertEvent(@event);
                 eventFired = true;
             };

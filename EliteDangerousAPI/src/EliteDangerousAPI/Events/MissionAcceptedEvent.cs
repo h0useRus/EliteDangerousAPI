@@ -71,6 +71,6 @@ namespace NSW.EliteDangerous.Events
         [JsonProperty("PassengerVIPs")]
         public bool? PassengerVIPs { get; internal set; }
 
-        internal static MissionAcceptedEvent Execute(string json, EliteDangerousAPI api) => api.Station.InvokeEvent(api.FromJson<MissionAcceptedEvent>(json));
+        internal static MissionAcceptedEvent Execute(string json, API.EliteDangerousAPI api) => api.Station.InvokeEvent(api.FromJson<MissionAcceptedEvent>(json));
     }
 }

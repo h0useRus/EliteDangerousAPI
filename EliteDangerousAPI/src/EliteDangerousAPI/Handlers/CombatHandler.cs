@@ -1,13 +1,13 @@
 using System;
 using NSW.EliteDangerous.Events;
 
-namespace NSW.EliteDangerous.Handlers
+namespace NSW.EliteDangerous.API.Handlers
 {
     public class CombatHandler
     {
-        private readonly EliteDangerousAPI _api;
+        private readonly API.EliteDangerousAPI _api;
 
-        internal CombatHandler(EliteDangerousAPI api) { _api = api; }
+        internal CombatHandler(API.EliteDangerousAPI api) { _api = api; }
         /// <summary>
         /// The player is awarded a bounty for a kill
         /// </summary>

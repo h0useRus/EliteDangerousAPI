@@ -1,7 +1,7 @@
 using System;
 using NSW.EliteDangerous.Events.Entities;
 
-namespace NSW.EliteDangerous.Statuses
+namespace NSW.EliteDangerous.API.Statuses
 {
     [Flags]
     public enum GameStatusFlags
@@ -14,7 +14,7 @@ namespace NSW.EliteDangerous.Statuses
     public class GameStatus
     {
         public GameStatusFlags Flags { get; private set; }
-        public bool Running => EliteDangerousAPI.GameRunning;
+        public bool Running => API.EliteDangerousAPI.GameRunning;
         public string Version { get; private set; }
         public string Language { get; private set; }
         public string MusicTrack { get; private set; }
@@ -23,7 +23,7 @@ namespace NSW.EliteDangerous.Statuses
         public GuiFocus GuiFocus { get; private set; } = GuiFocus.NoFocus;
 
 
-        internal GameStatus(EliteDangerousAPI api)
+        internal GameStatus(API.EliteDangerousAPI api)
         {
             Flags = GameStatusFlags.None;
 

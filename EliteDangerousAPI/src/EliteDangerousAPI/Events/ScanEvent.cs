@@ -114,6 +114,6 @@ namespace NSW.EliteDangerous.Events
         [JsonProperty("WasMapped")]
         public bool WasMapped { get; internal set; }
 
-        internal static ScanEvent Execute(string json, EliteDangerousAPI api) => api.Exploration.InvokeEvent(api.FromJson<ScanEvent>(json));
+        internal static ScanEvent Execute(string json, API.EliteDangerousAPI api) => api.Exploration.InvokeEvent(api.FromJson<ScanEvent>(json));
     }
 }

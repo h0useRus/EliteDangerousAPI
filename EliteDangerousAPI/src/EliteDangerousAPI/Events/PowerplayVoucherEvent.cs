@@ -7,6 +7,6 @@ namespace NSW.EliteDangerous.Events
         [JsonProperty("Systems")]
         public string[] Systems { get; internal set; }
 
-        internal static PowerplayVoucherEvent Execute(string json, EliteDangerousAPI api) => api.Powerplay.InvokeEvent(api.FromJson<PowerplayVoucherEvent>(json));
+        internal static PowerplayVoucherEvent Execute(string json, API.EliteDangerousAPI api) => api.Powerplay.InvokeEvent(api.FromJson<PowerplayVoucherEvent>(json));
     }
 }

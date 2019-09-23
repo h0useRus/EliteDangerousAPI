@@ -1,7 +1,6 @@
-using System;
 using NSW.EliteDangerous.Events.Entities;
 
-namespace NSW.EliteDangerous.Statuses
+namespace NSW.EliteDangerous.API.Statuses
 {
     public class PlayerStatus
     {
@@ -33,7 +32,7 @@ namespace NSW.EliteDangerous.Statuses
 
         public LegalState LegalState { get; private set; } = LegalState.Clean;
 
-        internal PlayerStatus(EliteDangerousAPI api)
+        internal PlayerStatus(API.EliteDangerousAPI api)
         {
             api.Game.Status += (s, e) =>
             {

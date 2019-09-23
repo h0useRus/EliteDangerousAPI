@@ -2,7 +2,7 @@ using System;
 using System.IO;
 using System.Runtime.InteropServices;
 
-namespace NSW.EliteDangerous
+namespace NSW.EliteDangerous.API
 {
     /// <summary>
     /// EliteDangerousAPI settings

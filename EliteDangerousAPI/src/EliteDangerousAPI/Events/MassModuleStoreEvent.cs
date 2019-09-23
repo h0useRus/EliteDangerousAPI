@@ -17,6 +17,6 @@ namespace NSW.EliteDangerous.Events
         [JsonProperty("Items")]
         public ItemDetails[] Items { get; internal set; }
 
-        internal static MassModuleStoreEvent Execute(string json, EliteDangerousAPI api) => api.Station.InvokeEvent(api.FromJson<MassModuleStoreEvent>(json));
+        internal static MassModuleStoreEvent Execute(string json, API.EliteDangerousAPI api) => api.Station.InvokeEvent(api.FromJson<MassModuleStoreEvent>(json));
     }
 }

@@ -1,7 +1,6 @@
 using System.IO;
 using NSW.EliteDangerous.Events.Entities;
 using Newtonsoft.Json;
-using NSW.EliteDangerous.Exceptions;
 
 namespace NSW.EliteDangerous.Events
 {
@@ -16,7 +15,7 @@ namespace NSW.EliteDangerous.Events
         [JsonProperty("Inventory")]
         public Inventory[] Inventory { get; internal set; }
 
-        internal static CargoEvent Execute(string json, EliteDangerousAPI api)
+        internal static CargoEvent Execute(string json, API.EliteDangerousAPI api)
         {
             var jsonEvent = api.FromJson<CargoEvent>(json);
             var fileEvent = api.FromJsonFile<CargoEvent>(Path.Combine(api.JournalDirectory.FullName, "Cargo.json"));

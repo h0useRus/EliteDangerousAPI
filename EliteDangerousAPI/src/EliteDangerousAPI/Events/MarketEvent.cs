@@ -1,7 +1,7 @@
 using System.IO;
 using NSW.EliteDangerous.Events.Entities;
 using Newtonsoft.Json;
-using NSW.EliteDangerous.Exceptions;
+using NSW.EliteDangerous.API.Exceptions;
 
 namespace NSW.EliteDangerous.Events
 {
@@ -19,7 +19,7 @@ namespace NSW.EliteDangerous.Events
         [JsonProperty("Items")]
         public MarketItem[] Items { get; set; }
 
-        internal static MarketEvent Execute(string json, EliteDangerousAPI api)
+        internal static MarketEvent Execute(string json, API.EliteDangerousAPI api)
         {
             var jsonEvent = api.FromJson<MarketEvent>(json);
             var fileEvent = api.FromJsonFile<MarketEvent>(Path.Combine(api.JournalDirectory.FullName, "Market.json"));

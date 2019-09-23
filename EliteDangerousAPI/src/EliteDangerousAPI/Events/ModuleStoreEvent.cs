@@ -34,6 +34,6 @@ namespace NSW.EliteDangerous.Events
         [JsonProperty("Quality")]
         public double Quality { get; internal set; }
 
-        internal static ModuleStoreEvent Execute(string json, EliteDangerousAPI api) => api.Station.InvokeEvent(api.FromJson<ModuleStoreEvent>(json));
+        internal static ModuleStoreEvent Execute(string json, API.EliteDangerousAPI api) => api.Station.InvokeEvent(api.FromJson<ModuleStoreEvent>(json));
     }
 }

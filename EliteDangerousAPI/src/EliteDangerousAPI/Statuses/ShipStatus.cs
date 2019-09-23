@@ -1,7 +1,6 @@
-using Newtonsoft.Json;
 using NSW.EliteDangerous.Events.Entities;
 
-namespace NSW.EliteDangerous.Statuses
+namespace NSW.EliteDangerous.API.Statuses
 {
     public class ShipStatus
     {
@@ -48,7 +47,7 @@ namespace NSW.EliteDangerous.Statuses
         public bool NightVision => GetFlag(28);
         public bool HighAltitudeMode => GetFlag(29);
         
-        internal ShipStatus(EliteDangerousAPI api)
+        internal ShipStatus(API.EliteDangerousAPI api)
         {
             api.Game.LoadGame += (s, e) =>
             {

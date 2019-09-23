@@ -34,6 +34,6 @@ namespace NSW.EliteDangerous.Events
         [JsonProperty("IllegalGoods")]
         public bool IllegalGoods { get; internal set; }
 
-        internal static MarketSellEvent Execute(string json, EliteDangerousAPI api) => api.Trade.InvokeEvent(api.FromJson<MarketSellEvent>(json));
+        internal static MarketSellEvent Execute(string json, API.EliteDangerousAPI api) => api.Trade.InvokeEvent(api.FromJson<MarketSellEvent>(json));
     }
 }

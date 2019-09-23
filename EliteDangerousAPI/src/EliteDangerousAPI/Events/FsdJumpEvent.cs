@@ -80,6 +80,6 @@ namespace NSW.EliteDangerous.Events
         [JsonProperty("Conflicts")]
         public Conflict[] Conflicts { get; internal set; }
 
-        internal static FsdJumpEvent Execute(string json, EliteDangerousAPI api) => api.Travel.InvokeEvent(api.FromJson<FsdJumpEvent>(json));
+        internal static FsdJumpEvent Execute(string json, API.EliteDangerousAPI api) => api.Travel.InvokeEvent(api.FromJson<FsdJumpEvent>(json));
     }
 }

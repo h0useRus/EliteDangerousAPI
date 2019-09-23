@@ -23,6 +23,6 @@ namespace NSW.EliteDangerous.Events
         [JsonProperty("Power")]
         public string Power { get; internal set; }
 
-        private static InterdictionEvent Execute(string json, EliteDangerousAPI api) => api.Combat.InvokeEvent(api.FromJson<InterdictionEvent>(json));
+        private static InterdictionEvent Execute(string json, API.EliteDangerousAPI api) => api.Combat.InvokeEvent(api.FromJson<InterdictionEvent>(json));
     }
 }

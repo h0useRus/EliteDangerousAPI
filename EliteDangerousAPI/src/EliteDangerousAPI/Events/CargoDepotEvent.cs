@@ -38,6 +38,6 @@ namespace NSW.EliteDangerous.Events
         [JsonProperty("Progress")]
         public double Progress { get; internal set; }
 
-        internal static CargoDepotEvent Execute(string json, EliteDangerousAPI api) => api.Station.InvokeEvent(api.FromJson<CargoDepotEvent>(json));
+        internal static CargoDepotEvent Execute(string json, API.EliteDangerousAPI api) => api.Station.InvokeEvent(api.FromJson<CargoDepotEvent>(json));
     }
 }

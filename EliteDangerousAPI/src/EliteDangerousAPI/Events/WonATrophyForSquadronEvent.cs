@@ -2,6 +2,6 @@
 {
     public class WonATrophyForSquadronEvent : SquadronEvent
     {
-        internal static WonATrophyForSquadronEvent Execute(string json, EliteDangerousAPI api) => api.Squadron.InvokeEvent(api.FromJson<WonATrophyForSquadronEvent>(json));
+        internal static WonATrophyForSquadronEvent Execute(string json, API.EliteDangerousAPI api) => api.Squadron.InvokeEvent(api.FromJson<WonATrophyForSquadronEvent>(json));
     }
 }

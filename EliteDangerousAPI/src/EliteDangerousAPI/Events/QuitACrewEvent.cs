@@ -7,6 +7,6 @@ namespace NSW.EliteDangerous.Events
         [JsonProperty("Captain")]
         public string Captain { get; internal set; }
 
-        internal static QuitACrewEvent Execute(string json, EliteDangerousAPI api) => api.Crew.InvokeEvent(api.FromJson<QuitACrewEvent>(json));
+        internal static QuitACrewEvent Execute(string json, API.EliteDangerousAPI api) => api.Crew.InvokeEvent(api.FromJson<QuitACrewEvent>(json));
     }
 }

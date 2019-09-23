@@ -7,6 +7,6 @@ namespace NSW.EliteDangerous.Events
         [JsonProperty("Part")]
         public string Part { get; internal set; }
 
-        internal static ContinuedEvent Execute(string json, EliteDangerousAPI api) => api.Game.InvokeEvent(api.FromJson<ContinuedEvent>(json));
+        internal static ContinuedEvent Execute(string json, API.EliteDangerousAPI api) => api.Game.InvokeEvent(api.FromJson<ContinuedEvent>(json));
     }
 }

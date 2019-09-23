@@ -1,7 +1,7 @@
 using System.IO;
 using NSW.EliteDangerous.Events.Entities;
 using Newtonsoft.Json;
-using NSW.EliteDangerous.Exceptions;
+using NSW.EliteDangerous.API.Exceptions;
 
 namespace NSW.EliteDangerous.Events
 {
@@ -25,7 +25,7 @@ namespace NSW.EliteDangerous.Events
         [JsonProperty("PriceList")]
         public ShipyardPrice[] Prices { get; set; }
 
-        internal static ShipyardEvent Execute(string json, EliteDangerousAPI api)
+        internal static ShipyardEvent Execute(string json, API.EliteDangerousAPI api)
         {
             var jsonEvent = api.FromJson<ShipyardEvent>(json);
             var fileEvent = api.FromJsonFile<ShipyardEvent>(Path.Combine(api.JournalDirectory.FullName, "Shipyard.json"));

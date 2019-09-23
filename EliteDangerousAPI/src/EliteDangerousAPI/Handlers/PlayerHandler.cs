@@ -1,13 +1,13 @@
-﻿using System;
+using System;
 using NSW.EliteDangerous.Events;
 
-namespace NSW.EliteDangerous.Handlers
+namespace NSW.EliteDangerous.API.Handlers
 {
     public class PlayerHandler
     {
-        private readonly EliteDangerousAPI _api;
+        private readonly API.EliteDangerousAPI _api;
 
-        internal PlayerHandler(EliteDangerousAPI api) { _api = api; }
+        internal PlayerHandler(API.EliteDangerousAPI api) { _api = api; }
         /// <summary>
         /// Get missions on startup
         /// </summary>
