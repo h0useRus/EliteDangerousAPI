@@ -51,6 +51,9 @@ namespace NSW.EliteDangerous.API.Events
         [JsonProperty("SubsystemHealth")]
         public double SubsystemHealth { get; internal set; }
 
+        [JsonProperty("Power")]
+        public string Power { get; internal set; }
+
         internal static ShipTargetedEvent Execute(string json, API.EliteDangerousAPI api) => api.Combat.InvokeEvent(api.FromJson<ShipTargetedEvent>(json));
     }
 }

@@ -35,6 +35,8 @@ namespace NSW.EliteDangerous.API
         InSrv = 1 << 26,
         AnalysisMode = 1 << 27,
         NightVision = 1 << 28,
-        Altitute = 1 << 29
+        Altitute = 1 << 29,
+        FsdJump = 1 << 30,
+        SrvHighBeam = 1 << 31
     }
 }

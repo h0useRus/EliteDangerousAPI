@@ -15,7 +15,7 @@ namespace NSW.EliteDangerous.API
 
         public DirectoryInfo JournalDirectory { get; }
 
-        public int DocumentationVersion { get ;} = 25;
+        public int DocumentationVersion { get ;} = 26;
 
         public string Version => Assembly.GetAssembly(typeof(API.EliteDangerousAPI)).GetCustomAttribute<AssemblyFileVersionAttribute>().Version;
 

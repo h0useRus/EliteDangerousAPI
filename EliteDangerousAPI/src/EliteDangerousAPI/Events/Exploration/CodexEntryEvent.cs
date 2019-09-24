@@ -43,6 +43,9 @@ namespace NSW.EliteDangerous.API.Events
         [JsonProperty("VoucherAmount")]
         public long VoucherAmount { get; internal set; }
 
+        [JsonProperty("NearestDestination")]
+        public string NearestDestination { get; internal set; }
+
         internal static CodexEntryEvent Execute(string json, API.EliteDangerousAPI api) => api.Exploration.InvokeEvent(api.FromJson<CodexEntryEvent>(json));
     }
 }

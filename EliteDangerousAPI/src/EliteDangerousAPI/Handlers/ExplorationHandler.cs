@@ -69,6 +69,11 @@ namespace NSW.EliteDangerous.API.Handlers
         public event EventHandler<SaaScanCompleteEvent> SaaScanComplete;
         internal SaaScanCompleteEvent InvokeEvent(SaaScanCompleteEvent arg) { SaaScanComplete?.Invoke(_api, arg); return arg; }
         /// <summary>
+        /// when using SAA scanner on a planet or rings
+        /// </summary>
+        public event EventHandler<SaaSignalsFoundEvent> SaaSignalsFound;
+        internal SaaSignalsFoundEvent InvokeEvent(SaaSignalsFoundEvent arg) { SaaSignalsFound?.Invoke(_api, arg); return arg; }
+        /// <summary>
         /// when buying system data via the galaxy map
         /// </summary>
         public event EventHandler<BuyExplorationDataEvent> BuyExplorationData;

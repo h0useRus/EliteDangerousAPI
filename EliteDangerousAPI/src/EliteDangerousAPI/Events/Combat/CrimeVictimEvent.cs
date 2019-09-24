@@ -7,6 +7,9 @@ namespace NSW.EliteDangerous.API.Events
         [JsonProperty("Offender")]
         public string Offender { get; internal set; }
 
+        [JsonProperty("Offender_Localised")]
+        public string OffenderLocalised { get; internal set; }
+
         [JsonProperty("CrimeType")]
         public CrimeType CrimeType { get; internal set; }
 

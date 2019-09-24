@@ -46,7 +46,9 @@ namespace NSW.EliteDangerous.API.Statuses
         public bool AnalysisMode => GetFlag(27);
         public bool NightVision => GetFlag(28);
         public bool HighAltitudeMode => GetFlag(29);
-        
+        public bool FsdJump => GetFlag(30);
+        public bool SrvHighBeam => GetFlag(31);
+
         internal ShipStatus(API.EliteDangerousAPI api)
         {
             api.Game.LoadGame += (s, e) =>

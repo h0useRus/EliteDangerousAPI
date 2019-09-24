@@ -1,7 +1,7 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
-    <VersionPrefix>1.0.25-RC1</VersionPrefix>
+    <VersionPrefix>1.0.26</VersionPrefix>
     <Description>Frontier Elite:Dangerous multi-platform API Library</Description>
     <Copyright>Copyright © 2019-2020 NewSoftWorld</Copyright>
     <AssemblyTitle>Elite:Dangerous API</AssemblyTitle>

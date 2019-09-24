@@ -4,6 +4,9 @@ namespace NSW.EliteDangerous.API.Events
 {
     public class SaaScanCompleteEvent : JournalEvent
     {
+        [JsonProperty("SystemAddress")]
+        public long SystemAddress { get; internal set; }
+
         [JsonProperty("BodyName")]
         public string BodyName { get; internal set; }
 

@@ -10,6 +10,9 @@ namespace NSW.EliteDangerous.API.Events
         [JsonProperty("SystemAddress")]
         public long SystemAddress { get; internal set; }
 
+        [JsonProperty("RemainingJumpsInRoute")]
+        public int RemainingJumpsInRoute { get; internal set; }
+
         internal static FsdTargetEvent Execute(string json, API.EliteDangerousAPI api) => api.Travel.InvokeEvent(api.FromJson<FsdTargetEvent>(json));
     }
 }

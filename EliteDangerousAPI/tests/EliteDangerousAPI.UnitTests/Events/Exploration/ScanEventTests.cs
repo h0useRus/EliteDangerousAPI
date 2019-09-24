@@ -38,7 +38,7 @@ namespace NSW.EliteDangerous.Events
             Assert.Equal(12, @event.BodyId);
             Assert.Equal(10048.152344, @event.DistanceFromArrivalLs, 6);
             Assert.True(@event.TidalLock);
-            Assert.Equal(string.Empty, @event.TerraformState);
+            Assert.Null(@event.TerraformState);
             Assert.Equal("Rocky body", @event.PlanetClass);
             Assert.Equal(string.Empty, @event.Atmosphere);
             Assert.Equal("None", @event.AtmosphereType);
@@ -68,12 +68,26 @@ namespace NSW.EliteDangerous.Events
             Assert.True(@event.WasMapped);
             Assert.True(@event.WasDiscovered);
 
+            Assert.Equal(11, @event.Parents[0].Planet.Value);
+            Assert.Null( @event.Parents[0].Star);
+            Assert.Null( @event.Parents[0].Null);
+
+            Assert.Equal(2, @event.Parents[1].Star.Value);
+            Assert.Null( @event.Parents[1].Planet);
+            Assert.Null( @event.Parents[1].Null);
+
+            Assert.Equal(0, @event.Parents[2].Null.Value);
+            Assert.Null( @event.Parents[2].Planet);
+            Assert.Null( @event.Parents[2].Star);
+
             Assert.Equal(2, @event.Rings.Length);
             Assert.Equal("Imeut AB 2 A Ring", @event.Rings[0].Name);
             Assert.Equal("eRingClass_MetalRich", @event.Rings[0].RingClass);
             Assert.Equal(2.1371e+09, @event.Rings[0].MassMt);
             Assert.Equal(5.7442e+07, @event.Rings[0].InnerRad);
             Assert.Equal(6.0438e+07, @event.Rings[0].OuterRad);
+
+            Assert.Equal(BodyType.Planet, @event.BodyType);
         }
 
         public static IEnumerable<object[]> Data =>
