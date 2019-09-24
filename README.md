@@ -3,7 +3,7 @@
 
 ![GitHub top language](https://img.shields.io/github/languages/top/h0useRus/EliteDangerousAPI)![GitHub](https://img.shields.io/github/license/h0useRus/EliteDangerousAPI)![GitHub Release Date](https://img.shields.io/github/release-date/h0useRus/EliteDangerousAPI)![GitHub last commit](https://img.shields.io/github/last-commit/h0useRus/EliteDangerousAPI)
 
-Simple event-based library which is provide easy way to get events from Elite Dangerous log journal.
+Simple event-based library which is provide easy way to get events from Elite Dangerous log [journal](https://github.com/h0useRus/EliteDangerousAPI/blob/master/Documentation/Journal-Manual-v26.pdf).
 
 ## Usage
 
