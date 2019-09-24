@@ -18,7 +18,7 @@ var serviceProvider = new ServiceCollection()
 // Get instance from DI                
 var api = serviceProvider.GetService<IEliteDangerousAPI>()
 // Subscribe to all events or find events which you interested for.
-api..AllEvents += (s, e) => Console.WriteLine($"API event at {e.Event.Timestamp:O} {e.EventName} type {e.EventType.Name}");
+api.AllEvents += (s, e) => Console.WriteLine($"API event at {e.Event.Timestamp:O} {e.EventName} type {e.EventType.Name}");
 // Run api (you could define autostart in ApiOptions)
 api.Start()
 Console.ReadLine();
