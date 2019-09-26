@@ -2,6 +2,7 @@ using System.Diagnostics;
 using System.IO;
 using System.Reflection;
 using Microsoft.Extensions.Logging;
+using Microsoft.Extensions.Logging.Abstractions;
 using Microsoft.Extensions.Options;
 
 namespace NSW.EliteDangerous.API
@@ -22,7 +23,7 @@ namespace NSW.EliteDangerous.API
         public EliteDangerousAPI(IOptions<ApiOptions> options, ILoggerFactory loggerFactory)
         {
             _settings = options?.Value ?? ApiOptions.Default;
-            _log = loggerFactory.CreateLogger<API.EliteDangerousAPI>();
+            _log = (loggerFactory ?? new NullLoggerFactory()).CreateLogger<EliteDangerousAPI>();
             JournalDirectory = new DirectoryInfo(_settings.JournalDirectory);
             InitHandlers();
             InitStatuses();
