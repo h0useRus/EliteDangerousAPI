@@ -1,4 +1,4 @@
-<Project Sdk="Microsoft.NET.Sdk">
+﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
     <VersionPrefix>1.1.26</VersionPrefix>
@@ -11,7 +11,7 @@
     <AssemblyName>NSW.EliteDangerous.API</AssemblyName>
     <RootNamespace>NSW.EliteDangerous.API</RootNamespace>
     <PackageId>NSW.EliteDangerous.API</PackageId>
-    <PackageTags>Elite Dangerous API;Elite API;</PackageTags>
+    <PackageTags>Elite Dangerous API;</PackageTags>
     <PackageProjectUrl>https://github.com/h0useRus/EliteDangerousAPI</PackageProjectUrl>
     <LangVersion>Latest</LangVersion>
     <PackageLicenseExpression>MIT</PackageLicenseExpression>
