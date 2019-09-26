@@ -10,7 +10,7 @@ namespace NSW.EliteDangerous
         {
             var api = TestHelpers.TestApi;
             Assert.Equal(26, api.DocumentationVersion);
-            Assert.Equal("1.0.26.0", api.Version);
+            Assert.Equal("1.1.26.0", api.Version);
             Assert.Equal(ApiStatus.Stopped, api.Status);
         }
 

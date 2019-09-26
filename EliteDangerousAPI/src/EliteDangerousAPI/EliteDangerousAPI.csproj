@@ -1,12 +1,12 @@
-﻿<Project Sdk="Microsoft.NET.Sdk">
+<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
-    <VersionPrefix>1.0.26</VersionPrefix>
+    <VersionPrefix>1.1.26</VersionPrefix>
     <Description>Frontier Elite:Dangerous multi-platform API Library</Description>
     <Copyright>Copyright © 2019-2020 NewSoftWorld</Copyright>
     <AssemblyTitle>Elite:Dangerous API</AssemblyTitle>
     <Authors>Denis Ibragimov</Authors>
-    <TargetFramework>netstandard2.0</TargetFramework>
+    <TargetFrameworks>netstandard2.0;netstandard2.1</TargetFrameworks>
     <TreatWarningsAsErrors>true</TreatWarningsAsErrors>
     <AssemblyName>NSW.EliteDangerous.API</AssemblyName>
     <RootNamespace>NSW.EliteDangerous.API</RootNamespace>
@@ -18,7 +18,7 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="Microsoft.Extensions.Logging" Version="2.2.0" />
+    <PackageReference Include="Microsoft.Extensions.Logging" Version="3.0.0" />
     <PackageReference Include="Newtonsoft.Json" Version="12.0.2" />
   </ItemGroup>
 
