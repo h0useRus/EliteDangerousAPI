@@ -4,6 +4,7 @@ using System.IO;
 using NSW.EliteDangerous.API.Events;
 using NSW.EliteDangerous.API.Exceptions;
 using NSW.EliteDangerous.API.Handlers;
+using NSW.EliteDangerous.API.Statuses;
 
 namespace NSW.EliteDangerous.API
 {
@@ -36,5 +37,10 @@ namespace NSW.EliteDangerous.API
         event EventHandler<GlobalEvent> AllEvents;
         event EventHandler<JournalException> Errors;
         event EventHandler<JournalException> Warnings;
+
+        event EventHandler<GameStatus> GameStatusChanged;
+        event EventHandler<PlayerStatus> PlayerStatusChanged;
+        event EventHandler<LocationStatus> LocationStatusChanged;
+        event EventHandler<ShipStatus> ShipStatusChanged;
     }
 }

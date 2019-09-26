@@ -40,9 +40,9 @@ namespace NSW.EliteDangerous.API
         internal void InvokeLocationStatusChanged(LocationStatus status) => LocationStatusChanged?.Invoke(this, status);
         internal void InvokeShipStatusChanged(ShipStatus status) => ShipStatusChanged?.Invoke(this, status);
 
-        public EventHandler<GameStatus> GameStatusChanged;
-        public EventHandler<PlayerStatus> PlayerStatusChanged;
-        public EventHandler<LocationStatus> LocationStatusChanged;
-        public EventHandler<ShipStatus> ShipStatusChanged;
+        public event EventHandler<GameStatus> GameStatusChanged;
+        public event EventHandler<PlayerStatus> PlayerStatusChanged;
+        public event EventHandler<LocationStatus> LocationStatusChanged;
+        public event EventHandler<ShipStatus> ShipStatusChanged;
     }
 }
