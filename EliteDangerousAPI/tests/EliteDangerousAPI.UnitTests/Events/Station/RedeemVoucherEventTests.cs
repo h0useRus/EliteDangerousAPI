@@ -25,7 +25,7 @@ namespace NSW.EliteDangerous.Events
                 Assert.IsType<RedeemVoucherEvent>(e.Event);
             };
 
-            api.Station.RedeemVoucher += (sender, @event) =>
+            api.StationEvents.RedeemVoucher += (sender, @event) =>
             {
                 Assert.IsType<API.EliteDangerousAPI>(sender);
                 AssertEvent(@event);

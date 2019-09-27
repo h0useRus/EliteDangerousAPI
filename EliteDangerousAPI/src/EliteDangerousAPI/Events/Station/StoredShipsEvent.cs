@@ -19,6 +19,6 @@ namespace NSW.EliteDangerous.API.Events
         [JsonProperty("ShipsRemote")]
         public ShipStoredRemote[] ShipsRemote { get; set; }
 
-        internal static StoredShipsEvent Execute(string json, API.EliteDangerousAPI api) => api.Station.InvokeEvent(api.FromJson<StoredShipsEvent>(json));
+        internal static StoredShipsEvent Execute(string json, API.EliteDangerousAPI api) => api.StationEvents.InvokeEvent(api.FromJson<StoredShipsEvent>(json));
     }
 }

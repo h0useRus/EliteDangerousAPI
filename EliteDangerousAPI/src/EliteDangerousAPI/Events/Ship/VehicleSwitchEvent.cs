@@ -9,6 +9,6 @@ namespace NSW.EliteDangerous.API.Events
         [JsonConverter(typeof(VehicleEnumConverter))]
         public VehicleType To { get; internal set; }
 
-        internal static VehicleSwitchEvent Execute(string json, API.EliteDangerousAPI api) => api.Ship.InvokeEvent(api.FromJson<VehicleSwitchEvent>(json));
+        internal static VehicleSwitchEvent Execute(string json, API.EliteDangerousAPI api) => api.ShipEvents.InvokeEvent(api.FromJson<VehicleSwitchEvent>(json));
     }
 }

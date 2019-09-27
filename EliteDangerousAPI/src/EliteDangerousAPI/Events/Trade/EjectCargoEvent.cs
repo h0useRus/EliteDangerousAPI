@@ -16,6 +16,6 @@ namespace NSW.EliteDangerous.API.Events
         [JsonProperty("Abandoned")]
         public bool Abandoned { get; internal set; }
 
-        internal static EjectCargoEvent Execute(string json, API.EliteDangerousAPI api) => api.Trade.InvokeEvent(api.FromJson<EjectCargoEvent>(json));
+        internal static EjectCargoEvent Execute(string json, API.EliteDangerousAPI api) => api.TradeEvents.InvokeEvent(api.FromJson<EjectCargoEvent>(json));
     }
 }

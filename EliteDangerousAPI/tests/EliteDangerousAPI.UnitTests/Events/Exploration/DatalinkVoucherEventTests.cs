@@ -27,7 +27,7 @@ namespace NSW.EliteDangerous.Events
                 globalFired = true;
             };
 
-            api.Exploration.DatalinkVoucher += (sender, @event) =>
+            api.ExplorationEvents.DatalinkVoucher += (sender, @event) =>
             {
                 Assert.IsType<API.EliteDangerousAPI>(sender);
                 AssertEvent(@event);

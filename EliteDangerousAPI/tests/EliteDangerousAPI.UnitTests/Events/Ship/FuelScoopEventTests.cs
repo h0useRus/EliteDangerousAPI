@@ -27,7 +27,7 @@ namespace NSW.EliteDangerous.Events
                 globalFired = true;
             };
 
-            api.Ship.FuelScoop += (sender, @event) =>
+            api.ShipEvents.FuelScoop += (sender, @event) =>
             {
                 Assert.IsType<API.EliteDangerousAPI>(sender);
                 AssertEvent(@event);

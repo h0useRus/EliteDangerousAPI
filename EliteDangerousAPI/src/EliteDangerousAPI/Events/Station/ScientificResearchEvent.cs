@@ -13,6 +13,6 @@ namespace NSW.EliteDangerous.API.Events
         [JsonProperty("Count")]
         public long Count { get; internal set; }
 
-        internal static ScientificResearchEvent Execute(string json, API.EliteDangerousAPI api) => api.Station.InvokeEvent(api.FromJson<ScientificResearchEvent>(json));
+        internal static ScientificResearchEvent Execute(string json, API.EliteDangerousAPI api) => api.StationEvents.InvokeEvent(api.FromJson<ScientificResearchEvent>(json));
     }
 }

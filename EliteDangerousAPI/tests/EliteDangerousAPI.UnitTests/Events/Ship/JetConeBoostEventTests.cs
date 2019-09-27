@@ -27,7 +27,7 @@ namespace NSW.EliteDangerous.Events
                 globalFired = true;
             };
 
-            api.Ship.JetConeBoost += (sender, @event) =>
+            api.ShipEvents.JetConeBoost += (sender, @event) =>
             {
                 Assert.IsType<API.EliteDangerousAPI>(sender);
                 AssertEvent(@event);

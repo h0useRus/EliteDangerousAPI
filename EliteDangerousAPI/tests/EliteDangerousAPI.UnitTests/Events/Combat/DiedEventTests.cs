@@ -16,7 +16,7 @@ namespace NSW.EliteDangerous.Events
         {
             var api = (API.EliteDangerousAPI)TestHelpers.TestApi;
             var eventFired = false;
-            api.Combat.Died += (sender, @event) =>
+            api.CombatEvents.Died += (sender, @event) =>
             {
                 Assert.IsType<API.EliteDangerousAPI>(sender);
                 AssertEvent(@event);

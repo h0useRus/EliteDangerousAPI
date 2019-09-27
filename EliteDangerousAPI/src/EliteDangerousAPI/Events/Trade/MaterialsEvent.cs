@@ -13,6 +13,6 @@ namespace NSW.EliteDangerous.API.Events
         [JsonProperty("Encoded")]
         public Material[] Encoded { get; set; }
 
-        internal static MaterialsEvent Execute(string json, API.EliteDangerousAPI api) => api.Trade.InvokeEvent(api.FromJson<MaterialsEvent>(json));
+        internal static MaterialsEvent Execute(string json, API.EliteDangerousAPI api) => api.TradeEvents.InvokeEvent(api.FromJson<MaterialsEvent>(json));
     }
 }

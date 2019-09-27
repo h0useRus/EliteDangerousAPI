@@ -22,6 +22,6 @@ namespace NSW.EliteDangerous.API.Events
         [JsonProperty("Remaining")]
         public long Remaining { get; internal set; }
 
-        internal static ProspectedAsteroidEvent Execute(string json, API.EliteDangerousAPI api) => api.Exploration.InvokeEvent(api.FromJson<ProspectedAsteroidEvent>(json));
+        internal static ProspectedAsteroidEvent Execute(string json, API.EliteDangerousAPI api) => api.ExplorationEvents.InvokeEvent(api.FromJson<ProspectedAsteroidEvent>(json));
     }
 }

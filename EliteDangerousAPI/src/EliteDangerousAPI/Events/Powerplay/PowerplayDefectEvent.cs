@@ -10,6 +10,6 @@ namespace NSW.EliteDangerous.API.Events
         [JsonProperty]
         public string ToPower { get; internal set; }
 
-        internal static PowerplayDefectEvent Execute(string json, API.EliteDangerousAPI api) => api.Powerplay.InvokeEvent(api.FromJson<PowerplayDefectEvent>(json));
+        internal static PowerplayDefectEvent Execute(string json, API.EliteDangerousAPI api) => api.PowerplayEvents.InvokeEvent(api.FromJson<PowerplayDefectEvent>(json));
     }
 }

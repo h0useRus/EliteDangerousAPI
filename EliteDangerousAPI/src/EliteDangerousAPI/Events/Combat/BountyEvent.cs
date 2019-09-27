@@ -19,6 +19,6 @@ namespace NSW.EliteDangerous.API.Events
         [JsonProperty("SharedWithOthers")]
         public long SharedWithOthers { get; internal set; }
 
-        internal static BountyEvent Execute(string json, API.EliteDangerousAPI api) => api.Combat.InvokeEvent(api.FromJson<BountyEvent>(json));
+        internal static BountyEvent Execute(string json, API.EliteDangerousAPI api) => api.CombatEvents.InvokeEvent(api.FromJson<BountyEvent>(json));
     }
 }

@@ -19,6 +19,6 @@ namespace NSW.EliteDangerous.API.Events
         [JsonProperty("VictimFaction_Localised")]
         public string VictimFactionLocalised { get; internal set; }
 
-        internal static FactionKillBondEvent Execute(string json, API.EliteDangerousAPI api) => api.Combat.InvokeEvent(api.FromJson<FactionKillBondEvent>(json));
+        internal static FactionKillBondEvent Execute(string json, API.EliteDangerousAPI api) => api.CombatEvents.InvokeEvent(api.FromJson<FactionKillBondEvent>(json));
     }
 }

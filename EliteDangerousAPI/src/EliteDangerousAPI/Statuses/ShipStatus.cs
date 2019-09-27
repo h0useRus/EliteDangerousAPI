@@ -51,7 +51,7 @@ namespace NSW.EliteDangerous.API.Statuses
 
         internal ShipStatus(API.EliteDangerousAPI api)
         {
-            api.Game.LoadGame += (s, e) =>
+            api.GameEvents.LoadGame += (s, e) =>
             {
                 ShipId = e.ShipId;
                 ShipType = e.ShipLocalised ?? e.Ship;
@@ -63,7 +63,7 @@ namespace NSW.EliteDangerous.API.Statuses
                 api.InvokeShipStatusChanged(this);
             };
 
-            api.Game.Status += (s, e) =>
+            api.GameEvents.Status += (s, e) =>
             {
                 Flags = e.Flags;
                 Fuel = e.Fuel ?? Fuel;
@@ -78,7 +78,7 @@ namespace NSW.EliteDangerous.API.Statuses
                 api.InvokeShipStatusChanged(this);
             };
 
-            api.Ship.VehicleSwitch += (s, e) =>
+            api.ShipEvents.VehicleSwitch += (s, e) =>
             {
                 if (CurrentVehicle != e.To)
                 {
@@ -87,7 +87,7 @@ namespace NSW.EliteDangerous.API.Statuses
                 }
             };
 
-            api.Station.SetUserShipName += (s, e) =>
+            api.StationEvents.SetUserShipName += (s, e) =>
             {
                 Name = e.UserShipName;
                 Identifier = e.UserShipId;
@@ -95,7 +95,7 @@ namespace NSW.EliteDangerous.API.Statuses
                 api.InvokeShipStatusChanged(this);
             };
 
-            api.Station.ShipyardNew += (s, e) =>
+            api.StationEvents.ShipyardNew += (s, e) =>
             {
                 ShipId = e.NewShipId;
                 ShipType = e.ShipTypeLocalised ?? e.ShipType;
@@ -103,7 +103,7 @@ namespace NSW.EliteDangerous.API.Statuses
                 Identifier = string.Empty;
             };
 
-            api.Station.ShipyardSwap += (s, e) =>
+            api.StationEvents.ShipyardSwap += (s, e) =>
             {
                 ShipId = e.ShipId;
                 ShipType = e.ShipTypeLocalised ?? e.ShipType;

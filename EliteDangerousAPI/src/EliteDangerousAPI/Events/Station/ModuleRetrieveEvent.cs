@@ -40,6 +40,6 @@ namespace NSW.EliteDangerous.API.Events
         [JsonProperty("SwapOutItem_Localised")]
         public string SwapOutItemLocalised { get; internal set; }
 
-        internal static ModuleRetrieveEvent Execute(string json, API.EliteDangerousAPI api) => api.Station.InvokeEvent(api.FromJson<ModuleRetrieveEvent>(json));
+        internal static ModuleRetrieveEvent Execute(string json, API.EliteDangerousAPI api) => api.StationEvents.InvokeEvent(api.FromJson<ModuleRetrieveEvent>(json));
     }
 }

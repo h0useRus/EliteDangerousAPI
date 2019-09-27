@@ -16,7 +16,7 @@ namespace NSW.EliteDangerous.Events
         {
             var api = (API.EliteDangerousAPI)TestHelpers.TestApi;
             var eventFired = false;
-            api.Exploration.MaterialCollected += (sender, @event) =>
+            api.ExplorationEvents.MaterialCollected += (sender, @event) =>
             {
                 Assert.IsType<API.EliteDangerousAPI>(sender);
                 AssertEvent(@event);

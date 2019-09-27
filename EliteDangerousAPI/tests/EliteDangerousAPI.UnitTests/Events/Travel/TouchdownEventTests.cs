@@ -15,7 +15,7 @@ namespace NSW.EliteDangerous.Events
         {
             var api = (API.EliteDangerousAPI)TestHelpers.TestApi;
             var eventFired = false;
-            api.Travel.Touchdown += (sender, @event) =>
+            api.TravelEvents.Touchdown += (sender, @event) =>
             {
                 Assert.IsType<API.EliteDangerousAPI>(sender);
                 AssertEvent(@event);

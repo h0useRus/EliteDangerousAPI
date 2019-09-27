@@ -19,6 +19,6 @@ namespace NSW.EliteDangerous.API.Events
         [JsonProperty("Channel")]
         public MessageChannel Channel { get; internal set; }
 
-        internal static ReceiveTextEvent Execute(string json, API.EliteDangerousAPI api) => api.Player.InvokeEvent(api.FromJson<ReceiveTextEvent>(json));
+        internal static ReceiveTextEvent Execute(string json, API.EliteDangerousAPI api) => api.PlayerEvents.InvokeEvent(api.FromJson<ReceiveTextEvent>(json));
     }
 }

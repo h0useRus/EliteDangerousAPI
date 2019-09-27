@@ -7,6 +7,6 @@ namespace NSW.EliteDangerous.API.Events
         [JsonProperty("LandingPad")]
         public int LandingPad { get; internal set; }
 
-        internal static DockingGrantedEvent Execute(string json, API.EliteDangerousAPI api) => api.Travel.InvokeEvent(api.FromJson<DockingGrantedEvent>(json));
+        internal static DockingGrantedEvent Execute(string json, API.EliteDangerousAPI api) => api.TravelEvents.InvokeEvent(api.FromJson<DockingGrantedEvent>(json));
     }
 }

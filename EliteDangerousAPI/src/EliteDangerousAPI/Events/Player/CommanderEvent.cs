@@ -10,6 +10,6 @@ namespace NSW.EliteDangerous.API.Events
         [JsonProperty("FID")]
         public string FrontierId { get; internal set; }
 
-        internal static CommanderEvent Execute(string json, API.EliteDangerousAPI api) => api.Player.InvokeEvent(api.FromJson<CommanderEvent>(json));
+        internal static CommanderEvent Execute(string json, API.EliteDangerousAPI api) => api.PlayerEvents.InvokeEvent(api.FromJson<CommanderEvent>(json));
     }
 }

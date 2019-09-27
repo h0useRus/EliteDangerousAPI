@@ -24,7 +24,7 @@ namespace NSW.EliteDangerous.Events
                 Assert.IsType<PayBountiesEvent>(e.Event);
             };
 
-            api.Station.PayBounties += (sender, @event) =>
+            api.StationEvents.PayBounties += (sender, @event) =>
             {
                 Assert.IsType<API.EliteDangerousAPI>(sender);
                 AssertEvent(@event);

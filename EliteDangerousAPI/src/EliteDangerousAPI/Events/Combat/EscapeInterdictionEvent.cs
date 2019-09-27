@@ -13,6 +13,6 @@ namespace NSW.EliteDangerous.API.Events
         [JsonProperty("IsPlayer")]
         public bool IsPlayer { get; internal set; }
 
-        internal static EscapeInterdictionEvent Execute(string json, API.EliteDangerousAPI api) => api.Combat.InvokeEvent(api.FromJson<EscapeInterdictionEvent>(json));
+        internal static EscapeInterdictionEvent Execute(string json, API.EliteDangerousAPI api) => api.CombatEvents.InvokeEvent(api.FromJson<EscapeInterdictionEvent>(json));
     }
 }

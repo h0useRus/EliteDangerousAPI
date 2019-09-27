@@ -134,6 +134,6 @@ namespace NSW.EliteDangerous.API.Events
         [JsonIgnore]
         public BodyType BodyType => string.IsNullOrWhiteSpace(StarType) ? BodyType.Planet : BodyType.Star;
 
-        internal static ScanEvent Execute(string json, API.EliteDangerousAPI api) => api.Exploration.InvokeEvent(api.FromJson<ScanEvent>(json));
+        internal static ScanEvent Execute(string json, API.EliteDangerousAPI api) => api.ExplorationEvents.InvokeEvent(api.FromJson<ScanEvent>(json));
     }
 }

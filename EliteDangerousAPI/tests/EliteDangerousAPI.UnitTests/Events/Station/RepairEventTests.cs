@@ -24,7 +24,7 @@ namespace NSW.EliteDangerous.Events
                 Assert.IsType<RepairEvent>(e.Event);
             };
 
-            api.Station.Repair += (sender, @event) =>
+            api.StationEvents.Repair += (sender, @event) =>
             {
                 Assert.IsType<API.EliteDangerousAPI>(sender);
                 AssertEvent(@event);

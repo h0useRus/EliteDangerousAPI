@@ -19,6 +19,6 @@ namespace NSW.EliteDangerous.API.Events
         [JsonProperty("Killers")]
         public Killer[] Killers { get; internal set; }
 
-        internal static DiedEvent Execute(string json, API.EliteDangerousAPI api) => api.Combat.InvokeEvent(api.FromJson<DiedEvent>(json));
+        internal static DiedEvent Execute(string json, API.EliteDangerousAPI api) => api.CombatEvents.InvokeEvent(api.FromJson<DiedEvent>(json));
     }
 }

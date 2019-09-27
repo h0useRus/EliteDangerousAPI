@@ -10,6 +10,6 @@ namespace NSW.EliteDangerous.API.Events
         [JsonProperty("Cost")]
         public long Cost { get; internal set; }
 
-        internal static BuyExplorationDataEvent Execute(string json, API.EliteDangerousAPI api) => api.Exploration.InvokeEvent(api.FromJson<BuyExplorationDataEvent>(json));
+        internal static BuyExplorationDataEvent Execute(string json, API.EliteDangerousAPI api) => api.ExplorationEvents.InvokeEvent(api.FromJson<BuyExplorationDataEvent>(json));
     }
 }

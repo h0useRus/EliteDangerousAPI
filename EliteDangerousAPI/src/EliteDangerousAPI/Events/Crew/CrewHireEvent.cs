@@ -13,6 +13,6 @@ namespace NSW.EliteDangerous.API.Events
         [JsonProperty("CombatRank")]
         public CombatRank CombatRank { get; internal set; }
 
-        internal static CrewHireEvent Execute(string json, API.EliteDangerousAPI api) => api.Crew.InvokeEvent(api.FromJson<CrewHireEvent>(json));
+        internal static CrewHireEvent Execute(string json, API.EliteDangerousAPI api) => api.CrewEvents.InvokeEvent(api.FromJson<CrewHireEvent>(json));
     }
 }

@@ -7,6 +7,6 @@ namespace NSW.EliteDangerous.API.Events
         [JsonProperty("CurrentGoals")]
         public CommunityGoal[] CurrentGoals { get; internal set; }
 
-        internal static CommunityGoalEvent Execute(string json, API.EliteDangerousAPI api) => api.Station.InvokeEvent(api.FromJson<CommunityGoalEvent>(json));
+        internal static CommunityGoalEvent Execute(string json, API.EliteDangerousAPI api) => api.StationEvents.InvokeEvent(api.FromJson<CommunityGoalEvent>(json));
     }
 }

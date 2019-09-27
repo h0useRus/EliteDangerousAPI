@@ -7,6 +7,6 @@ namespace NSW.EliteDangerous.API.Events
         [JsonProperty("CurrentRank")]
         public int CurrentRank { get; internal set; }
 
-        internal static SquadronStartupEvent Execute(string json, API.EliteDangerousAPI api) => api.Squadron.InvokeEvent(api.FromJson<SquadronStartupEvent>(json));
+        internal static SquadronStartupEvent Execute(string json, API.EliteDangerousAPI api) => api.SquadronEvents.InvokeEvent(api.FromJson<SquadronStartupEvent>(json));
     }
 }

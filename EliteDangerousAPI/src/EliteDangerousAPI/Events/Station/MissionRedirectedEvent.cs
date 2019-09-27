@@ -16,6 +16,6 @@ namespace NSW.EliteDangerous.API.Events
         [JsonProperty("OldDestinationSystem")]
         public string OldDestinationSystem { get; internal set; }
 
-        internal static MissionRedirectedEvent Execute(string json, API.EliteDangerousAPI api) => api.Station.InvokeEvent(api.FromJson<MissionRedirectedEvent>(json));
+        internal static MissionRedirectedEvent Execute(string json, API.EliteDangerousAPI api) => api.StationEvents.InvokeEvent(api.FromJson<MissionRedirectedEvent>(json));
     }
 }

@@ -28,7 +28,7 @@ namespace NSW.EliteDangerous.Events
                 globalFired = true;
             };
 
-            api.Crew.NpcCrewRank += (sender, @event) =>
+            api.CrewEvents.NpcCrewRank += (sender, @event) =>
             {
                 Assert.IsType<API.EliteDangerousAPI>(sender);
                 AssertEvent(@event);

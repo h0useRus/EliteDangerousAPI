@@ -28,7 +28,7 @@ namespace NSW.EliteDangerous.Events
                 globalFired = true;
             };
 
-            api.Player.Promotion += (sender, @event) =>
+            api.PlayerEvents.Promotion += (sender, @event) =>
             {
                 Assert.IsType<API.EliteDangerousAPI>(sender);
                 AssertEvent(@event);

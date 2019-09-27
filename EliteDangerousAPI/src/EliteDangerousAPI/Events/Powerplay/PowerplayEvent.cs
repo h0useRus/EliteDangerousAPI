@@ -16,6 +16,6 @@ namespace NSW.EliteDangerous.API.Events
         [JsonProperty]
         public int? TimePledged { get; internal set; }
 
-        internal static PowerplayEvent Execute(string json, API.EliteDangerousAPI api) => api.Powerplay.InvokeEvent(api.FromJson<PowerplayEvent>(json));
+        internal static PowerplayEvent Execute(string json, API.EliteDangerousAPI api) => api.PowerplayEvents.InvokeEvent(api.FromJson<PowerplayEvent>(json));
     }
 }

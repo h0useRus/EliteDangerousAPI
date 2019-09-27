@@ -19,6 +19,6 @@ namespace NSW.EliteDangerous.API.Events
         [JsonProperty("BrokerPercentage")]
         public double BrokerPercentage { get; internal set; }
 
-        internal static RedeemVoucherEvent Execute(string json, API.EliteDangerousAPI api) => api.Station.InvokeEvent(api.FromJson<RedeemVoucherEvent>(json));
+        internal static RedeemVoucherEvent Execute(string json, API.EliteDangerousAPI api) => api.StationEvents.InvokeEvent(api.FromJson<RedeemVoucherEvent>(json));
     }
 }

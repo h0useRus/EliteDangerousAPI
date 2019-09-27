@@ -28,7 +28,7 @@ namespace NSW.EliteDangerous.Events
                 globalFired = true;
             };
 
-            api.Crew.ChangeCrewRole += (sender, @event) =>
+            api.CrewEvents.ChangeCrewRole += (sender, @event) =>
             {
                 Assert.IsType<API.EliteDangerousAPI>(sender);
                 AssertEvent(@event);

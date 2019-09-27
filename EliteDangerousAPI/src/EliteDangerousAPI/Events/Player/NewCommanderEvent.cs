@@ -7,6 +7,6 @@ namespace NSW.EliteDangerous.API.Events
         [JsonProperty("Package")]
         public string Package { get; internal set; }
 
-        internal new static NewCommanderEvent Execute(string json, API.EliteDangerousAPI api) => api.Player.InvokeEvent(api.FromJson<NewCommanderEvent>(json));
+        internal new static NewCommanderEvent Execute(string json, API.EliteDangerousAPI api) => api.PlayerEvents.InvokeEvent(api.FromJson<NewCommanderEvent>(json));
     }
 }

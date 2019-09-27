@@ -27,7 +27,7 @@ namespace NSW.EliteDangerous.Events
                 globalFired = true;
             };
 
-            api.Squadron.SharedBookmarkToSquadron += (sender, @event) =>
+            api.SquadronEvents.SharedBookmarkToSquadron += (sender, @event) =>
             {
                 Assert.IsType<API.EliteDangerousAPI>(sender);
                 AssertEvent(@event);

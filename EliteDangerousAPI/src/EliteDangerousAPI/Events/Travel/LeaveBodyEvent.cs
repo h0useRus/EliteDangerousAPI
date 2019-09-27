@@ -16,6 +16,6 @@ namespace NSW.EliteDangerous.API.Events
         [JsonProperty("BodyID")]
         public long BodyId { get; internal set; }
 
-        internal static LeaveBodyEvent Execute(string json, API.EliteDangerousAPI api) => api.Travel.InvokeEvent(api.FromJson<LeaveBodyEvent>(json));
+        internal static LeaveBodyEvent Execute(string json, API.EliteDangerousAPI api) => api.TravelEvents.InvokeEvent(api.FromJson<LeaveBodyEvent>(json));
     }
 }

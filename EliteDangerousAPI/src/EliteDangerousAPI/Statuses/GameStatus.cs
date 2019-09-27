@@ -26,7 +26,7 @@ namespace NSW.EliteDangerous.API.Statuses
         {
             Flags = GameStatusFlags.None;
 
-            api.Game.Status += (s, e) =>
+            api.GameEvents.Status += (s, e) =>
             {
                 if (GuiFocus != e.GuiFocus)
                 {
@@ -35,7 +35,7 @@ namespace NSW.EliteDangerous.API.Statuses
                 }
             };
 
-            api.Game.FileHeader += (s, e) =>
+            api.GameEvents.FileHeader += (s, e) =>
             {
                 Version = $"{e.GameVersion} ({e.Build})";
                 Language = e.Language;
@@ -43,13 +43,13 @@ namespace NSW.EliteDangerous.API.Statuses
                 api.InvokeGameStatusChanged(this);
             };
 
-            api.Game.Shutdown += (s, e) =>
+            api.GameEvents.Shutdown += (s, e) =>
             {
                 Flags |= GameStatusFlags.Shutdown;
                 api.InvokeGameStatusChanged(this);
             };
 
-            api.Game.Music += (s, e) =>
+            api.GameEvents.Music += (s, e) =>
             {
                 if (MusicTrack != e.MusicTrack)
                 {
@@ -58,7 +58,7 @@ namespace NSW.EliteDangerous.API.Statuses
                 }
             };
 
-            api.Game.LoadGame += (s, e) =>
+            api.GameEvents.LoadGame += (s, e) =>
             {
                 GameMode = e.GameMode;
                 Horizons = e.Horizons ?? false;

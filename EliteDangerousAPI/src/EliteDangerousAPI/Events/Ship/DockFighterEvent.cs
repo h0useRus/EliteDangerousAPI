@@ -7,6 +7,6 @@ namespace NSW.EliteDangerous.API.Events
         [JsonProperty("ID")]
         public int Id { get; internal set; }
 
-        internal static DockFighterEvent Execute(string json, API.EliteDangerousAPI api) => api.Ship.InvokeEvent(api.FromJson<DockFighterEvent>(json));
+        internal static DockFighterEvent Execute(string json, API.EliteDangerousAPI api) => api.ShipEvents.InvokeEvent(api.FromJson<DockFighterEvent>(json));
     }
 }

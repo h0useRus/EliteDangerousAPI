@@ -28,7 +28,7 @@ namespace NSW.EliteDangerous.Events
                 globalFired = true;
             };
 
-            api.Ship.VehicleSwitch += (sender, @event) =>
+            api.ShipEvents.VehicleSwitch += (sender, @event) =>
             {
                 Assert.IsType<API.EliteDangerousAPI>(sender);
                 AssertEvent(@event);

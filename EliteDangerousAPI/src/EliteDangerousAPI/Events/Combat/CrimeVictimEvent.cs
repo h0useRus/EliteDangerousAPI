@@ -16,6 +16,6 @@ namespace NSW.EliteDangerous.API.Events
         [JsonProperty("Bounty")]
         public long Bounty { get; internal set; }
 
-        internal static CrimeVictimEvent Execute(string json, API.EliteDangerousAPI api) => api.Combat.InvokeEvent(api.FromJson<CrimeVictimEvent>(json));
+        internal static CrimeVictimEvent Execute(string json, API.EliteDangerousAPI api) => api.CombatEvents.InvokeEvent(api.FromJson<CrimeVictimEvent>(json));
     }
 }

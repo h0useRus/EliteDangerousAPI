@@ -7,6 +7,6 @@ namespace NSW.EliteDangerous.API.Events
         [JsonProperty("ID")]
         public string Id { get; internal set; }
 
-        internal static SrvDestroyedEvent Execute(string json, API.EliteDangerousAPI api) => api.Combat.InvokeEvent(api.FromJson<SrvDestroyedEvent>(json));
+        internal static SrvDestroyedEvent Execute(string json, API.EliteDangerousAPI api) => api.CombatEvents.InvokeEvent(api.FromJson<SrvDestroyedEvent>(json));
     }
 }

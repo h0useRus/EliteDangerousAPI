@@ -13,6 +13,6 @@ namespace NSW.EliteDangerous.API.Events
         [JsonProperty("RemainingJumpsInRoute")]
         public int RemainingJumpsInRoute { get; internal set; }
 
-        internal static FsdTargetEvent Execute(string json, API.EliteDangerousAPI api) => api.Travel.InvokeEvent(api.FromJson<FsdTargetEvent>(json));
+        internal static FsdTargetEvent Execute(string json, API.EliteDangerousAPI api) => api.TravelEvents.InvokeEvent(api.FromJson<FsdTargetEvent>(json));
     }
 }

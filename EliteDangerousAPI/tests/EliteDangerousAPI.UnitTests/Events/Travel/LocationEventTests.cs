@@ -17,14 +17,14 @@ namespace NSW.EliteDangerous.Events
             var api = (API.EliteDangerousAPI)TestHelpers.TestApi;
             var eventFired = false;
             var locationFired = false;
-            api.Travel.Location += (sender, @event) =>
+            api.TravelEvents.Location += (sender, @event) =>
             {
                 Assert.IsType<API.EliteDangerousAPI>(sender);
                 AssertEvent(@event);
                 eventFired = true;
             };
 
-            api.LocationStatusChanged += (s, e) =>
+            api.LocationChanged += (s, e) =>
             {
                 Assert.IsType<API.EliteDangerousAPI>(s);
 

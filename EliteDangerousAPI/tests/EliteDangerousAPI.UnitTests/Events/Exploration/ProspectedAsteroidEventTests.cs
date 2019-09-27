@@ -27,7 +27,7 @@ namespace NSW.EliteDangerous.Events
                 globalFired = true;
             };
 
-            api.Exploration.ProspectedAsteroid += (sender, @event) =>
+            api.ExplorationEvents.ProspectedAsteroid += (sender, @event) =>
             {
                 Assert.IsType<API.EliteDangerousAPI>(sender);
                 AssertEvent(@event);

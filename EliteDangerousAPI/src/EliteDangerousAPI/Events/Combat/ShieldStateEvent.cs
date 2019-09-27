@@ -7,6 +7,6 @@ namespace NSW.EliteDangerous.API.Events
         [JsonProperty("ShieldsUp")]
         public bool ShieldsUp { get; internal set; }
 
-        internal static ShieldStateEvent Execute(string json, API.EliteDangerousAPI api) => api.Combat.InvokeEvent(api.FromJson<ShieldStateEvent>(json));
+        internal static ShieldStateEvent Execute(string json, API.EliteDangerousAPI api) => api.CombatEvents.InvokeEvent(api.FromJson<ShieldStateEvent>(json));
     }
 }

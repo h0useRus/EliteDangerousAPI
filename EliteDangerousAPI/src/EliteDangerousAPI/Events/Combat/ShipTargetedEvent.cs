@@ -54,6 +54,6 @@ namespace NSW.EliteDangerous.API.Events
         [JsonProperty("Power")]
         public string Power { get; internal set; }
 
-        internal static ShipTargetedEvent Execute(string json, API.EliteDangerousAPI api) => api.Combat.InvokeEvent(api.FromJson<ShipTargetedEvent>(json));
+        internal static ShipTargetedEvent Execute(string json, API.EliteDangerousAPI api) => api.CombatEvents.InvokeEvent(api.FromJson<ShipTargetedEvent>(json));
     }
 }

@@ -24,7 +24,7 @@ namespace NSW.EliteDangerous.Events
                 Assert.IsType<RefuelAllEvent>(e.Event);
             };
 
-            api.Station.RefuelAll += (sender, @event) =>
+            api.StationEvents.RefuelAll += (sender, @event) =>
             {
                 Assert.IsType<API.EliteDangerousAPI>(sender);
                 AssertEvent(@event);

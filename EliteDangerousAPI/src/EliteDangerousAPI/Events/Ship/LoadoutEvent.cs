@@ -46,6 +46,6 @@ namespace NSW.EliteDangerous.API.Events
         [JsonProperty("Modules")]
         public Module[] Modules { get; internal set; }
 
-        internal static LoadoutEvent Execute(string json, API.EliteDangerousAPI api) => api.Ship.InvokeEvent(api.FromJson<LoadoutEvent>(json));
+        internal static LoadoutEvent Execute(string json, API.EliteDangerousAPI api) => api.ShipEvents.InvokeEvent(api.FromJson<LoadoutEvent>(json));
     }
 }

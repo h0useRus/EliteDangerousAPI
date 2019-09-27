@@ -22,27 +22,27 @@ namespace NSW.EliteDangerous.API
         public event EventHandler<ApiStatus> StatusChanged;
         #endregion
 
-        public GameStatus GameStatus { get; private set; }
-        public LocationStatus LocationStatus { get; private set; }
-        public PlayerStatus PlayerStatus { get; private set; }
-        public ShipStatus ShipStatus { get; private set; }
+        public GameStatus Game { get; private set; }
+        public LocationStatus Location { get; private set; }
+        public PlayerStatus Player { get; private set; }
+        public ShipStatus Ship { get; private set; }
 
         private void InitStatuses()
         {
-            GameStatus = new GameStatus(this);
-            LocationStatus = new LocationStatus(this);
-            PlayerStatus = new PlayerStatus(this);
-            ShipStatus = new ShipStatus(this);
+            Game = new GameStatus(this);
+            Location = new LocationStatus(this);
+            Player = new PlayerStatus(this);
+            Ship = new ShipStatus(this);
         }
 
-        internal void InvokeGameStatusChanged(GameStatus status) => GameStatusChanged?.Invoke(this, status);
-        internal void InvokePlayerStatusChanged(PlayerStatus status) => PlayerStatusChanged?.Invoke(this, status);
-        internal void InvokeLocationStatusChanged(LocationStatus status) => LocationStatusChanged?.Invoke(this, status);
-        internal void InvokeShipStatusChanged(ShipStatus status) => ShipStatusChanged?.Invoke(this, status);
+        internal void InvokeGameStatusChanged(GameStatus status) => GameChanged?.Invoke(this, status);
+        internal void InvokePlayerStatusChanged(PlayerStatus status) => PlayerChanged?.Invoke(this, status);
+        internal void InvokeLocationStatusChanged(LocationStatus status) => LocationChanged?.Invoke(this, status);
+        internal void InvokeShipStatusChanged(ShipStatus status) => ShipChanged?.Invoke(this, status);
 
-        public event EventHandler<GameStatus> GameStatusChanged;
-        public event EventHandler<PlayerStatus> PlayerStatusChanged;
-        public event EventHandler<LocationStatus> LocationStatusChanged;
-        public event EventHandler<ShipStatus> ShipStatusChanged;
+        public event EventHandler<GameStatus> GameChanged;
+        public event EventHandler<PlayerStatus> PlayerChanged;
+        public event EventHandler<LocationStatus> LocationChanged;
+        public event EventHandler<ShipStatus> ShipChanged;
     }
 }

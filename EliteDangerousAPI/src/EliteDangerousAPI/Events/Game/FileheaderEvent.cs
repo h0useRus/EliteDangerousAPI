@@ -16,6 +16,6 @@ namespace NSW.EliteDangerous.API.Events
         [JsonProperty("build")]
         public string Build { get; internal set; }
 
-        internal static FileHeaderEvent Execute(string json, API.EliteDangerousAPI api) => api.Game.InvokeEvent(api.FromJson<FileHeaderEvent>(json));
+        internal static FileHeaderEvent Execute(string json, API.EliteDangerousAPI api) => api.GameEvents.InvokeEvent(api.FromJson<FileHeaderEvent>(json));
     }
 }

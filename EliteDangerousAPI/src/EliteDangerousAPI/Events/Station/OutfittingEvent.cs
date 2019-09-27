@@ -31,7 +31,7 @@ namespace NSW.EliteDangerous.API.Events
                 api.LogJournalWarning(new JournalEventConsistencyException<OutfittingEvent>(jsonEvent, fileEvent));
             }
 
-            return api.Station.InvokeEvent(fileEvent ?? jsonEvent);
+            return api.StationEvents.InvokeEvent(fileEvent ?? jsonEvent);
         }
             
     }

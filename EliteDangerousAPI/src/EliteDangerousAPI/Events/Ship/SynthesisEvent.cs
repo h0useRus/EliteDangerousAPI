@@ -10,6 +10,6 @@ namespace NSW.EliteDangerous.API.Events
         [JsonProperty("Materials")]
         public Material[] Materials { get; internal set; }
 
-        internal static SynthesisEvent Execute(string json, API.EliteDangerousAPI api) => api.Ship.InvokeEvent(api.FromJson<SynthesisEvent>(json));
+        internal static SynthesisEvent Execute(string json, API.EliteDangerousAPI api) => api.ShipEvents.InvokeEvent(api.FromJson<SynthesisEvent>(json));
     }
 }

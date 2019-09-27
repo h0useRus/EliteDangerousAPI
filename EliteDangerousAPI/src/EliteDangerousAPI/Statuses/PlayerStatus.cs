@@ -32,7 +32,7 @@ namespace NSW.EliteDangerous.API.Statuses
 
         internal PlayerStatus(API.EliteDangerousAPI api)
         {
-            api.Game.Status += (s, e) =>
+            api.GameEvents.Status += (s, e) =>
             {
                 if(LegalState != e.LegalState)
                 {
@@ -41,7 +41,7 @@ namespace NSW.EliteDangerous.API.Statuses
                 }
             };
 
-            api.Game.LoadGame += (s, e) =>
+            api.GameEvents.LoadGame += (s, e) =>
             {
                 FrontierId = e.FrontierId;
                 Commander = e.Commander;
@@ -50,28 +50,28 @@ namespace NSW.EliteDangerous.API.Statuses
                 api.InvokePlayerStatusChanged(this);
             };
 
-            api.Game.ClearSavedGame += (s, e) =>
+            api.GameEvents.ClearSavedGame += (s, e) =>
             {
                 FrontierId = e.FrontierId;
                 Commander = e.Name;
                 api.InvokePlayerStatusChanged(this);
             };
 
-            api.Player.NewCommander += (s, e) =>
+            api.PlayerEvents.NewCommander += (s, e) =>
             {
                 FrontierId = e.FrontierId;
                 Commander = e.Name;
                 api.InvokePlayerStatusChanged(this);
             };
 
-            api.Player.Commander += (s, e) =>
+            api.PlayerEvents.Commander += (s, e) =>
             {
                 FrontierId = e.FrontierId;
                 Commander = e.Name;
                 api.InvokePlayerStatusChanged(this);
             };
 
-            api.Player.Progress += (s, e) =>
+            api.PlayerEvents.Progress += (s, e) =>
             {
                 CombatProgress = e.Combat;
                 TradeProgress = e.Trade;
@@ -83,7 +83,7 @@ namespace NSW.EliteDangerous.API.Statuses
                 api.InvokePlayerStatusChanged(this);
             };
 
-            api.Player.Promotion += (s, e) =>
+            api.PlayerEvents.Promotion += (s, e) =>
             {
                 CombatRank = e.Combat ?? CombatRank;
                 TradeRank = e.Trade ?? TradeRank;
@@ -95,7 +95,7 @@ namespace NSW.EliteDangerous.API.Statuses
                 api.InvokePlayerStatusChanged(this);
             };
 
-            api.Player.Rank += (s, e) =>
+            api.PlayerEvents.Rank += (s, e) =>
             {
                 CombatRank = e.Combat ?? CombatRank;
                 TradeRank = e.Trade ?? TradeRank;
@@ -107,7 +107,7 @@ namespace NSW.EliteDangerous.API.Statuses
                 api.InvokePlayerStatusChanged(this);
             };
 
-            api.Player.Resurrect += (s, e) =>
+            api.PlayerEvents.Resurrect += (s, e) =>
             {
                 Bankrupt = e.Bankrupt;
                 Credits -= e.Cost;
@@ -115,7 +115,7 @@ namespace NSW.EliteDangerous.API.Statuses
                 api.InvokePlayerStatusChanged(this);
             };
 
-            api.Player.Reputation += (s, e) =>
+            api.PlayerEvents.Reputation += (s, e) =>
             {
                 EmpireReputation = GetReputation(e.Empire);
                 FederationReputation = GetReputation(e.Federation);

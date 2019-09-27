@@ -7,6 +7,6 @@ namespace NSW.EliteDangerous.API.Events
         [JsonProperty("Count")]
         public long Count { get; internal set; }
 
-        internal static MaterialDiscardedEvent Execute(string json, API.EliteDangerousAPI api) => api.Exploration.InvokeEvent(api.FromJson<MaterialDiscardedEvent>(json));
+        internal static MaterialDiscardedEvent Execute(string json, API.EliteDangerousAPI api) => api.ExplorationEvents.InvokeEvent(api.FromJson<MaterialDiscardedEvent>(json));
     }
 }

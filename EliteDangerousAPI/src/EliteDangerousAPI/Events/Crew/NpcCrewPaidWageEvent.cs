@@ -13,6 +13,6 @@ namespace NSW.EliteDangerous.API.Events
         [JsonProperty("Amount")]
         public long Amount { get; internal set; }
 
-        internal static NpcCrewPaidWageEvent Execute(string json, API.EliteDangerousAPI api) => api.Crew.InvokeEvent(api.FromJson<NpcCrewPaidWageEvent>(json));
+        internal static NpcCrewPaidWageEvent Execute(string json, API.EliteDangerousAPI api) => api.CrewEvents.InvokeEvent(api.FromJson<NpcCrewPaidWageEvent>(json));
     }
 }

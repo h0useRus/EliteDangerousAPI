@@ -13,6 +13,6 @@ namespace NSW.EliteDangerous.API.Events
         [JsonProperty("Bankrupt")]
         public bool Bankrupt { get; internal set; }
 
-        internal static ResurrectEvent Execute(string json, API.EliteDangerousAPI api) => api.Player.InvokeEvent(api.FromJson<ResurrectEvent>(json));
+        internal static ResurrectEvent Execute(string json, API.EliteDangerousAPI api) => api.PlayerEvents.InvokeEvent(api.FromJson<ResurrectEvent>(json));
     }
 }

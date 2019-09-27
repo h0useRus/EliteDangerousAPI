@@ -31,6 +31,6 @@ namespace NSW.EliteDangerous.API.Events
         [JsonProperty("Altitude")]
         public double Altitude { get; internal set; }
 
-        internal static ScreenshotEvent Execute(string json, API.EliteDangerousAPI api) => api.Exploration.InvokeEvent(api.FromJson<ScreenshotEvent>(json));
+        internal static ScreenshotEvent Execute(string json, API.EliteDangerousAPI api) => api.ExplorationEvents.InvokeEvent(api.FromJson<ScreenshotEvent>(json));
     }
 }

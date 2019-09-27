@@ -13,6 +13,6 @@ namespace NSW.EliteDangerous.API.Events
         [JsonProperty("System")]
         public string System { get; internal set; }
 
-        internal static PowerplayVoteEvent Execute(string json, API.EliteDangerousAPI api) => api.Powerplay.InvokeEvent(api.FromJson<PowerplayVoteEvent>(json));
+        internal static PowerplayVoteEvent Execute(string json, API.EliteDangerousAPI api) => api.PowerplayEvents.InvokeEvent(api.FromJson<PowerplayVoteEvent>(json));
     }
 }

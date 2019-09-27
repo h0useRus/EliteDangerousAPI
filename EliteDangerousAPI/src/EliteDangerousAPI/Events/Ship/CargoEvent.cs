@@ -21,7 +21,7 @@ namespace NSW.EliteDangerous.API.Events
             var jsonEvent = api.FromJson<CargoEvent>(json);
             var fileEvent = api.FromJsonFile<CargoEvent>(Path.Combine(api.JournalDirectory.FullName, "Cargo.json"));
             
-            return api.Ship.InvokeEvent(fileEvent ?? jsonEvent);
+            return api.ShipEvents.InvokeEvent(fileEvent ?? jsonEvent);
         }
     }
 }

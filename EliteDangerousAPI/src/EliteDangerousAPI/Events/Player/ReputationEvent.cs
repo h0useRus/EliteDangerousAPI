@@ -16,6 +16,6 @@ namespace NSW.EliteDangerous.API.Events
         [JsonProperty("Independent")]
         public double Independent { get; internal set; }
 
-        internal static ReputationEvent Execute(string json, API.EliteDangerousAPI api) => api.Player.InvokeEvent(api.FromJson<ReputationEvent>(json));
+        internal static ReputationEvent Execute(string json, API.EliteDangerousAPI api) => api.PlayerEvents.InvokeEvent(api.FromJson<ReputationEvent>(json));
     }
 }

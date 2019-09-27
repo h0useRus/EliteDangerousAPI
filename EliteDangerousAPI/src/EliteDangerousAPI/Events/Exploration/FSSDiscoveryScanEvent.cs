@@ -13,6 +13,6 @@ namespace NSW.EliteDangerous.API.Events
         [JsonProperty("NonBodyCount")]
         public long NonBodyCount { get; internal set; }
 
-        internal static FssDiscoveryScanEvent Execute(string json, API.EliteDangerousAPI api) => api.Exploration.InvokeEvent(api.FromJson<FssDiscoveryScanEvent>(json));
+        internal static FssDiscoveryScanEvent Execute(string json, API.EliteDangerousAPI api) => api.ExplorationEvents.InvokeEvent(api.FromJson<FssDiscoveryScanEvent>(json));
     }
 }

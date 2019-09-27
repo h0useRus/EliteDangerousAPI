@@ -7,6 +7,6 @@ namespace NSW.EliteDangerous.API.Events
         [JsonProperty("Fine")]
         public int Fine { get; internal set; }
 
-        internal static MissionFailedEvent Execute(string json, API.EliteDangerousAPI api) => api.Station.InvokeEvent(api.FromJson<MissionFailedEvent>(json));
+        internal static MissionFailedEvent Execute(string json, API.EliteDangerousAPI api) => api.StationEvents.InvokeEvent(api.FromJson<MissionFailedEvent>(json));
     }
 }

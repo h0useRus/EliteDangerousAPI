@@ -7,6 +7,6 @@ namespace NSW.EliteDangerous.API.Events
         [JsonProperty("Manifest")]
         public PassengerManifest[] Manifest { get; internal set; }
 
-        internal static PassengersEvent Execute(string json, API.EliteDangerousAPI api) => api.Ship.InvokeEvent(api.FromJson<PassengersEvent>(json));
+        internal static PassengersEvent Execute(string json, API.EliteDangerousAPI api) => api.ShipEvents.InvokeEvent(api.FromJson<PassengersEvent>(json));
     }
 }

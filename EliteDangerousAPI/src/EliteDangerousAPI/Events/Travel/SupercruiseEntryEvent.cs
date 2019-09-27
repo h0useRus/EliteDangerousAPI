@@ -10,6 +10,6 @@ namespace NSW.EliteDangerous.API.Events
         [JsonProperty("SystemAddress")]
         public long? SystemAddress { get; internal set; }
 
-        internal static SupercruiseEntryEvent Execute(string json, API.EliteDangerousAPI api) => api.Travel.InvokeEvent(api.FromJson<SupercruiseEntryEvent>(json));
+        internal static SupercruiseEntryEvent Execute(string json, API.EliteDangerousAPI api) => api.TravelEvents.InvokeEvent(api.FromJson<SupercruiseEntryEvent>(json));
     }
 }

@@ -4,33 +4,33 @@ namespace NSW.EliteDangerous.API
 {
     partial class EliteDangerousAPI
     {
-        public GameHandler Game { get; private set; }
-        public PlayerHandler Player { get; private set; }
-        public ShipHandler Ship { get; private set; }
-        public CombatHandler Combat { get; private set; }
-        public ExplorationHandler Exploration { get; private set; }
-        public StationHandler Station { get; private set; }
-        public TradeHandler Trade { get; private set; }
-        public TravelHandler Travel { get; private set; }
-        public PowerplayHandler Powerplay { get; private set; }
-        public WingHandler Wing { get; private set; }
-        public SquadronHandler Squadron { get; private set; }
-        public CrewHandler Crew { get; private set; }
+        public GameHandler GameEvents { get; private set; }
+        public PlayerHandler PlayerEvents { get; private set; }
+        public ShipHandler ShipEvents { get; private set; }
+        public CombatHandler CombatEvents { get; private set; }
+        public ExplorationHandler ExplorationEvents { get; private set; }
+        public StationHandler StationEvents { get; private set; }
+        public TradeHandler TradeEvents { get; private set; }
+        public TravelHandler TravelEvents { get; private set; }
+        public PowerplayHandler PowerplayEvents { get; private set; }
+        public WingHandler WingEvents { get; private set; }
+        public SquadronHandler SquadronEvents { get; private set; }
+        public CrewHandler CrewEvents { get; private set; }
 
         private void InitHandlers()
         {
-            Game = new GameHandler(this);
-            Player = new PlayerHandler(this);
-            Ship = new ShipHandler(this);
-            Combat = new CombatHandler(this);
-            Exploration = new ExplorationHandler(this);
-            Station = new StationHandler(this);
-            Trade = new TradeHandler(this);
-            Travel = new TravelHandler(this);
-            Powerplay = new PowerplayHandler(this);
-            Wing = new WingHandler(this);
-            Squadron = new SquadronHandler(this);
-            Crew = new CrewHandler(this);
+            GameEvents = new GameHandler(this);
+            PlayerEvents = new PlayerHandler(this);
+            ShipEvents = new ShipHandler(this);
+            CombatEvents = new CombatHandler(this);
+            ExplorationEvents = new ExplorationHandler(this);
+            StationEvents = new StationHandler(this);
+            TradeEvents = new TradeHandler(this);
+            TravelEvents = new TravelHandler(this);
+            PowerplayEvents = new PowerplayHandler(this);
+            WingEvents = new WingHandler(this);
+            SquadronEvents = new SquadronHandler(this);
+            CrewEvents = new CrewHandler(this);
         }
     }
 }

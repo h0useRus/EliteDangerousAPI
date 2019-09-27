@@ -16,6 +16,6 @@ namespace NSW.EliteDangerous.API.Events
         [JsonProperty("NearestDestination")]
         public string NearestDestination { get; internal set; }
 
-        internal static TouchdownEvent Execute(string json, API.EliteDangerousAPI api) => api.Travel.InvokeEvent(api.FromJson<TouchdownEvent>(json));
+        internal static TouchdownEvent Execute(string json, API.EliteDangerousAPI api) => api.TravelEvents.InvokeEvent(api.FromJson<TouchdownEvent>(json));
     }
 }

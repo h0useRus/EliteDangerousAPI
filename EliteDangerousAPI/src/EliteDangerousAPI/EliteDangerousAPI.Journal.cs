@@ -152,7 +152,7 @@ namespace NSW.EliteDangerous.API
                     if (!@event.Equals(_currentGameStatus))
                     {
                         _currentGameStatus = @event;
-                        Game.InvokeEvent(@event);
+                        GameEvents.InvokeEvent(@event);
                         AllEvents?.Invoke(this, new ProcessedEvent
                         {
                             EventName = @event.Event.ToLower(),

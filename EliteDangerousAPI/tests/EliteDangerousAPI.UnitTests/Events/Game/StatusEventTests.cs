@@ -11,7 +11,7 @@ namespace NSW.EliteDangerous.Events
         {
             var api = TestHelpers.FilesApi;
             var eventFired = false;
-            api.Game.Status += (sender, @event) =>
+            api.GameEvents.Status += (sender, @event) =>
             {
                 Assert.IsType<API.EliteDangerousAPI>(sender);
                 AssertEvent(@event);

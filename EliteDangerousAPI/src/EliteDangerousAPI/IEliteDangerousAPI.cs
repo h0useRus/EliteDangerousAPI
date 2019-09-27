@@ -41,67 +41,67 @@ namespace NSW.EliteDangerous.API
         /// <summary>
         /// Global game events
         /// </summary>
-        GameHandler Game { get; }
+        GameHandler GameEvents { get; }
         /// <summary>
         /// Player/Commander events
         /// </summary>
-        PlayerHandler Player { get; }
+        PlayerHandler PlayerEvents { get; }
         /// <summary>
         /// Current ship/fighter/SRV events
         /// </summary>
-        ShipHandler Ship { get; }
+        ShipHandler ShipEvents { get; }
         /// <summary>
         /// Combat events
         /// </summary>
-        CombatHandler Combat { get; }
+        CombatHandler CombatEvents { get; }
         /// <summary>
         /// Exploration events
         /// </summary>
-        ExplorationHandler Exploration { get; }
+        ExplorationHandler ExplorationEvents { get; }
         /// <summary>
         /// Station services events
         /// </summary>
-        StationHandler Station { get; }
+        StationHandler StationEvents { get; }
         /// <summary>
         /// Trade events
         /// </summary>
-        TradeHandler Trade { get; }
+        TradeHandler TradeEvents { get; }
         /// <summary>
         /// Travel events
         /// </summary>
-        TravelHandler Travel { get; }
+        TravelHandler TravelEvents { get; }
         /// <summary>
         /// Power play events
         /// </summary>
-        PowerplayHandler Powerplay { get; }
+        PowerplayHandler PowerplayEvents { get; }
         /// <summary>
         /// Wing events
         /// </summary>
-        WingHandler Wing { get; }
+        WingHandler WingEvents { get; }
         /// <summary>
         /// Squadron events
         /// </summary>
-        SquadronHandler Squadron { get; }
+        SquadronHandler SquadronEvents { get; }
         /// <summary>
         /// Multi-crew events
         /// </summary>
-        CrewHandler Crew { get; }
+        CrewHandler CrewEvents { get; }
         /// <summary>
         /// Current game status
         /// </summary>
-        GameStatus GameStatus { get; }
+        GameStatus Game { get; }
         /// <summary>
         /// Current location status
         /// </summary>
-        LocationStatus LocationStatus { get; }
+        LocationStatus Location { get; }
         /// <summary>
         /// Current player status
         /// </summary>
-        PlayerStatus PlayerStatus { get; }
+        PlayerStatus Player { get; }
         /// <summary>
         /// Current ship status
         /// </summary>
-        ShipStatus ShipStatus { get; }
+        ShipStatus Ship { get; }
         /// <summary>
         /// API status event
         /// </summary>
@@ -129,18 +129,18 @@ namespace NSW.EliteDangerous.API
         /// <summary>
         /// When game status changed
         /// </summary>
-        event EventHandler<GameStatus> GameStatusChanged;
+        event EventHandler<GameStatus> GameChanged;
         /// <summary>
         /// When player/commander status changed
         /// </summary>
-        event EventHandler<PlayerStatus> PlayerStatusChanged;
+        event EventHandler<PlayerStatus> PlayerChanged;
         /// <summary>
         /// When location changed
         /// </summary>
-        event EventHandler<LocationStatus> LocationStatusChanged;
+        event EventHandler<LocationStatus> LocationChanged;
         /// <summary>
         /// When ship status changed
         /// </summary>
-        event EventHandler<ShipStatus> ShipStatusChanged;
+        event EventHandler<ShipStatus> ShipChanged;
     }
 }

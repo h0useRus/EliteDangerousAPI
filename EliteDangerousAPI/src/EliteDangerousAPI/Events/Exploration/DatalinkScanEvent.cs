@@ -10,6 +10,6 @@ namespace NSW.EliteDangerous.API.Events
         [JsonProperty("Message_Localised")]
         public string MessageLocalised { get; internal set; }
 
-        internal static DatalinkScanEvent Execute(string json, API.EliteDangerousAPI api) => api.Exploration.InvokeEvent(api.FromJson<DatalinkScanEvent>(json));
+        internal static DatalinkScanEvent Execute(string json, API.EliteDangerousAPI api) => api.ExplorationEvents.InvokeEvent(api.FromJson<DatalinkScanEvent>(json));
     }
 }

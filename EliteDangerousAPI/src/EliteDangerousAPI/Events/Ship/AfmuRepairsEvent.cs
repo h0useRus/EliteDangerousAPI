@@ -16,6 +16,6 @@ namespace NSW.EliteDangerous.API.Events
         [JsonProperty("Health")]
         public double Health { get; internal set; }
 
-        internal static AfmuRepairsEvent Execute(string json, API.EliteDangerousAPI api) => api.Ship.InvokeEvent(api.FromJson<AfmuRepairsEvent>(json));
+        internal static AfmuRepairsEvent Execute(string json, API.EliteDangerousAPI api) => api.ShipEvents.InvokeEvent(api.FromJson<AfmuRepairsEvent>(json));
     }
 }

@@ -16,6 +16,6 @@ namespace NSW.EliteDangerous.API.Events
         [JsonProperty("Received")]
         public MaterialTransaction Received { get; set; }
 
-        internal static MaterialTradeEvent Execute(string json, API.EliteDangerousAPI api) => api.Station.InvokeEvent(api.FromJson<MaterialTradeEvent>(json));
+        internal static MaterialTradeEvent Execute(string json, API.EliteDangerousAPI api) => api.StationEvents.InvokeEvent(api.FromJson<MaterialTradeEvent>(json));
     }
 }

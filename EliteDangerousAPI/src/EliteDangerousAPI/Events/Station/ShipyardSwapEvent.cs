@@ -22,6 +22,6 @@ namespace NSW.EliteDangerous.API.Events
         [JsonProperty("MarketID")]
         public long? MarketId { get; internal set; }
 
-        internal static ShipyardSwapEvent Execute(string json, API.EliteDangerousAPI api) => api.Station.InvokeEvent(api.FromJson<ShipyardSwapEvent>(json));
+        internal static ShipyardSwapEvent Execute(string json, API.EliteDangerousAPI api) => api.StationEvents.InvokeEvent(api.FromJson<ShipyardSwapEvent>(json));
     }
 }

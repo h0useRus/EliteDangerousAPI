@@ -7,6 +7,6 @@ namespace NSW.EliteDangerous.API.Events
         [JsonProperty("Reward")]
         public long Reward { get; internal set; }
 
-        internal static CommunityGoalRewardEvent Execute(string json, API.EliteDangerousAPI api) => api.Station.InvokeEvent(api.FromJson<CommunityGoalRewardEvent>(json));
+        internal static CommunityGoalRewardEvent Execute(string json, API.EliteDangerousAPI api) => api.StationEvents.InvokeEvent(api.FromJson<CommunityGoalRewardEvent>(json));
     }
 }

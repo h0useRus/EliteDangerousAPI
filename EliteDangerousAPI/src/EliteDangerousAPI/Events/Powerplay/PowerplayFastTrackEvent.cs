@@ -7,6 +7,6 @@ namespace NSW.EliteDangerous.API.Events
         [JsonProperty("Cost")]
         public long Cost { get; internal set; }
 
-        internal static PowerplayFastTrackEvent Execute(string json, API.EliteDangerousAPI api) => api.Powerplay.InvokeEvent(api.FromJson<PowerplayFastTrackEvent>(json));
+        internal static PowerplayFastTrackEvent Execute(string json, API.EliteDangerousAPI api) => api.PowerplayEvents.InvokeEvent(api.FromJson<PowerplayFastTrackEvent>(json));
     }
 }

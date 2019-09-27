@@ -11,7 +11,7 @@ namespace NSW.EliteDangerous.API.Statuses
 
         internal LocationStatus(API.EliteDangerousAPI api)
         {
-            api.Travel.Location += (s, e) =>
+            api.TravelEvents.Location += (s, e) =>
             {
                 if (StarSystem == null || !string.Equals(StarSystem?.Name, e.StarSystem, StringComparison.OrdinalIgnoreCase))
                     StarSystem = new StarSystem(e.StarSystem);
@@ -42,7 +42,7 @@ namespace NSW.EliteDangerous.API.Statuses
                 api.InvokeLocationStatusChanged(this);
             };
 
-            api.Travel.ApproachBody += (s, e) =>
+            api.TravelEvents.ApproachBody += (s, e) =>
             {
                 if (StarSystem == null || !string.Equals(StarSystem?.Name, e.StarSystem, StringComparison.OrdinalIgnoreCase))
                 {
@@ -54,7 +54,7 @@ namespace NSW.EliteDangerous.API.Statuses
                 api.InvokeLocationStatusChanged(this);
             };
 
-            api.Travel.ApproachSettlement += (s, e) =>
+            api.TravelEvents.ApproachSettlement += (s, e) =>
             {
                 Body = new SpaceBody(BodyType.Planet, e.BodyName);
                 Station = new Station(e.NameLocalised ?? e.Name, "Settlement") { MarketId = e.MarketId };
@@ -62,7 +62,7 @@ namespace NSW.EliteDangerous.API.Statuses
                 api.InvokeLocationStatusChanged(this);
             };
 
-            api.Travel.LeaveBody += (s, e) =>
+            api.TravelEvents.LeaveBody += (s, e) =>
             {
                 if (StarSystem == null || !string.Equals(StarSystem?.Name, e.StarSystem, StringComparison.OrdinalIgnoreCase))
                 {
@@ -74,7 +74,7 @@ namespace NSW.EliteDangerous.API.Statuses
                 api.InvokeLocationStatusChanged(this);
             };
 
-            api.Travel.Docked += (s, e) =>
+            api.TravelEvents.Docked += (s, e) =>
             {
                 if (StarSystem == null || !string.Equals(StarSystem?.Name, e.StarSystem, StringComparison.OrdinalIgnoreCase))
                     StarSystem = new StarSystem(e.StarSystem);
@@ -92,7 +92,7 @@ namespace NSW.EliteDangerous.API.Statuses
                 api.InvokeLocationStatusChanged(this);
             };
 
-            api.Travel.DockingRequested += (s, e) =>
+            api.TravelEvents.DockingRequested += (s, e) =>
             {
                 if (Station == null || !string.Equals(Station?.Name, e.StationName, StringComparison.OrdinalIgnoreCase))
                     Station = new Station(e.StationName, e.StationType);
@@ -101,7 +101,7 @@ namespace NSW.EliteDangerous.API.Statuses
                 api.InvokeLocationStatusChanged(this);
             };
 
-            api.Travel.FsdJump += (s, e) =>
+            api.TravelEvents.FsdJump += (s, e) =>
             {
                 if (StarSystem == null || !string.Equals(StarSystem?.Name, e.StarSystem, StringComparison.OrdinalIgnoreCase))
                     StarSystem = new StarSystem(e.StarSystem);
@@ -120,7 +120,7 @@ namespace NSW.EliteDangerous.API.Statuses
                 api.InvokeLocationStatusChanged(this);
             };
 
-            api.Travel.SupercruiseExit += (s, e) =>
+            api.TravelEvents.SupercruiseExit += (s, e) =>
             {
                 if (StarSystem == null || !string.Equals(StarSystem?.Name, e.StarSystem, StringComparison.OrdinalIgnoreCase))
                     StarSystem = new StarSystem(e.StarSystem);

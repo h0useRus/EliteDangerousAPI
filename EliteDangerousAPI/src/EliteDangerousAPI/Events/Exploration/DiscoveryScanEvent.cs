@@ -10,6 +10,6 @@ namespace NSW.EliteDangerous.API.Events
         [JsonProperty("Bodies")]
         public long Bodies { get; internal set; }
 
-        internal static DiscoveryScanEvent Execute(string json, API.EliteDangerousAPI api) => api.Exploration.InvokeEvent(api.FromJson<DiscoveryScanEvent>(json));
+        internal static DiscoveryScanEvent Execute(string json, API.EliteDangerousAPI api) => api.ExplorationEvents.InvokeEvent(api.FromJson<DiscoveryScanEvent>(json));
     }
 }

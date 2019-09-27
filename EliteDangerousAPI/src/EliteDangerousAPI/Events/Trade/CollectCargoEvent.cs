@@ -13,6 +13,6 @@ namespace NSW.EliteDangerous.API.Events
         [JsonProperty("Stolen")]
         public bool Stolen { get; internal set; }
 
-        internal static CollectCargoEvent Execute(string json, API.EliteDangerousAPI api) => api.Trade.InvokeEvent(api.FromJson<CollectCargoEvent>(json));
+        internal static CollectCargoEvent Execute(string json, API.EliteDangerousAPI api) => api.TradeEvents.InvokeEvent(api.FromJson<CollectCargoEvent>(json));
     }
 }

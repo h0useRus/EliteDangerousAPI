@@ -22,6 +22,6 @@ namespace NSW.EliteDangerous.API.Events
         [JsonProperty("CQC")]
         public byte Cqc { get; internal set; }
 
-        internal static ProgressEvent Execute(string json, API.EliteDangerousAPI api) => api.Player.InvokeEvent(api.FromJson<ProgressEvent>(json));
+        internal static ProgressEvent Execute(string json, API.EliteDangerousAPI api) => api.PlayerEvents.InvokeEvent(api.FromJson<ProgressEvent>(json));
     }
 }

@@ -13,6 +13,6 @@ namespace NSW.EliteDangerous.API.Events
         [JsonProperty("CorrosionRepaired")]
         public double CorrosionRepaired { get; internal set; }
 
-        internal static RepairDroneEvent Execute(string json, API.EliteDangerousAPI api) => api.Ship.InvokeEvent(api.FromJson<RepairDroneEvent>(json));
+        internal static RepairDroneEvent Execute(string json, API.EliteDangerousAPI api) => api.ShipEvents.InvokeEvent(api.FromJson<RepairDroneEvent>(json));
     }
 }

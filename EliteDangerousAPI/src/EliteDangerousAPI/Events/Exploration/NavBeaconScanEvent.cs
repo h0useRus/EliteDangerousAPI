@@ -10,6 +10,6 @@ namespace NSW.EliteDangerous.API.Events
         [JsonProperty("NumBodies")]
         public long NumBodies { get; internal set; }
 
-        internal static NavBeaconScanEvent Execute(string json, API.EliteDangerousAPI api) => api.Exploration.InvokeEvent(api.FromJson<NavBeaconScanEvent>(json));
+        internal static NavBeaconScanEvent Execute(string json, API.EliteDangerousAPI api) => api.ExplorationEvents.InvokeEvent(api.FromJson<NavBeaconScanEvent>(json));
     }
 }

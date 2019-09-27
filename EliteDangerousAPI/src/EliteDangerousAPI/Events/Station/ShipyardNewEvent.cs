@@ -13,6 +13,6 @@ namespace NSW.EliteDangerous.API.Events
         [JsonProperty("NewShipID")]
         public long NewShipId { get; internal set; }
 
-        internal static ShipyardNewEvent Execute(string json, API.EliteDangerousAPI api) => api.Station.InvokeEvent(api.FromJson<ShipyardNewEvent>(json));
+        internal static ShipyardNewEvent Execute(string json, API.EliteDangerousAPI api) => api.StationEvents.InvokeEvent(api.FromJson<ShipyardNewEvent>(json));
     }
 }

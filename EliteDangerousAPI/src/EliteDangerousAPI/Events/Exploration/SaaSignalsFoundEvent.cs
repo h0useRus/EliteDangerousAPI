@@ -16,6 +16,6 @@ namespace NSW.EliteDangerous.API.Events
         [JsonProperty("Signals")]
         public SurfaceSignal[] Signals { get; internal set; }
 
-        internal static SaaSignalsFoundEvent Execute(string json, API.EliteDangerousAPI api) => api.Exploration.InvokeEvent(api.FromJson<SaaSignalsFoundEvent>(json));
+        internal static SaaSignalsFoundEvent Execute(string json, API.EliteDangerousAPI api) => api.ExplorationEvents.InvokeEvent(api.FromJson<SaaSignalsFoundEvent>(json));
     }
 }

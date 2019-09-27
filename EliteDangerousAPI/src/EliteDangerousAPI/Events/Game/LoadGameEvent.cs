@@ -49,6 +49,6 @@ namespace NSW.EliteDangerous.API.Events
         [JsonProperty]
         public bool? StartLanded { get; internal set; }
 
-        internal static LoadGameEvent Execute(string json, API.EliteDangerousAPI api) => api.Game.InvokeEvent(api.FromJson<LoadGameEvent>(json));
+        internal static LoadGameEvent Execute(string json, API.EliteDangerousAPI api) => api.GameEvents.InvokeEvent(api.FromJson<LoadGameEvent>(json));
     }
 }

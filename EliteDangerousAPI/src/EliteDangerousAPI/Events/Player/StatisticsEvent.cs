@@ -50,6 +50,6 @@ namespace NSW.EliteDangerous.API.Events
         [JsonProperty("CQC")]
         public Dictionary<string, double> Cqc { get; internal set; }
 
-        internal static StatisticsEvent Execute(string json, API.EliteDangerousAPI api) => api.Player.InvokeEvent(api.FromJson<StatisticsEvent>(json));
+        internal static StatisticsEvent Execute(string json, API.EliteDangerousAPI api) => api.PlayerEvents.InvokeEvent(api.FromJson<StatisticsEvent>(json));
     }
 }
