@@ -7,6 +7,9 @@ namespace NSW.EliteDangerous.API
         [JsonProperty("On")]
         public bool On { get; internal set; }
 
+        [JsonProperty("Hot")]
+        public bool Hot { get; internal set; }
+
         [JsonProperty("Health")]
         public double Health { get; internal set; }
 
