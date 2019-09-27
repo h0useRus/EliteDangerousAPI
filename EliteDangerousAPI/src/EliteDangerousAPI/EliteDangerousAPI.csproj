@@ -15,6 +15,10 @@
     <PackageProjectUrl>https://github.com/h0useRus/EliteDangerousAPI</PackageProjectUrl>
     <LangVersion>Latest</LangVersion>
     <PackageLicenseExpression>MIT</PackageLicenseExpression>
+    <PackageReleaseNotes>
+      ! Breacking changes with main interface properties
+      + Added missed ShipyardBuy ship sell fields 
+    </PackageReleaseNotes>
   </PropertyGroup>
 
   <ItemGroup>
