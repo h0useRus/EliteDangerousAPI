@@ -47,21 +47,37 @@ namespace NSW.EliteDangerous.API
 
         internal JournalEvent ExecuteEvent(string eventName, string json)
         {
+            var rawEvent = new OriginalEvent {EventName = eventName, Source = json};
+            BeforeEvent?.Invoke(this, rawEvent);
+            if (rawEvent.Ignore) return null;
+
             if (_cache.Value.TryGetValue(eventName, out var eventCacheItem))
             {
-                var @event = (JournalEvent)eventCacheItem.Execute.Invoke(null, new object[] { json, this });
-                AllEvents?.Invoke(this, new GlobalEvent
+                JournalEvent @event = null;
+                try
                 {
-                    EventName = eventCacheItem.Name,
-                    EventType = eventCacheItem.Type,
-                    Event = @event
-                });
+                    @event = (JournalEvent)eventCacheItem.Execute.Invoke(null, new object[] {json, this});
+                }
+                catch (Exception exception)
+                {
+                    LogJournalException(new JournalRecordException(json, exception));
+                }
+
+                if(@event!=null)
+                    AllEvents?.Invoke(this, new ProcessedEvent
+                    {
+                        EventName = eventCacheItem.Name,
+                        EventType = eventCacheItem.Type,
+                        Event = @event
+                    });
                 return @event;
             }
             LogJournalWarning(new JournalEventNotFoundException(eventName, json));
+
             return null;
         }
 
-        public event EventHandler<GlobalEvent> AllEvents;
+        public event EventHandler<ProcessedEvent> AllEvents;
+        public event EventHandler<OriginalEvent> BeforeEvent;
     }
 }

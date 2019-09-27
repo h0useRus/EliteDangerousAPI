@@ -49,6 +49,11 @@ namespace NSW.EliteDangerous.API
         /// </summary>
         public TimeSpan CheckInterval { get; set; } = TimeSpan.FromMilliseconds(10000);
 
+        /// <summary>
+        /// Enable <see cref="IEliteDangerousPlugin"/> support
+        /// </summary>
+        public bool UsePlugins { get; set; }
+
         public static ApiOptions Default => new ApiOptions();
     }
 }

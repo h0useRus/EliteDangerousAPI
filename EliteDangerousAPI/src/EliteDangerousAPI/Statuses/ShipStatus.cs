@@ -53,8 +53,6 @@ namespace NSW.EliteDangerous.API.Statuses
         {
             api.Game.LoadGame += (s, e) =>
             {
-                if(e==null) return;
-
                 ShipId = e.ShipId;
                 ShipType = e.ShipLocalised ?? e.Ship;
                 Name = e.ShipName;
@@ -67,8 +65,6 @@ namespace NSW.EliteDangerous.API.Statuses
 
             api.Game.Status += (s, e) =>
             {
-                if (e == null) return;
-
                 Flags = e.Flags;
                 Fuel = e.Fuel ?? Fuel;
                 Pips = e.Pips ?? Pips;
@@ -84,8 +80,6 @@ namespace NSW.EliteDangerous.API.Statuses
 
             api.Ship.VehicleSwitch += (s, e) =>
             {
-                if(e == null) return;
-
                 if (CurrentVehicle != e.To)
                 {
                     CurrentVehicle = e.To;

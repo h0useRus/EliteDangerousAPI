@@ -112,7 +112,8 @@ namespace NSW.EliteDangerous.API
                     {
                         var json = reader.ReadLine();
                         var journalEvent = FromJson<JournalEvent>(json);
-                        ExecuteEvent(journalEvent.Event, json);
+                        if (journalEvent != null)
+                            ExecuteEvent(journalEvent.Event, json);
                     }
                 }
                 catch (Exception exception)
@@ -152,7 +153,7 @@ namespace NSW.EliteDangerous.API
                     {
                         _currentGameStatus = @event;
                         Game.InvokeEvent(@event);
-                        AllEvents?.Invoke(this, new GlobalEvent
+                        AllEvents?.Invoke(this, new ProcessedEvent
                         {
                             EventName = @event.Event.ToLower(),
                             EventType = typeof(StatusEvent),
@@ -166,6 +167,15 @@ namespace NSW.EliteDangerous.API
         private FileInfo GetLatestJournalFile() => JournalDirectory.GetFiles("Journal.*.log", SearchOption.TopDirectoryOnly)
                                                                    .OrderByDescending(f => f.Name)
                                                                    .FirstOrDefault();
+
+        internal bool ValidateEvent<TEvent>(TEvent @event) where TEvent : JournalEvent
+        {
+            if (@event != null)
+                return true;
+
+            LogJournalException(new JournalException(JournalErrorType.NullEvent, nameof(TEvent)));
+            return false;
+        }
 
         internal void LogJournalException(JournalException exception)
         {

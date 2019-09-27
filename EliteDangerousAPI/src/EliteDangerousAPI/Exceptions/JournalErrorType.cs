@@ -6,6 +6,7 @@ namespace NSW.EliteDangerous.API.Exceptions
         OnReadingRecord,
         JournalNotFound,
         EventNotFound,
-        EventConsistency
+        EventConsistency,
+        NullEvent
     }
 }

@@ -1,8 +1,10 @@
 using System.Collections.Generic;
+using Microsoft.Extensions.Logging;
+using Microsoft.Extensions.Options;
 
 namespace NSW.EliteDangerous.API
 {
-    public class EliteDangerousData
+    public static class EliteDangerousData
     {
         public static IReadOnlyDictionary<int, string> Engineers = new Dictionary<int, string>
         {
@@ -90,5 +92,10 @@ namespace NSW.EliteDangerous.API
             {14, "Helium Geysers"},
             {15, "Silicate Vapour Geysers"}
         };
+        /// <summary>
+        /// Hidden gem, but not preferred
+        /// </summary>
+        public static IEliteDangerousAPI CreateAPI(ApiOptions options = null, ILoggerFactory loggerFactory = null)
+            => new EliteDangerousAPI(new OptionsWrapper<ApiOptions>(options ?? ApiOptions.Default), loggerFactory);
     }
 }

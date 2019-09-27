@@ -48,7 +48,7 @@ namespace NSW.EliteDangerous.API.Statuses
                 {
                     StarSystem = new StarSystem(e.StarSystem);
                 }
-                Body = new SpaceBody(BodyType.Planet, e.Body ?? string.Empty);
+                Body = new SpaceBody(BodyType.Planet, e.Body ?? "Planet");
                 Station = null;
 
                 api.InvokeLocationStatusChanged(this);
@@ -68,7 +68,7 @@ namespace NSW.EliteDangerous.API.Statuses
                 {
                     StarSystem = new StarSystem(e.StarSystem);
                 }
-                Body = new SpaceBody(BodyType.Planet, e.Body ?? string.Empty);
+                Body = new SpaceBody(BodyType.Planet, e.Body ?? "Planet");
                 Station = null;
                                                       
                 api.InvokeLocationStatusChanged(this);
@@ -79,7 +79,7 @@ namespace NSW.EliteDangerous.API.Statuses
                 if (StarSystem == null || !string.Equals(StarSystem?.Name, e.StarSystem, StringComparison.OrdinalIgnoreCase))
                     StarSystem = new StarSystem(e.StarSystem);
 
-                Body = new SpaceBody(BodyType.Station, e.StationName ?? string.Empty);
+                Body = new SpaceBody(BodyType.Station, e.StationName ?? "Station");
 
                 if (Station == null || !string.Equals(Station?.Name, e.StationName, StringComparison.OrdinalIgnoreCase))
                     Station = new Station(e.StationName, e.StationType);

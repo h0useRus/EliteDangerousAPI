@@ -2,7 +2,7 @@ using System;
 
 namespace NSW.EliteDangerous.API.Events
 {
-    public class GlobalEvent
+    public class ProcessedEvent
     {
         public string EventName { get; internal set; }
         public Type EventType { get; internal set; }

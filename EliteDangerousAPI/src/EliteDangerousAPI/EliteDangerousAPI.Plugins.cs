@@ -15,6 +15,8 @@ namespace NSW.EliteDangerous.API
 
         private void InitPlugins()
         {
+            if(!_settings.UsePlugins) return;
+
             _plugins = new Dictionary<Guid, IEliteDangerousPlugin>();
 
             if(string.IsNullOrWhiteSpace(_settings.PluginsDirectory))
@@ -56,6 +58,8 @@ namespace NSW.EliteDangerous.API
 
         private void StartPlugins()
         {
+            if(Plugins == null || Plugins.Count == 0) return;
+
             try
             {
                 Task.WaitAll(Plugins.Select(plugin => plugin.Value.StartAsync()).ToArray());
@@ -68,6 +72,8 @@ namespace NSW.EliteDangerous.API
 
         private void StopPlugins()
         {
+            if(Plugins == null || Plugins.Count == 0) return;
+
             try
             {
                 Task.WaitAll(Plugins.Select(plugin => plugin.Value.StopAsync()).ToArray());

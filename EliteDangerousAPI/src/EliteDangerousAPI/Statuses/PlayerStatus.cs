@@ -34,8 +34,6 @@ namespace NSW.EliteDangerous.API.Statuses
         {
             api.Game.Status += (s, e) =>
             {
-                if (e == null) return;
-
                 if(LegalState != e.LegalState)
                 {
                     LegalState = e.LegalState;
@@ -45,8 +43,6 @@ namespace NSW.EliteDangerous.API.Statuses
 
             api.Game.LoadGame += (s, e) =>
             {
-                if (e == null) return;
-
                 FrontierId = e.FrontierId;
                 Commander = e.Commander;
                 Credits = e.Credits;
@@ -56,8 +52,6 @@ namespace NSW.EliteDangerous.API.Statuses
 
             api.Game.ClearSavedGame += (s, e) =>
             {
-                if (e == null) return;
-
                 FrontierId = e.FrontierId;
                 Commander = e.Name;
                 api.InvokePlayerStatusChanged(this);
@@ -65,8 +59,6 @@ namespace NSW.EliteDangerous.API.Statuses
 
             api.Player.NewCommander += (s, e) =>
             {
-                if (e == null) return;
-
                 FrontierId = e.FrontierId;
                 Commander = e.Name;
                 api.InvokePlayerStatusChanged(this);
@@ -74,8 +66,6 @@ namespace NSW.EliteDangerous.API.Statuses
 
             api.Player.Commander += (s, e) =>
             {
-                if (e == null) return;
-
                 FrontierId = e.FrontierId;
                 Commander = e.Name;
                 api.InvokePlayerStatusChanged(this);
@@ -83,8 +73,6 @@ namespace NSW.EliteDangerous.API.Statuses
 
             api.Player.Progress += (s, e) =>
             {
-                if (e == null) return;
-
                 CombatProgress = e.Combat;
                 TradeProgress = e.Trade;
                 ExplorationProgress = e.Explore;
@@ -97,8 +85,6 @@ namespace NSW.EliteDangerous.API.Statuses
 
             api.Player.Promotion += (s, e) =>
             {
-                if (e == null) return;
-
                 CombatRank = e.Combat ?? CombatRank;
                 TradeRank = e.Trade ?? TradeRank;
                 ExplorationRank = e.Explore ?? ExplorationRank;
@@ -111,8 +97,6 @@ namespace NSW.EliteDangerous.API.Statuses
 
             api.Player.Rank += (s, e) =>
             {
-                if (e == null) return;
-
                 CombatRank = e.Combat ?? CombatRank;
                 TradeRank = e.Trade ?? TradeRank;
                 ExplorationRank = e.Explore ?? ExplorationRank;
@@ -125,8 +109,6 @@ namespace NSW.EliteDangerous.API.Statuses
 
             api.Player.Resurrect += (s, e) =>
             {
-                if (e == null) return;
-
                 Bankrupt = e.Bankrupt;
                 Credits -= e.Cost;
 
@@ -135,8 +117,6 @@ namespace NSW.EliteDangerous.API.Statuses
 
             api.Player.Reputation += (s, e) =>
             {
-                if (e == null) return;
-
                 EmpireReputation = GetReputation(e.Empire);
                 FederationReputation = GetReputation(e.Federation);
                 IndependentReputation = GetReputation(e.Independent);
