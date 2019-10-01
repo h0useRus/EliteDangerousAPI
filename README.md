@@ -1,5 +1,4 @@
-<img src="https://github.com/h0useRus/EliteDangerousAPI/raw/master/Golden-Elite-Logo.png" align="right"
-     title="Frontier Elite Dangerous API" width="280">
+# ![Logo](https://github.com/h0useRus/EliteDangerousAPI/raw/master/Golden-Elite-Logo.png)
 # Frontier Elite Dangerous API
 ![Nuget](https://img.shields.io/nuget/v/NSW.EliteDangerous.API?label=nuget%3Astable)![Nuget (with prereleases)](https://img.shields.io/nuget/vpre/NSW.EliteDangerous.API?label=nuget%3Adev)![Nuget](https://img.shields.io/nuget/dt/NSW.EliteDangerous.API)
 
