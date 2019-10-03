@@ -25,7 +25,7 @@ namespace NSW.EliteDangerous.API.Events
         public LegalState LegalState { get; internal set; }
 
         [JsonProperty("Cargo")]
-        public int Cargo { get; internal set; }
+        public double Cargo { get; internal set; }
 
         [JsonProperty("Latitude")]
         public double Latitude { get; internal set; }
