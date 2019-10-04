@@ -1,3 +1,5 @@
+using System;
+
 namespace NSW.EliteDangerous.API.Statuses
 {
     public class PlayerStatus
@@ -9,28 +11,21 @@ namespace NSW.EliteDangerous.API.Statuses
         public long Loan { get; private set; }
         public bool Bankrupt { get; set; }
 
-        public CombatRank CombatRank { get; private set; } = CombatRank.Harmless;
-        public TradeRank TradeRank { get; private set; } = TradeRank.Penniless;
-        public ExplorationRank  ExplorationRank  { get; private set; } = ExplorationRank.Aimless;
-        public FederationRank FederationRank { get; private set; } = FederationRank.None;
-        public EmpireRank EmpireRank { get; private set; } = EmpireRank.None;
-        public CqcRank CqcRank { get; private set; } = CqcRank.Helpless;
+        public BaseRank<CombatRank> CombatRank { get; } = BaseRank<CombatRank>.Default;
+        public BaseRank<TradeRank> TradeRank { get; } = BaseRank<TradeRank>.Default;
+        public BaseRank<ExplorationRank> ExplorationRank { get; } = BaseRank<ExplorationRank>.Default;
+        public BaseRank<FederationRank> FederationRank { get; } = BaseRank<FederationRank>.Default;
+        public BaseRank<EmpireRank> EmpireRank { get; } = BaseRank<EmpireRank>.Default;
+        public BaseRank<CqcRank> CqcRank { get; } = BaseRank<CqcRank>.Default;
 
-        public byte CombatProgress { get; private set; }
-        public byte TradeProgress { get; private set; }
-        public byte ExplorationProgress { get; private set; }
-        public byte EmpireProgress { get; private set; }
-        public byte FederationProgress { get; private set; }
-        public byte CqcProgress { get; private set; }
-
-        public Reputation EmpireReputation { get; private set; } = Reputation.Neutral;
-        public Reputation FederationReputation { get; private set; } = Reputation.Neutral;
-        public Reputation IndependentReputation { get; private set; } = Reputation.Neutral;
-        public Reputation AllianceReputation { get; private set; } = Reputation.Neutral;
+        public MajorReputation EmpireReputation { get; private set; } = new MajorReputation();
+        public MajorReputation FederationReputation { get; private set; } = new MajorReputation();
+        public MajorReputation IndependentReputation { get; private set; } = new MajorReputation();
+        public MajorReputation AllianceReputation { get; private set; } = new MajorReputation();
 
         public LegalState LegalState { get; private set; } = LegalState.Clean;
 
-        internal PlayerStatus(API.EliteDangerousAPI api)
+        internal PlayerStatus(EliteDangerousAPI api)
         {
             api.GameEvents.Status += (s, e) =>
             {
@@ -73,36 +68,36 @@ namespace NSW.EliteDangerous.API.Statuses
 
             api.PlayerEvents.Progress += (s, e) =>
             {
-                CombatProgress = e.Combat;
-                TradeProgress = e.Trade;
-                ExplorationProgress = e.Explore;
-                FederationProgress = e.Federation;
-                EmpireProgress = e.Empire;
-                CqcProgress = e.Cqc;
+                CombatRank.Progress = e.Combat;
+                TradeRank.Progress = e.Trade;
+                ExplorationRank.Progress = e.Explore;
+                FederationRank.Progress = e.Federation;
+                EmpireRank.Progress = e.Empire;
+                CqcRank.Progress = e.Cqc;
 
                 api.InvokePlayerStatusChanged(this);
             };
 
             api.PlayerEvents.Promotion += (s, e) =>
             {
-                CombatRank = e.Combat ?? CombatRank;
-                TradeRank = e.Trade ?? TradeRank;
-                ExplorationRank = e.Explore ?? ExplorationRank;
-                EmpireRank = e.Empire ?? EmpireRank;
-                FederationRank = e.Federation ?? FederationRank;
-                CqcRank = e.Cqc ?? CqcRank;
+                CombatRank.UpdateRank(e.Combat);
+                TradeRank.UpdateRank(e.Trade);
+                ExplorationRank.UpdateRank(e.Explore);
+                EmpireRank.UpdateRank(e.Empire);
+                FederationRank.UpdateRank(e.Federation);
+                CqcRank.UpdateRank(e.Cqc);
 
                 api.InvokePlayerStatusChanged(this);
             };
 
             api.PlayerEvents.Rank += (s, e) =>
             {
-                CombatRank = e.Combat ?? CombatRank;
-                TradeRank = e.Trade ?? TradeRank;
-                ExplorationRank = e.Explore ?? ExplorationRank;
-                EmpireRank = e.Empire ?? EmpireRank;
-                FederationRank = e.Federation ?? FederationRank;
-                CqcRank = e.Cqc ?? CqcRank;
+                CombatRank.UpdateRank(e.Combat);
+                TradeRank.UpdateRank(e.Trade);
+                ExplorationRank.UpdateRank(e.Explore);
+                EmpireRank.UpdateRank(e.Empire);
+                FederationRank.UpdateRank(e.Federation);
+                CqcRank.UpdateRank(e.Cqc);
 
                 api.InvokePlayerStatusChanged(this);
             };
@@ -117,13 +112,46 @@ namespace NSW.EliteDangerous.API.Statuses
 
             api.PlayerEvents.Reputation += (s, e) =>
             {
-                EmpireReputation = GetReputation(e.Empire);
-                FederationReputation = GetReputation(e.Federation);
-                IndependentReputation = GetReputation(e.Independent);
-                AllianceReputation = GetReputation(e.Alliance);
+                EmpireReputation = new MajorReputation(e.Empire);
+                FederationReputation = new MajorReputation(e.Federation);
+                IndependentReputation = new MajorReputation(e.Independent);
+                AllianceReputation = new MajorReputation(e.Alliance);
 
                 api.InvokePlayerStatusChanged(this);
             };
+        }
+
+        
+    }
+
+    public class BaseRank<TRank> where TRank : struct, Enum
+    {
+        public TRank Rank { get; internal set; }
+        public byte Progress { get; internal set; }
+
+        public static BaseRank<TRank> Default => new BaseRank<TRank> { Rank = default, Progress = 0 };
+
+        public void UpdateRank(TRank? rank)
+        {
+            if (rank.HasValue)
+            {
+                Rank = rank.Value;
+                Progress = 0;
+            }
+        }
+
+        public override string ToString() => Rank.ToString();
+    }
+
+    public class MajorReputation
+    {
+        public Reputation Reputation => GetReputation(Level);
+        public double Level { get; }
+
+        public MajorReputation() : this(0) { }
+        public MajorReputation(double level)
+        {
+            Level = level;
         }
 
         private static Reputation GetReputation(double reputation)
@@ -133,7 +161,10 @@ namespace NSW.EliteDangerous.API.Statuses
             if (reputation < 4) return Reputation.Neutral;
             if (reputation < 35) return Reputation.Cordial;
             if (reputation < 90) return Reputation.Friendly;
+
             return Reputation.Allied;
         }
+
+        public override string ToString() => Reputation.ToString();
     }
 }

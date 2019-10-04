@@ -6,13 +6,13 @@ namespace NSW.EliteDangerous.API
     public class Fuel : IEquatable<Fuel>
     {
         [JsonProperty("FuelMain")]
-        public double FuelMain { get; internal set; }
+        public double Main { get; internal set; }
 
         [JsonProperty("FuelReservoir")]
-        public double FuelReservoir { get; internal set; }
+        public double Reservoir { get; internal set; }
 
         [JsonProperty("MaxFuel")]
-        public double MaxFuel { get; internal set; }
+        public double Max { get; internal set; }
 
         #region Equality members
 
@@ -21,7 +21,7 @@ namespace NSW.EliteDangerous.API
         {
             if (ReferenceEquals(null, other)) return false;
             if (ReferenceEquals(this, other)) return true;
-            return FuelMain.Equals(other.FuelMain) && FuelReservoir.Equals(other.FuelReservoir) && MaxFuel.Equals(other.MaxFuel);
+            return Main.Equals(other.Main) && Reservoir.Equals(other.Reservoir) && Max.Equals(other.Max);
         }
 
         /// <inheritdoc />
@@ -38,9 +38,9 @@ namespace NSW.EliteDangerous.API
         {
             unchecked
             {
-                var hashCode = FuelMain.GetHashCode();
-                hashCode = (hashCode * 397) ^ FuelReservoir.GetHashCode();
-                hashCode = (hashCode * 397) ^ MaxFuel.GetHashCode();
+                var hashCode = Main.GetHashCode();
+                hashCode = (hashCode * 397) ^ Reservoir.GetHashCode();
+                hashCode = (hashCode * 397) ^ Max.GetHashCode();
                 return hashCode;
             }
         }

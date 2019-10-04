@@ -34,8 +34,8 @@ namespace NSW.EliteDangerous.Events
             Assert.Equal(new byte[] { 4, 8, 0 }, @event.Pips);
             Assert.Equal(2, @event.FireGroup);
             Assert.Equal(GuiFocus.NoFocus, @event.GuiFocus);
-            Assert.Equal(24.828249, @event.Fuel.FuelMain, 6);
-            Assert.Equal(0.392130, @event.Fuel.FuelReservoir, 6);
+            Assert.Equal(24.828249, @event.Fuel.Main, 6);
+            Assert.Equal(0.392130, @event.Fuel.Reservoir, 6);
             Assert.Equal(0.000000, @event.Cargo, 6);
             Assert.Equal(0.000000, @event.Cargo, 6);
             Assert.Equal(LegalState.Clean, @event.LegalState);
