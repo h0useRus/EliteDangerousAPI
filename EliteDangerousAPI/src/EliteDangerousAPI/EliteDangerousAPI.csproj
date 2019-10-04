@@ -16,8 +16,8 @@
     <LangVersion>8</LangVersion>
     <PackageLicenseExpression>MIT</PackageLicenseExpression>
     <PackageReleaseNotes>
-      ! Breacking changes with main interface properties
-      + Added missed ShipyardBuy ship sell fields 
+      + Improved stability pof status.json file reading
+      + Added missed filed in Status and FSSSignalDiscovered events
     </PackageReleaseNotes>
   </PropertyGroup>
 
