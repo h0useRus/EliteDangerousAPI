@@ -12,6 +12,7 @@
     <RootNamespace>NSW.EliteDangerous.API</RootNamespace>
     <PackageId>NSW.EliteDangerous.API</PackageId>
     <PackageTags>Elite Dangerous API;</PackageTags>
+    <PackageIcon>icon.png</PackageIcon>
     <PackageProjectUrl>https://github.com/h0useRus/EliteDangerousAPI</PackageProjectUrl>
     <LangVersion>8</LangVersion>
     <PackageLicenseExpression>MIT</PackageLicenseExpression>
@@ -25,6 +26,10 @@
   <ItemGroup>
     <PackageReference Include="Microsoft.Extensions.Logging" Version="3.0.0" />
     <PackageReference Include="Newtonsoft.Json" Version="12.0.2" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Include="icon.png" Pack="true" Visible="false" PackagePath="" />
   </ItemGroup>
 
 </Project>
