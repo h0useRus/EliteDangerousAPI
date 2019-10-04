@@ -96,6 +96,6 @@ namespace NSW.EliteDangerous.API
         /// Hidden gem, but not preferred
         /// </summary>
         public static IEliteDangerousAPI CreateAPI(ApiOptions options = null, ILoggerFactory loggerFactory = null)
-            => new EliteDangerousAPI(new OptionsWrapper<ApiOptions>(options ?? ApiOptions.Default), loggerFactory);
+            => new EliteDangerousAPI(new OptionsWrapper<ApiOptions>(options ?? new ApiOptions()), loggerFactory);
     }
 }

@@ -53,7 +53,5 @@ namespace NSW.EliteDangerous.API
         /// Enable <see cref="IEliteDangerousPlugin"/> support
         /// </summary>
         public bool UsePlugins { get; set; }
-
-        public static ApiOptions Default => new ApiOptions();
     }
 }

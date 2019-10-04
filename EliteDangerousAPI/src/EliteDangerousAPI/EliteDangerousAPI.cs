@@ -18,11 +18,11 @@ namespace NSW.EliteDangerous.API
 
         public int DocumentationVersion { get ;} = 26;
 
-        public string Version => Assembly.GetAssembly(typeof(API.EliteDangerousAPI)).GetCustomAttribute<AssemblyFileVersionAttribute>().Version;
+        public string Version => Assembly.GetAssembly(typeof(EliteDangerousAPI)).GetCustomAttribute<AssemblyFileVersionAttribute>().Version;
 
-        public EliteDangerousAPI(IOptions<ApiOptions> options, ILoggerFactory loggerFactory)
+        public EliteDangerousAPI(IOptions<ApiOptions> options, ILoggerFactory loggerFactory = null)
         {
-            _settings = options?.Value ?? ApiOptions.Default;
+            _settings = options?.Value ?? new ApiOptions();
             _log = (loggerFactory ?? new NullLoggerFactory()).CreateLogger<EliteDangerousAPI>();
             JournalDirectory = new DirectoryInfo(_settings.JournalDirectory);
             InitHandlers();
