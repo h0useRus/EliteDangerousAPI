@@ -34,6 +34,9 @@ namespace NSW.EliteDangerous.API.Events
         [JsonProperty("TimeRemaining")]
         public double TimeRemaining { get; internal set; }
 
+        [JsonProperty("IsStation")]
+        public bool IsStation { get; internal set; }
+
         internal static FssSignalDiscoveredEvent Execute(string json, API.EliteDangerousAPI api) => api.ExplorationEvents.InvokeEvent(api.FromJson<FssSignalDiscoveredEvent>(json));
     }
 }

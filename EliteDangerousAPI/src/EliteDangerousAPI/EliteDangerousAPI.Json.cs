@@ -8,7 +8,7 @@ using NSW.EliteDangerous.API.Exceptions;
 
 namespace NSW.EliteDangerous.API
 {
-    partial class EliteDangerousAPI
+    internal partial class EliteDangerousAPI
     {
         internal static readonly JsonSerializerSettings Settings = new JsonSerializerSettings
         {
@@ -27,14 +27,14 @@ namespace NSW.EliteDangerous.API
         internal T FromJson<T>(TextReader textReader, JsonSerializerSettings settings = null)
         {
                 var serializer = settings == null ? _serializer.Value : JsonSerializer.Create(settings);
-                using (var jsonTextReader = new JsonTextReader(textReader) { SupportMultipleContent = true, CloseInput = false })
-                    return serializer.Deserialize<T>(jsonTextReader);
+                using var jsonTextReader = new JsonTextReader(textReader) { SupportMultipleContent = true, CloseInput = false };
+                return serializer.Deserialize<T>(jsonTextReader);
         }
 
         internal T FromJson<T>(Stream jsonStream, JsonSerializerSettings settings = null)
         {
-            using (var streamReader = new StreamReader(jsonStream))
-                return FromJson<T>(streamReader, settings);
+            using var streamReader = new StreamReader(jsonStream);
+            return FromJson<T>(streamReader, settings);
         }
 
         internal T FromJson<T>(string jsonString, JsonSerializerSettings settings = null)
@@ -44,8 +44,8 @@ namespace NSW.EliteDangerous.API
             try
             {
                 _log.LogDebug($"Parsing: {jsonString}");
-                using (var streamReader = new StringReader(jsonString))
-                    return FromJson<T>(streamReader, settings);
+                using var streamReader = new StringReader(jsonString);
+                return FromJson<T>(streamReader, settings);
             }
             catch (Exception exception)
             {
@@ -61,10 +61,8 @@ namespace NSW.EliteDangerous.API
             {
                 try
                 {
-                    using (var reader = File.OpenRead(filePath))
-                    {
-                        return FromJson<T>(reader);
-                    }
+                    using var reader = OpenReadFileStream(filePath);
+                    return FromJson<T>(reader);
                 }
                 catch(Exception exception)
                 {
@@ -74,5 +72,7 @@ namespace NSW.EliteDangerous.API
 
             return default;
         }
+
+        internal static Stream OpenReadFileStream(string fileName) => File.Open(fileName, FileMode.Open, FileAccess.Read, FileShare.ReadWrite);
     }
 }

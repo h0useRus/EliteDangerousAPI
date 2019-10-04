@@ -17,7 +17,7 @@ namespace NSW.EliteDangerous.API.Statuses
 
         public byte FireGroup { get; private set; }
 
-        public int Cargo { get; private set; }
+        public double Cargo { get; private set; }
 
         public bool Docked => GetFlag(0);
         public bool Landed => GetFlag(1);

@@ -1,2 +1,3 @@
-{ "timestamp":"2017-12-07T12:03:14Z", "event":"Status", "Flags":18874376, "Pips":[4,8,0], "FireGroup":0, "Fuel":{ "FuelMain":15.146626, "FuelReservoir":0.382796 }, "GuiFocus":0, "Latitude":-28.584963, "Longitude":6.826313, "Heading":109, "Altitude": 404 }
+{ "timestamp":"2019-10-03T11:42:45Z", "event":"Status", "Flags":153157645, "Pips":[4,8,0], "FireGroup":2, "GuiFocus":0, "Fuel":{ "FuelMain":24.828249, "FuelReservoir":0.392130 }, "Cargo":0.000000, "LegalState":"Clean", "Latitude":74.000931, "Longitude":143.452332, "Heading":0, "Altitude":0 }
+
 

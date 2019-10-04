@@ -1,7 +1,7 @@
 <Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
-    <VersionPrefix>1.3.26</VersionPrefix>
+    <VersionPrefix>1.4.26</VersionPrefix>
     <Description>Frontier Elite:Dangerous multi-platform API Library</Description>
     <Copyright>Copyright © 2019-2020 NewSoftWorld</Copyright>
     <AssemblyTitle>Elite:Dangerous API</AssemblyTitle>
@@ -13,7 +13,7 @@
     <PackageId>NSW.EliteDangerous.API</PackageId>
     <PackageTags>Elite Dangerous API;</PackageTags>
     <PackageProjectUrl>https://github.com/h0useRus/EliteDangerousAPI</PackageProjectUrl>
-    <LangVersion>Latest</LangVersion>
+    <LangVersion>8</LangVersion>
     <PackageLicenseExpression>MIT</PackageLicenseExpression>
     <PackageReleaseNotes>
       ! Breacking changes with main interface properties

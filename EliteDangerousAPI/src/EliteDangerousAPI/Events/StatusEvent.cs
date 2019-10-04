@@ -102,7 +102,7 @@ namespace NSW.EliteDangerous.API.Events
                 hashCode = (hashCode * 397) ^ (int) GuiFocus;
                 hashCode = (hashCode * 397) ^ (Fuel != null ? Fuel.GetHashCode() : 0);
                 hashCode = (hashCode * 397) ^ (int) LegalState;
-                hashCode = (hashCode * 397) ^ Cargo;
+                hashCode = (hashCode * 397) ^ Cargo.GetHashCode();
                 hashCode = (hashCode * 397) ^ Latitude.GetHashCode();
                 hashCode = (hashCode * 397) ^ Altitude.GetHashCode();
                 hashCode = (hashCode * 397) ^ Longitude.GetHashCode();

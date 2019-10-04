@@ -99,29 +99,27 @@ namespace NSW.EliteDangerous.API
 
         private long ReadJournalFromPosition(FileInfo journalFile, long position)
         {
-            using (var stream = journalFile.Open(FileMode.Open, FileAccess.Read, FileShare.ReadWrite))
-            using (var reader = new StreamReader(stream))
+            using var stream = OpenReadFileStream(journalFile.FullName);
+            using var reader = new StreamReader(stream);
+            try
             {
-                try
-                {
-                    _log.LogInformation($"Reading from {journalFile.FullName}");
+                _log.LogInformation($"Reading from {journalFile.FullName}");
 
-                    stream.Position = position;
+                stream.Position = position;
 
-                    while (reader.Peek() >= 0)
-                    {
-                        var json = reader.ReadLine();
-                        var journalEvent = FromJson<JournalEvent>(json);
-                        if (journalEvent != null)
-                            ExecuteEvent(journalEvent.Event, json);
-                    }
-                }
-                catch (Exception exception)
+                while (reader.Peek() >= 0)
                 {
-                    LogJournalException(new JournalFileException(journalFile.FullName, exception));
+                    var json = reader.ReadLine();
+                    var journalEvent = FromJson<JournalEvent>(json);
+                    if (journalEvent != null)
+                        ExecuteEvent(journalEvent.Event, json);
                 }
-                return stream.Position;
             }
+            catch (Exception exception)
+            {
+                LogJournalException(new JournalFileException(journalFile.FullName, exception));
+            }
+            return stream.Position;
         }
 
         private void MonitorJournal(object sender, ElapsedEventArgs e)
