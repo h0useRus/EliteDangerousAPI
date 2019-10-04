@@ -1,7 +1,7 @@
-<Project Sdk="Microsoft.NET.Sdk">
+﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
-    <VersionPrefix>1.4.26</VersionPrefix>
+    <VersionPrefix>1.26.0</VersionPrefix>
     <Description>Frontier Elite:Dangerous multi-platform API Library</Description>
     <Copyright>Copyright © 2019-2020 NewSoftWorld</Copyright>
     <AssemblyTitle>Elite:Dangerous API</AssemblyTitle>
@@ -18,6 +18,7 @@
     <PackageReleaseNotes>
       + Improved stability pof status.json file reading
       + Added missed filed in Status and FSSSignalDiscovered events
+      + Changed versioning strategy, major - api version, minor - journal version
     </PackageReleaseNotes>
   </PropertyGroup>
 
