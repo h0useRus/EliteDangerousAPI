@@ -1,6 +1,5 @@
 using System;
 using System.Collections.Generic;
-using System.Runtime.InteropServices.ComTypes;
 
 namespace NSW.EliteDangerous.API.Statuses
 {
@@ -24,7 +23,8 @@ namespace NSW.EliteDangerous.API.Statuses
         public FsdStatus FSD => new FsdStatus(Flags);
         public SrvStatus SRV => new SrvStatus(Flags);
         public double MaxJumpRange { get; private set; }
-
+        public bool IsHot { get; private set; }
+        public long? Rebuy { get; private set; }
 
         public bool Docked => GetFlag(Flags,0);
         public bool Landed => GetFlag(Flags,1);
@@ -35,8 +35,6 @@ namespace NSW.EliteDangerous.API.Statuses
         public bool InDanger => GetFlag(Flags,22);
         public bool Interdicted => GetFlag(Flags,23);
         public bool HighAltitudeMode => GetFlag(Flags,29);
-        public bool IsHot { get; private set; }
-        public long? Rebuy { get; private set; }
 
         internal ShipStatus(EliteDangerousAPI api)
         {
@@ -102,8 +100,7 @@ namespace NSW.EliteDangerous.API.Statuses
                 {
                     ShipId = e.NewShipId;
                     ShipType = e.ShipTypeLocalised ?? e.ShipType;
-                    Name = ShipType;
-                    Identifier = string.Empty;
+                    NewShip(ShipType);
 
                     api.InvokeShipStatusChanged(this);
                 }
@@ -115,8 +112,7 @@ namespace NSW.EliteDangerous.API.Statuses
                 {
                     ShipId = e.ShipId;
                     ShipType = e.ShipTypeLocalised ?? e.ShipType;
-                    Name = ShipType;
-                    Identifier = string.Empty;
+                    NewShip(ShipType);
 
                     api.InvokeShipStatusChanged(this);
                 }
@@ -128,8 +124,7 @@ namespace NSW.EliteDangerous.API.Statuses
                 {
                     ShipId = 0;
                     ShipType = e.ShipTypeLocalised ?? e.ShipType;
-                    Name = ShipType;
-                    Identifier = string.Empty;
+                    NewShip(ShipType);
 
                     api.InvokeShipStatusChanged(this);
                 }
@@ -163,6 +158,19 @@ namespace NSW.EliteDangerous.API.Statuses
                     api.InvokeShipStatusChanged(this);
                 }
             };
+        }
+
+        private void NewShip(string shipType)
+        {
+            Name = ShipType;
+            Identifier = string.Empty;
+            Fuel = new Fuel();
+            Cargo = new CargoInfo();
+            EnergyManagement = new EnergyManagement(new byte[] {4, 4, 4});
+            Flags = ShipStatusFlags.Docked;
+            Hull = new HullInfo();
+            IsHot = false;
+            Rebuy = null;
         }
 
         public struct ShipSystems

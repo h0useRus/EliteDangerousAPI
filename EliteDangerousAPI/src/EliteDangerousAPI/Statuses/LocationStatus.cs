@@ -4,175 +4,218 @@ namespace NSW.EliteDangerous.API.Statuses
 {
     public class LocationStatus
     {
-        public StarSystem StarSystem { get; private set; }
-        public SpaceBody Body { get; private set; }
-        public Station Station { get; private set; }
+        private readonly object _lock = new object();
 
+        public StarSystemInfo StarSystem { get; private set; }
+        public SpaceBodyInfo Body { get; private set; }
+        public StationInfo Station { get; private set; }
 
-        internal LocationStatus(API.EliteDangerousAPI api)
+        internal LocationStatus(EliteDangerousAPI api)
         {
             api.TravelEvents.Location += (s, e) =>
             {
-                if (StarSystem == null || !string.Equals(StarSystem?.Name, e.StarSystem, StringComparison.OrdinalIgnoreCase))
-                    StarSystem = new StarSystem(e.StarSystem);
-
-                StarSystem.Security = e.SystemSecurityLocalised ?? e.SystemSecurity ?? StarSystem.Security;
-                StarSystem.Government = e.SystemGovernmentLocalised ?? e.SystemGovernment ?? StarSystem.Government;
-                StarSystem.Economy = e.SystemEconomyLocalised ?? e.SystemEconomy ?? StarSystem.Economy;
-                StarSystem.SecondEconomy = e.SystemSecondEconomyLocalised ?? e.SystemSecondEconomy ?? StarSystem.SecondEconomy;
-                StarSystem.Faction = e.SystemFaction ?? StarSystem.Faction;
-                StarSystem.Population = e.Population;
-
-                Body = new SpaceBody(e.BodyType ?? BodyType.Null, e.Body);
-
-                if (Body.Type == BodyType.Station)
+                lock (_lock)
                 {
-                    if (Station == null || !string.Equals(Station?.Name, e.StationName, StringComparison.OrdinalIgnoreCase))
-                        Station = new Station(e.StationName ?? e.Body, e.StationType);
-                    Station.Faction = e.StationFaction ?? Station.Faction;
-                    Station.Economy = e.StationEconomyLocalised ?? e.StationEconomy ?? Station.Economy;
-                    Station.Government = e.StationGovernmentLocalised ?? e.StationGovernment ?? Station.Government;
-                    Station.MarketId = e.MarketId ?? Station.MarketId;
-                }
-                else
-                {
-                    Station = null;
-                }
+                    if (StarSystem == null ||
+                        !string.Equals(StarSystem?.Name, e.StarSystem, StringComparison.OrdinalIgnoreCase))
+                        StarSystem = new StarSystemInfo(e.StarSystem);
 
-                api.InvokeLocationStatusChanged(this);
+                    StarSystem.Security = e.SystemSecurityLocalised ?? e.SystemSecurity ?? StarSystem.Security;
+                    StarSystem.Government = e.SystemGovernmentLocalised ?? e.SystemGovernment ?? StarSystem.Government;
+                    StarSystem.Economy = e.SystemEconomyLocalised ?? e.SystemEconomy ?? StarSystem.Economy;
+                    StarSystem.SecondEconomy = e.SystemSecondEconomyLocalised ??
+                                               e.SystemSecondEconomy ?? StarSystem.SecondEconomy;
+                    StarSystem.Faction = e.SystemFaction ?? StarSystem.Faction;
+                    StarSystem.Population = e.Population;
+
+                    Body = new SpaceBodyInfo(e.BodyType ?? BodyType.Null, e.Body);
+
+                    if (Body.Type == BodyType.Station)
+                    {
+                        if (Station == null || !string.Equals(Station?.Name, e.StationName,
+                                StringComparison.OrdinalIgnoreCase))
+                            Station = new StationInfo(e.StationName ?? e.Body, e.StationType);
+                        Station.Faction = e.StationFaction ?? Station.Faction;
+                        Station.Economy = e.StationEconomyLocalised ?? e.StationEconomy ?? Station.Economy;
+                        Station.Government = e.StationGovernmentLocalised ?? e.StationGovernment ?? Station.Government;
+                        Station.MarketId = e.MarketId ?? Station.MarketId;
+                    }
+                    else
+                    {
+                        Station = null;
+                    }
+
+                    api.InvokeLocationStatusChanged(this);
+                }
             };
 
             api.TravelEvents.ApproachBody += (s, e) =>
             {
-                if (StarSystem == null || !string.Equals(StarSystem?.Name, e.StarSystem, StringComparison.OrdinalIgnoreCase))
+                lock (_lock)
                 {
-                    StarSystem = new StarSystem(e.StarSystem);
-                }
-                Body = new SpaceBody(BodyType.Planet, e.Body ?? "Planet");
-                Station = null;
+                    if (StarSystem == null ||
+                        !string.Equals(StarSystem?.Name, e.StarSystem, StringComparison.OrdinalIgnoreCase))
+                    {
+                        StarSystem = new StarSystemInfo(e.StarSystem);
+                    }
 
-                api.InvokeLocationStatusChanged(this);
+                    Body = new SpaceBodyInfo(BodyType.Planet, e.Body ?? "Planet");
+                    Station = null;
+
+                    api.InvokeLocationStatusChanged(this);
+                }
             };
 
             api.TravelEvents.ApproachSettlement += (s, e) =>
             {
-                Body = new SpaceBody(BodyType.Planet, e.BodyName);
-                Station = new Station(e.NameLocalised ?? e.Name, "Settlement") { MarketId = e.MarketId };
-                                     
-                api.InvokeLocationStatusChanged(this);
+                lock (_lock)
+                {
+                    Body = new SpaceBodyInfo(BodyType.Planet, e.BodyName);
+                    Station = new StationInfo(e.NameLocalised ?? e.Name, "Settlement") {MarketId = e.MarketId};
+
+                    api.InvokeLocationStatusChanged(this);
+                }
             };
 
             api.TravelEvents.LeaveBody += (s, e) =>
             {
-                if (StarSystem == null || !string.Equals(StarSystem?.Name, e.StarSystem, StringComparison.OrdinalIgnoreCase))
+                lock (_lock)
                 {
-                    StarSystem = new StarSystem(e.StarSystem);
+                    if (StarSystem == null ||
+                        !string.Equals(StarSystem?.Name, e.StarSystem, StringComparison.OrdinalIgnoreCase))
+                    {
+                        StarSystem = new StarSystemInfo(e.StarSystem);
+                    }
+
+                    Body = new SpaceBodyInfo(BodyType.Planet, e.Body ?? "Planet");
+                    Station = null;
+
+                    api.InvokeLocationStatusChanged(this);
                 }
-                Body = new SpaceBody(BodyType.Planet, e.Body ?? "Planet");
-                Station = null;
-                                                      
-                api.InvokeLocationStatusChanged(this);
             };
 
             api.TravelEvents.Docked += (s, e) =>
             {
-                if (StarSystem == null || !string.Equals(StarSystem?.Name, e.StarSystem, StringComparison.OrdinalIgnoreCase))
-                    StarSystem = new StarSystem(e.StarSystem);
+                lock (_lock)
+                {
+                    if (StarSystem == null ||
+                        !string.Equals(StarSystem?.Name, e.StarSystem, StringComparison.OrdinalIgnoreCase))
+                        StarSystem = new StarSystemInfo(e.StarSystem);
 
-                Body = new SpaceBody(BodyType.Station, e.StationName ?? "Station");
+                    Body = new SpaceBodyInfo(BodyType.Station, e.StationName ?? "Station");
 
-                if (Station == null || !string.Equals(Station?.Name, e.StationName, StringComparison.OrdinalIgnoreCase))
-                    Station = new Station(e.StationName, e.StationType);
+                    if (Station == null ||
+                        !string.Equals(Station?.Name, e.StationName, StringComparison.OrdinalIgnoreCase))
+                        Station = new StationInfo(e.StationName, e.StationType);
 
-                Station.Economy = e.StationEconomyLocalised ?? e.StationEconomy ?? Station.Economy;
-                Station.Government = e.StationGovernmentLocalised ?? e.StationGovernment ?? Station.Government;
-                Station.Faction = e.StationFaction ?? Station.Faction;
-                Station.MarketId = e.MarketId;
+                    Station.Economy = e.StationEconomyLocalised ?? e.StationEconomy ?? Station.Economy;
+                    Station.Government = e.StationGovernmentLocalised ?? e.StationGovernment ?? Station.Government;
+                    Station.Faction = e.StationFaction ?? Station.Faction;
+                    Station.MarketId = e.MarketId;
 
-                api.InvokeLocationStatusChanged(this);
+                    api.InvokeLocationStatusChanged(this);
+                }
             };
 
             api.TravelEvents.DockingRequested += (s, e) =>
             {
-                if (Station == null || !string.Equals(Station?.Name, e.StationName, StringComparison.OrdinalIgnoreCase))
-                    Station = new Station(e.StationName, e.StationType);
-                Station.MarketId = e.MarketId;
+                lock (_lock)
+                {
+                    if (Station == null ||
+                        !string.Equals(Station?.Name, e.StationName, StringComparison.OrdinalIgnoreCase))
+                        Station = new StationInfo(e.StationName, e.StationType);
+                    Station.MarketId = e.MarketId;
 
-                api.InvokeLocationStatusChanged(this);
+                    api.InvokeLocationStatusChanged(this);
+                }
             };
 
             api.TravelEvents.FsdJump += (s, e) =>
             {
-                if (StarSystem == null || !string.Equals(StarSystem?.Name, e.StarSystem, StringComparison.OrdinalIgnoreCase))
-                    StarSystem = new StarSystem(e.StarSystem);
+                lock (_lock)
+                {
+                    if (StarSystem == null ||
+                        !string.Equals(StarSystem?.Name, e.StarSystem, StringComparison.OrdinalIgnoreCase))
+                        StarSystem = new StarSystemInfo(e.StarSystem);
 
-                StarSystem.Security = e.SystemSecurityLocalised ?? e.SystemSecurity ?? StarSystem.Security;
-                StarSystem.Government = e.SystemGovernmentLocalised ?? e.SystemGovernment ?? StarSystem.Government;
-                StarSystem.Economy = e.SystemEconomyLocalised ?? e.SystemEconomy ?? StarSystem.Economy;
-                StarSystem.SecondEconomy = e.SystemSecondEconomyLocalised ?? e.SystemSecondEconomy ?? StarSystem.SecondEconomy;
-                StarSystem.Faction = e.SystemFaction ?? StarSystem.Faction;
-                StarSystem.Population = e.Population;
+                    StarSystem.Security = e.SystemSecurityLocalised ?? e.SystemSecurity ?? StarSystem.Security;
+                    StarSystem.Government = e.SystemGovernmentLocalised ?? e.SystemGovernment ?? StarSystem.Government;
+                    StarSystem.Economy = e.SystemEconomyLocalised ?? e.SystemEconomy ?? StarSystem.Economy;
+                    StarSystem.SecondEconomy = e.SystemSecondEconomyLocalised ??
+                                               e.SystemSecondEconomy ?? StarSystem.SecondEconomy;
+                    StarSystem.Faction = e.SystemFaction ?? StarSystem.Faction;
+                    StarSystem.Population = e.Population;
 
-                Body = new SpaceBody(e.BodyType, e.Body);
+                    Body = new SpaceBodyInfo(e.BodyType, e.Body);
 
-                Station = null;
+                    Station = null;
 
-                api.InvokeLocationStatusChanged(this);
+                    api.InvokeLocationStatusChanged(this);
+                }
             };
 
             api.TravelEvents.SupercruiseExit += (s, e) =>
             {
-                if (StarSystem == null || !string.Equals(StarSystem?.Name, e.StarSystem, StringComparison.OrdinalIgnoreCase))
-                    StarSystem = new StarSystem(e.StarSystem);
+                lock (_lock)
+                {
+                    if (StarSystem == null ||
+                        !string.Equals(StarSystem?.Name, e.StarSystem, StringComparison.OrdinalIgnoreCase))
+                        StarSystem = new StarSystemInfo(e.StarSystem);
 
-                Body = new SpaceBody(e.BodyType ?? BodyType.Null, e.Body);
+                    Body = new SpaceBodyInfo(e.BodyType ?? BodyType.Null, e.Body);
 
-                api.InvokeLocationStatusChanged(this);
+                    api.InvokeLocationStatusChanged(this);
+                }
             };
         }
-    }
-
-    public class StarSystem
-    {
-        public string Name { get; }
-        public string Security { get; internal set; } = string.Empty;
-        public string Economy { get; internal set; } = string.Empty;
-        public string SecondEconomy { get; internal set; } = string.Empty;
-        public string Government { get; internal set; } = string.Empty;
-        public Faction Faction { get; internal set; }
-        public long Population { get; internal set; }
-
-        internal StarSystem(string name)
+        public class StarSystemInfo
         {
-            Name = name ?? string.Empty;
+            public string Name { get; }
+            public string Security { get; internal set; } = string.Empty;
+            public string Economy { get; internal set; } = string.Empty;
+            public string SecondEconomy { get; internal set; } = string.Empty;
+            public string Government { get; internal set; } = string.Empty;
+            public Faction Faction { get; internal set; }
+            public long Population { get; internal set; }
+
+            internal StarSystemInfo(string name)
+            {
+                Name = name ?? string.Empty;
+            }
+
+            public override string ToString() => Name;
         }
-    }
 
-    public class SpaceBody
-    {
-        public BodyType Type { get; }
-        public string Name { get; }
-
-        internal SpaceBody(BodyType type, string name)
+        public class SpaceBodyInfo
         {
-            Type = type;
-            Name = name ?? string.Empty;
+            public BodyType Type { get; }
+            public string Name { get; }
+
+            internal SpaceBodyInfo(BodyType type, string name)
+            {
+                Type = type;
+                Name = name ?? string.Empty;
+            }
+
+            public override string ToString() => Name;
         }
-    }
 
-    public class Station
-    {
-        public string Name { get; }
-        public string Type { get; }
-        public string Economy { get; internal set; } = string.Empty;
-        public string Government { get; internal set; } = string.Empty;
-        public Faction Faction { get; internal set; }
-        public long MarketId { get; internal set; }
-
-        internal Station(string name, string type)
+        public class StationInfo
         {
-            Name = name ?? string.Empty;
-            Type = type ?? "Unknown";
+            public string Name { get; }
+            public string Type { get; }
+            public string Economy { get; internal set; } = string.Empty;
+            public string Government { get; internal set; } = string.Empty;
+            public Faction Faction { get; internal set; }
+            public long MarketId { get; internal set; }
+
+            internal StationInfo(string name, string type)
+            {
+                Name = name ?? string.Empty;
+                Type = type ?? "Unknown";
+            }
+
+            public override string ToString() => Name;
         }
     }
 }
