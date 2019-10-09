@@ -15,7 +15,7 @@ namespace NSW.EliteDangerous.API.Statuses
         public string Identifier { get; private set; }
         public Fuel Fuel { get; private set; } = new Fuel();
         public CargoInfo Cargo { get; private set; } = new CargoInfo();
-        public EnergyManagement EnergyManagement { get; private set; } = new EnergyManagement(new byte[]{4,4,4});
+        public EnergyInfo EnergyManagement { get; private set; } = new EnergyInfo(new byte[]{4,4,4});
         public VehicleType CurrentVehicle { get; private set; } = VehicleType.Ship;
         public byte FireGroup { get; private set; }
         public ShipSystems Systems => new ShipSystems(Flags);
@@ -59,7 +59,7 @@ namespace NSW.EliteDangerous.API.Statuses
                 {
                     Flags = e.Flags;
                     Fuel = e.Fuel ?? Fuel;
-                    EnergyManagement = new EnergyManagement(e.Pips);
+                    EnergyManagement = new EnergyInfo(e.Pips);
                     FireGroup = e.FireGroup;
                     Cargo.Current = e.Cargo;
 
@@ -134,10 +134,15 @@ namespace NSW.EliteDangerous.API.Statuses
             {
                 lock (_lock)
                 {
-                    ShipId = e.ShipId;
-                    ShipType = e.Ship;
+                    if (ShipId != e.ShipId)
+                    {
+                        ShipId = e.ShipId;
+                        ShipType = e.Ship;
+                    }
+
                     Name = e.ShipName;
                     Identifier = e.ShipIdent;
+
                     if (e.FuelCapacity != null)
                     {
                         Fuel.Main = e.FuelCapacity.Main;
@@ -162,11 +167,11 @@ namespace NSW.EliteDangerous.API.Statuses
 
         private void NewShip(string shipType)
         {
-            Name = ShipType;
+            Name = shipType;
             Identifier = string.Empty;
             Fuel = new Fuel();
             Cargo = new CargoInfo();
-            EnergyManagement = new EnergyManagement(new byte[] {4, 4, 4});
+            EnergyManagement = new EnergyInfo(new byte[] {4, 4, 4});
             Flags = ShipStatusFlags.Docked;
             Hull = new HullInfo();
             IsHot = false;
@@ -245,30 +250,30 @@ namespace NSW.EliteDangerous.API.Statuses
             internal HullInfo() { }
         }
 
-        public static bool GetFlag(ShipStatusFlags flags, int bit) => flags.HasFlag((ShipStatusFlags)(1 << bit));
-    }
-
-    public class EnergyManagement
-    {
-        public byte Systems { get; }
-        public byte Engines { get; }
-        public byte Weapons { get; }
-
-        internal EnergyManagement(IReadOnlyList<byte> pips)
+        public class EnergyInfo
         {
-            if (pips != null && pips.Count==3)
+            public byte Systems { get; }
+            public byte Engines { get; }
+            public byte Weapons { get; }
+
+            internal EnergyInfo(IReadOnlyList<byte> pips)
             {
-                Systems = pips[0];
-                Engines = pips[1];
-                Weapons = pips[2];
-            }
-            else
-            {
-                Systems = 4;
-                Engines = 4;
-                Weapons = 4;
+                if (pips != null && pips.Count==3)
+                {
+                    Systems = pips[0];
+                    Engines = pips[1];
+                    Weapons = pips[2];
+                }
+                else
+                {
+                    Systems = 4;
+                    Engines = 4;
+                    Weapons = 4;
+                }
             }
         }
+
+        public static bool GetFlag(ShipStatusFlags flags, int bit) => flags.HasFlag((ShipStatusFlags)(1 << bit));
     }
 
 }

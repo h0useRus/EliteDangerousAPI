@@ -171,7 +171,7 @@ namespace NSW.EliteDangerous.API
             if (@event != null)
                 return true;
 
-            LogJournalException(new JournalException(JournalErrorType.NullEvent, nameof(TEvent)));
+            LogJournalException(new JournalException(JournalErrorType.NullEvent, typeof(TEvent).Name));
             return false;
         }
 

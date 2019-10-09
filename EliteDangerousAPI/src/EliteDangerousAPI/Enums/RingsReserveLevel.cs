@@ -6,6 +6,7 @@ namespace NSW.EliteDangerous.API
         Major,
         Common,
         Low,
-        Depleted
+        Depleted,
+        CommonResources
     }
 }
