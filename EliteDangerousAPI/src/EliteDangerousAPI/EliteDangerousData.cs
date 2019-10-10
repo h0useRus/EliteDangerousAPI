@@ -6,7 +6,7 @@ namespace NSW.EliteDangerous.API
 {
     public static class EliteDangerousData
     {
-        public static IReadOnlyDictionary<int, string> Engineers = new Dictionary<int, string>
+        public static IReadOnlyDictionary<int, string> Engineers { get; } = new Dictionary<int, string>
         {
             {300000, "Didi Vatermann"},
             {300010, "Bill Turner"},
@@ -30,7 +30,7 @@ namespace NSW.EliteDangerous.API
             {300270, "Tiana Fortune"}
         };
 
-        public static IReadOnlyDictionary<int, string> PlanetClasses = new Dictionary<int, string>
+        public static IReadOnlyDictionary<int, string> PlanetClasses { get; } = new Dictionary<int, string>
         {
             {0, "Metal rich body"},
             {1, "High metal content body"},
@@ -48,7 +48,7 @@ namespace NSW.EliteDangerous.API
             {13, "Helium gas giant"}
         };
 
-        public static IReadOnlyDictionary<int, string> AtmosphereClasses = new Dictionary<int, string>
+        public static IReadOnlyDictionary<int, string> AtmosphereClasses { get; } = new Dictionary<int, string>
         {
             {0, "No atmosphere"},
             {1, "Suitable for water-based life"},
@@ -73,7 +73,7 @@ namespace NSW.EliteDangerous.API
             {20, "Oxygen"}
         };
 
-        public static IReadOnlyDictionary<int, string> VolcanismClasses = new Dictionary<int, string>
+        public static IReadOnlyDictionary<int, string> VolcanismClasses { get; } = new Dictionary<int, string>
         {
             {0, "None"},
             {1, "Water Magma"},
@@ -91,6 +91,16 @@ namespace NSW.EliteDangerous.API
             {13, "Nitrogen Geysers"},
             {14, "Helium Geysers"},
             {15, "Silicate Vapour Geysers"}
+        };
+
+        public static IReadOnlyList<string> FuelScoopableStars { get; } = new List<string>
+        {
+            "M",
+            "K",
+            "A",
+            "B",
+            "F",
+            "G"
         };
         /// <summary>
         /// Hidden gem, but not preferred

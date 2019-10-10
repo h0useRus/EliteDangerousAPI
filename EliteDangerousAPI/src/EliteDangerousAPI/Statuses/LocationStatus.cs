@@ -1,4 +1,5 @@
 using System;
+using System.Linq;
 
 namespace NSW.EliteDangerous.API.Statuses
 {
@@ -9,6 +10,7 @@ namespace NSW.EliteDangerous.API.Statuses
         public StarSystemInfo StarSystem { get; private set; }
         public SpaceBodyInfo Body { get; private set; }
         public StationInfo Station { get; private set; }
+        public TravelInfo Route { get; private set; }
 
         internal LocationStatus(EliteDangerousAPI api)
         {
@@ -134,9 +136,12 @@ namespace NSW.EliteDangerous.API.Statuses
             {
                 lock (_lock)
                 {
-                    if (StarSystem == null ||
+                    if (StarSystem == null || 
                         !string.Equals(StarSystem?.Name, e.StarSystem, StringComparison.OrdinalIgnoreCase))
                         StarSystem = new StarSystemInfo(e.StarSystem);
+
+                    if (Route != null && string.Equals(Route.DestinationSystem, StarSystem.Name))
+                        Route = null;
 
                     StarSystem.Security = e.SystemSecurityLocalised ?? e.SystemSecurity ?? StarSystem.Security;
                     StarSystem.Government = e.SystemGovernmentLocalised ?? e.SystemGovernment ?? StarSystem.Government;
@@ -167,7 +172,33 @@ namespace NSW.EliteDangerous.API.Statuses
                     api.InvokeLocationStatusChanged(this);
                 }
             };
+
+            api.TravelEvents.StartJump += (s, e) =>
+            {
+                lock (_lock)
+                {
+                    if (e.JumpType == JumpType.Hyperspace)
+                    {
+                        StarSystem = new StarSystemInfo(e.StarSystem) {StarClass = e.StarClass};
+                        Body = null;
+                        Station = null;
+
+                        api.InvokeLocationStatusChanged(this);
+                    }
+                }
+            };
+
+            api.TravelEvents.FsdTarget += (s, e) =>
+            {
+                lock (_lock)
+                {
+                    Route = new TravelInfo(e.Name, e.RemainingJumpsInRoute);
+
+                    api.InvokeLocationStatusChanged(this);
+                }
+            };
         }
+
         public class StarSystemInfo
         {
             public string Name { get; }
@@ -177,6 +208,21 @@ namespace NSW.EliteDangerous.API.Statuses
             public string Government { get; internal set; } = string.Empty;
             public Faction Faction { get; internal set; }
             public long Population { get; internal set; }
+            public string StarClass { get; internal set; }
+
+            public bool PossibleFuelScoop
+            {
+                get
+                {
+                    if (!string.IsNullOrEmpty(StarClass))
+                    {
+                        return EliteDangerousData.FuelScoopableStars.Any(s =>
+                            string.Equals(s, StarClass, StringComparison.OrdinalIgnoreCase));
+                    }
+
+                    return false;
+                }
+            }
 
             internal StarSystemInfo(string name)
             {
@@ -216,6 +262,18 @@ namespace NSW.EliteDangerous.API.Statuses
             }
 
             public override string ToString() => Name;
+        }
+
+        public class TravelInfo
+        {
+            public string DestinationSystem { get; }
+            public int RemainingJumps { get; }
+
+            internal TravelInfo(string destinationSystem, int remainingJumps)
+            {
+                DestinationSystem = destinationSystem;
+                RemainingJumps = remainingJumps;
+            }
         }
     }
 }
