@@ -8,7 +8,7 @@ namespace NSW.EliteDangerous.API
         public long ShipId { get; internal set; }
 
         [JsonProperty("ShipType")]
-        public string ShipType { get; internal set; }
+        public ShipType ShipType { get; internal set; }
 
         [JsonProperty("ShipType_Localised", NullValueHandling = NullValueHandling.Ignore)]
         public string ShipTypeLocalised { get; internal set; }

@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using NSW.EliteDangerous.API;
 using NSW.EliteDangerous.API.Events;
 using Xunit;
 
@@ -34,7 +35,7 @@ namespace NSW.EliteDangerous.Events
             Assert.Equal(EventName, @event.Event);
             Assert.Equal(3223388416, @event.MarketId);
             Assert.Equal(2, @event.ShipId);
-            Assert.Equal("adder", @event.Ship);
+            Assert.Equal(ShipType.Adder, @event.ShipType);
             Assert.Equal("MediumHardpoint1", @event.Slot);
             Assert.Equal("$hpt_multicannon_gimbal_medium_name;", @event.StoredItem);
             Assert.Equal("Многоствольное орудие", @event.StoredItemLocalised);

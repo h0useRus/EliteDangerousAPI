@@ -5,7 +5,7 @@ namespace NSW.EliteDangerous.API.Events
     public class SetUserShipNameEvent : JournalEvent
     {
         [JsonProperty("Ship")]
-        public string Ship { get; internal set; }
+        public ShipType ShipType { get; internal set; }
 
         [JsonProperty("ShipID")]
         public long ShipId { get; internal set; }

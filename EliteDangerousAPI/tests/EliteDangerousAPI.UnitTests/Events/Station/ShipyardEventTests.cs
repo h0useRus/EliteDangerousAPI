@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using NSW.EliteDangerous.API;
 using NSW.EliteDangerous.API.Events;
 using NSW.EliteDangerous.API.Exceptions;
 using Xunit;
@@ -104,12 +105,12 @@ namespace NSW.EliteDangerous.Events
             Assert.Equal(15, @event.Prices.Length);
 
             Assert.Equal(128049249, @event.Prices[0].Id);
-            Assert.Equal("sidewinder", @event.Prices[0].ShipType);
+            Assert.Equal(ShipType.Sidewinder, @event.Prices[0].ShipType);
             Assert.Null(@event.Prices[0].ShipTypeLocalised);
             Assert.Equal(27200, @event.Prices[0].ShipPrice);
 
             Assert.Equal(128049333, @event.Prices[14].Id);
-            Assert.Equal("type9", @event.Prices[14].ShipType);
+            Assert.Equal(ShipType.Type9, @event.Prices[14].ShipType);
             Assert.Equal("Type-9 Heavy", @event.Prices[14].ShipTypeLocalised);
             Assert.Equal(65072466, @event.Prices[14].ShipPrice);
 

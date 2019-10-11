@@ -8,7 +8,7 @@ namespace NSW.EliteDangerous.API
         public string Name { get; internal set; }
 
         [JsonProperty("Ship")]
-        public string Ship { get; internal set; }
+        public ShipType ShipType { get; internal set; }
 
         [JsonProperty("Rank")]
         public CombatRank Rank { get; internal set; }

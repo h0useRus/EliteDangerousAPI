@@ -8,7 +8,7 @@ namespace NSW.EliteDangerous.API.Events
         public long MarketId { get; internal set; }
 
         [JsonProperty("Ship")]
-        public string Ship { get; internal set; }
+        public ShipType ShipType { get; internal set; }
 
         [JsonProperty("ShipID")]
         public long ShipId { get; internal set; }

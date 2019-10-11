@@ -34,7 +34,7 @@ namespace NSW.EliteDangerous.Events
             Assert.Equal(DateTime.Parse("2019-09-11T11:05:29Z"), @event.Timestamp);
             Assert.Equal(EventName, @event.Event);
             Assert.Equal(3, @event.ScanStage);
-            Assert.Equal("federation_fighter", @event.Ship);
+            Assert.Equal(ShipType.Federation_Fighter, @event.ShipType);
             Assert.Equal("F63 Condor", @event.ShipLocalised);
             Assert.Equal("$ShipName_Police_Federation;", @event.PilotName);
             Assert.Equal("Федеральная служба безопасности", @event.PilotNameLocalised);

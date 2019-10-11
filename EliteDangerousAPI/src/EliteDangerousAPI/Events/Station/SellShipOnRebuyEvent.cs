@@ -5,7 +5,7 @@ namespace NSW.EliteDangerous.API.Events
     public class SellShipOnRebuyEvent : JournalEvent
     {
         [JsonProperty("ShipType")]
-        public string ShipType { get; internal set; }
+        public ShipType ShipType { get; internal set; }
 
         [JsonProperty("System")]
         public string System { get; internal set; }

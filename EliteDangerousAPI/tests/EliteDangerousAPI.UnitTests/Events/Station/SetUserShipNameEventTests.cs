@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using NSW.EliteDangerous.API;
 using NSW.EliteDangerous.API.Events;
 using Xunit;
 
@@ -45,7 +46,7 @@ namespace NSW.EliteDangerous.Events
             Assert.NotNull(@event);
             Assert.Equal(DateTime.Parse("2019-08-29T14:14:38Z"), @event.Timestamp);
             Assert.Equal(EventName, @event.Event);
-            Assert.Equal("sidewinder", @event.Ship);
+            Assert.Equal(ShipType.Sidewinder, @event.ShipType);
             Assert.Equal(0, @event.ShipId);
             Assert.Equal("Manta", @event.UserShipName);
             Assert.Equal("NSW-01", @event.UserShipId);

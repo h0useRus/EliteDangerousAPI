@@ -5,7 +5,7 @@ namespace NSW.EliteDangerous.API.Events
     public class ShipyardSwapEvent : JournalEvent
     {
         [JsonProperty("ShipType")]
-        public string ShipType { get; internal set; }
+        public ShipType ShipType { get; internal set; }
 
         [JsonProperty("ShipType_Localised")]
         public string ShipTypeLocalised { get; internal set; }

@@ -9,7 +9,7 @@ namespace NSW.EliteDangerous.API.Events
         public bool TargetLocked { get; internal set; }
 
         [JsonProperty("Ship")]
-        public string Ship { get; internal set; }
+        public ShipType ShipType { get; internal set; }
 
         [JsonProperty("Ship_Localised")]
         public string ShipLocalised { get; internal set; }

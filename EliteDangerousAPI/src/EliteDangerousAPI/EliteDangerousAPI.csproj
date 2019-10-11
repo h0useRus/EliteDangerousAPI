@@ -1,7 +1,7 @@
 <Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
-    <VersionPrefix>1.26.2</VersionPrefix>
+    <VersionPrefix>1.26.3-preview1</VersionPrefix>
     <Description>Frontier Elite:Dangerous multi-platform API Library</Description>
     <Copyright>Copyright © 2019-2020 NewSoftWorld</Copyright>
     <AssemblyTitle>Elite:Dangerous API</AssemblyTitle>
@@ -17,8 +17,7 @@
     <LangVersion>8</LangVersion>
     <PackageLicenseExpression>MIT</PackageLicenseExpression>
     <PackageReleaseNotes>
-      + Add missed CommonResources to planetary rings levels.
-      + Add route info for Location status
+      + Replace string ShipType to Enum
     </PackageReleaseNotes>
   </PropertyGroup>
 

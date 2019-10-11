@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using NSW.EliteDangerous.API;
 using NSW.EliteDangerous.API.Events;
 using Xunit;
 
@@ -34,7 +35,7 @@ namespace NSW.EliteDangerous.Events
             Assert.Equal(EventName, @event.Event);
             Assert.Equal("Slot07_Size1", @event.Slot);
             Assert.Equal(2, @event.ShipId);
-            Assert.Equal("cobramkiii", @event.Ship);
+            Assert.Equal(ShipType.CobraMkIII, @event.ShipType);
             Assert.Equal(3223641856, @event.MarketId);
             Assert.Equal("$int_dronecontrol_collection_size1_class5_name;", @event.SellItem);
             Assert.Equal("«Сборщик»", @event.SellItemLocalised);
