@@ -83,7 +83,7 @@ namespace NSW.EliteDangerous.API
                         Status = ApiStatus.Running;
                         _currentJournalFile = latestFile;
                         JournalFound?.Invoke(this, _currentJournalFile.Name);
-                        _log.LogInformation($"New Journal file {_currentJournalFile.FullName}");
+                        _log.LogDebug($"New Journal file {_currentJournalFile.FullName}");
                         _filePosition = ReadJournalFromPosition(_currentJournalFile, 0);
                     }
                 }
@@ -103,7 +103,7 @@ namespace NSW.EliteDangerous.API
             using var reader = new StreamReader(stream);
             try
             {
-                _log.LogInformation($"Reading from {journalFile.FullName}");
+                _log.LogDebug($"Reading from {journalFile.FullName}");
 
                 stream.Position = position;
 
