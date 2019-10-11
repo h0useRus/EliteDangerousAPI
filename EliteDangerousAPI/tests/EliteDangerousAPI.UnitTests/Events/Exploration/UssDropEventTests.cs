@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using NSW.EliteDangerous.API;
 using NSW.EliteDangerous.API.Events;
 using Xunit;
 
@@ -45,7 +46,7 @@ namespace NSW.EliteDangerous.Events
             Assert.NotNull(@event);
             Assert.Equal(DateTime.Parse("2019-08-29T12:12:45Z"), @event.Timestamp);
             Assert.Equal(EventName, @event.Event);
-            Assert.Equal("$USS_Type_Salvage;", @event.UssType);
+            Assert.Equal(UssType.Salvage, @event.UssType);
             Assert.Equal("Слабый сигнал", @event.UssTypeLocalised);
             Assert.Equal(1, @event.UssThreat);
         }

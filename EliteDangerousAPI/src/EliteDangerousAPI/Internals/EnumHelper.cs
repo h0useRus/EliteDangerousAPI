@@ -75,5 +75,51 @@ namespace NSW.EliteDangerous.API.Internals
                 _ => SecurityType.None
             };
         }
+
+        public static UssType GetUssType(string uss)
+        {
+            if (string.IsNullOrWhiteSpace(uss)) return UssType.Unknown;
+
+            var value = uss.Trim().ToLower()
+                .Replace(" ", string.Empty)
+                .Replace(";", string.Empty)
+                .Replace("$uss_type_", string.Empty);
+
+            return value switch
+            {
+                "aftermath" => UssType.Aftermath,
+                "anomaly" => UssType.Anomaly,
+                "ceremonial" => UssType.Ceremonial,
+                "convoy" => UssType.Convoy,
+                "distresssignal" => UssType.DistressSignal,
+                "missiontarget" => UssType.MissionTarget,
+                "nonhuman" => UssType.NonHuman,
+                "salvage" => UssType.Salvage,
+                "valuablesalvage" => UssType.ValuableSalvage,
+                "veryvaluablesalvage" => UssType.VeryValuableSalvage,
+                "weaponsfire" => UssType.WeaponsFire,
+                "tradingbeacon" => UssType.TradingBeacon,
+                _ => UssType.Unknown
+            };
+        }
+
+        public static Happiness GetHappiness(string happiness)
+        {
+            if (string.IsNullOrWhiteSpace(happiness)) return Happiness.None;
+
+            var value = happiness.Trim().ToLower()
+                .Replace(" ", string.Empty)
+                .Replace(";", string.Empty)
+                .Replace("$faction_", string.Empty);
+            return value switch
+            {
+                "happinessband1" => Happiness.Elated,
+                "happinessband2" => Happiness.Happy,
+                "happinessband3" => Happiness.Discontented,
+                "happinessband4" => Happiness.Unhappy,
+                "happinessband5" => Happiness.Despondent,
+                _ => Happiness.None
+            };
+        }
     }
 }

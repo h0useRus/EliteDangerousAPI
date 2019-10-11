@@ -1,11 +1,13 @@
 using Newtonsoft.Json;
+using NSW.EliteDangerous.API.Internals.Converters;
 
 namespace NSW.EliteDangerous.API.Events
 {
     public class UssDropEvent : JournalEvent
     {
         [JsonProperty("USSType")]
-        public string UssType { get; set; }
+        [JsonConverter(typeof(UssTypeConverter))]
+        public UssType UssType { get; set; }
 
         [JsonProperty("USSType_Localised")]
         public string UssTypeLocalised { get; set; }

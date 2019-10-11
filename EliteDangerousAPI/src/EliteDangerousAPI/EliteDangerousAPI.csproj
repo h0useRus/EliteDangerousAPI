@@ -24,6 +24,7 @@
       + Replace Happiness by enum
       + Add SecurityType to all events with security
       + Add State enum
+      + Add UssType enum
     </PackageReleaseNotes>
   </PropertyGroup>
 
