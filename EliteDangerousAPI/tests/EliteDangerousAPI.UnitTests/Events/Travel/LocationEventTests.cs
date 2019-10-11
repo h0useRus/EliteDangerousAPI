@@ -110,7 +110,7 @@ namespace NSW.EliteDangerous.Events
             Assert.Equal(GovernmentType.Anarchy, @event.Factions[4].GovernmentType);
             Assert.Equal(0.747000, @event.Factions[4].Influence, 6);
             Assert.Equal(Allegiance.Independent, @event.Factions[4].Allegiance);
-            Assert.Equal("$Faction_HappinessBand2;", @event.Factions[4].Happiness);
+            Assert.Equal(Happiness.Happy, @event.Factions[4].Happiness);
             Assert.Equal("Счастье", @event.Factions[4].HappinessLocalised);
             Assert.Equal(92.326302, @event.Factions[4].MyReputation, 6);
             Assert.Equal("Outbreak", @event.Factions[4].RecoveringStates[0].State);

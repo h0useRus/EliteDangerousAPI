@@ -21,6 +21,7 @@
       + Add GovermentType to all events with goverment
       + Add EconomyType to all events with economy
       + Replace Allegiance by enum
+      + Replace Happiness by enum
     </PackageReleaseNotes>
   </PropertyGroup>
 

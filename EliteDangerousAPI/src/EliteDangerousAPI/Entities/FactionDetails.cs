@@ -1,5 +1,6 @@
 using Newtonsoft.Json;
 using NSW.EliteDangerous.API.Internals;
+using NSW.EliteDangerous.API.Internals.Converters;
 
 namespace NSW.EliteDangerous.API
 {
@@ -29,7 +30,8 @@ namespace NSW.EliteDangerous.API
         public FactionStateTrend[] RecoveringStates { get; internal set; }
 
         [JsonProperty("Happiness")]
-        public string Happiness { get; internal set; }
+        [JsonConverter(typeof(HappinessConverter))]
+        public Happiness Happiness { get; internal set; }
 
         [JsonProperty("Happiness_Localised")]
         public string HappinessLocalised { get; internal set; }
