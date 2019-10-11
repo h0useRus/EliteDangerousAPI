@@ -115,11 +115,11 @@ namespace NSW.EliteDangerous.Events
             Assert.Equal(Happiness.Happy, @event.Factions[4].Happiness);
             Assert.Equal("Счастье", @event.Factions[4].HappinessLocalised);
             Assert.Equal(92.326302, @event.Factions[4].MyReputation, 6);
-            Assert.Equal("Outbreak", @event.Factions[4].RecoveringStates[0].State);
+            Assert.Equal(State.Outbreak, @event.Factions[4].RecoveringStates[0].State);
             Assert.Equal(0, @event.Factions[4].RecoveringStates[0].Trend);
-            Assert.Equal("Boom", @event.Factions[4].ActiveStates[0].State);
+            Assert.Equal(State.Boom, @event.Factions[4].ActiveStates[0].State);
             Assert.Null(@event.Factions[4].ActiveStates[0].Trend);
-            Assert.Equal("Expansion", @event.Factions[4].ActiveStates[1].State);
+            Assert.Equal(State.Expansion, @event.Factions[4].ActiveStates[1].State);
             Assert.Null(@event.Factions[4].ActiveStates[1].Trend);
         }
 

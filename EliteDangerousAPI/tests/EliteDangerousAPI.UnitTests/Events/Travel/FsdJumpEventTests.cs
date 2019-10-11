@@ -72,7 +72,7 @@ namespace NSW.EliteDangerous.Events
             Assert.Equal("Счастье", @event.Factions[0].HappinessLocalised);
             Assert.Equal(0.000000, @event.Factions[0].MyReputation, 6);
             Assert.Single(@event.Factions[0].ActiveStates);
-            Assert.Equal("CivilWar", @event.Factions[0].ActiveStates[0].State);
+            Assert.Equal(State.CivilWar, @event.Factions[0].ActiveStates[0].State);
 
             Assert.Single(@event.Conflicts);
             Assert.Equal("civilwar", @event.Conflicts[0].WarType);

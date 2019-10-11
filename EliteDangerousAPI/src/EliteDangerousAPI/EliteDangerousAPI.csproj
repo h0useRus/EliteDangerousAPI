@@ -23,6 +23,7 @@
       + Replace Allegiance by enum
       + Replace Happiness by enum
       + Add SecurityType to all events with security
+      + Add State enum
     </PackageReleaseNotes>
   </PropertyGroup>
 
