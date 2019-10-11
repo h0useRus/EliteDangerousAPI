@@ -54,5 +54,26 @@ namespace NSW.EliteDangerous.API.Internals
                 _ => EconomyType.None
             };
         }
+
+        public static SecurityType GetSecurityType(string security)
+        {
+            if (string.IsNullOrWhiteSpace(security)) return SecurityType.None;
+
+            var value = security.Trim().ToLower()
+                .Replace(" ", string.Empty)
+                .Replace(";", string.Empty)
+                .Replace("$system_security_", string.Empty)
+                .Replace("$galaxy_map_info_state_", string.Empty);
+
+            return value switch
+            {
+                "low" => SecurityType.Low,
+                "medium" => SecurityType.Medium,
+                "high" => SecurityType.High,
+                "anarchy" => SecurityType.Anarchy,
+                "lawless" => SecurityType.Lawless,
+                _ => SecurityType.None
+            };
+        }
     }
 }

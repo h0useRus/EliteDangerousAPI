@@ -22,7 +22,7 @@ namespace NSW.EliteDangerous.API.Statuses
                         !string.Equals(StarSystem?.Name, e.StarSystem, StringComparison.OrdinalIgnoreCase))
                         StarSystem = new StarSystemInfo(e.StarSystem);
 
-                    StarSystem.Security = e.SystemSecurityLocalised ?? e.SystemSecurity ?? StarSystem.Security;
+                    StarSystem.Security = e.SystemSecurityType;
                     StarSystem.Government = e.SystemGovernmentType;
                     StarSystem.Economy = e.SystemEconomyType;
                     StarSystem.SecondEconomy = e.SystemSecondEconomyType;
@@ -39,6 +39,7 @@ namespace NSW.EliteDangerous.API.Statuses
                         Station.Faction = e.StationFaction ?? Station.Faction;
                         Station.Economy = e.StationEconomyType;
                         Station.Government = e.StationGovernmentType;
+                        Station.Allegiance = e.StationAllegiance ?? Station.Allegiance;
                         Station.MarketId = e.MarketId ?? Station.MarketId;
                     }
                     else
@@ -112,6 +113,7 @@ namespace NSW.EliteDangerous.API.Statuses
                     Station.Economy = e.StationEconomyType;
                     Station.Government = e.StationGovernmentType;
                     Station.Faction = e.StationFaction ?? Station.Faction;
+                    Station.Allegiance = e.StationAllegiance ?? Station.Allegiance;
                     Station.MarketId = e.MarketId;
 
                     api.InvokeLocationStatusChanged(this);
@@ -142,7 +144,7 @@ namespace NSW.EliteDangerous.API.Statuses
                     if (Route != null && string.Equals(Route.DestinationSystem, StarSystem.Name))
                         Route = null;
 
-                    StarSystem.Security = e.SystemSecurityLocalised ?? e.SystemSecurity ?? StarSystem.Security;
+                    StarSystem.Security = e.SystemSecurityType;
                     StarSystem.Government = e.SystemGovernmentType;
                     StarSystem.Economy = e.SystemEconomyType;
                     StarSystem.SecondEconomy = e.SystemSecondEconomyType;
@@ -200,7 +202,7 @@ namespace NSW.EliteDangerous.API.Statuses
         public class StarSystemInfo
         {
             public string Name { get; }
-            public string Security { get; internal set; } = string.Empty;
+            public SecurityType Security { get; internal set; } = SecurityType.None;
             public EconomyType Economy { get; internal set; } = EconomyType.None;
             public EconomyType SecondEconomy { get; internal set; } = EconomyType.None;
             public GovernmentType Government { get; internal set; } = GovernmentType.None;
@@ -248,6 +250,7 @@ namespace NSW.EliteDangerous.API.Statuses
         {
             public string Name { get; }
             public string Type { get; }
+            public Allegiance Allegiance { get; internal set; } = Allegiance.Independent;
             public EconomyType Economy { get; internal set; } = EconomyType.None;
             public GovernmentType Government { get; internal set; } = GovernmentType.None;
             public Faction Faction { get; internal set; }

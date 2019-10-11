@@ -49,6 +49,7 @@ namespace NSW.EliteDangerous.Events
             Assert.Equal(GovernmentType.Dictatorship, @event.SystemGovernmentType);
             Assert.Equal("Диктатура", @event.SystemGovernmentLocalised);
             Assert.Equal("$SYSTEM_SECURITY_medium;", @event.SystemSecurity);
+            Assert.Equal(SecurityType.Medium, @event.SystemSecurityType);
             Assert.Equal("Средн. ур. безопасности", @event.SystemSecurityLocalised);
             Assert.Equal(4488711, @event.Population);
             Assert.Equal("Nanabozho A", @event.Body);

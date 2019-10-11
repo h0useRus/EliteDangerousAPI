@@ -56,6 +56,8 @@ namespace NSW.EliteDangerous.API.Events
         [JsonProperty("SystemSecurity")]
         public string SystemSecurity { get; internal set; }
 
+        [JsonIgnore] public SecurityType SystemSecurityType => EnumHelper.GetSecurityType(SystemSecurity);
+
         [JsonProperty("SystemSecurity_Localised")]
         public string SystemSecurityLocalised { get; internal set; }
 

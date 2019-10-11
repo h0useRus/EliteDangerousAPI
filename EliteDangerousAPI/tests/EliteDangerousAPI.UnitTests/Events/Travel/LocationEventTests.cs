@@ -30,7 +30,7 @@ namespace NSW.EliteDangerous.Events
 
                 Assert.Equal("Njortamool", e.StarSystem.Name);
                 Assert.Equal(GovernmentType.Anarchy, e.StarSystem.Government);
-                Assert.Equal("Анархия", e.StarSystem.Security);
+                Assert.Equal(SecurityType.Anarchy, e.StarSystem.Security);
                 Assert.Equal(EconomyType.Refinery, e.StarSystem.Economy);
                 Assert.Equal(EconomyType.None, e.StarSystem.SecondEconomy);
                 Assert.Equal("Eurybia Blue Mafia", e.StarSystem.Faction.Name);
@@ -44,6 +44,7 @@ namespace NSW.EliteDangerous.Events
                 Assert.Equal("Outpost", e.Station.Type);
                 Assert.Equal(EconomyType.Refinery, e.Station.Economy);
                 Assert.Equal(GovernmentType.Anarchy, e.Station.Government);
+                Assert.Equal(Allegiance.Independent, e.Station.Allegiance);
                 Assert.Equal("Eurybia Blue Mafia", e.Station.Faction.Name);
                 Assert.Equal("Expansion", e.Station.Faction.State);
                 Assert.Equal(3223662592, e.Station.MarketId);
@@ -95,6 +96,7 @@ namespace NSW.EliteDangerous.Events
             Assert.Equal(GovernmentType.Anarchy, @event.SystemGovernmentType);
             Assert.Equal("Анархия", @event.SystemGovernmentLocalised);
             Assert.Equal("$GAlAXY_MAP_INFO_state_anarchy;", @event.SystemSecurity);
+            Assert.Equal(SecurityType.Anarchy, @event.SystemSecurityType);
             Assert.Equal("Анархия", @event.SystemSecurityLocalised);
             Assert.Equal(29911, @event.Population);
             Assert.Equal("Krikalev Hangar", @event.Body);
