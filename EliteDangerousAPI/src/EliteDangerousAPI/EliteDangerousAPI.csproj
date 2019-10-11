@@ -18,6 +18,7 @@
     <PackageLicenseExpression>MIT</PackageLicenseExpression>
     <PackageReleaseNotes>
       + Replace string ShipType to Enum
+      + Add GovermentType in all events
     </PackageReleaseNotes>
   </PropertyGroup>
 

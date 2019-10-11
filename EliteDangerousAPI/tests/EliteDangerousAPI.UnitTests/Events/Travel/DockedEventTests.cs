@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using NSW.EliteDangerous.API;
 using NSW.EliteDangerous.API.Events;
 using Xunit;
 
@@ -38,6 +39,7 @@ namespace NSW.EliteDangerous.Events
             Assert.Equal("Eurybia Blue Mafia", @event.StationFaction.Name);
             Assert.Equal("Expansion", @event.StationFaction.State);
             Assert.Equal("$government_Anarchy;", @event.StationGovernment);
+            Assert.Equal(GovernmentType.Anarchy, @event.StationGovernmentType);
             Assert.Equal("Анархия", @event.StationGovernmentLocalised);
             Assert.Equal(17, @event.StationServices.Length);
             Assert.Equal("$economy_Refinery;", @event.StationEconomy);

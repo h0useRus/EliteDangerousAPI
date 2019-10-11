@@ -1,4 +1,5 @@
 using Newtonsoft.Json;
+using NSW.EliteDangerous.API.Internals;
 
 namespace NSW.EliteDangerous.API.Events
 {
@@ -15,6 +16,8 @@ namespace NSW.EliteDangerous.API.Events
 
         [JsonProperty("StationGovernment_Localised")]
         public string StationGovernmentLocalised { get; internal set; }
+
+        [JsonIgnore]public GovernmentType StationGovernmentType => EnumHelper.GetGovernmentType(StationGovernment);
 
         [JsonProperty("StationAllegiance")]
         public string StationAllegiance { get; internal set; }

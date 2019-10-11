@@ -44,6 +44,7 @@ namespace NSW.EliteDangerous.Events
             Assert.Equal("$economy_Refinery;", @event.SystemSecondEconomy);
             Assert.Equal("Переработка", @event.SystemSecondEconomyLocalised);
             Assert.Equal("$government_Dictatorship;", @event.SystemGovernment);
+            Assert.Equal(GovernmentType.Dictatorship, @event.SystemGovernmentType);
             Assert.Equal("Диктатура", @event.SystemGovernmentLocalised);
             Assert.Equal("$SYSTEM_SECURITY_medium;", @event.SystemSecurity);
             Assert.Equal("Средн. ур. безопасности", @event.SystemSecurityLocalised);
@@ -61,6 +62,7 @@ namespace NSW.EliteDangerous.Events
             Assert.Equal("Nanabozho Transport Holdings", @event.Factions[0].Name);
             Assert.Equal("CivilWar", @event.Factions[0].State);
             Assert.Equal("Corporate", @event.Factions[0].Government);
+            Assert.Equal(GovernmentType.Corporate, @event.Factions[0].GovernmentType);
             Assert.Equal(0.105578, @event.Factions[0].Influence, 6);
             Assert.Equal("Federation", @event.Factions[0].Allegiance);
             Assert.Equal("$Faction_HappinessBand2;", @event.Factions[0].Happiness);
