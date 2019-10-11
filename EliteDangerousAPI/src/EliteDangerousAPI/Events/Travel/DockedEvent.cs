@@ -28,6 +28,8 @@ namespace NSW.EliteDangerous.API.Events
         [JsonProperty("StationEconomy")]
         public string StationEconomy { get; internal set; }
 
+        [JsonIgnore]public EconomyType StationEconomyType => EnumHelper.GetEconomyType(StationEconomy);
+
         [JsonProperty("StationEconomy_Localised")]
         public string StationEconomyLocalised { get; internal set; }
 

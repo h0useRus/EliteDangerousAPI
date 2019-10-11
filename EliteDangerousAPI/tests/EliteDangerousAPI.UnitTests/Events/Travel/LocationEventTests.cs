@@ -31,8 +31,8 @@ namespace NSW.EliteDangerous.Events
                 Assert.Equal("Njortamool", e.StarSystem.Name);
                 Assert.Equal(GovernmentType.Anarchy, e.StarSystem.Government);
                 Assert.Equal("Анархия", e.StarSystem.Security);
-                Assert.Equal("Переработка", e.StarSystem.Economy);
-                Assert.Equal("Нет", e.StarSystem.SecondEconomy);
+                Assert.Equal(EconomyType.Refinery, e.StarSystem.Economy);
+                Assert.Equal(EconomyType.None, e.StarSystem.SecondEconomy);
                 Assert.Equal("Eurybia Blue Mafia", e.StarSystem.Faction.Name);
                 Assert.Equal("Expansion", e.StarSystem.Faction.State);
                 Assert.Equal(29911, e.StarSystem.Population);
@@ -42,7 +42,7 @@ namespace NSW.EliteDangerous.Events
 
                 Assert.Equal("Krikalev Hangar", e.Station.Name);
                 Assert.Equal("Outpost", e.Station.Type);
-                Assert.Equal("Переработка", e.Station.Economy);
+                Assert.Equal(EconomyType.Refinery, e.Station.Economy);
                 Assert.Equal(GovernmentType.Anarchy, e.Station.Government);
                 Assert.Equal("Eurybia Blue Mafia", e.Station.Faction.Name);
                 Assert.Equal("Expansion", e.Station.Faction.State);
@@ -73,8 +73,10 @@ namespace NSW.EliteDangerous.Events
             Assert.Equal(GovernmentType.Anarchy, @event.StationGovernmentType);
             Assert.Equal(17, @event.StationServices.Length);
             Assert.Equal("$economy_Refinery;", @event.StationEconomy);
+            Assert.Equal(EconomyType.Refinery, @event.StationEconomyType);
             Assert.Equal("Переработка", @event.StationEconomyLocalised);
             Assert.Equal("$economy_Refinery;", @event.StationEconomies[0].Name);
+            Assert.Equal(EconomyType.Refinery, @event.StationEconomies[0].Type);
             Assert.Equal("Переработка", @event.StationEconomies[0].NameLocalised);
             Assert.Equal(1.000000, @event.StationEconomies[0].Proportion, 6);
             Assert.Equal("Njortamool", @event.StarSystem);
@@ -84,8 +86,10 @@ namespace NSW.EliteDangerous.Events
             Assert.Equal(-43.68750, @event.StarPos[2], 5);
             Assert.Equal("Independent", @event.SystemAllegiance);
             Assert.Equal("$economy_Refinery;", @event.SystemEconomy);
+            Assert.Equal(EconomyType.Refinery, @event.SystemEconomyType);
             Assert.Equal("Переработка", @event.SystemEconomyLocalised);
             Assert.Equal("$economy_None;", @event.SystemSecondEconomy);
+            Assert.Equal(EconomyType.None, @event.SystemSecondEconomyType);
             Assert.Equal("Нет", @event.SystemSecondEconomyLocalised);
             Assert.Equal("$government_Anarchy;", @event.SystemGovernment);
             Assert.Equal(GovernmentType.Anarchy, @event.SystemGovernmentType);

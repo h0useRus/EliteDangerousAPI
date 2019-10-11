@@ -1,9 +1,12 @@
 using Newtonsoft.Json;
+using NSW.EliteDangerous.API.Internals;
 
 namespace NSW.EliteDangerous.API
 {
     public class StationEconomy
     {
+        [JsonIgnore]public EconomyType Type => EnumHelper.GetEconomyType(Name);
+
         [JsonProperty("Name")]
         public string Name { get; internal set; }
 

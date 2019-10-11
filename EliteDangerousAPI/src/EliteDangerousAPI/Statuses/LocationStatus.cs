@@ -24,9 +24,8 @@ namespace NSW.EliteDangerous.API.Statuses
 
                     StarSystem.Security = e.SystemSecurityLocalised ?? e.SystemSecurity ?? StarSystem.Security;
                     StarSystem.Government = e.SystemGovernmentType;
-                    StarSystem.Economy = e.SystemEconomyLocalised ?? e.SystemEconomy ?? StarSystem.Economy;
-                    StarSystem.SecondEconomy = e.SystemSecondEconomyLocalised ??
-                                               e.SystemSecondEconomy ?? StarSystem.SecondEconomy;
+                    StarSystem.Economy = e.SystemEconomyType;
+                    StarSystem.SecondEconomy = e.SystemSecondEconomyType;
                     StarSystem.Faction = e.SystemFaction ?? StarSystem.Faction;
                     StarSystem.Population = e.Population;
 
@@ -38,7 +37,7 @@ namespace NSW.EliteDangerous.API.Statuses
                                 StringComparison.OrdinalIgnoreCase))
                             Station = new StationInfo(e.StationName ?? e.Body, e.StationType);
                         Station.Faction = e.StationFaction ?? Station.Faction;
-                        Station.Economy = e.StationEconomyLocalised ?? e.StationEconomy ?? Station.Economy;
+                        Station.Economy = e.StationEconomyType;
                         Station.Government = e.StationGovernmentType;
                         Station.MarketId = e.MarketId ?? Station.MarketId;
                     }
@@ -110,7 +109,7 @@ namespace NSW.EliteDangerous.API.Statuses
                         !string.Equals(Station?.Name, e.StationName, StringComparison.OrdinalIgnoreCase))
                         Station = new StationInfo(e.StationName, e.StationType);
 
-                    Station.Economy = e.StationEconomyLocalised ?? e.StationEconomy ?? Station.Economy;
+                    Station.Economy = e.StationEconomyType;
                     Station.Government = e.StationGovernmentType;
                     Station.Faction = e.StationFaction ?? Station.Faction;
                     Station.MarketId = e.MarketId;
@@ -145,9 +144,8 @@ namespace NSW.EliteDangerous.API.Statuses
 
                     StarSystem.Security = e.SystemSecurityLocalised ?? e.SystemSecurity ?? StarSystem.Security;
                     StarSystem.Government = e.SystemGovernmentType;
-                    StarSystem.Economy = e.SystemEconomyLocalised ?? e.SystemEconomy ?? StarSystem.Economy;
-                    StarSystem.SecondEconomy = e.SystemSecondEconomyLocalised ??
-                                               e.SystemSecondEconomy ?? StarSystem.SecondEconomy;
+                    StarSystem.Economy = e.SystemEconomyType;
+                    StarSystem.SecondEconomy = e.SystemSecondEconomyType;
                     StarSystem.Faction = e.SystemFaction ?? StarSystem.Faction;
                     StarSystem.Population = e.Population;
 
@@ -203,8 +201,8 @@ namespace NSW.EliteDangerous.API.Statuses
         {
             public string Name { get; }
             public string Security { get; internal set; } = string.Empty;
-            public string Economy { get; internal set; } = string.Empty;
-            public string SecondEconomy { get; internal set; } = string.Empty;
+            public EconomyType Economy { get; internal set; } = EconomyType.None;
+            public EconomyType SecondEconomy { get; internal set; } = EconomyType.None;
             public GovernmentType Government { get; internal set; } = GovernmentType.None;
             public Faction Faction { get; internal set; }
             public long Population { get; internal set; }
@@ -250,7 +248,7 @@ namespace NSW.EliteDangerous.API.Statuses
         {
             public string Name { get; }
             public string Type { get; }
-            public string Economy { get; internal set; } = string.Empty;
+            public EconomyType Economy { get; internal set; } = EconomyType.None;
             public GovernmentType Government { get; internal set; } = GovernmentType.None;
             public Faction Faction { get; internal set; }
             public long MarketId { get; internal set; }

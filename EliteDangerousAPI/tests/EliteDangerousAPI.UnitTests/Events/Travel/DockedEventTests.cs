@@ -43,8 +43,10 @@ namespace NSW.EliteDangerous.Events
             Assert.Equal("Анархия", @event.StationGovernmentLocalised);
             Assert.Equal(17, @event.StationServices.Length);
             Assert.Equal("$economy_Refinery;", @event.StationEconomy);
+            Assert.Equal(EconomyType.Refinery, @event.StationEconomyType);
             Assert.Equal("Переработка", @event.StationEconomyLocalised);
             Assert.Equal("$economy_Refinery;", @event.StationEconomies[0].Name);
+            Assert.Equal(EconomyType.Refinery, @event.StationEconomies[0].Type);
             Assert.Equal("Переработка", @event.StationEconomies[0].NameLocalised);
             Assert.Equal(1.000000, @event.StationEconomies[0].Proportion, 6);
             Assert.Equal(4479.807617, @event.DistFromStarLs, 6);

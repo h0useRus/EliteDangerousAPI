@@ -40,8 +40,10 @@ namespace NSW.EliteDangerous.Events
             Assert.Equal(24.15625, @event.StarPos[2], 5);
             Assert.Equal("Independent", @event.SystemAllegiance);
             Assert.Equal("$economy_HighTech;", @event.SystemEconomy);
+            Assert.Equal(EconomyType.HighTech, @event.SystemEconomyType);
             Assert.Equal("Высокие технологии", @event.SystemEconomyLocalised);
             Assert.Equal("$economy_Refinery;", @event.SystemSecondEconomy);
+            Assert.Equal(EconomyType.Refinery, @event.SystemSecondEconomyType);
             Assert.Equal("Переработка", @event.SystemSecondEconomyLocalised);
             Assert.Equal("$government_Dictatorship;", @event.SystemGovernment);
             Assert.Equal(GovernmentType.Dictatorship, @event.SystemGovernmentType);

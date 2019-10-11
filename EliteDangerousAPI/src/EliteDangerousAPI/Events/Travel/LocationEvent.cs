@@ -32,11 +32,15 @@ namespace NSW.EliteDangerous.API.Events
         [JsonProperty("SystemEconomy")]
         public string SystemEconomy { get; internal set; }
 
+        [JsonIgnore] public EconomyType SystemEconomyType => EnumHelper.GetEconomyType(SystemEconomy);
+
         [JsonProperty("SystemEconomy_Localised")]
         public string SystemEconomyLocalised { get; internal set; }
 
         [JsonProperty("SystemSecondEconomy")]
         public string SystemSecondEconomy { get; internal set; }
+
+        [JsonIgnore] public EconomyType SystemSecondEconomyType => EnumHelper.GetEconomyType(SystemSecondEconomy);
 
         [JsonProperty("SystemSecondEconomy_Localised")]
         public string SystemSecondEconomyLocalised { get; internal set; }
@@ -71,6 +75,8 @@ namespace NSW.EliteDangerous.API.Events
 
         [JsonProperty("StationEconomy")]
         public string StationEconomy { get; internal set; }
+
+        [JsonIgnore] public EconomyType StationEconomyType => EnumHelper.GetEconomyType(StationEconomy);
 
         [JsonProperty("StationEconomy_Localised")]
         public string StationEconomyLocalised { get; internal set; }
