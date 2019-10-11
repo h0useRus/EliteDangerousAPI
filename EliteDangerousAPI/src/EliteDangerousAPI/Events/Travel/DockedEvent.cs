@@ -20,7 +20,7 @@ namespace NSW.EliteDangerous.API.Events
         [JsonIgnore]public GovernmentType StationGovernmentType => EnumHelper.GetGovernmentType(StationGovernment);
 
         [JsonProperty("StationAllegiance")]
-        public string StationAllegiance { get; internal set; }
+        public Allegiance? StationAllegiance { get; internal set; }
 
         [JsonProperty("StationServices")]
         public string[] StationServices { get; internal set; }

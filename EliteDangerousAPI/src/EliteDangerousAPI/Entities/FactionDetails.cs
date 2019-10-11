@@ -17,7 +17,7 @@ namespace NSW.EliteDangerous.API
         public double Influence { get; internal set; }
 
         [JsonProperty("Allegiance")]
-        public string Allegiance { get; internal set; }
+        public Allegiance? Allegiance { get; internal set; }
 
         [JsonProperty("ActiveStates")]
         public FactionStateTrend[] ActiveStates { get; internal set; }

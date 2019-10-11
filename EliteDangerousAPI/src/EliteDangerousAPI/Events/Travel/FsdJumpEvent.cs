@@ -15,7 +15,7 @@ namespace NSW.EliteDangerous.API.Events
         public double[] StarPos { get; internal set; }
 
         [JsonProperty("SystemAllegiance")]
-        public string SystemAllegiance { get; internal set; }
+        public Allegiance? SystemAllegiance { get; internal set; }
 
         [JsonProperty("SystemEconomy")]
         public string SystemEconomy { get; internal set; }

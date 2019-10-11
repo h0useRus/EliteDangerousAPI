@@ -84,7 +84,7 @@ namespace NSW.EliteDangerous.Events
             Assert.Equal(46.65625, @event.StarPos[0], 5);
             Assert.Equal(-43.34375, @event.StarPos[1], 5);
             Assert.Equal(-43.68750, @event.StarPos[2], 5);
-            Assert.Equal("Independent", @event.SystemAllegiance);
+            Assert.Equal(Allegiance.Independent, @event.SystemAllegiance);
             Assert.Equal("$economy_Refinery;", @event.SystemEconomy);
             Assert.Equal(EconomyType.Refinery, @event.SystemEconomyType);
             Assert.Equal("Переработка", @event.SystemEconomyLocalised);
@@ -109,7 +109,7 @@ namespace NSW.EliteDangerous.Events
             Assert.Equal("Anarchy", @event.Factions[4].Government);
             Assert.Equal(GovernmentType.Anarchy, @event.Factions[4].GovernmentType);
             Assert.Equal(0.747000, @event.Factions[4].Influence, 6);
-            Assert.Equal("Independent", @event.Factions[4].Allegiance);
+            Assert.Equal(Allegiance.Independent, @event.Factions[4].Allegiance);
             Assert.Equal("$Faction_HappinessBand2;", @event.Factions[4].Happiness);
             Assert.Equal("Счастье", @event.Factions[4].HappinessLocalised);
             Assert.Equal(92.326302, @event.Factions[4].MyReputation, 6);

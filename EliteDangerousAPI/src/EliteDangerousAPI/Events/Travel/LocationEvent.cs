@@ -27,7 +27,7 @@ namespace NSW.EliteDangerous.API.Events
         public double[] StarPos { get; internal set; }
 
         [JsonProperty("SystemAllegiance")]
-        public string SystemAllegiance { get; internal set; }
+        public Allegiance? SystemAllegiance { get; internal set; }
 
         [JsonProperty("SystemEconomy")]
         public string SystemEconomy { get; internal set; }
@@ -68,7 +68,7 @@ namespace NSW.EliteDangerous.API.Events
         [JsonIgnore]public GovernmentType StationGovernmentType => EnumHelper.GetGovernmentType(StationGovernment);
 
         [JsonProperty("StationAllegiance")]
-        public string StationAllegiance { get; internal set; }
+        public Allegiance? StationAllegiance { get; internal set; }
 
         [JsonProperty("StationServices")]
         public string[] StationServices { get; internal set; }
