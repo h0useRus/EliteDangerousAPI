@@ -1,4 +1,5 @@
 using Newtonsoft.Json;
+using NSW.EliteDangerous.API.Internals.Converters;
 
 namespace NSW.EliteDangerous.API.Events
 {
@@ -125,6 +126,7 @@ namespace NSW.EliteDangerous.API.Events
         public Ring[] Rings { get; internal set; }
 
         [JsonProperty("ReserveLevel")]
+        [JsonConverter(typeof(RingsReserveLevelConverter))]
         public RingsReserveLevel? ReserveLevel { get; internal set; }
 
         [JsonProperty("AxialTilt")]
