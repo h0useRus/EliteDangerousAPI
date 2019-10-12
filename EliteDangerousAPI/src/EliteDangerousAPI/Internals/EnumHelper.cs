@@ -1,3 +1,5 @@
+using System;
+
 namespace NSW.EliteDangerous.API.Internals
 {
     internal static class EnumHelper
@@ -120,6 +122,18 @@ namespace NSW.EliteDangerous.API.Internals
                 "happinessband5" => Happiness.Despondent,
                 _ => Happiness.None
             };
+        }
+
+        public static RingsReserveLevel GetRingsReserveLevel(string ringsLevel)
+        {
+            if (string.IsNullOrWhiteSpace(ringsLevel))
+                return RingsReserveLevel.None;
+
+            var value = ringsLevel.Trim().ToLower()
+                .Replace(" ", string.Empty)
+                .Replace("resources", string.Empty);
+
+            return Enum.TryParse(value, true, out RingsReserveLevel result) ? result : RingsReserveLevel.None;
         }
     }
 }

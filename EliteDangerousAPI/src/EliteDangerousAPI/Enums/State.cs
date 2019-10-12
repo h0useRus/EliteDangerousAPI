@@ -17,5 +17,6 @@ namespace NSW.EliteDangerous.API
         War,
         CivilLiberty,
         PirateAttack,
+        Drought
     }
 }
