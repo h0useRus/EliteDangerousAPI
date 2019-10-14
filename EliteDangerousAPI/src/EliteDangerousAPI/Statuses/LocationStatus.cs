@@ -1,5 +1,6 @@
 using System;
 using System.Linq;
+using NSW.EliteDangerous.API.Internals;
 
 namespace NSW.EliteDangerous.API.Statuses
 {
@@ -73,7 +74,7 @@ namespace NSW.EliteDangerous.API.Statuses
                 lock (_lock)
                 {
                     Body = new SpaceBodyInfo(BodyType.Planet, e.BodyName);
-                    Station = new StationInfo(e.NameLocalised ?? e.Name, "Settlement") {MarketId = e.MarketId};
+                    Station = new StationInfo(e.NameLocalised ?? e.Name, "PlanetaryOutpost") {MarketId = e.MarketId};
 
                     api.InvokeLocationStatusChanged(this);
                 }
@@ -249,7 +250,7 @@ namespace NSW.EliteDangerous.API.Statuses
         public class StationInfo
         {
             public string Name { get; }
-            public string Type { get; }
+            public StationType Type { get; }
             public Allegiance Allegiance { get; internal set; } = Allegiance.Independent;
             public EconomyType Economy { get; internal set; } = EconomyType.None;
             public GovernmentType Government { get; internal set; } = GovernmentType.None;
@@ -259,7 +260,7 @@ namespace NSW.EliteDangerous.API.Statuses
             internal StationInfo(string name, string type)
             {
                 Name = name ?? string.Empty;
-                Type = type ?? "Unknown";
+                Type = EnumHelper.GetStationType(type);
             }
 
             public override string ToString() => Name;

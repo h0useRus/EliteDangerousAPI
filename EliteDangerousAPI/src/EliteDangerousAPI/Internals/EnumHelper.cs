@@ -153,6 +153,7 @@ namespace NSW.EliteDangerous.API.Internals
         {
             if (string.IsNullOrWhiteSpace(terraform))
                 return TerraformState.NotTerraformable;
+
             var value = terraform.Trim().ToLower()
                 .Replace(" ", string.Empty);
 
@@ -265,6 +266,43 @@ namespace NSW.EliteDangerous.API.Internals
                 "ax_military_alliance" => ShipModel.AxMilitaryAlliance,
                 "independent_fighter" => ShipModel.IndependentFighter,
                 _ => ShipModel.Npc
+            };
+        }
+
+        public static StationType GetStationType(string station)
+        {
+            if (string.IsNullOrWhiteSpace(station))
+                return StationType.Unknown;
+
+            var value = station.Trim().ToLower()
+                .Replace(" ", string.Empty);
+
+            return value switch
+            {
+                "coriolis" => StationType.CoriolisStarport,
+                "coriolisstarport" => StationType.CoriolisStarport,
+                "bernal" => StationType.OcellusStarport,
+                "ocellusstarport" => StationType.OcellusStarport,
+                "ocellus" => StationType.OcellusStarport,
+                "orbis" => StationType.OrbisStarport,
+                "orbisstarport" => StationType.OrbisStarport,
+                "outpost" => StationType.Outpost,
+                "civilianoutpost" => StationType.CivilianOutpost,
+                "commercialoutpost" => StationType.CommercialOutpost,
+                "industrialoutpost" => StationType.IndustrialOutpost,
+                "militaryoutpost" => StationType.MilitaryOutpost,
+                "miningoutpost" => StationType.MiningOutpost,
+                "scientificoutpost" => StationType.ScientificOutpost,
+                "outpostscientific" => StationType.ScientificOutpost,
+                "surfacestation" => StationType.PlanetaryOutpost,
+                "crateroutpost" => StationType.PlanetaryOutpost,
+                "planetaryoutpost" => StationType.PlanetaryOutpost,
+                "planetaryport" => StationType.PlanetaryPort,
+                "craterport" => StationType.PlanetaryPort,
+                "asteroidbase" => StationType.AsteroidBase,
+                "megaship" => StationType.MegaShip,
+                "megashipcivilian" => StationType.CivilianMegaShip,
+                _ => StationType.Unknown
             };
         }
     }
