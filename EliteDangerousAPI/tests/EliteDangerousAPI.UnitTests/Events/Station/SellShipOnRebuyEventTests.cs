@@ -46,7 +46,8 @@ namespace NSW.EliteDangerous.Events
             Assert.NotNull(@event);
             Assert.Equal(DateTime.Parse("2017-07-20T08:56:39Z"), @event.Timestamp);
             Assert.Equal(EventName, @event.Event);
-            Assert.Equal(ShipType.Dolphin, @event.ShipType);
+            Assert.Equal("Dolphin", @event.ShipType);
+            Assert.Equal(ShipModel.Dolphin, @event.ShipModel);
             Assert.Equal("Shinrarta Dezhra", @event.System);
             Assert.Equal(4, @event.SellShipId);
             Assert.Equal(4110183, @event.ShipPrice);

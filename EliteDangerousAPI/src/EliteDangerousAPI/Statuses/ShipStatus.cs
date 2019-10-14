@@ -10,7 +10,7 @@ namespace NSW.EliteDangerous.API.Statuses
         internal ShipStatusFlags Flags { get; private set; }
 
         public long ShipId { get; private set; }
-        public ShipType ShipType { get; private set; }
+        public ShipModel ShipType { get; private set; }
         public string Name { get; private set; }
         public string Identifier { get; private set; }
         public Fuel Fuel { get; private set; } = new Fuel();
@@ -43,7 +43,7 @@ namespace NSW.EliteDangerous.API.Statuses
                 lock (_lock)
                 {
                     ShipId = e.ShipId;
-                    ShipType = e.ShipType;
+                    ShipType = e.ShipModel;
                     Name = e.ShipName;
                     Identifier = e.ShipIdent;
                     Fuel.Main = e.FuelLevel;
@@ -99,7 +99,7 @@ namespace NSW.EliteDangerous.API.Statuses
                 lock (_lock)
                 {
                     ShipId = e.NewShipId;
-                    ShipType = e.ShipType;
+                    ShipType = e.ShipModel;
                     NewShip(ShipType);
 
                     api.InvokeShipStatusChanged(this);
@@ -111,7 +111,7 @@ namespace NSW.EliteDangerous.API.Statuses
                 lock (_lock)
                 {
                     ShipId = e.ShipId;
-                    ShipType = e.ShipType;
+                    ShipType = e.ShipModel;
                     NewShip(ShipType);
 
                     api.InvokeShipStatusChanged(this);
@@ -123,7 +123,7 @@ namespace NSW.EliteDangerous.API.Statuses
                 lock (_lock)
                 {
                     ShipId = 0;
-                    ShipType = e.ShipType;
+                    ShipType = e.ShipModel;
                     NewShip(ShipType);
 
                     api.InvokeShipStatusChanged(this);
@@ -137,7 +137,7 @@ namespace NSW.EliteDangerous.API.Statuses
                     if (ShipId != e.ShipId)
                     {
                         ShipId = e.ShipId;
-                        ShipType = e.ShipType;
+                        ShipType = e.ShipModel;
                     }
 
                     Name = e.ShipName;
@@ -165,7 +165,7 @@ namespace NSW.EliteDangerous.API.Statuses
             };
         }
 
-        private void NewShip(ShipType shipType)
+        private void NewShip(ShipModel shipType)
         {
             Name = shipType.ToString().Replace("_", " ");
             Identifier = string.Empty;

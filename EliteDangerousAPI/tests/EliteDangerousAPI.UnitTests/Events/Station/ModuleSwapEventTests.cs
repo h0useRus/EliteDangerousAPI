@@ -35,7 +35,8 @@ namespace NSW.EliteDangerous.Events
             Assert.Equal(EventName, @event.Event);
             Assert.Equal(3223388416, @event.MarketId);
             Assert.Equal(2, @event.ShipId);
-            Assert.Equal(ShipType.CobraMkIII, @event.ShipType);
+            Assert.Equal("cobramkiii", @event.ShipType);
+            Assert.Equal(ShipModel.CobraMkIII, @event.ShipModel);
             Assert.Equal("Slot03_Size4", @event.FromSlot);
             Assert.Equal("Slot02_Size4", @event.ToSlot);
             Assert.Equal("$int_fuelscoop_size4_class3_name;", @event.FromItem);

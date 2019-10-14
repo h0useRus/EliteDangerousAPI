@@ -34,7 +34,8 @@ namespace NSW.EliteDangerous.Events
             Assert.Equal("HRC-2", @event.Commander);
             Assert.Equal("F44396", @event.FrontierId);
             Assert.True(@event.Horizons);
-            Assert.Equal(ShipType.FerDeLance, @event.ShipType);
+            Assert.Equal(ShipModel.FerDeLance, @event.ShipModel);
+            Assert.Equal("FerDeLance", @event.ShipType);
             Assert.Equal(19, @event.ShipId);
             Assert.Equal("jewel of parhoon", @event.ShipName);
             Assert.Equal("hr-17f", @event.ShipIdent);

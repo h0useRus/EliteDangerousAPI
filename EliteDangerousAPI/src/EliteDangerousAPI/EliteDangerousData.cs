@@ -102,6 +102,7 @@ namespace NSW.EliteDangerous.API
             "F",
             "G"
         };
+
         /// <summary>
         /// Hidden gem, but not preferred
         /// </summary>

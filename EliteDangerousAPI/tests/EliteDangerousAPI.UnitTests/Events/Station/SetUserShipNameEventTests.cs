@@ -46,7 +46,8 @@ namespace NSW.EliteDangerous.Events
             Assert.NotNull(@event);
             Assert.Equal(DateTime.Parse("2019-08-29T14:14:38Z"), @event.Timestamp);
             Assert.Equal(EventName, @event.Event);
-            Assert.Equal(ShipType.Sidewinder, @event.ShipType);
+            Assert.Equal("sidewinder", @event.ShipType);
+            Assert.Equal(ShipModel.Sidewinder, @event.ShipModel);
             Assert.Equal(0, @event.ShipId);
             Assert.Equal("Manta", @event.UserShipName);
             Assert.Equal("NSW-01", @event.UserShipId);

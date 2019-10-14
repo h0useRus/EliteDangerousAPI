@@ -1,4 +1,5 @@
 using Newtonsoft.Json;
+using NSW.EliteDangerous.API.Internals;
 
 namespace NSW.EliteDangerous.API
 {
@@ -8,7 +9,9 @@ namespace NSW.EliteDangerous.API
         public long ShipId { get; internal set; }
 
         [JsonProperty("ShipType")]
-        public ShipType ShipType { get; internal set; }
+        public string ShipType { get; internal set; }
+
+        [JsonIgnore] public ShipModel ShipModel => EnumHelper.GetShipModel(ShipType);
 
         [JsonProperty("ShipType_Localised", NullValueHandling = NullValueHandling.Ignore)]
         public string ShipTypeLocalised { get; internal set; }

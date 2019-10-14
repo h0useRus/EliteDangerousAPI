@@ -1,4 +1,5 @@
 using Newtonsoft.Json;
+using NSW.EliteDangerous.API.Internals;
 
 namespace NSW.EliteDangerous.API.Events
 {
@@ -8,7 +9,9 @@ namespace NSW.EliteDangerous.API.Events
         public long MarketId { get; internal set; }
 
         [JsonProperty("Ship")]
-        public ShipType ShipType { get; internal set; }
+        public string ShipType { get; internal set; }
+
+        [JsonIgnore] public ShipModel ShipModel => EnumHelper.GetShipModel(ShipType);
 
         [JsonProperty("ShipID")]
         public long ShipId { get; internal set; }

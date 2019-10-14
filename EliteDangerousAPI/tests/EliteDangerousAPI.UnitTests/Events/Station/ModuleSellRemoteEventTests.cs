@@ -35,7 +35,8 @@ namespace NSW.EliteDangerous.Events
             Assert.Equal(EventName, @event.Event);
             Assert.Equal(112, @event.StorageSlot);
             Assert.Equal(2, @event.ShipId);
-            Assert.Equal(ShipType.CobraMkIII, @event.ShipType);
+            Assert.Equal("cobramkiii", @event.ShipType);
+            Assert.Equal(ShipModel.CobraMkIII, @event.ShipModel);
             Assert.Equal("$int_buggybay_size2_class1_name;", @event.SellItem);
             Assert.Equal("Гараж планет. транспорта", @event.SellItemLocalised);
             Assert.Equal(18000, @event.SellPrice);

@@ -167,5 +167,79 @@ namespace NSW.EliteDangerous.API.Internals
                 _ => TerraformState.NotTerraformable
             };
         }
+
+        public static ShipModel GetShipModel(string shipType)
+        {
+            if (string.IsNullOrWhiteSpace(shipType))
+                return ShipModel.Unknown;
+
+            var value = shipType.Trim().ToLower();
+
+            return value switch
+            {
+                "adder" => ShipModel.Adder,
+                "typex_3" => ShipModel.AllianceChallenger,
+                "typex" => ShipModel.AllianceChieftain,
+                "typex_2" => ShipModel.AllianceCrusader,
+                "anaconda" => ShipModel.Anaconda,
+                "asp explorer" => ShipModel.AspExplorer,
+                "asp" => ShipModel.AspExplorer,
+                "asp scout" => ShipModel.AspScout,
+                "asp_scout" => ShipModel.AspScout,
+                "beluga liner" => ShipModel.BelugaLiner,
+                "belugaliner" => ShipModel.BelugaLiner,
+                "cobra mk. iii" => ShipModel.CobraMkIII,
+                "cobramkiii" => ShipModel.CobraMkIII,
+                "cobra mk. iv" => ShipModel.CobraMkIV,
+                "cobramkiv" => ShipModel.CobraMkIV,
+                "diamondback explorer" => ShipModel.DiamondbackExplorer,
+                "diamondbackxl" => ShipModel.DiamondbackExplorer,
+                "diamondback scout" => ShipModel.DiamondbackScout,
+                "diamondback" => ShipModel.DiamondbackScout,
+                "dolphin" => ShipModel.Dolphin,
+                "eagle" => ShipModel.Eagle,
+                "federal assault ship" => ShipModel.FederalAssaultShip,
+                "federation_dropship_mkii" => ShipModel.FederalAssaultShip,
+                "federal corvette" => ShipModel.FederalCorvette,
+                "federation_corvette" => ShipModel.FederalCorvette,
+                "federal dropship" => ShipModel.FederalDropship,
+                "federation_dropship" => ShipModel.FederalDropship,
+                "federal gunship" => ShipModel.FederalGunship,
+                "federation_gunship" => ShipModel.FederalGunship,
+                "fer-de-lance" => ShipModel.FerDeLance,
+                "ferdelance" => ShipModel.FerDeLance,
+                "hauler" => ShipModel.Hauler,
+                "imperial clipper" => ShipModel.ImperialClipper,
+                "empire_trader" => ShipModel.ImperialClipper,
+                "imperial courier" => ShipModel.ImperialCourier,
+                "empire_courier" => ShipModel.ImperialCourier,
+                "imperial cutter" => ShipModel.ImperialCutter,
+                "cutter" => ShipModel.ImperialCutter,
+                "imperial eagle" => ShipModel.ImperialEagle,
+                "empire_eagle" => ShipModel.ImperialEagle,
+                "keelback" => ShipModel.Keelback,
+                "independant_trader" => ShipModel.Keelback,
+                "krait_mkii" => ShipModel.KraitMkII,
+                "krait_light" => ShipModel.KraitPhantom,
+                "mamba" => ShipModel.Mamba,
+                "orca" => ShipModel.Orca,
+                "python" => ShipModel.Python,
+                "sidewinder" => ShipModel.Sidewinder,
+                "type 6 transporter" => ShipModel.Type6Transporter,
+                "type6" => ShipModel.Type6Transporter,
+                "type 7 transporter" => ShipModel.Type7Transporter,
+                "type7" => ShipModel.Type7Transporter,
+                "type 9 heavy" => ShipModel.Type9Heavy,
+                "type9" => ShipModel.Type9Heavy,
+                "type 10 defender" => ShipModel.Type10Defender,
+                "type9_military" => ShipModel.Type10Defender,
+                "viper mk. iii" => ShipModel.ViperMkIII,
+                "viper" => ShipModel.ViperMkIII,
+                "viper mk. iv" => ShipModel.ViperMkIV,
+                "viper_mkiv" => ShipModel.ViperMkIV,
+                "vulture" => ShipModel.Vulture,
+                _ => ShipModel.Npc
+            };
+        }
     }
 }

@@ -32,7 +32,8 @@ namespace NSW.EliteDangerous.Events
             Assert.NotNull(@event);
             Assert.Equal(DateTime.Parse("2019-09-05T11:17:13Z"), @event.Timestamp);
             Assert.Equal("Loadout", @event.Event);
-            Assert.Equal(ShipType.CobraMkIII, @event.ShipType);
+            Assert.Equal(ShipModel.CobraMkIII, @event.ShipModel);
+            Assert.Equal("cobramkiii", @event.ShipType);
             Assert.Equal(2, @event.ShipId);
             Assert.Equal("SAINT ANNA", @event.ShipName);
             Assert.Equal("NSW-C3", @event.ShipIdent);

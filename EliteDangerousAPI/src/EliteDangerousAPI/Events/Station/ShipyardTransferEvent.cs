@@ -1,11 +1,14 @@
 using Newtonsoft.Json;
+using NSW.EliteDangerous.API.Internals;
 
 namespace NSW.EliteDangerous.API.Events
 {
     public class ShipyardTransferEvent : JournalEvent
     {
         [JsonProperty("ShipType")]
-        public ShipType ShipType { get; internal set; }
+        public string ShipType { get; internal set; }
+
+        [JsonIgnore] public ShipModel ShipModel => EnumHelper.GetShipModel(ShipType);
 
         [JsonProperty("ShipType_Localised")]
         public string ShipTypeLocalised { get; internal set; }

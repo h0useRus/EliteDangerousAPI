@@ -105,12 +105,14 @@ namespace NSW.EliteDangerous.Events
             Assert.Equal(15, @event.Prices.Length);
 
             Assert.Equal(128049249, @event.Prices[0].Id);
-            Assert.Equal(ShipType.Sidewinder, @event.Prices[0].ShipType);
+            Assert.Equal("sidewinder", @event.Prices[0].ShipType);
+            Assert.Equal(ShipModel.Sidewinder, @event.Prices[0].ShipModel);
             Assert.Null(@event.Prices[0].ShipTypeLocalised);
             Assert.Equal(27200, @event.Prices[0].ShipPrice);
 
             Assert.Equal(128049333, @event.Prices[14].Id);
-            Assert.Equal(ShipType.Type9, @event.Prices[14].ShipType);
+            Assert.Equal("type9", @event.Prices[14].ShipType);
+            Assert.Equal(ShipModel.Type9Heavy, @event.Prices[14].ShipModel);
             Assert.Equal("Type-9 Heavy", @event.Prices[14].ShipTypeLocalised);
             Assert.Equal(65072466, @event.Prices[14].ShipPrice);
 

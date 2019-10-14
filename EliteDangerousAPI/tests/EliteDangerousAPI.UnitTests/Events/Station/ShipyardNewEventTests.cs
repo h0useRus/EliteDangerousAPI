@@ -46,7 +46,8 @@ namespace NSW.EliteDangerous.Events
             Assert.NotNull(@event);
             Assert.Equal(DateTime.Parse("2019-08-30T14:10:32Z"), @event.Timestamp);
             Assert.Equal(EventName, @event.Event);
-            Assert.Equal(ShipType.Adder, @event.ShipType);
+            Assert.Equal("adder", @event.ShipType);
+            Assert.Equal(ShipModel.Adder, @event.ShipModel);
             Assert.Equal(2, @event.NewShipId);
         }
 
