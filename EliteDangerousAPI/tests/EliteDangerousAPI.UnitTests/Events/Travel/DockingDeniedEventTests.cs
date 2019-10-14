@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using NSW.EliteDangerous.API;
 using NSW.EliteDangerous.API.Events;
 using Xunit;
 
@@ -35,7 +36,7 @@ namespace NSW.EliteDangerous.Events
             Assert.Equal("Chris & Silvia's Paradise Hideout", @event.StationName);
             Assert.Equal("Orbis", @event.StationType);
             Assert.Equal(128339960, @event.MarketId);
-            Assert.Equal("Distance", @event.Reason);
+            Assert.Equal(DockingDeniedReason.Distance, @event.Reason);
         }
 
         public static IEnumerable<object[]> Data =>

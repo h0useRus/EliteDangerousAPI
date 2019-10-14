@@ -14,11 +14,11 @@ namespace NSW.EliteDangerous.Events
         [MemberData(nameof(Data))]
         public void ShouldExecuteEvent(string eventName, string json)
         {
-            var api = (API.EliteDangerousAPI)TestHelpers.TestApi;
+            var api = (EliteDangerousAPI)TestHelpers.TestApi;
             var eventFired = false;
             api.ExplorationEvents.Scan += (sender, @event) =>
             {
-                Assert.IsType<API.EliteDangerousAPI>(sender);
+                Assert.IsType<EliteDangerousAPI>(sender);
                 AssertEvent(@event);
                 eventFired = true;
             };
@@ -38,7 +38,7 @@ namespace NSW.EliteDangerous.Events
             Assert.Equal(12, @event.BodyId);
             Assert.Equal(10048.152344, @event.DistanceFromArrivalLs, 6);
             Assert.True(@event.TidalLock);
-            Assert.Null(@event.TerraformState);
+            Assert.Equal(TerraformState.NotTerraformable, @event.TerraformState);
             Assert.Equal("Rocky body", @event.PlanetClass);
             Assert.Equal(string.Empty, @event.Atmosphere);
             Assert.Equal("None", @event.AtmosphereType);
@@ -82,7 +82,7 @@ namespace NSW.EliteDangerous.Events
 
             Assert.Equal(2, @event.Rings.Length);
             Assert.Equal("Imeut AB 2 A Ring", @event.Rings[0].Name);
-            Assert.Equal("eRingClass_MetalRich", @event.Rings[0].RingClass);
+            Assert.Equal(RingClass.MetalRich, @event.Rings[0].RingClass);
             Assert.Equal(2.1371e+09, @event.Rings[0].MassMt);
             Assert.Equal(5.7442e+07, @event.Rings[0].InnerRad);
             Assert.Equal(6.0438e+07, @event.Rings[0].OuterRad);

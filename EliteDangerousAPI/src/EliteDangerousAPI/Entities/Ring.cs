@@ -1,4 +1,5 @@
 using Newtonsoft.Json;
+using NSW.EliteDangerous.API.Internals.Converters;
 
 namespace NSW.EliteDangerous.API
 {
@@ -8,7 +9,8 @@ namespace NSW.EliteDangerous.API
         public string Name { get; internal set; }
 
         [JsonProperty("RingClass")]
-        public string RingClass { get; internal set; }
+        [JsonConverter(typeof(RingClassConverter))]
+        public RingClass RingClass { get; internal set; }
 
         [JsonProperty("MassMT")]
         public double MassMt { get; internal set; }

@@ -25,6 +25,8 @@
       + Add SecurityType to all events with security
       + Add State enum
       + Add UssType enum
+      + Add DockingDeniedReason enum
+      + Add RingClasses enum
     </PackageReleaseNotes>
   </PropertyGroup>
 

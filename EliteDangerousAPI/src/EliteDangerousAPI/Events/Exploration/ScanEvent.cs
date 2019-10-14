@@ -87,7 +87,8 @@ namespace NSW.EliteDangerous.API.Events
         public bool? TidalLock { get; internal set; }
 
         [JsonProperty("TerraformState")]
-        public TerraformState? TerraformState { get; internal set; }
+        [JsonConverter(typeof(TerraformStateConverter))]
+        public TerraformState TerraformState { get; internal set; }
 
         [JsonProperty("Parents")]
         public ParentBody[] Parents { get; internal set; }

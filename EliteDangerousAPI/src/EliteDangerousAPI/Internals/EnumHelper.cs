@@ -135,5 +135,37 @@ namespace NSW.EliteDangerous.API.Internals
 
             return Enum.TryParse(value, true, out RingsReserveLevel result) ? result : RingsReserveLevel.None;
         }
+
+        public static RingClass GetRingClass(string ringClass)
+        {
+            if (string.IsNullOrWhiteSpace(ringClass))
+                return RingClass.Unknown;
+
+            var value = ringClass.Trim().ToLower()
+                .Replace(" ", string.Empty)
+                .Replace("eringclass_", string.Empty)
+                .Replace("metalic","metallic");
+
+            return Enum.TryParse(value, true, out RingClass result) ? result : RingClass.Unknown;
+        }
+
+        public static TerraformState GetTerraformState(string terraform)
+        {
+            if (string.IsNullOrWhiteSpace(terraform))
+                return TerraformState.NotTerraformable;
+            var value = terraform.Trim().ToLower()
+                .Replace(" ", string.Empty);
+
+            return value switch
+            {
+               "terraformable" => TerraformState.Terraformable,
+               "candidateforterraforming" => TerraformState.Terraformable,
+               "terraformed" => TerraformState.Terraformed,
+               "terraformingcompleted" => TerraformState.Terraformed,
+               "terraforming" => TerraformState.Terraforming,
+               "beingterraformed" => TerraformState.Terraforming,
+                _ => TerraformState.NotTerraformable
+            };
+        }
     }
 }

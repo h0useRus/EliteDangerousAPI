@@ -44,7 +44,6 @@ namespace NSW.EliteDangerous.API
         Viper_MkIV,
         Vulture,
         //NPC
-        Federation_Fighter,
         Police_Alliance,
         Police_Independent,
         Police_Federation,
@@ -66,5 +65,10 @@ namespace NSW.EliteDangerous.API
         Ax_Military_Independent,
         Ax_Military_Empire,
         Ax_military_Federation,
+        // Fighters
+        Independent_Fighter,
+        Federation_Fighter,
+        Alliance_Fighter,
+        Empire_Fighter
     }
 }
