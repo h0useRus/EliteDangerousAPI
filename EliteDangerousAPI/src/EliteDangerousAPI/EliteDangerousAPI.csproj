@@ -28,6 +28,7 @@
       + Add DockingDeniedReason enum
       + Add RingClasses enum
       + Add base ship infos
+      + Add station type for status
     </PackageReleaseNotes>
   </PropertyGroup>
 
