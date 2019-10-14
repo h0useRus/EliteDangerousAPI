@@ -5,7 +5,6 @@ namespace NSW.EliteDangerous.API
     public enum ShipModel
     {
         Unknown,
-        Npc,
         Adder,
         AllianceChallenger,
         AllianceChieftain,
@@ -43,6 +42,36 @@ namespace NSW.EliteDangerous.API
         Type10Defender,
         ViperMkIII,
         ViperMkIV,
-        Vulture
+        Vulture,
+        // NPC
+        Npc,
+        WeddingBarge,
+        SearchAndRescue,
+        IndependentFighter,
+
+        PoliceAlliance,
+        PoliceIndependent,
+        PoliceFederation,
+        PoliceEmpire,
+
+        MilitaryFederation,
+        MilitaryIndependent,
+        MilitaryAlliance,
+        MilitaryEmpire,
+
+        MilitaryFighterEmpire,
+        MilitaryFighterAlliance,
+        MilitaryFighterIndependent,
+        MilitaryFighterFederation,
+
+        AtrIndependent,
+        AtrFederation,
+        AtrEmpire,
+        AtrAlliance,
+
+        AxMilitaryIndependent,
+        AxMilitaryEmpire,
+        AxMilitaryFederation,
+        AxMilitaryAlliance,
     }
 }

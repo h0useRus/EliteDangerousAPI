@@ -173,7 +173,9 @@ namespace NSW.EliteDangerous.API.Internals
             if (string.IsNullOrWhiteSpace(shipType))
                 return ShipModel.Unknown;
 
-            var value = shipType.Trim().ToLower();
+            var value = shipType.Trim().ToLower()
+                .Replace(";", string.Empty)
+                .Replace("$shipname_", string.Empty);
 
             return value switch
             {
@@ -238,6 +240,30 @@ namespace NSW.EliteDangerous.API.Internals
                 "viper mk. iv" => ShipModel.ViperMkIV,
                 "viper_mkiv" => ShipModel.ViperMkIV,
                 "vulture" => ShipModel.Vulture,
+                // npc
+                "police_alliance" => ShipModel.PoliceAlliance,
+                "police_independent" => ShipModel.PoliceIndependent,
+                "police_federation" => ShipModel.PoliceFederation,
+                "police_empire" => ShipModel.PoliceEmpire,
+                "military_federation" => ShipModel.MilitaryFederation,
+                "military_independent" => ShipModel.MilitaryIndependent,
+                "military_alliance" => ShipModel.MilitaryAlliance,
+                "military_empire" => ShipModel.MilitaryEmpire,
+                "militaryfighter_empire" => ShipModel.MilitaryFighterEmpire,
+                "militaryfighter_alliance" => ShipModel.MilitaryFighterAlliance,
+                "militaryfighter_independent" => ShipModel.MilitaryFighterIndependent,
+                "militaryfighter_federation" => ShipModel.MilitaryFighterFederation,
+                "atr_independent" => ShipModel.AtrIndependent,
+                "atr_federation" => ShipModel.AtrFederation,
+                "atr_empire" => ShipModel.AtrEmpire,
+                "atr_alliance" => ShipModel.AtrAlliance,
+                "passengerliner_wedding" => ShipModel.WeddingBarge,
+                "searchandrescue" => ShipModel.SearchAndRescue,
+                "ax_military_independent" => ShipModel.AxMilitaryIndependent,
+                "ax_military_empire" => ShipModel.AxMilitaryEmpire,
+                "ax_military_federation" => ShipModel.AxMilitaryFederation,
+                "ax_military_alliance" => ShipModel.AxMilitaryAlliance,
+                "independent_fighter" => ShipModel.IndependentFighter,
                 _ => ShipModel.Npc
             };
         }

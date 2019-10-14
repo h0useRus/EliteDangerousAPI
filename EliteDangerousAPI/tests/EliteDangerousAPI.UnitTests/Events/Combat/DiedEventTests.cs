@@ -36,6 +36,7 @@ namespace NSW.EliteDangerous.Events
             Assert.Equal("$ShipName_Police_Federation;", @event.KillerName);
             Assert.Equal("Федеральная служба безопасности", @event.KillerNameLocalised);
             Assert.Equal("viper_mkiv", @event.KillerShip);
+            Assert.Equal(ShipModel.ViperMkIV, @event.KillerShipModel);
             Assert.Equal(CombatRank.Master, @event.KillerRank);
         }
 

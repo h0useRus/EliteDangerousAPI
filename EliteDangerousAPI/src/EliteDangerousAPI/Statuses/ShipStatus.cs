@@ -25,7 +25,6 @@ namespace NSW.EliteDangerous.API.Statuses
         public double MaxJumpRange { get; private set; }
         public bool IsHot { get; private set; }
         public long? Rebuy { get; private set; }
-
         public bool Docked => GetFlag(Flags,0);
         public bool Landed => GetFlag(Flags,1);
         public bool InWing => GetFlag(Flags,7);
@@ -35,6 +34,7 @@ namespace NSW.EliteDangerous.API.Statuses
         public bool InDanger => GetFlag(Flags,22);
         public bool Interdicted => GetFlag(Flags,23);
         public bool HighAltitudeMode => GetFlag(Flags,29);
+        public ShipInfo BaseInfo => new ShipInfo(ShipType);
 
         internal ShipStatus(EliteDangerousAPI api)
         {
@@ -165,15 +165,19 @@ namespace NSW.EliteDangerous.API.Statuses
             };
         }
 
-        private void NewShip(ShipModel shipType)
+        private void NewShip(ShipModel shipModel)
         {
-            Name = shipType.ToString().Replace("_", " ");
+            Name = ShipInfo.ShipName[shipModel];
             Identifier = string.Empty;
             Fuel = new Fuel();
-            Cargo = new CargoInfo();
+            Cargo = new CargoInfo{Max = ShipInfo.BaseCargo[shipModel]};
             EnergyManagement = new EnergyInfo(new byte[] {4, 4, 4});
             Flags = ShipStatusFlags.Docked;
-            Hull = new HullInfo();
+            Hull = new HullInfo
+            {
+                UnladenMass = ShipInfo.BaseHullMass[shipModel]
+            };
+            MaxJumpRange = ShipInfo.BaseFsdRangeUnladen[shipModel];
             IsHot = false;
             Rebuy = null;
         }

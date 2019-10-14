@@ -1,4 +1,4 @@
-﻿<Project Sdk="Microsoft.NET.Sdk">
+<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
     <VersionPrefix>1.26.3-preview3</VersionPrefix>
@@ -27,6 +27,7 @@
       + Add UssType enum
       + Add DockingDeniedReason enum
       + Add RingClasses enum
+      + Add base ship infos
     </PackageReleaseNotes>
   </PropertyGroup>
 

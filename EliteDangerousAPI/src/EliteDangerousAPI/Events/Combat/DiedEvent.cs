@@ -1,4 +1,5 @@
 using Newtonsoft.Json;
+using NSW.EliteDangerous.API.Internals;
 
 namespace NSW.EliteDangerous.API.Events
 {
@@ -12,6 +13,8 @@ namespace NSW.EliteDangerous.API.Events
 
         [JsonProperty("KillerShip")]
         public string KillerShip { get; internal set; }
+
+        [JsonIgnore]public ShipModel KillerShipModel => EnumHelper.GetShipModel(KillerShip);
 
         [JsonProperty("KillerRank")]
         public CombatRank KillerRank { get; internal set; }

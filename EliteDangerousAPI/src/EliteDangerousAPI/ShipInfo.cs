@@ -44,6 +44,30 @@ namespace NSW.EliteDangerous.API
             { ShipModel.ViperMkIII,          "Viper MkIII"},
             { ShipModel.ViperMkIV,           "Viper MkIV"},
             { ShipModel.Vulture,             "Vulture"},
+            //NPC
+            { ShipModel.PoliceAlliance,      "Allied Police Forces"},
+            { ShipModel.PoliceIndependent,   "System Authority Vessel"},
+            { ShipModel.PoliceFederation,    "Federal Security Service"},
+            { ShipModel.PoliceEmpire,        "Internal Security Service"},
+            { ShipModel.MilitaryFederation,  "Federal Navy Ship"},
+            { ShipModel.MilitaryIndependent, "System Defence Force"},
+            { ShipModel.MilitaryAlliance,    "Alliance Defence Force"},
+            { ShipModel.MilitaryEmpire,      "Imperial Navy Vessel"},
+            { ShipModel.MilitaryFighterEmpire,      "Imperial Navy Fighter"},
+            { ShipModel.MilitaryFighterAlliance,    "Alliance Defence Fighter"},
+            { ShipModel.MilitaryFighterIndependent, "System Defence Fighter"},
+            { ShipModel.MilitaryFighterFederation,  "Federal Navy Fighter"},
+            { ShipModel.AtrIndependent,             "System ATR"},
+            { ShipModel.AtrFederation,              "Federal ATR"},
+            { ShipModel.AtrEmpire,                  "Imperial ATR"},
+            { ShipModel.AtrAlliance,                "Allied ATR"},
+            { ShipModel.WeddingBarge,               "Wedding Barge"},
+            { ShipModel.SearchAndRescue,            "Search And Rescue Patrol"},
+            { ShipModel.IndependentFighter,         "Independent Fighter"},
+            { ShipModel.AxMilitaryIndependent,      "System AX Force"},
+            { ShipModel.AxMilitaryEmpire,           "Imperial AX Vessel"},
+            { ShipModel.AxMilitaryFederation,       "Federal AX Ship"},
+            { ShipModel.AxMilitaryAlliance,         "Allied AX Ship"},
         };
 
         public static IReadOnlyDictionary<ShipModel, int> BaseArmor { get; } = new Dictionary<ShipModel, int>
@@ -551,18 +575,18 @@ namespace NSW.EliteDangerous.API
         };
 
         public ShipModel Model { get; }
-        public string Name => ShipName[Model];
-        public int Speed => BaseSpeed[Model];
-        public int MaxSpeed => BaseMaxSpeed[Model];
-        public int SpeedBoost => BaseSpeedBoost[Model];
-        public int EnergyBoost => BaseEnergyBoost[Model];
-        public int Cargo => BaseCargo[Model];
-        public double FsdRangeLaden => BaseFsdRangeLaden[Model];
-        public double FsdRangeUnladen => BaseFsdRangeUnladen[Model];
-        public int HullMass => BaseHullMass[Model];
-        public int Shield => BaseShield[Model];
-        public int Manoeuvrability => BaseManoeuvrability[Model];
-        public int Price => BasePrice[Model];
+        public string Name => ShipName.TryGetValue(Model, out string value) ? value : string.Empty;
+        public int Speed => BaseSpeed.TryGetValue(Model, out int value) ? value : 0;
+        public int MaxSpeed => BaseMaxSpeed.TryGetValue(Model, out int value) ? value : 0;
+        public int SpeedBoost => BaseSpeedBoost.TryGetValue(Model, out int value) ? value : 0;
+        public int EnergyBoost => BaseEnergyBoost.TryGetValue(Model, out int value) ? value : 0;
+        public int Cargo => BaseCargo.TryGetValue(Model, out int value) ? value : 0;
+        public double FsdRangeLaden => BaseFsdRangeLaden.TryGetValue(Model, out double value) ? value : 0;
+        public double FsdRangeUnladen => BaseFsdRangeUnladen.TryGetValue(Model, out double value) ? value : 0;
+        public int HullMass => BaseHullMass.TryGetValue(Model, out int value) ? value : 0;
+        public int Shield => BaseShield.TryGetValue(Model, out int value) ? value : 0;
+        public int Manoeuvrability => BaseManoeuvrability.TryGetValue(Model, out int value) ? value : 0;
+        public int Price => BasePrice.TryGetValue(Model, out int value) ? value : 0;
 
         internal ShipInfo(ShipModel model)
         {
