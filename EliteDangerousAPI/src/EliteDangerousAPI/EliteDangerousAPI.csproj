@@ -1,4 +1,4 @@
-<Project Sdk="Microsoft.NET.Sdk">
+﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
     <VersionPrefix>1.26.3-preview3</VersionPrefix>
@@ -17,7 +17,7 @@
     <LangVersion>8</LangVersion>
     <PackageLicenseExpression>MIT</PackageLicenseExpression>
     <PackageReleaseNotes>
-      + Replace string ShipType to Enum
+      + Add ShipModel to enum as friendly conversion for ShipType
       + Add GovermentType to all events with goverment
       + Add EconomyType to all events with economy
       + Replace Allegiance by enum
