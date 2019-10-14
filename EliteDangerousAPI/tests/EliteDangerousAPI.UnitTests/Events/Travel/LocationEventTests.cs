@@ -41,7 +41,7 @@ namespace NSW.EliteDangerous.Events
                 Assert.Equal(BodyType.Station, e.Body.Type);
 
                 Assert.Equal("Krikalev Hangar", e.Station.Name);
-                Assert.Equal("Outpost", e.Station.Type);
+                Assert.Equal(StationType.Outpost, e.Station.Type);
                 Assert.Equal(EconomyType.Refinery, e.Station.Economy);
                 Assert.Equal(GovernmentType.Anarchy, e.Station.Government);
                 Assert.Equal(Allegiance.Independent, e.Station.Allegiance);
