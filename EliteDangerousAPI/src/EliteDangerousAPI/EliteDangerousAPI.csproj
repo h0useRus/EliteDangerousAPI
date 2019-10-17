@@ -1,7 +1,7 @@
-<Project Sdk="Microsoft.NET.Sdk">
+﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
-    <VersionPrefix>1.26.3</VersionPrefix>
+    <VersionPrefix>1.26.4</VersionPrefix>
     <Description>Frontier Elite:Dangerous multi-platform API Library</Description>
     <Copyright>Copyright © 2019-2020 NewSoftWorld</Copyright>
     <AssemblyTitle>Elite:Dangerous API</AssemblyTitle>
@@ -17,18 +17,7 @@
     <LangVersion>8</LangVersion>
     <PackageLicenseExpression>MIT</PackageLicenseExpression>
     <PackageReleaseNotes>
-      + Add ShipModel to enum as friendly conversion for ShipType
-      + Add GovermentType to all events with goverment
-      + Add EconomyType to all events with economy
-      + Replace Allegiance by enum
-      + Replace Happiness by enum
-      + Add SecurityType to all events with security
-      + Add State enum
-      + Add UssType enum
-      + Add DockingDeniedReason enum
-      + Add RingClasses enum
-      + Add base ship infos
-      + Add station type for status
+      + Add Fighter/SRV scoop status
     </PackageReleaseNotes>
   </PropertyGroup>
 

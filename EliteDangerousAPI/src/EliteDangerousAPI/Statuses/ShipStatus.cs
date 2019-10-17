@@ -22,9 +22,13 @@ namespace NSW.EliteDangerous.API.Statuses
         public HullInfo Hull { get; private set; } = new HullInfo();
         public FsdStatus FSD => new FsdStatus(Flags);
         public SrvStatus SRV => new SrvStatus(Flags);
+        public int FighterLaunched { get; private set; }
+        public int SrvLaunched { get; private set; }
         public double MaxJumpRange { get; private set; }
         public bool IsHot { get; private set; }
         public long? Rebuy { get; private set; }
+        public bool FightersScooped => FighterLaunched == 0;
+        public bool SrvScooped => SrvLaunched == 0;
         public bool Docked => GetFlag(Flags,0);
         public bool Landed => GetFlag(Flags,1);
         public bool InWing => GetFlag(Flags,7);
@@ -159,6 +163,46 @@ namespace NSW.EliteDangerous.API.Statuses
                     Hull.Modules = e.Modules;
                     MaxJumpRange = e.MaxJumpRange;
                     Rebuy = e.Rebuy;
+
+                    api.InvokeShipStatusChanged(this);
+                }
+            };
+
+            api.ShipEvents.LaunchFighter += (s, e) =>
+            {
+                lock (_lock)
+                {
+                    FighterLaunched += 1;
+
+                    api.InvokeShipStatusChanged(this);
+                }
+            };
+
+            api.ShipEvents.DockFighter += (s, e) =>
+            {
+                lock (_lock)
+                {
+                    FighterLaunched -= 1;
+
+                    api.InvokeShipStatusChanged(this);
+                }
+            };
+
+            api.ShipEvents.LaunchSrv += (s, e) =>
+            {
+                lock (_lock)
+                {
+                    SrvLaunched += 1;
+
+                    api.InvokeShipStatusChanged(this);
+                }
+            };
+
+            api.ShipEvents.DockSrv += (s, e) =>
+            {
+                lock (_lock)
+                {
+                    SrvLaunched -= 1;
 
                     api.InvokeShipStatusChanged(this);
                 }
