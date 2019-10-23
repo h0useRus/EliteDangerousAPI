@@ -1,7 +1,7 @@
-﻿<Project Sdk="Microsoft.NET.Sdk">
+<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
-    <VersionPrefix>1.26.4</VersionPrefix>
+    <VersionPrefix>1.26.5</VersionPrefix>
     <Description>Frontier Elite:Dangerous multi-platform API Library</Description>
     <Copyright>Copyright © 2019-2020 NewSoftWorld</Copyright>
     <AssemblyTitle>Elite:Dangerous API</AssemblyTitle>
@@ -17,7 +17,7 @@
     <LangVersion>8</LangVersion>
     <PackageLicenseExpression>MIT</PackageLicenseExpression>
     <PackageReleaseNotes>
-      + Add Fighter/SRV scoop status
+      + Add Ship database
     </PackageReleaseNotes>
   </PropertyGroup>
 
