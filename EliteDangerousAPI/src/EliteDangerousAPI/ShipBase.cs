@@ -1,4 +1,6 @@
 using System.Collections.Generic;
+using System.Linq;
+using NSW.EliteDangerous.API.Internals;
 
 namespace NSW.EliteDangerous.API
 {
@@ -8,6 +10,7 @@ namespace NSW.EliteDangerous.API
         public int FrontierId { get; internal set; }
         public string FrontierName { get; internal set; }
         public string Name { get; internal set; }
+        public bool NpcOnly { get; internal set; }
         public ShipRole ShipRole { get; internal set; }
         public MajorFaction? Faction { get; internal set; }
         public int? Rank { get; internal set; }
@@ -20,6 +23,8 @@ namespace NSW.EliteDangerous.API
         public int Shields { get; internal set; }
         public int Armour { get; internal set; }
         public int Mass { get; internal set; }
+        public int Cargo { get; internal set; }
+        public double JumpRange { get; internal set; }
         public double ForwardAcceleration { get; internal set; }
         public double ReverseAcceleration { get; internal set; }
         public double LatitudeAcceleration { get; internal set; }
@@ -49,6 +54,12 @@ namespace NSW.EliteDangerous.API
             Model = model;
         }
 
+        internal ShipBase(ShipModel model, string name, bool npc = true) : this(model)
+        {
+            Name = name;
+            NpcOnly = npc;
+        }
+
         public static readonly ShipBase Adder
             = new ShipBase(ShipModel.Adder)
             {
@@ -65,6 +76,8 @@ namespace NSW.EliteDangerous.API
                 Shields = 60,
                 Armour = 90,
                 Mass = 35,
+                Cargo = 6,
+                JumpRange = 9.4,
                 ForwardAcceleration = 39.41,
                 ReverseAcceleration = 27.73,
                 LatitudeAcceleration = 27.86,
@@ -112,6 +125,8 @@ namespace NSW.EliteDangerous.API
                 Shields = 220,
                 Armour = 300,
                 Mass = 450,
+                Cargo = 40,
+                JumpRange = 8.4,
                 ForwardAcceleration = 31.65,
                 ReverseAcceleration = 25.94,
                 LatitudeAcceleration = 20.09,
@@ -159,6 +174,8 @@ namespace NSW.EliteDangerous.API
                 Shields = 200,
                 Armour = 280,
                 Mass = 400,
+                Cargo = 40,
+                JumpRange = 9.4,
                 ForwardAcceleration = 37.84,
                 ReverseAcceleration = 25.84,
                 LatitudeAcceleration = 20.01,
@@ -206,6 +223,8 @@ namespace NSW.EliteDangerous.API
                 Shields = 200,
                 Armour = 300,
                 Mass = 500,
+                Cargo = 40,
+                JumpRange = 8.1,
                 ForwardAcceleration = 29.78,
                 ReverseAcceleration = 24.78,
                 LatitudeAcceleration = 18.96,
@@ -251,6 +270,8 @@ namespace NSW.EliteDangerous.API
                 Shields = 350,
                 Armour = 525,
                 Mass = 400,
+                Cargo = 114,
+                JumpRange = 9.4,
                 ForwardAcceleration = 19.85,
                 ReverseAcceleration = 10.03,
                 LatitudeAcceleration = 10.05,
@@ -296,6 +317,8 @@ namespace NSW.EliteDangerous.API
                 Shields = 140,
                 Armour = 210,
                 Mass = 280,
+                Cargo = 38,
+                JumpRange = 13.2,
                 ForwardAcceleration = 23.64,
                 ReverseAcceleration = 15.04,
                 LatitudeAcceleration = 14.97,
@@ -341,6 +364,8 @@ namespace NSW.EliteDangerous.API
                 Shields = 120,
                 Armour = 180,
                 Mass = 150,
+                Cargo = 16,
+                JumpRange = 11.7,
                 ForwardAcceleration = 35.02,
                 ReverseAcceleration = 20.10,
                 LatitudeAcceleration = 20.03,
@@ -386,6 +411,8 @@ namespace NSW.EliteDangerous.API
                 Shields = 280,
                 Armour = 280,
                 Mass = 950,
+                Cargo = 44,
+                JumpRange = 9.8,
                 ForwardAcceleration = 20.01,
                 ReverseAcceleration = 17.12,
                 LatitudeAcceleration = 15.03,
@@ -431,6 +458,8 @@ namespace NSW.EliteDangerous.API
                 Shields = 80,
                 Armour = 120,
                 Mass = 180,
+                Cargo = 18,
+                JumpRange = 10.5,
                 ForwardAcceleration = 35.03,
                 ReverseAcceleration = 25.16,
                 LatitudeAcceleration = 20.02,
@@ -476,6 +505,8 @@ namespace NSW.EliteDangerous.API
                 Shields = 120,
                 Armour = 120,
                 Mass = 210,
+                Cargo = 34,
+                JumpRange = 9.4,
                 ForwardAcceleration = 27.84,
                 ReverseAcceleration = 19.91,
                 LatitudeAcceleration = 15.03,
@@ -521,6 +552,8 @@ namespace NSW.EliteDangerous.API
                 Shields = 150,
                 Armour = 150,
                 Mass = 260,
+                Cargo = 12, 
+                JumpRange = 15.7,
                 ForwardAcceleration = 34.63,
                 ReverseAcceleration = 25.06,
                 LatitudeAcceleration = 19.89,
@@ -566,6 +599,7 @@ namespace NSW.EliteDangerous.API
                 Shields = 120,
                 Armour = 120,
                 Mass = 170,
+                JumpRange = 11.4,
                 ForwardAcceleration = 39.57,
                 ReverseAcceleration = 29.82,
                 LatitudeAcceleration = 25.19,
@@ -611,6 +645,8 @@ namespace NSW.EliteDangerous.API
                 Shields = 110,
                 Armour = 110,
                 Mass = 140,
+                Cargo = 14,
+                JumpRange = 10.8,
                 ForwardAcceleration = 39.63,
                 ReverseAcceleration = 30.01,
                 LatitudeAcceleration = 14.97,
@@ -656,6 +692,8 @@ namespace NSW.EliteDangerous.API
                 Shields = 60,
                 Armour = 40,
                 Mass = 50,
+                Cargo = 2,
+                JumpRange = 8.8,
                 ForwardAcceleration = 43.97,
                 ReverseAcceleration = 29.97,
                 LatitudeAcceleration = 29.86,
@@ -703,6 +741,8 @@ namespace NSW.EliteDangerous.API
                 Shields = 200,
                 Armour = 300,
                 Mass = 480,
+                Cargo = 32,
+                JumpRange = 8.3,
                 ForwardAcceleration = 39.81,
                 ReverseAcceleration = 20.04,
                 LatitudeAcceleration = 15.07,
@@ -750,6 +790,8 @@ namespace NSW.EliteDangerous.API
                 Shields = 555,
                 Armour = 370,
                 Mass = 900,
+                Cargo = 76, 
+                JumpRange = 6.3,
                 ForwardAcceleration = 19.87,
                 ReverseAcceleration = 10.08,
                 LatitudeAcceleration = 9.98,
@@ -797,6 +839,8 @@ namespace NSW.EliteDangerous.API
                 Shields = 200,
                 Armour = 300,
                 Mass = 580,
+                Cargo = 56,
+                JumpRange = 7.3,
                 ForwardAcceleration = 29.99,
                 ReverseAcceleration = 20.34,
                 LatitudeAcceleration = 10.19,
@@ -844,6 +888,8 @@ namespace NSW.EliteDangerous.API
                 Shields = 250,
                 Armour = 350,
                 Mass = 580,
+                Cargo = 16, 
+                JumpRange = 6.7,
                 ForwardAcceleration = 24.61,
                 ReverseAcceleration = 17.83,
                 LatitudeAcceleration = 10.08,
@@ -889,6 +935,8 @@ namespace NSW.EliteDangerous.API
                 Shields = 300,
                 Armour = 225,
                 Mass = 250,
+                Cargo = 24,
+                JumpRange = 6.7,
                 ForwardAcceleration = 29.31,
                 ReverseAcceleration = 24.34,
                 LatitudeAcceleration = 20.04,
@@ -934,6 +982,8 @@ namespace NSW.EliteDangerous.API
                 Shields = 50,
                 Armour = 100,
                 Mass = 14,
+                Cargo = 8,
+                JumpRange = 10.5,
                 ForwardAcceleration = 39.87,
                 ReverseAcceleration = 29.95,
                 LatitudeAcceleration = 29.95,
@@ -981,6 +1031,8 @@ namespace NSW.EliteDangerous.API
                 Shields = 180,
                 Armour = 270,
                 Mass = 400,
+                Cargo = 74,
+                JumpRange = 9.0,
                 ForwardAcceleration = 24.74,
                 ReverseAcceleration = 20.05,
                 LatitudeAcceleration = 10.10,
@@ -1028,6 +1080,8 @@ namespace NSW.EliteDangerous.API
                 Shields = 200,
                 Armour = 80,
                 Mass = 35,
+                Cargo = 12, 
+                JumpRange = 9.1,
                 ForwardAcceleration = 57.53,
                 ReverseAcceleration = 30.02,
                 LatitudeAcceleration = 24.88,
@@ -1075,6 +1129,8 @@ namespace NSW.EliteDangerous.API
                 Shields = 600,
                 Armour = 400,
                 Mass = 1100,
+                Cargo = 164,
+                JumpRange = 8.2,
                 ForwardAcceleration = 29.37,
                 ReverseAcceleration = 10.04,
                 LatitudeAcceleration = 6.06,
@@ -1122,6 +1178,8 @@ namespace NSW.EliteDangerous.API
                 Shields = 80,
                 Armour = 60,
                 Mass = 50,
+                Cargo = 2,
+                JumpRange = 8.4,
                 ForwardAcceleration = 34.54,
                 ReverseAcceleration = 27.84,
                 LatitudeAcceleration = 27.84,
@@ -1167,6 +1225,8 @@ namespace NSW.EliteDangerous.API
                 Shields = 135,
                 Armour = 270,
                 Mass = 180,
+                Cargo = 42,
+                JumpRange = 11.0,
                 ForwardAcceleration = 20.22,
                 ReverseAcceleration = 15.07,
                 LatitudeAcceleration = 15.03,
@@ -1212,6 +1272,8 @@ namespace NSW.EliteDangerous.API
                 Shields = 220,
                 Armour = 220,
                 Mass = 320,
+                Cargo = 82,
+                JumpRange = 8.6,
                 ForwardAcceleration = 28.01,
                 ReverseAcceleration = 18.04,
                 LatitudeAcceleration = 15.12,
@@ -1257,6 +1319,8 @@ namespace NSW.EliteDangerous.API
                 Shields = 200,
                 Armour = 180,
                 Mass = 270,
+                Cargo = 98,
+                JumpRange = 9.3,
                 ForwardAcceleration = 0,
                 ReverseAcceleration = 0,
                 LatitudeAcceleration = 0,
@@ -1302,6 +1366,8 @@ namespace NSW.EliteDangerous.API
                 Shields = 270,
                 Armour = 230,
                 Mass = 250,
+                Cargo = 20,
+                JumpRange = 6.7,
                 ForwardAcceleration = 0,
                 ReverseAcceleration = 0,
                 LatitudeAcceleration = 0,
@@ -1347,6 +1413,8 @@ namespace NSW.EliteDangerous.API
                 Shields = 220,
                 Armour = 220,
                 Mass = 290,
+                Cargo = 24,
+                JumpRange = 10.5,
                 ForwardAcceleration = 29.66,
                 ReverseAcceleration = 25.08,
                 LatitudeAcceleration = 19.95,
@@ -1392,6 +1460,8 @@ namespace NSW.EliteDangerous.API
                 Shields = 260,
                 Armour = 260,
                 Mass = 350,
+                Cargo = 82,
+                JumpRange = 8.3,
                 ForwardAcceleration = 29.59,
                 ReverseAcceleration = 18.02,
                 LatitudeAcceleration = 15.92,
@@ -1437,6 +1507,8 @@ namespace NSW.EliteDangerous.API
                 Shields = 40,
                 Armour = 60,
                 Mass = 25,
+                Cargo = 4,
+                JumpRange = 7.9,
                 ForwardAcceleration = 44.39,
                 ReverseAcceleration = 29.96,
                 LatitudeAcceleration = 29.96,
@@ -1482,6 +1554,8 @@ namespace NSW.EliteDangerous.API
                 Shields = 90,
                 Armour = 180,
                 Mass = 155,
+                Cargo = 50,
+                JumpRange = 12.5,
                 ForwardAcceleration = 20.10,
                 ReverseAcceleration = 14.96,
                 LatitudeAcceleration = 15.07,
@@ -1510,7 +1584,7 @@ namespace NSW.EliteDangerous.API
                     Military = new byte[] { },
                     Internal = new byte[] { 5, 5, 4, 4, 3, 2, 2, 1 }
                 }
-            }; 
+            };
         public static readonly ShipBase Type7Transporter
             = new ShipBase(ShipModel.Type7Transporter)
             {
@@ -1527,6 +1601,8 @@ namespace NSW.EliteDangerous.API
                 Shields = 156,
                 Armour = 340,
                 Mass = 350,
+                Cargo = 128,
+                JumpRange = 12.3,
                 ForwardAcceleration = 20.11,
                 ReverseAcceleration = 15.02,
                 LatitudeAcceleration = 15.13,
@@ -1573,6 +1649,8 @@ namespace NSW.EliteDangerous.API
                 Shields = 240,
                 Armour = 480,
                 Mass = 850,
+                Cargo = 348,
+                JumpRange = 8.7,
                 ForwardAcceleration = 20.03,
                 ReverseAcceleration = 10.11,
                 LatitudeAcceleration = 10.03,
@@ -1607,7 +1685,7 @@ namespace NSW.EliteDangerous.API
             {
                 FrontierId = 128785619,
                 FrontierName = "Type9_Military",
-                ShipRole = ShipRole.Freighter,
+                ShipRole = ShipRole.Freighter | ShipRole.Combat,
                 Name = "Type-10 Defender",
                 Class = 3,
                 Cost = 121486140,
@@ -1618,6 +1696,8 @@ namespace NSW.EliteDangerous.API
                 Shields = 320,
                 Armour = 580,
                 Mass = 1200,
+                Cargo = 220,
+                JumpRange = 6.7,
                 ForwardAcceleration = 17.96,
                 ReverseAcceleration = 10.04,
                 LatitudeAcceleration = 10.09,
@@ -1663,6 +1743,8 @@ namespace NSW.EliteDangerous.API
                 Shields = 105,
                 Armour = 70,
                 Mass = 50,
+                Cargo = 4,
+                JumpRange = 7.8,
                 ForwardAcceleration = 53.98,
                 ReverseAcceleration = 29.70,
                 LatitudeAcceleration = 24.95,
@@ -1708,6 +1790,8 @@ namespace NSW.EliteDangerous.API
                 Shields = 150,
                 Armour = 150,
                 Mass = 190,
+                Cargo = 18,
+                JumpRange = 10.4,
                 ForwardAcceleration = 53.84,
                 ReverseAcceleration = 30.14,
                 LatitudeAcceleration = 24.97,
@@ -1753,6 +1837,8 @@ namespace NSW.EliteDangerous.API
                 Shields = 240,
                 Armour = 160,
                 Mass = 230,
+                Cargo = 8,
+                JumpRange = 8.0,
                 ForwardAcceleration = 39.55,
                 ReverseAcceleration = 29.88,
                 LatitudeAcceleration = 19.98,
@@ -1822,8 +1908,37 @@ namespace NSW.EliteDangerous.API
             {Type10Defender.Model, Type10Defender},
             {ViperMkIII.Model, ViperMkIII},
             {ViperMkIV.Model, ViperMkIV},
-            {Vulture.Model, Vulture}
+            {Vulture.Model, Vulture},
+            // NPC
+            { ShipModel.Unknown,                    new ShipBase(ShipModel.Unknown, "Unknown Ship")},
+            { ShipModel.Npc,                        new ShipBase(ShipModel.Npc, "NPC Ship")},
+            { ShipModel.PoliceAlliance,             new ShipBase(ShipModel.PoliceAlliance, "Allied Police Forces")},
+            { ShipModel.PoliceIndependent,          new ShipBase(ShipModel.PoliceIndependent, "System Authority Vessel")},
+            { ShipModel.PoliceFederation,           new ShipBase(ShipModel.PoliceFederation,"Federal Security Service")},
+            { ShipModel.PoliceEmpire,               new ShipBase(ShipModel.PoliceEmpire,"Internal Security Service")},
+            { ShipModel.MilitaryFederation,         new ShipBase(ShipModel.MilitaryFederation,"Federal Navy Ship")},
+            { ShipModel.MilitaryIndependent,        new ShipBase(ShipModel.MilitaryIndependent,"System Defence Force")},
+            { ShipModel.MilitaryAlliance,           new ShipBase(ShipModel.MilitaryAlliance,"Alliance Defence Force")},
+            { ShipModel.MilitaryEmpire,             new ShipBase(ShipModel.MilitaryEmpire,"Imperial Navy Vessel")},
+            { ShipModel.MilitaryFighterEmpire,      new ShipBase(ShipModel.MilitaryFighterEmpire,"Imperial Navy Fighter")},
+            { ShipModel.MilitaryFighterAlliance,    new ShipBase(ShipModel.MilitaryFighterAlliance,"Alliance Defence Fighter")},
+            { ShipModel.MilitaryFighterIndependent, new ShipBase(ShipModel.MilitaryFighterIndependent,"System Defence Fighter")},
+            { ShipModel.MilitaryFighterFederation,  new ShipBase(ShipModel.MilitaryFighterFederation,"Federal Navy Fighter")},
+            { ShipModel.AtrIndependent,             new ShipBase(ShipModel.AtrIndependent,"System ATR")},
+            { ShipModel.AtrFederation,              new ShipBase(ShipModel.AtrFederation,"Federal ATR")},
+            { ShipModel.AtrEmpire,                  new ShipBase(ShipModel.AtrEmpire,"Imperial ATR")},
+            { ShipModel.AtrAlliance,                new ShipBase(ShipModel.AtrAlliance,"Allied ATR")},
+            { ShipModel.WeddingBarge,               new ShipBase(ShipModel.WeddingBarge,"Wedding Barge")},
+            { ShipModel.SearchAndRescue,            new ShipBase(ShipModel.SearchAndRescue,"Search And Rescue Patrol")},
+            { ShipModel.IndependentFighter,         new ShipBase(ShipModel.IndependentFighter,"Independent Fighter")},
+            { ShipModel.AxMilitaryIndependent,      new ShipBase(ShipModel.AxMilitaryIndependent,"System AX Force")},
+            { ShipModel.AxMilitaryEmpire,           new ShipBase(ShipModel.MilitaryIndependent,"Imperial AX Vessel")},
+            { ShipModel.AxMilitaryFederation,       new ShipBase(ShipModel.AxMilitaryEmpire,"Federal AX Ship")},
+            { ShipModel.AxMilitaryAlliance,         new ShipBase(ShipModel.AxMilitaryAlliance,"Allied AX Ship")},
         };
+
+        public static ShipBase GetByFrontierName(string frontierName) => Ships[EnumHelper.GetShipModel(frontierName)];
+        public static IEnumerable<ShipBase> GetAllPlayable() => Ships.Values.Where(s => !s.NpcOnly);
     }
 
     public class SlotsConfiguration

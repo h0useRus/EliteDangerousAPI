@@ -102,9 +102,6 @@ namespace NSW.EliteDangerous.API
             "F",
             "G"
         };
-
-        public static ShipInfo GetBaseShipInfo(ShipModel model) => new ShipInfo(model);
-
         /// <summary>
         /// Hidden gem, but not preferred
         /// </summary>
