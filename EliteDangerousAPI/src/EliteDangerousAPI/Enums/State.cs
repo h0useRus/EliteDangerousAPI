@@ -17,6 +17,17 @@ namespace NSW.EliteDangerous.API
         War,
         CivilLiberty,
         PirateAttack,
-        Drought
+        Drought,
+        Colonisation,
+        Revolution,
+        ColdWar,
+        TechnologicalLeap,
+        TradeWar,
+        Terrorism,
+        HistoricEvent,
+        InfrastructureFailure,
+        PublicHoliday,
+        NaturalDisaster,
+        Blight
     }
 }

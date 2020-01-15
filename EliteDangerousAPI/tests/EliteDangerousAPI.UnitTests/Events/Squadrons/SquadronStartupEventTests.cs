@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using NSW.EliteDangerous.API;
 using NSW.EliteDangerous.API.Events;
 using Xunit;
 
@@ -46,7 +47,7 @@ namespace NSW.EliteDangerous.Events
             Assert.Equal(DateTime.Parse("2018-10-17T16:17:55Z"), @event.Timestamp);
             Assert.Equal(EventName, @event.Event);
             Assert.Equal("TestSquadron", @event.SquadronName);
-            Assert.Equal(2, @event.CurrentRank);
+            Assert.Equal(SquadronRank.Officer, @event.CurrentRank);
         }
 
         public static IEnumerable<object[]> Data =>
